@@ -734,8 +734,17 @@ export function MapPage() {
     const c = card.getBoundingClientRect();
     const m = map.getBoundingClientRect();
     const underMap = c.left < m.right && c.right > m.left; // list shares the map's column
-    // The map is sticky at the top, so once scrolled its bottom edge is its own height.
-    const clearTop = (underMap ? map.offsetHeight : 0) + 16;
+    if (!underMap) {
+      // Wide screens: the panel sits beside the map and scrolls on its own; never move the page.
+      const panel = document.getElementById('map-details');
+      if (!panel) return;
+      const p = panel.getBoundingClientRect();
+      if (c.top >= p.top && c.bottom <= p.bottom) return; // already visible
+      panel.scrollTo({ top: panel.scrollTop + (c.top - p.top) - 12, behavior: 'smooth' });
+      return;
+    }
+    // Phones/laptops: the list runs under the pinned map, so land the card just below it.
+    const clearTop = map.offsetHeight + 16;
     window.scrollTo({ top: window.scrollY + c.top - clearTop, behavior: 'smooth' });
   };
   const play = (r: AnimRoute) => {
@@ -911,7 +920,7 @@ export function MapPage() {
         {/* Right (below on smaller screens): place card + book details */}
         <div
           id="map-details"
-          className="order-2 min-w-0 scroll-mt-[calc(max(30vh,210px)+2rem)] space-y-3 md:order-3 md:col-span-2 md:scroll-mt-[calc(52vh+1.5rem)] xl:col-span-1 xl:scroll-mt-4"
+          className="order-2 min-w-0 scroll-mt-[calc(max(30vh,210px)+2rem)] space-y-3 md:order-3 md:col-span-2 md:scroll-mt-[calc(52vh+1.5rem)] xl:sticky xl:top-2 xl:col-span-1 xl:h-[74vh] xl:self-start xl:overflow-y-auto xl:overscroll-contain xl:pr-1"
         >
           {sel && <Inspector sel={sel} book={book} onClose={() => setSel(null)} onPickBook={pickBook} />}
           {mode === 'journeys' && (
