@@ -148,7 +148,7 @@
        "name": "Bethel",
        "lat": 31.93,
        "lng": 35.222,
-       "placeId": null
+       "placeId": "bethel_202"
       },
       {
        "name": "The Negeb",
@@ -182,7 +182,7 @@
        "name": "Egypt (Nile delta)",
        "lat": 30.6,
        "lng": 31.5,
-       "placeId": null
+       "placeId": "egypt_362"
       },
       {
        "name": "The Negeb",
@@ -194,7 +194,7 @@
        "name": "Bethel",
        "lat": 31.93,
        "lng": 35.222,
-       "placeId": null
+       "placeId": "bethel_202"
       }
      ],
      "legKm": [
@@ -228,13 +228,13 @@
        "name": "Hobah, north of Damascus",
        "lat": 33.65,
        "lng": 36.4,
-       "placeId": null
+       "placeId": "hobah_571"
       },
       {
        "name": "Salem (Jerusalem)",
        "lat": 31.778,
        "lng": 35.235,
-       "placeId": null
+       "placeId": "salem_1018"
       }
      ],
      "legKm": [
@@ -387,7 +387,7 @@
        "name": "Bethel",
        "lat": 31.93,
        "lng": 35.222,
-       "placeId": null
+       "placeId": "bethel_202"
       },
       {
        "name": "Haran",
@@ -450,19 +450,19 @@
        "name": "Bethel",
        "lat": 31.93,
        "lng": 35.222,
-       "placeId": null
+       "placeId": "bethel_202"
       },
       {
        "name": "Ephrath (Bethlehem)",
        "lat": 31.705,
        "lng": 35.2,
-       "placeId": null
+       "placeId": "ephrath_403"
       },
       {
        "name": "Mamre (Hebron)",
        "lat": 31.532,
        "lng": 35.095,
-       "placeId": null
+       "placeId": "mamre_762"
       }
      ],
      "legKm": [
@@ -507,7 +507,7 @@
        "name": "Egypt (Nile delta)",
        "lat": 30.6,
        "lng": 31.5,
-       "placeId": null
+       "placeId": "egypt_362"
       }
      ],
      "legKm": [
@@ -574,7 +574,7 @@
        "name": "Machpelah (Hebron)",
        "lat": 31.524,
        "lng": 35.11,
-       "placeId": null
+       "placeId": "machpelah_748"
       }
      ],
      "legKm": [
@@ -718,7 +718,7 @@
        "name": "Mount Sinai (Horeb)",
        "lat": 28.539,
        "lng": 33.975,
-       "placeId": null
+       "placeId": "mount_sinai_855"
       },
       {
        "name": "Goshen",
@@ -956,7 +956,7 @@
        "name": "Mount Sinai (Horeb)",
        "lat": 28.539,
        "lng": 33.975,
-       "placeId": null
+       "placeId": "mount_sinai_855"
       },
       {
        "name": "Hazeroth",
@@ -1001,7 +1001,7 @@
        "name": "Rehob, near Lebo-hamath (approx.)",
        "lat": 34.25,
        "lng": 36.4,
-       "placeId": null
+       "placeId": "rehob_989"
       },
       {
        "name": "Hebron",
@@ -1090,7 +1090,7 @@
        "name": "Pethor (on the Euphrates)",
        "lat": 36.66,
        "lng": 38.07,
-       "placeId": null
+       "placeId": "pethor_939"
       },
       {
        "name": "Plains of Moab",
@@ -1207,7 +1207,7 @@
        "name": "Mount Sinai (Horeb)",
        "lat": 28.539,
        "lng": 33.975,
-       "placeId": null
+       "placeId": "mount_sinai_855"
       },
       {
        "name": "Kadesh-barnea",
@@ -1487,7 +1487,7 @@
        "name": "Makkedah (approx.)",
        "lat": 31.63,
        "lng": 34.92,
-       "placeId": null
+       "placeId": "makkedah_760"
       },
       {
        "name": "Libnah",
@@ -1505,7 +1505,7 @@
        "name": "Eglon (approx.)",
        "lat": 31.5,
        "lng": 34.75,
-       "placeId": null
+       "placeId": "eglon_361"
       },
       {
        "name": "Hebron",
@@ -1558,7 +1558,7 @@
        "name": "Waters of Merom",
        "lat": 33,
        "lng": 35.42,
-       "placeId": null
+       "placeId": "merom_785"
       },
       {
        "name": "Hazor",
@@ -1713,7 +1713,7 @@
        "name": "River Kishon (near Megiddo)",
        "lat": 32.6,
        "lng": 35.17,
-       "placeId": null
+       "placeId": "kishon_705"
       }
      ],
      "legKm": [
@@ -1839,7 +1839,7 @@
        "name": "Laish (Dan)",
        "lat": 33.249,
        "lng": 35.652,
-       "placeId": null
+       "placeId": "laish_713"
       }
      ],
      "legKm": [
@@ -1873,7 +1873,7 @@
        "name": "Jebus (Jerusalem)",
        "lat": 31.778,
        "lng": 35.235,
-       "placeId": null
+       "placeId": "jebus_629"
       },
       {
        "name": "Gibeah",
@@ -2153,7 +2153,7 @@
        "name": "Land of Zuph (approx.)",
        "lat": 31.95,
        "lng": 35.15,
-       "placeId": null
+       "placeId": "zuph_1276"
       },
       {
        "name": "Ramah",
@@ -2193,7 +2193,7 @@
        "name": "Ramah (Naioth)",
        "lat": 31.85,
        "lng": 35.2,
-       "placeId": null
+       "placeId": "ramah_972"
       },
       {
        "name": "Nob",
@@ -2211,7 +2211,7 @@
        "name": "Cave of Adullam",
        "lat": 31.65,
        "lng": 34.96,
-       "placeId": null
+       "placeId": "adullam_31"
       },
       {
        "name": "Mizpeh of Moab (approx.)",
@@ -2229,7 +2229,7 @@
        "name": "Wilderness of Ziph",
        "lat": 31.48,
        "lng": 35.13,
-       "placeId": null
+       "placeId": "ziph_1266"
       },
       {
        "name": "Maon",
@@ -2733,7 +2733,7 @@
        "name": "Mount Sinai (Horeb)",
        "lat": 28.539,
        "lng": 33.975,
-       "placeId": null
+       "placeId": "mount_sinai_855"
       }
      ],
      "legKm": [
@@ -2755,7 +2755,7 @@
        "name": "Mount Sinai (Horeb)",
        "lat": 28.539,
        "lng": 33.975,
-       "placeId": null
+       "placeId": "mount_sinai_855"
       },
       {
        "name": "Abel-meholah",
@@ -2872,13 +2872,13 @@
        "name": "Gilgal (north)",
        "lat": 32.03,
        "lng": 35.2,
-       "placeId": null
+       "placeId": "gilgal_476"
       },
       {
        "name": "Bethel",
        "lat": 31.93,
        "lng": 35.222,
-       "placeId": null
+       "placeId": "bethel_202"
       },
       {
        "name": "Jericho",
@@ -2958,13 +2958,13 @@
        "name": "Gozan, on the Habor",
        "lat": 36.83,
        "lng": 40.07,
-       "placeId": null
+       "placeId": "gozan_492"
       },
       {
        "name": "Cities of the Medes (Ecbatana)",
        "lat": 34.8,
        "lng": 48.52,
-       "placeId": null
+       "placeId": "ecbatana_353"
       }
      ],
      "legKm": [
@@ -3501,7 +3501,7 @@
        "name": "Tadmor (likely caravan route)",
        "lat": 34.55,
        "lng": 38.27,
-       "placeId": null
+       "placeId": "tadmor_1131"
       },
       {
        "name": "Damascus",
@@ -3547,7 +3547,7 @@
        "name": "Tadmor (likely)",
        "lat": 34.55,
        "lng": 38.27,
-       "placeId": null
+       "placeId": "tadmor_1131"
       },
       {
        "name": "Damascus",
@@ -3685,7 +3685,7 @@
        "name": "Tadmor (likely)",
        "lat": 34.55,
        "lng": 38.27,
-       "placeId": null
+       "placeId": "tadmor_1131"
       },
       {
        "name": "Damascus",
@@ -3902,13 +3902,13 @@
        "name": "Teman (Edom)",
        "lat": 30.7,
        "lng": 35.6,
-       "placeId": null
+       "placeId": "teman_1150"
       },
       {
        "name": "Land of Uz (uncertain)",
        "lat": 30.5,
        "lng": 35.8,
-       "placeId": null
+       "placeId": "uz_1190"
       }
      ],
      "legKm": [
@@ -4213,7 +4213,7 @@
        "name": "Aiath (Ai)",
        "lat": 31.916,
        "lng": 35.261,
-       "placeId": null
+       "placeId": "aiath_38"
       },
       {
        "name": "Michmash",
@@ -4436,7 +4436,7 @@
        "name": "Geruth Chimham, near Bethlehem",
        "lat": 31.7,
        "lng": 35.2,
-       "placeId": null
+       "placeId": "geruth_chimham_460"
       },
       {
        "name": "Tahpanhes",
@@ -5105,7 +5105,7 @@
        "name": "Bethel",
        "lat": 31.93,
        "lng": 35.222,
-       "placeId": null
+       "placeId": "bethel_202"
       },
       {
        "name": "Tekoa",
@@ -5803,7 +5803,7 @@
        "name": "Tadmor (likely)",
        "lat": 34.55,
        "lng": 38.27,
-       "placeId": null
+       "placeId": "tadmor_1131"
       },
       {
        "name": "Damascus",
@@ -5850,19 +5850,19 @@
        "name": "Gaza (coast road)",
        "lat": 31.5,
        "lng": 34.465,
-       "placeId": null
+       "placeId": "gaza_446"
       },
       {
        "name": "Egypt (Nile delta)",
        "lat": 30.6,
        "lng": 31.5,
-       "placeId": null
+       "placeId": "egypt_362"
       },
       {
        "name": "Gaza (coast road)",
        "lat": 31.5,
        "lng": 34.465,
-       "placeId": null
+       "placeId": "gaza_446"
       },
       {
        "name": "Nazareth",
@@ -5897,7 +5897,7 @@
        "name": "Jordan (baptism)",
        "lat": 31.837,
        "lng": 35.553,
-       "placeId": null
+       "placeId": "jordan_653"
       },
       {
        "name": "Judean wilderness",
@@ -6133,7 +6133,7 @@
        "name": "Decapolis (Hippos)",
        "lat": 32.78,
        "lng": 35.66,
-       "placeId": null
+       "placeId": "decapolis_328"
       }
      ],
      "legKm": [
@@ -6643,7 +6643,7 @@
        "name": "Sychar (Jacob’s well)",
        "lat": 32.209,
        "lng": 35.285,
-       "placeId": null
+       "placeId": "sychar_1119"
       },
       {
        "name": "Cana",
@@ -7850,7 +7850,7 @@
        "name": "Arabia (Nabataea, approx.)",
        "lat": 32.5,
        "lng": 36.5,
-       "placeId": null
+       "placeId": "arabia_80"
       },
       {
        "name": "Damascus",
@@ -7868,7 +7868,7 @@
        "name": "Tarsus (Cilicia)",
        "lat": 36.918,
        "lng": 34.892,
-       "placeId": null
+       "placeId": "tarsus_1140"
       },
       {
        "name": "Antioch (Syria)",
@@ -7904,7 +7904,7 @@
        "name": "Galatia (Pisidian Antioch, Iconium, Lystra, Derbe)",
        "lat": 37.87,
        "lng": 32.49,
-       "placeId": null
+       "placeId": "galatia_431"
       }
      ],
      "legKm": [
@@ -8159,7 +8159,7 @@
        "name": "Corinth (likely route)",
        "lat": 37.906,
        "lng": 22.88,
-       "placeId": null
+       "placeId": "corinth_306"
       },
       {
        "name": "Ephesus",
@@ -8464,7 +8464,7 @@
        "name": "Macedonia (Philippi?)",
        "lat": 41.013,
        "lng": 24.286,
-       "placeId": null
+       "placeId": "macedonia_747"
       },
       {
        "name": "Ephesus",
@@ -8662,7 +8662,7 @@
        "name": "Crete (Gortyn)",
        "lat": 35.06,
        "lng": 24.95,
-       "placeId": null
+       "placeId": "crete_310"
       }
      ],
      "legKm": [],
@@ -8680,7 +8680,7 @@
        "name": "Crete (Gortyn)",
        "lat": 35.06,
        "lng": 24.95,
-       "placeId": null
+       "placeId": "crete_310"
       },
       {
        "name": "Nicopolis",
@@ -8743,7 +8743,7 @@
        "name": "Corinth (likely route)",
        "lat": 37.906,
        "lng": 22.88,
-       "placeId": null
+       "placeId": "corinth_306"
       },
       {
        "name": "Ephesus",
@@ -8955,37 +8955,37 @@
        "name": "\"Babylon\" (Rome)",
        "lat": 41.893,
        "lng": 12.483,
-       "placeId": null
+       "placeId": "rome_1013"
       },
       {
        "name": "Pontus (Amisus)",
        "lat": 41.29,
        "lng": 36.33,
-       "placeId": null
+       "placeId": "pontus_956"
       },
       {
        "name": "Galatia (Ancyra)",
        "lat": 39.93,
        "lng": 32.86,
-       "placeId": null
+       "placeId": "galatia_431"
       },
       {
        "name": "Cappadocia (Caesarea)",
        "lat": 38.72,
        "lng": 35.49,
-       "placeId": null
+       "placeId": "cappadocia_276"
       },
       {
        "name": "Asia (Ephesus)",
        "lat": 37.941,
        "lng": 27.342,
-       "placeId": null
+       "placeId": "asia_108"
       },
       {
        "name": "Bithynia (Nicomedia)",
        "lat": 40.77,
        "lng": 29.92,
-       "placeId": null
+       "placeId": "bithynia_250"
       }
      ],
      "legKm": [
@@ -9210,7 +9210,7 @@
        "name": "Gaius’ church (Asia)",
        "lat": 38.4,
        "lng": 28,
-       "placeId": null
+       "placeId": "asia_108"
       }
      ],
      "legKm": [
@@ -11722,6 +11722,64 @@
    "openBible": "https://www.openbible.info/geo/ancient/a513646",
    "pleiades": "https://pleiades.stoa.org/places/678109"
   },
+  "hobah_571": {
+   "id": "hobah_571",
+   "name": "Hobah",
+   "lat": 33.5,
+   "lng": 36.466667,
+   "featureType": null,
+   "modern": "Hoba",
+   "modernCountry": "Syria",
+   "description": "Hiding-place, a place to the north of Damascus, to which Abraham pursued Chedorlaomer and his confederates (Gen. 14:15).",
+   "verseCount": 1,
+   "books": [
+    {
+     "book": "Genesis",
+     "order": 1,
+     "verses": 1
+    }
+   ],
+   "people": [],
+   "openBible": "https://www.openbible.info/geo/ancient/a6779cd",
+   "pleiades": null
+  },
+  "salem_1018": {
+   "id": "salem_1018",
+   "name": "Salem",
+   "lat": 31.777189,
+   "lng": 35.234978,
+   "featureType": "City",
+   "modern": "Jerusalem",
+   "modernCountry": "Jerusalem (status disputed)",
+   "description": "Peace, commonly supposed to be another name of Jerusalem (Gen. 14:18; Ps. 76:2; Heb. 7:1, 2).",
+   "verseCount": 4,
+   "books": [
+    {
+     "book": "Hebrews",
+     "order": 58,
+     "verses": 2
+    },
+    {
+     "book": "Genesis",
+     "order": 1,
+     "verses": 1
+    },
+    {
+     "book": "Psalms",
+     "order": 19,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "abraham",
+     "name": "Abraham",
+     "verses": 2
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a15257a",
+   "pleiades": "https://pleiades.stoa.org/places/687928"
+  },
   "beer-lahai-roi_167": {
    "id": "beer-lahai-roi_167",
    "name": "Beer-lahai-roi",
@@ -11979,6 +12037,80 @@
    "openBible": "https://www.openbible.info/geo/ancient/a0905b5",
    "pleiades": null
   },
+  "ephrath_403": {
+   "id": "ephrath_403",
+   "name": "Ephrath",
+   "lat": 31.706999,
+   "lng": 35.203153,
+   "featureType": null,
+   "modern": "Bethlehem",
+   "modernCountry": "West Bank",
+   "description": null,
+   "verseCount": 3,
+   "books": [
+    {
+     "book": "Genesis",
+     "order": 1,
+     "verses": 3
+    }
+   ],
+   "people": [
+    {
+     "id": "rachel",
+     "name": "Rachel",
+     "verses": 3
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a112427",
+   "pleiades": "https://pleiades.stoa.org/places/687856"
+  },
+  "mamre_762": {
+   "id": "mamre_762",
+   "name": "Mamre",
+   "lat": 31.54909872,
+   "lng": 35.09356062,
+   "featureType": null,
+   "modern": "Ramat el Khalil",
+   "modernCountry": "West Bank",
+   "description": "The name of the place in the neighbourhood of Hebron (q.v.) where Abraham dwelt (Gen. 23:17, 19; 35:27); called also in Authorized Version (13:18) the “plain of Mamre,” but in Revised Version more correctly “the oaks [marg.,…",
+   "verseCount": 6,
+   "books": [
+    {
+     "book": "Genesis",
+     "order": 1,
+     "verses": 6
+    }
+   ],
+   "people": [
+    {
+     "id": "abraham",
+     "name": "Abraham",
+     "verses": 4
+    },
+    {
+     "id": "isaac",
+     "name": "Isaac",
+     "verses": 2
+    },
+    {
+     "id": "sarah",
+     "name": "Sarah",
+     "verses": 1
+    },
+    {
+     "id": "jacob",
+     "name": "Jacob (Israel)",
+     "verses": 1
+    },
+    {
+     "id": "ishmael",
+     "name": "Ishmael",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/aeb9e97",
+   "pleiades": null
+  },
   "dothan_342": {
    "id": "dothan_342",
    "name": "Dothan",
@@ -12010,6 +12142,48 @@
    ],
    "openBible": "https://www.openbible.info/geo/ancient/ab635e4",
    "pleiades": "https://pleiades.stoa.org/places/857932175"
+  },
+  "machpelah_748": {
+   "id": "machpelah_748",
+   "name": "Machpelah",
+   "lat": 31.52464795,
+   "lng": 35.11073465,
+   "featureType": "Landmark",
+   "modern": "Cave of the Patriarchs",
+   "modernCountry": "West Bank",
+   "description": "Portion; double cave, the cave which Abraham bought, together with the field in which it stood, from Ephron the Hittite, for a family burying-place (Gen. 23).",
+   "verseCount": 6,
+   "books": [
+    {
+     "book": "Genesis",
+     "order": 1,
+     "verses": 6
+    }
+   ],
+   "people": [
+    {
+     "id": "abraham",
+     "name": "Abraham",
+     "verses": 3
+    },
+    {
+     "id": "sarah",
+     "name": "Sarah",
+     "verses": 1
+    },
+    {
+     "id": "isaac",
+     "name": "Isaac",
+     "verses": 1
+    },
+    {
+     "id": "ishmael",
+     "name": "Ishmael",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/ae00861",
+   "pleiades": null
   },
   "nile_895": {
    "id": "nile_895",
@@ -13166,6 +13340,43 @@
    "openBible": "https://www.openbible.info/geo/ancient/a1b6474",
    "pleiades": null
   },
+  "rehob_989": {
+   "id": "rehob_989",
+   "name": "Rehob",
+   "lat": 32.955448,
+   "lng": 35.211971,
+   "featureType": "City",
+   "modern": "Tell Bir el Gharbi",
+   "modernCountry": "Israel",
+   "description": "Another town of Asher (Josh. 19:30), kept possession of by the Canaanites (Judg. 1:31).",
+   "verseCount": 4,
+   "books": [
+    {
+     "book": "Joshua",
+     "order": 6,
+     "verses": 2
+    },
+    {
+     "book": "Judges",
+     "order": 7,
+     "verses": 1
+    },
+    {
+     "book": "1 Chronicles",
+     "order": 13,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "asher",
+     "name": "Asher",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/ab71288",
+   "pleiades": null
+  },
   "ezion-geber_423": {
    "id": "ezion-geber_423",
    "name": "Ezion-geber",
@@ -13341,6 +13552,38 @@
    ],
    "openBible": "https://www.openbible.info/geo/ancient/abf2fc1",
    "pleiades": "https://pleiades.stoa.org/places/697662"
+  },
+  "pethor_939": {
+   "id": "pethor_939",
+   "name": "Pethor",
+   "lat": 36.654616,
+   "lng": 38.068879,
+   "featureType": null,
+   "modern": "another name for Pitru",
+   "modernCountry": "Syria",
+   "description": "Interpretation of dreams, identified with Pitru, on the west bank of the Euphrates, a few miles south of the Hittite capital of Carchemish (Num. 22:5, “which is by the river of the land of the children of [the god] Ammo”).",
+   "verseCount": 2,
+   "books": [
+    {
+     "book": "Numbers",
+     "order": 4,
+     "verses": 1
+    },
+    {
+     "book": "Deuteronomy",
+     "order": 5,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "balaam",
+     "name": "Balaam",
+     "verses": 2
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/aa9e754",
+   "pleiades": null
   },
   "bashan_159": {
    "id": "bashan_159",
@@ -14347,6 +14590,33 @@
    "openBible": "https://www.openbible.info/geo/ancient/af2ca0c",
    "pleiades": null
   },
+  "makkedah_760": {
+   "id": "makkedah_760",
+   "name": "Makkedah",
+   "lat": 31.935117,
+   "lng": 34.781326,
+   "featureType": "City",
+   "modern": "Khirbet el Qom",
+   "modernCountry": "Israel",
+   "description": "Herdsman’s place, one of the royal cities of the Canaanites (Josh. 12:16), near which was a cave where the five kings who had confederated against Israel sought refuge (10:10-29).",
+   "verseCount": 8,
+   "books": [
+    {
+     "book": "Joshua",
+     "order": 6,
+     "verses": 8
+    }
+   ],
+   "people": [
+    {
+     "id": "joshua",
+     "name": "Joshua",
+     "verses": 4
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/abf8e4e",
+   "pleiades": null
+  },
   "libnah_728": {
    "id": "libnah_728",
    "name": "Libnah",
@@ -14491,6 +14761,33 @@
    "openBible": "https://www.openbible.info/geo/ancient/a3cc590",
    "pleiades": "https://pleiades.stoa.org/places/687951"
   },
+  "eglon_361": {
+   "id": "eglon_361",
+   "name": "Eglon",
+   "lat": 31.5,
+   "lng": 34.7667,
+   "featureType": "City",
+   "modern": "Tell Eton",
+   "modernCountry": "Israel",
+   "description": "A city in Judah, near Lachish (Josh. 15:39). It was destroyed by Joshua (10:5, 6). It has been identified with Tell Nejileh, 6 miles south of Tell Hesy or Ajlan, north-west of Lachish.",
+   "verseCount": 8,
+   "books": [
+    {
+     "book": "Joshua",
+     "order": 6,
+     "verses": 8
+    }
+   ],
+   "people": [
+    {
+     "id": "joshua",
+     "name": "Joshua",
+     "verses": 2
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a244d8f",
+   "pleiades": null
+  },
   "debir_325": {
    "id": "debir_325",
    "name": "Debir",
@@ -14526,6 +14823,33 @@
     }
    ],
    "openBible": "https://www.openbible.info/geo/ancient/ad2048e",
+   "pleiades": null
+  },
+  "merom_785": {
+   "id": "merom_785",
+   "name": "Merom",
+   "lat": 33.075269,
+   "lng": 35.60548,
+   "featureType": "Water",
+   "modern": "Tell el Khirbeh",
+   "modernCountry": "Israel",
+   "description": "Height, a lake in Northern Palestine through which the Jordan flows. It was the scene of the third and last great victory gained by Joshua over the Canaanites (Josh. 11:5-7).",
+   "verseCount": 2,
+   "books": [
+    {
+     "book": "Joshua",
+     "order": 6,
+     "verses": 2
+    }
+   ],
+   "people": [
+    {
+     "id": "joshua",
+     "name": "Joshua",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/acea44c",
    "pleiades": null
   },
   "hazor_545": {
@@ -14822,6 +15146,48 @@
    ],
    "openBible": "https://www.openbible.info/geo/ancient/acd63ee",
    "pleiades": "https://pleiades.stoa.org/places/678419"
+  },
+  "kishon_705": {
+   "id": "kishon_705",
+   "name": "Kishon",
+   "lat": 32.761948,
+   "lng": 35.064096,
+   "featureType": "Water",
+   "modern": "Kishon River",
+   "modernCountry": "Israel",
+   "description": "Winding, a winter torrent of Central Palestine, which rises about the roots of Tabor and Gilboa, and passing in a northerly direction through the plains of Esdraelon and Acre, falls into the Mediterranean at the north-eastern…",
+   "verseCount": 5,
+   "books": [
+    {
+     "book": "Judges",
+     "order": 7,
+     "verses": 3
+    },
+    {
+     "book": "1 Kings",
+     "order": 11,
+     "verses": 1
+    },
+    {
+     "book": "Psalms",
+     "order": 19,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "sisera",
+     "name": "Sisera",
+     "verses": 3
+    },
+    {
+     "id": "elijah",
+     "name": "Elijah",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a5a6458",
+   "pleiades": "https://pleiades.stoa.org/places/678321"
   },
   "penuel_931": {
    "id": "penuel_931",
@@ -15175,6 +15541,33 @@
    "openBible": "https://www.openbible.info/geo/ancient/a9bba61",
    "pleiades": "https://pleiades.stoa.org/places/687947"
   },
+  "laish_713": {
+   "id": "laish_713",
+   "name": "Laish",
+   "lat": 33.24865998,
+   "lng": 35.65248345,
+   "featureType": "City",
+   "modern": "Tel Dan",
+   "modernCountry": "Israel",
+   "description": "A city of the Sidonians, in the extreme north of Palestine (Judg. 18:7, 14); called also Leshem (Josh. 19:47) and Dan (Judg. 18:7, 29;",
+   "verseCount": 4,
+   "books": [
+    {
+     "book": "Judges",
+     "order": 7,
+     "verses": 4
+    }
+   ],
+   "people": [
+    {
+     "id": "dan",
+     "name": "Dan",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a513646",
+   "pleiades": "https://pleiades.stoa.org/places/678109"
+  },
   "bethlehem_218": {
    "id": "bethlehem_218",
    "name": "Bethlehem",
@@ -15291,6 +15684,43 @@
    ],
    "openBible": "https://www.openbible.info/geo/ancient/a112427",
    "pleiades": "https://pleiades.stoa.org/places/687856"
+  },
+  "jebus_629": {
+   "id": "jebus_629",
+   "name": "Jebus",
+   "lat": 31.777189,
+   "lng": 35.234978,
+   "featureType": "City",
+   "modern": "Jerusalem",
+   "modernCountry": "Jerusalem (status disputed)",
+   "description": "Trodden hard, or fastness, or “the waterless hill”, the name of the Canaanitish city which stood on Mount Zion (Josh. 15:8; 18:16, 28).",
+   "verseCount": 5,
+   "books": [
+    {
+     "book": "Judges",
+     "order": 7,
+     "verses": 2
+    },
+    {
+     "book": "1 Chronicles",
+     "order": 13,
+     "verses": 2
+    },
+    {
+     "book": "Joshua",
+     "order": 6,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "david",
+     "name": "David",
+     "verses": 2
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a15257a",
+   "pleiades": "https://pleiades.stoa.org/places/687928"
   },
   "jerusalem_636": {
    "id": "jerusalem_636",
@@ -15843,6 +16273,33 @@
    "openBible": "https://www.openbible.info/geo/ancient/a3fc47a",
    "pleiades": "https://pleiades.stoa.org/places/687888"
   },
+  "zuph_1276": {
+   "id": "zuph_1276",
+   "name": "Zuph",
+   "lat": 31.84684772753698,
+   "lng": 35.18491237777512,
+   "featureType": "Region",
+   "modern": "about 10 km around Ramathaim-zophim",
+   "modernCountry": "West Bank",
+   "description": "(1 Sam. 9:5, 6), a district in which lay Samuel’s city, Ramah. It was probably so named after Elkanah’s son, Zuph (1 Chr. 6:26, marg.).",
+   "verseCount": 1,
+   "books": [
+    {
+     "book": "1 Samuel",
+     "order": 9,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "saul",
+     "name": "Saul",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a4d0250",
+   "pleiades": null
+  },
   "nob_900": {
    "id": "nob_900",
    "name": "Nob",
@@ -15889,6 +16346,105 @@
    ],
    "openBible": "https://www.openbible.info/geo/ancient/afdda14",
    "pleiades": null
+  },
+  "adullam_31": {
+   "id": "adullam_31",
+   "name": "Adullam",
+   "lat": 31.657354,
+   "lng": 34.999242,
+   "featureType": "City",
+   "modern": "Khirbet esh Sheikh Madhkur",
+   "modernCountry": "Israel",
+   "description": "One of the royal cities of the Canaanites, now ‘Aid-el-ma (Josh. 12:15; 15:35).",
+   "verseCount": 8,
+   "books": [
+    {
+     "book": "Joshua",
+     "order": 6,
+     "verses": 2
+    },
+    {
+     "book": "1 Samuel",
+     "order": 9,
+     "verses": 1
+    },
+    {
+     "book": "2 Samuel",
+     "order": 10,
+     "verses": 1
+    },
+    {
+     "book": "1 Chronicles",
+     "order": 13,
+     "verses": 1
+    },
+    {
+     "book": "2 Chronicles",
+     "order": 14,
+     "verses": 1
+    },
+    {
+     "book": "Nehemiah",
+     "order": 16,
+     "verses": 1
+    },
+    {
+     "book": "Micah",
+     "order": 33,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "david",
+     "name": "David",
+     "verses": 3
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/af82614",
+   "pleiades": "https://pleiades.stoa.org/places/687809"
+  },
+  "ziph_1266": {
+   "id": "ziph_1266",
+   "name": "Ziph",
+   "lat": 31.478252,
+   "lng": 35.140514,
+   "featureType": "City",
+   "modern": "Tell Zif",
+   "modernCountry": "West Bank",
+   "description": "A city in the mountains of Judah (Josh. 15:55), identified with the uninhabited ruins of Tell ez-Zif, about 5 miles south-east of Hebron.",
+   "verseCount": 6,
+   "books": [
+    {
+     "book": "1 Samuel",
+     "order": 9,
+     "verses": 4
+    },
+    {
+     "book": "Joshua",
+     "order": 6,
+     "verses": 1
+    },
+    {
+     "book": "2 Chronicles",
+     "order": 14,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "saul",
+     "name": "Saul",
+     "verses": 4
+    },
+    {
+     "id": "david",
+     "name": "David",
+     "verses": 4
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a9b852f",
+   "pleiades": "https://pleiades.stoa.org/places/688047"
   },
   "maon_764": {
    "id": "maon_764",
@@ -17362,6 +17918,58 @@
    "openBible": "https://www.openbible.info/geo/ancient/a69c1d4",
    "pleiades": "https://pleiades.stoa.org/places/678106"
   },
+  "gozan_492": {
+   "id": "gozan_492",
+   "name": "Gozan",
+   "lat": 36.840013,
+   "lng": 40.06889,
+   "featureType": "Region",
+   "modern": "Tell Halaf",
+   "modernCountry": "Syria",
+   "description": "A region in Central Asia to which the Israelites were carried away captive (2 Kings 17:6; 1 Chr. 5:26; 2 Kings 19:12;",
+   "verseCount": 5,
+   "books": [
+    {
+     "book": "2 Kings",
+     "order": 12,
+     "verses": 3
+    },
+    {
+     "book": "1 Chronicles",
+     "order": 13,
+     "verses": 1
+    },
+    {
+     "book": "Isaiah",
+     "order": 23,
+     "verses": 1
+    }
+   ],
+   "people": [],
+   "openBible": "https://www.openbible.info/geo/ancient/a924b16",
+   "pleiades": null
+  },
+  "ecbatana_353": {
+   "id": "ecbatana_353",
+   "name": "Ecbatana",
+   "lat": 34.805555,
+   "lng": 48.516406,
+   "featureType": null,
+   "modern": "Tell Hagmatana",
+   "modernCountry": "Iran",
+   "description": "(Ezra 6:2), called Ecbatana by classical writers, the capital of northern Media. Here was the palace which was the residence of the old Median monarchs, and of Cyrus and Cambyses.",
+   "verseCount": 1,
+   "books": [
+    {
+     "book": "Ezra",
+     "order": 15,
+     "verses": 1
+    }
+   ],
+   "people": [],
+   "openBible": "https://www.openbible.info/geo/ancient/a212ef7",
+   "pleiades": "https://pleiades.stoa.org/places/903021"
+  },
   "nineveh_899": {
    "id": "nineveh_899",
    "name": "Nineveh",
@@ -17838,6 +18446,27 @@
    ],
    "openBible": "https://www.openbible.info/geo/ancient/a6c3859",
    "pleiades": null
+  },
+  "tadmor_1131": {
+   "id": "tadmor_1131",
+   "name": "Tadmor",
+   "lat": 34.55404917,
+   "lng": 38.26590497,
+   "featureType": "City",
+   "modern": "Palmyra",
+   "modernCountry": "Syria",
+   "description": "Palm, a city built by Solomon “in the wilderness” (2 Chr. 8:4).",
+   "verseCount": 1,
+   "books": [
+    {
+     "book": "2 Chronicles",
+     "order": 14,
+     "verses": 1
+    }
+   ],
+   "people": [],
+   "openBible": "https://www.openbible.info/geo/ancient/ad797fe",
+   "pleiades": "https://pleiades.stoa.org/places/668331"
   },
   "dung_gate_346": {
    "id": "dung_gate_346",
@@ -18479,6 +19108,53 @@
    "openBible": "https://www.openbible.info/geo/ancient/a81ab85",
    "pleiades": null
   },
+  "teman_1150": {
+   "id": "teman_1150",
+   "name": "Teman",
+   "lat": 30.203813,
+   "lng": 35.732568,
+   "featureType": "Region",
+   "modern": "about 30 km around Bozrah 1",
+   "modernCountry": "Jordan",
+   "description": "A place in Southern Idumea, the land of “the sons of the east,” frequently mentioned in the Old Testament.",
+   "verseCount": 6,
+   "books": [
+    {
+     "book": "Jeremiah",
+     "order": 24,
+     "verses": 2
+    },
+    {
+     "book": "Ezekiel",
+     "order": 26,
+     "verses": 1
+    },
+    {
+     "book": "Amos",
+     "order": 30,
+     "verses": 1
+    },
+    {
+     "book": "Obadiah",
+     "order": 31,
+     "verses": 1
+    },
+    {
+     "book": "Habakkuk",
+     "order": 35,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "esau",
+     "name": "Esau",
+     "verses": 4
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a831506",
+   "pleiades": null
+  },
   "zion_1263": {
    "id": "zion_1263",
    "name": "Zion",
@@ -18755,6 +19431,27 @@
    "openBible": "https://www.openbible.info/geo/ancient/a15257a",
    "pleiades": null
   },
+  "aiath_38": {
+   "id": "aiath_38",
+   "name": "Aiath",
+   "lat": 31.916676,
+   "lng": 35.261577,
+   "featureType": null,
+   "modern": "Et Tell",
+   "modernCountry": "West Bank",
+   "description": null,
+   "verseCount": 1,
+   "books": [
+    {
+     "book": "Isaiah",
+     "order": 23,
+     "verses": 1
+    }
+   ],
+   "people": [],
+   "openBible": "https://www.openbible.info/geo/ancient/a7e13e1",
+   "pleiades": "https://pleiades.stoa.org/places/665310877"
+  },
   "michmash_793": {
    "id": "michmash_793",
    "name": "Michmash",
@@ -18980,6 +19677,27 @@
    ],
    "openBible": "https://www.openbible.info/geo/ancient/a62dec4",
    "pleiades": "https://pleiades.stoa.org/places/912849"
+  },
+  "geruth_chimham_460": {
+   "id": "geruth_chimham_460",
+   "name": "Geruth Chimham",
+   "lat": 31.70536129174666,
+   "lng": 35.21026630105202,
+   "featureType": null,
+   "modern": "within 5 km of Bethlehem 1",
+   "modernCountry": "West Bank",
+   "description": "Pining, probably the youngest son of Barzillai the Gileadite (2 Sam. 19:37-40).",
+   "verseCount": 1,
+   "books": [
+    {
+     "book": "Jeremiah",
+     "order": 24,
+     "verses": 1
+    }
+   ],
+   "people": [],
+   "openBible": "https://www.openbible.info/geo/ancient/a1c28f1",
+   "pleiades": null
   },
   "tahpanhes_1133": {
    "id": "tahpanhes_1133",
@@ -19538,53 +20256,6 @@
     }
    ],
    "openBible": "https://www.openbible.info/geo/ancient/a6ac675",
-   "pleiades": null
-  },
-  "teman_1150": {
-   "id": "teman_1150",
-   "name": "Teman",
-   "lat": 30.203813,
-   "lng": 35.732568,
-   "featureType": "Region",
-   "modern": "about 30 km around Bozrah 1",
-   "modernCountry": "Jordan",
-   "description": "A place in Southern Idumea, the land of “the sons of the east,” frequently mentioned in the Old Testament.",
-   "verseCount": 6,
-   "books": [
-    {
-     "book": "Jeremiah",
-     "order": 24,
-     "verses": 2
-    },
-    {
-     "book": "Ezekiel",
-     "order": 26,
-     "verses": 1
-    },
-    {
-     "book": "Amos",
-     "order": 30,
-     "verses": 1
-    },
-    {
-     "book": "Obadiah",
-     "order": 31,
-     "verses": 1
-    },
-    {
-     "book": "Habakkuk",
-     "order": 35,
-     "verses": 1
-    }
-   ],
-   "people": [
-    {
-     "id": "esau",
-     "name": "Esau",
-     "verses": 4
-    }
-   ],
-   "openBible": "https://www.openbible.info/geo/ancient/a831506",
    "pleiades": null
   },
   "antioch_68": {
@@ -20223,6 +20894,38 @@
    "openBible": "https://www.openbible.info/geo/ancient/a98e4d7",
    "pleiades": "https://pleiades.stoa.org/places/678393"
   },
+  "decapolis_328": {
+   "id": "decapolis_328",
+   "name": "Decapolis",
+   "lat": 32.38068,
+   "lng": 35.73224,
+   "featureType": "Region",
+   "modern": "Decapolis",
+   "modernCountry": "Jordan",
+   "description": "Ten cities=deka, ten, and polis, a city, a district on the east and south-east of the Sea of Galilee containing “ten cities,” which were chiefly inhabited by Greeks.",
+   "verseCount": 3,
+   "books": [
+    {
+     "book": "Mark",
+     "order": 41,
+     "verses": 2
+    },
+    {
+     "book": "Matthew",
+     "order": 40,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "jesus",
+     "name": "Jesus of Nazareth",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/ae733a2",
+   "pleiades": "https://pleiades.stoa.org/places/678116"
+  },
   "bethsaida_231": {
    "id": "bethsaida_231",
    "name": "Bethsaida",
@@ -20488,6 +21191,38 @@
    ],
    "openBible": "https://www.openbible.info/geo/ancient/a031bda",
    "pleiades": "https://pleiades.stoa.org/places/678220"
+  },
+  "sychar_1119": {
+   "id": "sychar_1119",
+   "name": "Sychar",
+   "lat": 32.20307657,
+   "lng": 35.31192106,
+   "featureType": null,
+   "modern": "Askar",
+   "modernCountry": "West Bank",
+   "description": "Liar or drunkard (see Isa. 28:1, 7), has been from the time of the Crusaders usually identified with Sychem or Shechem (John 4:5).",
+   "verseCount": 1,
+   "books": [
+    {
+     "book": "John",
+     "order": 43,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "jacob",
+     "name": "Jacob (Israel)",
+     "verses": 1
+    },
+    {
+     "id": "joseph",
+     "name": "Joseph",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a27b472",
+   "pleiades": null
   },
   "ephraim_401": {
    "id": "ephraim_401",
@@ -21922,42 +22657,126 @@
    "openBible": "https://www.openbible.info/geo/ancient/a26aa94",
    "pleiades": "https://pleiades.stoa.org/places/589748"
   },
-  "salem_1018": {
-   "id": "salem_1018",
-   "name": "Salem",
-   "lat": 31.777189,
-   "lng": 35.234978,
-   "featureType": "City",
-   "modern": "Jerusalem",
-   "modernCountry": "Jerusalem (status disputed)",
-   "description": "Peace, commonly supposed to be another name of Jerusalem (Gen. 14:18; Ps. 76:2; Heb. 7:1, 2).",
-   "verseCount": 4,
+  "pontus_956": {
+   "id": "pontus_956",
+   "name": "Pontus",
+   "lat": 40.905222,
+   "lng": 37.799969,
+   "featureType": "Region",
+   "modern": "Pontus",
+   "modernCountry": "Turkey",
+   "description": "A province of Asia Minor, stretching along the southern coast of the Euxine Sea, corresponding nearly to the modern province of Trebizond.",
+   "verseCount": 3,
    "books": [
     {
-     "book": "Hebrews",
-     "order": 58,
+     "book": "Acts",
+     "order": 44,
      "verses": 2
     },
     {
-     "book": "Genesis",
-     "order": 1,
-     "verses": 1
-    },
-    {
-     "book": "Psalms",
-     "order": 19,
+     "book": "1 Peter",
+     "order": 60,
      "verses": 1
     }
    ],
    "people": [
     {
-     "id": "abraham",
-     "name": "Abraham",
-     "verses": 2
+     "id": "jesus",
+     "name": "Jesus of Nazareth",
+     "verses": 1
+    },
+    {
+     "id": "peter",
+     "name": "Peter",
+     "verses": 1
+    },
+    {
+     "id": "priscilla",
+     "name": "Priscilla",
+     "verses": 1
+    },
+    {
+     "id": "aquila",
+     "name": "Aquila",
+     "verses": 1
     }
    ],
-   "openBible": "https://www.openbible.info/geo/ancient/a15257a",
-   "pleiades": "https://pleiades.stoa.org/places/687928"
+   "openBible": "https://www.openbible.info/geo/ancient/a83a43e",
+   "pleiades": "https://pleiades.stoa.org/places/857287"
+  },
+  "cappadocia_276": {
+   "id": "cappadocia_276",
+   "name": "Cappadocia",
+   "lat": 36.731904,
+   "lng": 35.486302,
+   "featureType": "Region",
+   "modern": "Cappadocia",
+   "modernCountry": "Turkey",
+   "description": "The easternmost and the largest province of Asia Minor. Christianity very early penetrated into this country (1 Pet. 1:1).",
+   "verseCount": 2,
+   "books": [
+    {
+     "book": "Acts",
+     "order": 44,
+     "verses": 1
+    },
+    {
+     "book": "1 Peter",
+     "order": 60,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "jesus",
+     "name": "Jesus of Nazareth",
+     "verses": 1
+    },
+    {
+     "id": "peter",
+     "name": "Peter",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a33fbde",
+   "pleiades": "https://pleiades.stoa.org/places/628949"
+  },
+  "bithynia_250": {
+   "id": "bithynia_250",
+   "name": "Bithynia",
+   "lat": 40.905503,
+   "lng": 30.685778,
+   "featureType": "Region",
+   "modern": "Bithynia",
+   "modernCountry": "Turkey",
+   "description": "A province in Asia Minor, to the south of the Euxine and Propontis. Christian congregations were here formed at an early time (1 Pet. 1:1).",
+   "verseCount": 2,
+   "books": [
+    {
+     "book": "Acts",
+     "order": 44,
+     "verses": 1
+    },
+    {
+     "book": "1 Peter",
+     "order": 60,
+     "verses": 1
+    }
+   ],
+   "people": [
+    {
+     "id": "jesus",
+     "name": "Jesus of Nazareth",
+     "verses": 1
+    },
+    {
+     "id": "peter",
+     "name": "Peter",
+     "verses": 1
+    }
+   ],
+   "openBible": "https://www.openbible.info/geo/ancient/a5c0cb0",
+   "pleiades": "https://pleiades.stoa.org/places/511189"
   },
   "patmos_926": {
    "id": "patmos_926",
@@ -22237,38 +23056,6 @@
    "people": [],
    "openBible": "https://www.openbible.info/geo/ancient/ab5bd29",
    "pleiades": "https://pleiades.stoa.org/places/697721"
-  },
-  "sychar_1119": {
-   "id": "sychar_1119",
-   "name": "Sychar",
-   "lat": 32.20307657,
-   "lng": 35.31192106,
-   "featureType": null,
-   "modern": "Askar",
-   "modernCountry": "West Bank",
-   "description": "Liar or drunkard (see Isa. 28:1, 7), has been from the time of the Crusaders usually identified with Sychem or Shechem (John 4:5).",
-   "verseCount": 1,
-   "books": [
-    {
-     "book": "John",
-     "order": 43,
-     "verses": 1
-    }
-   ],
-   "people": [
-    {
-     "id": "jacob",
-     "name": "Jacob (Israel)",
-     "verses": 1
-    },
-    {
-     "id": "joseph",
-     "name": "Joseph",
-     "verses": 1
-    }
-   ],
-   "openBible": "https://www.openbible.info/geo/ancient/a27b472",
-   "pleiades": null
   },
   "tabor_1128": {
    "id": "tabor_1128",

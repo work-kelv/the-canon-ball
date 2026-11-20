@@ -137,6 +137,26 @@ const resolve = (title) => {
   return c.sort((a, b) => b.verses.length - a.verses.length)[0] || null;
 };
 
+/** Looser match for journey stops: "Bethel" -> "Bethel (of Palestine)", "Ephrath (Bethlehem)" -> Ephrath, "Mamre (Hebron)" -> Mamre. */
+function resolveLoose(name) {
+  // "Ephrath (Bethlehem)" -> try "Ephrath (Bethlehem)", "Ephrath", "Bethlehem"; "Mount Ebal" -> "Ebal"
+  const base = name.replace(/\s*\(.*\)\s*$/, '').split(',')[0].trim();
+  const bare = base.replace(/^(Mount|River|Valley of|Wilderness of|Cave of|House of|Land of|Waters of)\s+/i, '');
+  const inner = (name.match(/\(([^)]+)\)/) || [])[1];
+  for (const cand of [name, base, bare, inner].filter(Boolean)) {
+    const exact = resolve(cand);
+    if (exact) return exact;
+    // Theographic disambiguates with a suffix, e.g. "Bethel (of Palestine)", "Tabor (Mountain)"
+    const cands = Object.keys(byTitle)
+      .filter((t) => t.startsWith(cand + ' ('))
+      .flatMap((t) => byTitle[t])
+      .filter((p) => p.lat != null)
+      .sort((a, b) => b.verses.length - a.verses.length);
+    if (cands[0]) return cands[0];
+  }
+  return null;
+}
+
 const used = new Set();
 const orderOf = Object.fromEntries(canon.map((b) => [b.name, b.order]));
 
@@ -196,7 +216,7 @@ const outBooks = canon.map((b) => {
         stops = j.stops.map(([name, lat, lng, ref]) => ({ name, lat, lng, ...(ref ? { ref } : {}) }));
       }
       stops = stops.map((st) => {
-        const p = resolve(st.place || st.name);
+        const p = st.place ? resolve(st.place) : resolveLoose(st.name);
         if (p) used.add(p.id);
         const { place: _ignored, ...rest } = st;
         return { ...rest, placeId: p?.id ?? null };

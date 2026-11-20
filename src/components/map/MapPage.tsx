@@ -461,6 +461,9 @@ function JourneysPanel({
                             </span>
                             <span className="min-w-0">
                               <b>{w.name}</b>
+                              {w.n > 1 && (l.legKm[w.n - 2] ?? 0) > 0 && (
+                                <span className="text-[10.5px] tabular-nums text-ink-soft"> +{(l.legKm[w.n - 2] ?? 0).toLocaleString('en-US')} km</span>
+                              )}
                               {w.ref !== '\u2014' && (
                                 <>
                                   {' '}
@@ -468,6 +471,11 @@ function JourneysPanel({
                                 </>
                               )}
                               <span className="block text-ink-soft">{w.note}</span>
+                              {w.placeId && places[w.placeId] && (
+                                <span className="block text-[11px] text-ink-soft/80">
+                                  {[places[w.placeId].modern !== places[w.placeId].name ? places[w.placeId].modern : null, places[w.placeId].modernCountry].filter(Boolean).join(' · ')}
+                                </span>
+                              )}
                             </span>
                           </li>
                         ))}
@@ -586,8 +594,54 @@ function BookPanel({
                       <RefText text={j.summary} />
                     </p>
                   )}
-                  <div className="mt-1 font-sans text-[11.5px] leading-snug text-ink-soft">{stopChain(j.stops.map((s) => s.name))}</div>
-                  {j.distanceKm > 0 && <div className="mt-0.5 font-sans text-[11.5px] font-semibold tabular-nums">{fmtDistance(j.distanceKm)}</div>}
+                  {j.distanceKm > 0 && <div className="mt-1 font-sans text-[11.5px] font-semibold tabular-nums">{fmtDistance(j.distanceKm)}</div>}
+                  {/* Expandable stop-by-stop details */}
+                  <details className="group mt-1 font-sans text-[12px]">
+                    <summary className="cursor-pointer list-none text-ink-soft hover:text-ink [&::-webkit-details-marker]:hidden">
+                      <span className="mr-1 inline-block transition-transform group-open:rotate-90">▸</span>
+                      <b className="font-semibold text-ink">
+                        {j.stops.length} {j.stops.length === 1 ? 'stop' : 'stops'}
+                      </b>
+                      <span className="group-open:hidden"> · {stopChain(j.stops.map((s) => s.name))}</span>
+                    </summary>
+                    <ol className="mt-1.5 space-y-1.5">
+                      {j.stops.map((st, si) => {
+                        const p = st.placeId ? places[st.placeId] : null;
+                        const modern = p ? [p.modern && p.modern !== p.name ? p.modern : null, p.modernCountry].filter(Boolean).join(' · ') : '';
+                        return (
+                          <li key={si} className="flex gap-2">
+                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[9px] font-bold text-paper" style={{ background: cssColor(r.css) }}>
+                              {si + 1}
+                            </span>
+                            <span className="min-w-0 flex-1">
+                              <span className="flex flex-wrap items-baseline gap-x-1.5">
+                                {p ? (
+                                  <button
+                                    onClick={() => onPlace(st.placeId as string)}
+                                    className="focus-ring rounded-sm text-left font-semibold underline decoration-rule underline-offset-2 hover:decoration-ink"
+                                    title={`About ${p.name}`}
+                                  >
+                                    {st.name}
+                                  </button>
+                                ) : (
+                                  <b>{st.name}</b>
+                                )}
+                                {si > 0 && (j.legKm[si - 1] ?? 0) > 0 && (
+                                  <span className="text-[10.5px] tabular-nums text-ink-soft">+{(j.legKm[si - 1] ?? 0).toLocaleString('en-US')} km</span>
+                                )}
+                                {st.ref && st.ref !== '—' && (
+                                  <span className="text-[11px]">
+                                    <RefText text={st.ref} />
+                                  </span>
+                                )}
+                              </span>
+                              {modern && <span className="block text-[11px] text-ink-soft">{modern}</span>}
+                            </span>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </details>
                 </li>
               );
             })}
