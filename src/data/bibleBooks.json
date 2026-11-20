@@ -1,0 +1,606 @@
+{
+  "meta": {
+    "title": "Original languages of the 66 books of the Protestant Bible",
+    "canon": "Protestant (66 books)",
+    "chapterAndVerseCounts": "King James Version versification (aruljohn/Bible-kjv). Hebrew Bible (Masoretic) versification differs in places, e.g. Daniel 4:1-3 (English) = Daniel 3:31-33 (MT).",
+    "languagePercentNote": "Language percentages are by verse share (English versification). Genesis 31:47 contains only two Aramaic words, so its share is a token value.",
+    "datingNote": "Composition ranges are deliberately broad and span traditional and critical-scholarly dating; precise dates for many books are debated.",
+    "sources": [
+      "https://www.sefaria.org/texts/Tanakh",
+      "https://sblgnt.com/",
+      "https://www.biblicaltraining.org/library/manuscripts-of-the-bible",
+      "https://github.com/aruljohn/Bible-kjv"
+    ]
+  },
+  "books": [
+    {
+      "order": 1, "name": "Genesis", "abbrev": "Gen", "testament": "Old", "division": "Pentateuch",
+      "chapters": 50, "verses": 1533, "languageClass": "mixed",
+      "languages": [
+        { "language": "Hebrew", "percent": 99.99, "ranges": ["1:1–31:46", "31:47 (except two words)", "31:48–50:26"] },
+        { "language": "Aramaic", "percent": 0.01, "ranges": ["31:47 (two words)"] }
+      ],
+      "aramaicSections": [
+        { "reference": "Genesis 31:47", "verses": 0, "words": 2, "description": "Laban the Aramean names the covenant cairn יְגַר שָׂהֲדוּתָא (Yegar Sahadutha, 'heap of witness') in Aramaic, while Jacob names the same heap Galeed in Hebrew." }
+      ],
+      "aramaicPhrases": [],
+      "composition": { "start": -1450, "end": -400, "display": "c. 1450–400 BC (Mosaic tradition to Persian-era final form)" },
+      "context": "Written in Hebrew, the scribal language of Israel, it preserves a lone two-word Aramaic place-name when Laban the Aramean names the covenant cairn in his own tongue."
+    },
+    {
+      "order": 2, "name": "Exodus", "abbrev": "Exod", "testament": "Old", "division": "Pentateuch",
+      "chapters": 40, "verses": 1213, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1450, "end": -400, "display": "c. 1450–400 BC (Mosaic tradition to Persian-era final form)" },
+      "context": "Composed in Classical Biblical Hebrew, Israel's national literary language, to preserve the founding narrative of the exodus and the covenant law given at Sinai."
+    },
+    {
+      "order": 3, "name": "Leviticus", "abbrev": "Lev", "testament": "Old", "division": "Pentateuch",
+      "chapters": 27, "verses": 859, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1450, "end": -400, "display": "c. 1450–400 BC (Mosaic tradition to Persian-era final form)" },
+      "context": "Its priestly legislation was recorded in Hebrew, the language of Israel's sanctuary, sacrifice and cultic instruction."
+    },
+    {
+      "order": 4, "name": "Numbers", "abbrev": "Num", "testament": "Old", "division": "Pentateuch",
+      "chapters": 36, "verses": 1288, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1450, "end": -400, "display": "c. 1450–400 BC (Mosaic tradition to Persian-era final form)" },
+      "context": "Written in Hebrew as part of Israel's Torah, recording the wilderness censuses and journeys for a Hebrew-speaking covenant community."
+    },
+    {
+      "order": 5, "name": "Deuteronomy", "abbrev": "Deut", "testament": "Old", "division": "Pentateuch",
+      "chapters": 34, "verses": 959, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1410, "end": -560, "display": "c. 1410–560 BC (Mosaic tradition to Josianic/exilic edition)" },
+      "context": "Framed as Moses' farewell sermons, it was written in Hebrew, the covenant language in which Israel's law was to be publicly read and taught."
+    },
+    {
+      "order": 6, "name": "Joshua", "abbrev": "Josh", "testament": "Old", "division": "Historical",
+      "chapters": 24, "verses": 658, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1370, "end": -550, "display": "c. 1370–550 BC" },
+      "context": "Written in Classical Hebrew—a Canaanite dialect closely related to Phoenician—to record Israel's settlement in the land of Canaan."
+    },
+    {
+      "order": 7, "name": "Judges", "abbrev": "Judg", "testament": "Old", "division": "Historical",
+      "chapters": 21, "verses": 618, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1050, "end": -550, "display": "c. 1050–550 BC" },
+      "context": "Recorded in Hebrew, the spoken and literary language of Israel's tribes in the pre-monarchic period; the archaic Song of Deborah (ch. 5) is among the oldest Hebrew poetry."
+    },
+    {
+      "order": 8, "name": "Ruth", "abbrev": "Ruth", "testament": "Old", "division": "Historical",
+      "chapters": 4, "verses": 85, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1000, "end": -450, "display": "c. 1000–450 BC" },
+      "context": "Told in elegant Classical Hebrew prose, the story of a Moabite woman's place in David's ancestry was written for a Hebrew-speaking Israelite audience."
+    },
+    {
+      "order": 9, "name": "1 Samuel", "abbrev": "1 Sam", "testament": "Old", "division": "Historical",
+      "chapters": 31, "verses": 810, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -930, "end": -550, "display": "c. 930–550 BC" },
+      "context": "Written in Classical Hebrew, the language of the emerging Israelite monarchy and its royal scribes."
+    },
+    {
+      "order": 10, "name": "2 Samuel", "abbrev": "2 Sam", "testament": "Old", "division": "Historical",
+      "chapters": 24, "verses": 695, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -930, "end": -550, "display": "c. 930–550 BC" },
+      "context": "Its court history of David was composed in Classical Hebrew, the administrative and literary language of the united kingdom."
+    },
+    {
+      "order": 11, "name": "1 Kings", "abbrev": "1 Kgs", "testament": "Old", "division": "Historical",
+      "chapters": 22, "verses": 816, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -620, "end": -540, "display": "c. 620–540 BC (final exilic form)" },
+      "context": "Compiled in Hebrew from royal annals of Israel and Judah, reflecting the language of the Hebrew courts before the Babylonian exile."
+    },
+    {
+      "order": 12, "name": "2 Kings", "abbrev": "2 Kgs", "testament": "Old", "division": "Historical",
+      "chapters": 25, "verses": 719, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -620, "end": -540, "display": "c. 620–540 BC (final exilic form)" },
+      "context": "Completed in Hebrew during the exile; 18:26 records Judah's officials asking the Assyrian envoy to speak Aramaic, the diplomats' tongue, rather than the people's Hebrew."
+    },
+    {
+      "order": 13, "name": "1 Chronicles", "abbrev": "1 Chr", "testament": "Old", "division": "Historical",
+      "chapters": 29, "verses": 942, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -450, "end": -350, "display": "c. 450–350 BC" },
+      "context": "Written in Late Biblical Hebrew in the Persian period, its vocabulary and syntax show the influence of Aramaic on post-exilic Hebrew."
+    },
+    {
+      "order": 14, "name": "2 Chronicles", "abbrev": "2 Chr", "testament": "Old", "division": "Historical",
+      "chapters": 36, "verses": 822, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -450, "end": -350, "display": "c. 450–350 BC" },
+      "context": "Composed in Late Biblical Hebrew for the restored Jerusalem community, retelling Judah's history to reaffirm temple worship and Davidic hope."
+    },
+    {
+      "order": 15, "name": "Ezra", "abbrev": "Ezra", "testament": "Old", "division": "Historical",
+      "chapters": 10, "verses": 280, "languageClass": "mixed",
+      "languages": [
+        { "language": "Hebrew", "percent": 76.1, "ranges": ["1:1–4:7", "6:19–7:11", "7:27–10:44"] },
+        { "language": "Aramaic", "percent": 23.9, "ranges": ["4:8–6:18", "7:12–26"] }
+      ],
+      "aramaicSections": [
+        { "reference": "Ezra 4:8–6:18", "verses": 52, "description": "Official correspondence between Persian provincial officials and kings Artaxerxes and Darius over the rebuilding of Jerusalem and its temple, with linking narrative; 4:7 notes the letter was 'written in Aramaic'." },
+        { "reference": "Ezra 7:12–26", "verses": 15, "description": "The royal decree of Artaxerxes commissioning Ezra the scribe to teach and enforce the law of God in Judah, quoted verbatim in its chancery Aramaic." }
+      ],
+      "aramaicPhrases": [],
+      "composition": { "start": -450, "end": -350, "display": "c. 450–350 BC" },
+      "context": "The narrative is in Late Biblical Hebrew, but the Persian royal correspondence is preserved in Imperial (Official) Aramaic, the chancery language of the Achaemenid Empire."
+    },
+    {
+      "order": 16, "name": "Nehemiah", "abbrev": "Neh", "testament": "Old", "division": "Historical",
+      "chapters": 13, "verses": 406, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -430, "end": -350, "display": "c. 430–350 BC" },
+      "context": "Written in Late Biblical Hebrew, the memoir of a Persian court official laments that some Judean children could no longer speak 'the language of Judah' (13:24)."
+    },
+    {
+      "order": 17, "name": "Esther", "abbrev": "Esth", "testament": "Old", "division": "Historical",
+      "chapters": 10, "verses": 167, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -460, "end": -300, "display": "c. 460–300 BC" },
+      "context": "Written in Late Biblical Hebrew dotted with Persian loanwords, reflecting Jewish life in the diaspora at the Achaemenid court in Susa."
+    },
+    {
+      "order": 18, "name": "Job", "abbrev": "Job", "testament": "Old", "division": "Wisdom/Poetry",
+      "chapters": 42, "verses": 1070, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1000, "end": -400, "display": "c. 1000–400 BC (highly uncertain)" },
+      "context": "Composed in archaic, highly poetic Hebrew with rare vocabulary and Aramaic-like forms, it is among the most difficult Hebrew in the Bible."
+    },
+    {
+      "order": 19, "name": "Psalms", "abbrev": "Ps", "testament": "Old", "division": "Wisdom/Poetry",
+      "chapters": 150, "verses": 2461, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -1000, "end": -300, "display": "c. 1000–300 BC (collected over centuries)" },
+      "context": "Written as Hebrew poetry for Israel's worship, its songs span from the Davidic monarchy to the liturgy of the post-exilic Second Temple."
+    },
+    {
+      "order": 20, "name": "Proverbs", "abbrev": "Prov", "testament": "Old", "division": "Wisdom/Poetry",
+      "chapters": 31, "verses": 915, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -950, "end": -500, "display": "c. 950–500 BC" },
+      "context": "Collected in Hebrew poetic couplets, Israel's wisdom sayings were shaped for oral teaching in the royal court and the household."
+    },
+    {
+      "order": 21, "name": "Ecclesiastes", "abbrev": "Eccl", "testament": "Old", "division": "Wisdom/Poetry",
+      "chapters": 12, "verses": 222, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -950, "end": -250, "display": "c. 950–250 BC (Solomonic tradition to post-exilic)" },
+      "context": "Written in a late form of Hebrew with Aramaisms and Persian loanwords, which many scholars take as a sign of post-exilic composition."
+    },
+    {
+      "order": 22, "name": "Song of Solomon", "abbrev": "Song", "testament": "Old", "division": "Wisdom/Poetry",
+      "chapters": 8, "verses": 117, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -950, "end": -300, "display": "c. 950–300 BC" },
+      "context": "Composed in lyric Hebrew poetry rich in rare words and some late linguistic features, it celebrates love in Israel's own poetic idiom."
+    },
+    {
+      "order": 23, "name": "Isaiah", "abbrev": "Isa", "testament": "Old", "division": "Major Prophets",
+      "chapters": 66, "verses": 1292, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -740, "end": -500, "display": "c. 740–500 BC" },
+      "context": "Written in exalted Classical Hebrew poetry, its oracles addressed Judah in its own national language, while 36:11 shows Aramaic was then the tongue of diplomacy."
+    },
+    {
+      "order": 24, "name": "Jeremiah", "abbrev": "Jer", "testament": "Old", "division": "Major Prophets",
+      "chapters": 52, "verses": 1364, "languageClass": "mixed",
+      "languages": [
+        { "language": "Hebrew", "percent": 99.93, "ranges": ["1:1–10:10", "10:12–52:34"] },
+        { "language": "Aramaic", "percent": 0.07, "ranges": ["10:11"] }
+      ],
+      "aramaicSections": [
+        { "reference": "Jeremiah 10:11", "verses": 1, "description": "A single verse addressed to the nations—'The gods that have not made the heavens and the earth, even they shall perish from the earth'—set in the international language so the exiles could answer idolaters in their own tongue." }
+      ],
+      "aramaicPhrases": [],
+      "composition": { "start": -627, "end": -560, "display": "c. 627–560 BC" },
+      "context": "Written in Hebrew for Judah, but 10:11 switches into Aramaic—the lingua franca of the Babylonian world—to frame a retort to the nations' idols."
+    },
+    {
+      "order": 25, "name": "Lamentations", "abbrev": "Lam", "testament": "Old", "division": "Major Prophets",
+      "chapters": 5, "verses": 154, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -586, "end": -520, "display": "c. 586–520 BC" },
+      "context": "Its laments over Jerusalem's fall are Hebrew acrostics, with chapters 1–4 built on the 22 letters of the Hebrew alphabet."
+    },
+    {
+      "order": 26, "name": "Ezekiel", "abbrev": "Ezek", "testament": "Old", "division": "Major Prophets",
+      "chapters": 48, "verses": 1273, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -593, "end": -560, "display": "c. 593–560 BC" },
+      "context": "Though written in Babylonian exile, the priest-prophet wrote in Hebrew to address the deported Judean community and preserve its identity."
+    },
+    {
+      "order": 27, "name": "Daniel", "abbrev": "Dan", "testament": "Old", "division": "Major Prophets",
+      "chapters": 12, "verses": 357, "languageClass": "mixed",
+      "languages": [
+        { "language": "Hebrew", "percent": 44.1, "ranges": ["1:1–2:4a", "8:1–12:13"] },
+        { "language": "Aramaic", "percent": 55.9, "ranges": ["2:4b–7:28"] }
+      ],
+      "aramaicSections": [
+        { "reference": "Daniel 2:4b–7:28", "verses": 199.5, "description": "Begins mid-verse as the Chaldeans answer Nebuchadnezzar 'in Aramaic' (2:4), and runs through the court tales of chapters 2–6 and Daniel's vision of the four beasts in chapter 7." }
+      ],
+      "aramaicPhrases": [],
+      "composition": { "start": -535, "end": -164, "display": "c. 535 BC (traditional) – c. 164 BC (critical)" },
+      "context": "The court tales and first vision (2:4b–7:28) are in Aramaic, the lingua franca of the Babylonian and Persian empires, framed by Hebrew sections addressed to Israel's future."
+    },
+    {
+      "order": 28, "name": "Hosea", "abbrev": "Hos", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 14, "verses": 197, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -755, "end": -710, "display": "c. 755–710 BC" },
+      "context": "Written in a Hebrew with northern dialect features, addressing the Northern Kingdom of Israel before its fall to Assyria."
+    },
+    {
+      "order": 29, "name": "Joel", "abbrev": "Joel", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 3, "verses": 73, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -835, "end": -400, "display": "c. 835–400 BC (highly uncertain)" },
+      "context": "Composed in Classical Hebrew poetry, calling Judah to repentance after a locust plague in its own covenant language."
+    },
+    {
+      "order": 30, "name": "Amos", "abbrev": "Amos", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 9, "verses": 146, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -760, "end": -750, "display": "c. 760–750 BC" },
+      "context": "A Judean herdsman's oracles against the Northern Kingdom were delivered and recorded in Hebrew, the shared language of both kingdoms."
+    },
+    {
+      "order": 31, "name": "Obadiah", "abbrev": "Obad", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 1, "verses": 21, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -586, "end": -550, "display": "c. 586–550 BC" },
+      "context": "The shortest Old Testament book was written in Hebrew as an oracle against Edom for its part in Jerusalem's downfall."
+    },
+    {
+      "order": 32, "name": "Jonah", "abbrev": "Jonah", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 4, "verses": 48, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -780, "end": -400, "display": "c. 780–400 BC" },
+      "context": "Written in Hebrew with some late features, its story of a reluctant prophet sent to Nineveh was told for an Israelite audience."
+    },
+    {
+      "order": 33, "name": "Micah", "abbrev": "Mic", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 7, "verses": 105, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -735, "end": -700, "display": "c. 735–700 BC" },
+      "context": "Written in Hebrew poetry, the rural prophet addressed both Samaria and Jerusalem in their common tongue."
+    },
+    {
+      "order": 34, "name": "Nahum", "abbrev": "Nah", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 3, "verses": 47, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -663, "end": -612, "display": "c. 663–612 BC" },
+      "context": "Its vivid Hebrew poetry announces the fall of Nineveh, capital of the Assyrian empire that had long dominated Judah."
+    },
+    {
+      "order": 35, "name": "Habakkuk", "abbrev": "Hab", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 3, "verses": 56, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -609, "end": -597, "display": "c. 609–597 BC" },
+      "context": "Written in Hebrew as a dialogue with God about the rise of Babylon, closing with a liturgical psalm."
+    },
+    {
+      "order": 36, "name": "Zephaniah", "abbrev": "Zeph", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 3, "verses": 53, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -640, "end": -620, "display": "c. 640–620 BC" },
+      "context": "Composed in Hebrew during the reign of Josiah, warning Judah of the Day of the Lord in its national language."
+    },
+    {
+      "order": 37, "name": "Haggai", "abbrev": "Hag", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 2, "verses": 38, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -520, "end": -520, "display": "c. 520 BC" },
+      "context": "Written in Hebrew prose to urge the returned exiles to rebuild the temple, even as Aramaic served as the empire's administrative language."
+    },
+    {
+      "order": 38, "name": "Zechariah", "abbrev": "Zech", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 14, "verses": 211, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -520, "end": -480, "display": "c. 520–480 BC (chs. 9–14 possibly later)" },
+      "context": "Composed in post-exilic Hebrew, its night visions encouraged the restored community during the temple's reconstruction."
+    },
+    {
+      "order": 39, "name": "Malachi", "abbrev": "Mal", "testament": "Old", "division": "Minor Prophets",
+      "chapters": 4, "verses": 55, "languageClass": "hebrew",
+      "languages": [{ "language": "Hebrew", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": -460, "end": -430, "display": "c. 460–430 BC" },
+      "context": "Written in Late Biblical Hebrew as a series of disputations with the post-exilic Jerusalem community and its priests."
+    },
+    {
+      "order": 40, "name": "Matthew", "abbrev": "Matt", "testament": "New", "division": "Gospels",
+      "chapters": 28, "verses": 1071, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [],
+      "aramaicPhrases": [
+        { "reference": "Matthew 5:22", "phrase": "Raca", "meaning": "empty-head, fool", "speaker": "Jesus" },
+        { "reference": "Matthew 6:24", "phrase": "Mammon", "meaning": "wealth, riches", "speaker": "Jesus" },
+        { "reference": "Matthew 27:33", "phrase": "Golgotha", "meaning": "place of a skull" },
+        { "reference": "Matthew 27:46", "phrase": "Eli, Eli, lema sabachthani", "meaning": "My God, my God, why have you forsaken me? (Hebrew 'Eli' with Aramaic verb)", "speaker": "Jesus" }
+      ],
+      "composition": { "start": 60, "end": 90, "display": "c. AD 60–90" },
+      "context": "Written in Koine Greek for a largely Jewish-Christian audience, it transliterates several of Jesus' Semitic words, including the cry from the cross."
+    },
+    {
+      "order": 41, "name": "Mark", "abbrev": "Mark", "testament": "New", "division": "Gospels",
+      "chapters": 16, "verses": 678, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [],
+      "aramaicPhrases": [
+        { "reference": "Mark 3:17", "phrase": "Boanerges", "meaning": "sons of thunder", "speaker": "Jesus" },
+        { "reference": "Mark 5:41", "phrase": "Talitha koum", "meaning": "Little girl, arise", "speaker": "Jesus" },
+        { "reference": "Mark 7:34", "phrase": "Ephphatha", "meaning": "Be opened", "speaker": "Jesus" },
+        { "reference": "Mark 14:36", "phrase": "Abba", "meaning": "Father", "speaker": "Jesus" },
+        { "reference": "Mark 15:22", "phrase": "Golgotha", "meaning": "place of a skull" },
+        { "reference": "Mark 15:34", "phrase": "Eloi, Eloi, lama sabachthani", "meaning": "My God, my God, why have you forsaken me?", "speaker": "Jesus" }
+      ],
+      "composition": { "start": 55, "end": 70, "display": "c. AD 55–70" },
+      "context": "Written in plain, vernacular Koine Greek, it preserves more of Jesus' Aramaic words than any other Gospel, translating them for Greek-speaking readers."
+    },
+    {
+      "order": 42, "name": "Luke", "abbrev": "Luke", "testament": "New", "division": "Gospels",
+      "chapters": 24, "verses": 1151, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [],
+      "aramaicPhrases": [
+        { "reference": "Luke 16:13", "phrase": "Mammon", "meaning": "wealth, riches", "speaker": "Jesus" }
+      ],
+      "composition": { "start": 60, "end": 90, "display": "c. AD 60–90" },
+      "context": "Written in polished literary Koine Greek for a patron named Theophilus, it largely avoids the Aramaic loanwords retained by Mark."
+    },
+    {
+      "order": 43, "name": "John", "abbrev": "John", "testament": "New", "division": "Gospels",
+      "chapters": 21, "verses": 879, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [],
+      "aramaicPhrases": [
+        { "reference": "John 1:42", "phrase": "Cephas", "meaning": "rock (Greek: Petros)", "speaker": "Jesus" },
+        { "reference": "John 19:13", "phrase": "Gabbatha", "meaning": "the Pavement (raised place)" },
+        { "reference": "John 19:17", "phrase": "Golgotha", "meaning": "place of a skull" },
+        { "reference": "John 20:16", "phrase": "Rabboni", "meaning": "my teacher", "speaker": "Mary Magdalene" }
+      ],
+      "composition": { "start": 85, "end": 100, "display": "c. AD 85–100" },
+      "context": "Written in simple but profound Koine Greek, it regularly glosses Aramaic names and place-names for readers outside Palestine."
+    },
+    {
+      "order": 44, "name": "Acts", "abbrev": "Acts", "testament": "New", "division": "Acts",
+      "chapters": 28, "verses": 1007, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [],
+      "aramaicPhrases": [
+        { "reference": "Acts 1:19", "phrase": "Akeldama", "meaning": "field of blood" },
+        { "reference": "Acts 9:36", "phrase": "Tabitha", "meaning": "gazelle (Greek: Dorcas)" }
+      ],
+      "composition": { "start": 62, "end": 90, "display": "c. AD 62–90" },
+      "context": "Composed in literary Koine Greek, the shared language of the Roman East, to trace the gospel's spread from Jerusalem to Rome."
+    },
+    {
+      "order": 45, "name": "Romans", "abbrev": "Rom", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 16, "verses": 433, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [],
+      "aramaicPhrases": [
+        { "reference": "Romans 8:15", "phrase": "Abba", "meaning": "Father" }
+      ],
+      "composition": { "start": 56, "end": 58, "display": "c. AD 56–58" },
+      "context": "Paul wrote in Koine Greek, the common language of the empire's urban churches—including Rome's, which was then largely Greek-speaking."
+    },
+    {
+      "order": 46, "name": "1 Corinthians", "abbrev": "1 Cor", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 16, "verses": 437, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [],
+      "aramaicPhrases": [
+        { "reference": "1 Corinthians 16:22", "phrase": "Maranatha", "meaning": "Our Lord, come! (or 'Our Lord has come')" }
+      ],
+      "composition": { "start": 53, "end": 55, "display": "c. AD 53–55" },
+      "context": "Written in Koine Greek to a church in a cosmopolitan Greek city, it closes with the early Aramaic-speaking church's prayer Marana tha."
+    },
+    {
+      "order": 47, "name": "2 Corinthians", "abbrev": "2 Cor", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 13, "verses": 257, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 55, "end": 57, "display": "c. AD 55–57" },
+      "context": "Paul's impassioned defense of his ministry used Koine Greek, the everyday language of Corinth and the eastern Mediterranean."
+    },
+    {
+      "order": 48, "name": "Galatians", "abbrev": "Gal", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 6, "verses": 149, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [],
+      "aramaicPhrases": [
+        { "reference": "Galatians 4:6", "phrase": "Abba", "meaning": "Father" }
+      ],
+      "composition": { "start": 48, "end": 55, "display": "c. AD 48–55" },
+      "context": "Written in Koine Greek to churches in central Anatolia, where Greek served as the language of trade and administration."
+    },
+    {
+      "order": 49, "name": "Ephesians", "abbrev": "Eph", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 6, "verses": 155, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 60, "end": 90, "display": "c. AD 60–62 (traditional) – 80–90 (critical)" },
+      "context": "Composed in elevated, liturgical Koine Greek for churches in the thoroughly Hellenized province of Asia."
+    },
+    {
+      "order": 50, "name": "Philippians", "abbrev": "Phil", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 4, "verses": 104, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 54, "end": 62, "display": "c. AD 54–62" },
+      "context": "Written in Koine Greek to a Roman colony in Macedonia, where Greek remained the common spoken language alongside official Latin."
+    },
+    {
+      "order": 51, "name": "Colossians", "abbrev": "Col", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 4, "verses": 95, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 60, "end": 80, "display": "c. AD 60–80" },
+      "context": "Written in Koine Greek to a church in the Lycus Valley of Asia Minor, confronting a local philosophy in the region's common tongue."
+    },
+    {
+      "order": 52, "name": "1 Thessalonians", "abbrev": "1 Thess", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 5, "verses": 89, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 50, "end": 51, "display": "c. AD 50–51" },
+      "context": "Likely Paul's earliest surviving letter, written in Koine Greek to a young church in the Macedonian capital."
+    },
+    {
+      "order": 53, "name": "2 Thessalonians", "abbrev": "2 Thess", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 3, "verses": 47, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 51, "end": 80, "display": "c. AD 51–52 (traditional) – 80s (critical)" },
+      "context": "Written in Koine Greek to correct confusion in Thessalonica about the timing of the Day of the Lord."
+    },
+    {
+      "order": 54, "name": "1 Timothy", "abbrev": "1 Tim", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 6, "verses": 113, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 62, "end": 110, "display": "c. AD 62–64 (traditional) – 90–110 (critical)" },
+      "context": "A pastoral letter in Koine Greek addressed to a church leader overseeing the Greek-speaking congregation at Ephesus."
+    },
+    {
+      "order": 55, "name": "2 Timothy", "abbrev": "2 Tim", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 4, "verses": 83, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 64, "end": 110, "display": "c. AD 64–67 (traditional) – 90–110 (critical)" },
+      "context": "Written in Koine Greek as a final charge to Timothy, Paul's co-worker of Greek and Jewish parentage."
+    },
+    {
+      "order": 56, "name": "Titus", "abbrev": "Titus", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 3, "verses": 46, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 62, "end": 110, "display": "c. AD 62–66 (traditional) – 90–110 (critical)" },
+      "context": "Written in Koine Greek to Paul's Gentile co-worker organizing churches on Crete, even quoting a Cretan Greek poet (1:12)."
+    },
+    {
+      "order": 57, "name": "Philemon", "abbrev": "Phlm", "testament": "New", "division": "Pauline Epistles",
+      "chapters": 1, "verses": 25, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 54, "end": 62, "display": "c. AD 54–62" },
+      "context": "A short personal letter in Koine Greek, the household language of a Christian slaveholder in Colossae."
+    },
+    {
+      "order": 58, "name": "Hebrews", "abbrev": "Heb", "testament": "New", "division": "General Epistles",
+      "chapters": 13, "verses": 303, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 60, "end": 95, "display": "c. AD 60–95" },
+      "context": "Written in the most refined literary Koine Greek in the New Testament, it quotes the Old Testament from the Greek Septuagint throughout."
+    },
+    {
+      "order": 59, "name": "James", "abbrev": "Jas", "testament": "New", "division": "General Epistles",
+      "chapters": 5, "verses": 108, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 45, "end": 62, "display": "c. AD 45–62 (some date later)" },
+      "context": "Written in good Koine Greek to Jewish-Christian communities 'scattered abroad' across the Greek-speaking world."
+    },
+    {
+      "order": 60, "name": "1 Peter", "abbrev": "1 Pet", "testament": "New", "division": "General Epistles",
+      "chapters": 5, "verses": 105, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 62, "end": 90, "display": "c. AD 62–90" },
+      "context": "Written in polished Koine Greek—perhaps with the help of Silvanus (5:12)—to churches scattered across Asia Minor."
+    },
+    {
+      "order": 61, "name": "2 Peter", "abbrev": "2 Pet", "testament": "New", "division": "General Epistles",
+      "chapters": 3, "verses": 61, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 65, "end": 125, "display": "c. AD 65–68 (traditional) – 100–125 (critical)" },
+      "context": "Composed in an elaborate, ornate Koine Greek style, it addresses a broadly scattered Greek-speaking Christian audience."
+    },
+    {
+      "order": 62, "name": "1 John", "abbrev": "1 John", "testament": "New", "division": "General Epistles",
+      "chapters": 5, "verses": 105, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 85, "end": 110, "display": "c. AD 85–110" },
+      "context": "Written in simple Koine Greek with a small vocabulary, addressed to churches likely centred on Ephesus."
+    },
+    {
+      "order": 63, "name": "2 John", "abbrev": "2 John", "testament": "New", "division": "General Epistles",
+      "chapters": 1, "verses": 13, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 85, "end": 110, "display": "c. AD 85–110" },
+      "context": "A brief Koine Greek letter to 'the elect lady'—probably a congregation—warning against itinerant false teachers."
+    },
+    {
+      "order": 64, "name": "3 John", "abbrev": "3 John", "testament": "New", "division": "General Epistles",
+      "chapters": 1, "verses": 14, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 85, "end": 110, "display": "c. AD 85–110" },
+      "context": "A short personal Koine Greek letter to Gaius about showing hospitality to travelling missionaries."
+    },
+    {
+      "order": 65, "name": "Jude", "abbrev": "Jude", "testament": "New", "division": "General Epistles",
+      "chapters": 1, "verses": 25, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 65, "end": 90, "display": "c. AD 65–90" },
+      "context": "Written in vigorous Koine Greek, it draws on Jewish traditions such as 1 Enoch to address a Greek-speaking church."
+    },
+    {
+      "order": 66, "name": "Revelation", "abbrev": "Rev", "testament": "New", "division": "Apocalyptic",
+      "chapters": 22, "verses": 404, "languageClass": "greek",
+      "languages": [{ "language": "Greek", "percent": 100 }],
+      "aramaicSections": [], "aramaicPhrases": [],
+      "composition": { "start": 68, "end": 96, "display": "c. AD 68–96" },
+      "context": "Written in Koine Greek with strongly Semitic syntax to seven churches in the province of Asia, it glosses Hebrew terms such as Abaddon and Armageddon."
+    }
+  ]
+}

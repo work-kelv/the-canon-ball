@@ -1,0 +1,6 @@
+node_modules
+dist
+*.local
+
+# truncated duplicate of data-sources/gemini-characters-by-book.json
+gemini-code-*.json

@@ -1,0 +1,101 @@
+// Additions: Jesus' lineage (Theographic father chain) + people from books that had no characters.
+const P = 'Patriarch/Matriarch', K = 'King/Ruler', PR = 'Prophet', PT = 'Priest', KF = 'Key Figure', A = 'Apostle/Disciple';
+const E1 = 'Creation & Patriarchs', E2 = 'Exodus & Wilderness', E3 = 'Judges', E4 = 'United & Divided Kingdom', E5 = 'Exile & Return', EI = 'Intertestamental', E7 = 'Early Church';
+
+exports.people = [
+  // Adam → Abraham (Genesis 5 & 11; Luke 3:34–38)
+  ['seth', 'seth_2504', 'Seth', 'Son of Adam', P, E1, 'Born to Adam and Eve after Abel\'s death; through him the godly line continued, when "men began to call upon the name of the LORD".'],
+  ['enosh', 'enos_1193', 'Enosh', 'Son of Seth', P, E1, 'Son of Seth, in whose days people began to call on the name of the LORD (Gen 4:26).'],
+  ['kenan', 'cainan_534', 'Kenan (Cainan)', 'Antediluvian Patriarch', P, E1, 'Son of Enosh and father of Mahalalel in the pre-flood line from Adam to Noah.'],
+  ['mahalalel', 'mahalaleel_1885', 'Mahalalel', 'Antediluvian Patriarch', P, E1, 'Son of Kenan and father of Jared in the pre-flood genealogy of Genesis 5.'],
+  ['jared', 'jared_730', 'Jared', 'Antediluvian Patriarch', P, E1, 'Son of Mahalalel and father of Enoch, said to have lived 962 years.'],
+  ['enoch', 'enoch_1192', 'Enoch', 'Walked with God', P, E1, 'Father of Methuselah who "walked with God, and he was not, for God took him"; Jude quotes a prophecy attributed to him.'],
+  ['methuselah', 'methuselah_2042', 'Methuselah', 'Longest-lived Man', P, E1, 'Son of Enoch and grandfather of Noah; at 969 years, the longest lifespan recorded in Scripture.'],
+  ['lamech', 'lamech_1809', 'Lamech', 'Father of Noah', P, E1, 'Son of Methuselah who named his son Noah, hoping he would bring rest from the cursed ground.'],
+  ['shem', 'shem_2613', 'Shem', 'Son of Noah', P, E1, 'Noah\'s son who survived the flood and was blessed by his father; ancestor of the Semitic peoples and of Abraham.'],
+  ['arphaxad', 'arphaxad_312', 'Arphaxad', 'Postdiluvian Patriarch', P, E1, 'Son of Shem born two years after the flood, in the line leading to Abraham.'],
+  ['cainan-luke', 'cainan_535', 'Cainan (son of Arphaxad)', 'Named in Luke\'s Genealogy', P, E1, 'Listed only in Luke 3:36 (following the Septuagint) between Arphaxad and Shelah; absent from the Hebrew text of Genesis 11.'],
+  ['shelah', 'salah_2455', 'Shelah (Salah)', 'Postdiluvian Patriarch', P, E1, 'Descendant of Arphaxad and father of Eber in the line from Shem to Abraham.'],
+  ['eber', 'eber_1030', 'Eber', 'Ancestor of the Hebrews', P, E1, 'Father of Peleg, traditionally regarded as the eponymous ancestor of the "Hebrews".'],
+  ['peleg', 'peleg_2308', 'Peleg', 'Postdiluvian Patriarch', P, E1, 'Son of Eber, "for in his days the earth was divided" (Gen 10:25).'],
+  ['reu', 'reu_2428', 'Reu', 'Postdiluvian Patriarch', P, E1, 'Son of Peleg and father of Serug in the line of Shem.'],
+  ['serug', 'serug_2503', 'Serug', 'Postdiluvian Patriarch', P, E1, 'Son of Reu and great-grandfather of Abraham.'],
+  ['nahor', 'nahor_2142', 'Nahor', 'Grandfather of Abraham', P, E1, 'Son of Serug and father of Terah, of Ur of the Chaldeans.'],
+  ['terah', 'terah_2841', 'Terah', 'Father of Abraham', P, E1, 'Father of Abram, Nahor and Haran, who set out from Ur toward Canaan and died in Haran.'],
+  // Judah → David (Ruth 4:18–22; Matthew 1:3–6)
+  ['perez', 'pharez_2338', 'Perez (Pharez)', 'Son of Judah', P, E1, 'Son of Judah and Tamar who "broke through" ahead of his twin Zerah; head of the clan from which David came.'],
+  ['hezron', 'hezron_1520', 'Hezron', 'Clan Head of Judah', P, E1, 'Son of Perez who went down to Egypt with Jacob\'s household; ancestor of David.'],
+  ['ram', 'ram_2391', 'Ram', 'Ancestor of David', KF, E2, 'Son of Hezron in the tribe of Judah, listed in the genealogies of Ruth, Chronicles, Matthew and Luke.'],
+  ['amminadab', 'amminadab_228', 'Amminadab', 'Father-in-law of Aaron', KF, E2, 'Judahite ancestor of David whose daughter Elisheba married Aaron.'],
+  ['nahshon', 'nahshon_2144', 'Nahshon', 'Prince of Judah', KF, E2, 'Leader of the tribe of Judah in the wilderness who brought the first tribal offering at the tabernacle\'s dedication.'],
+  ['salmon', 'salmon_2463', 'Salmon', 'Father of Boaz', KF, E2, 'Son of Nahshon who, according to Matthew 1:5, fathered Boaz by Rahab of Jericho.'],
+  ['obed', 'obed_2228', 'Obed', 'Son of Ruth and Boaz', KF, E3, 'Son of Boaz and Ruth, nursed by Naomi, and grandfather of King David.'],
+  ['jesse', 'jesse_903', 'Jesse', 'Father of David', KF, E4, 'Bethlehemite father of eight sons, the youngest of whom, David, Samuel anointed king; Isaiah foresees a "shoot from the stump of Jesse".'],
+  // Kings of Judah (1 Chronicles 3; Matthew 1:7–11)
+  ['rehoboam', 'rehoboam_2412', 'Rehoboam', 'King of Judah', K, E4, 'Solomon\'s son whose harsh policy split the kingdom, leaving him to rule only Judah and Benjamin.'],
+  ['abijah', 'abijah_38', 'Abijah (Abijam)', 'King of Judah', K, E4, 'Son of Rehoboam who reigned three years and fought Jeroboam of Israel.'],
+  ['asa', 'asa_318', 'Asa', 'King of Judah', K, E4, 'A long-reigning reformer who removed idols and deposed his grandmother Maacah for her Asherah image.'],
+  ['jehoshaphat', 'jehoshaphat_808', 'Jehoshaphat', 'King of Judah', K, E4, 'A faithful king who sent Levites to teach the Law but allied himself with Ahab of Israel.'],
+  ['jehoram', 'jehoram_803', 'Jehoram of Judah', 'King of Judah', K, E4, 'Son of Jehoshaphat who married Ahab\'s daughter Athaliah and followed the ways of Israel\'s kings.'],
+  ['ahaziah', 'ahaziah_121', 'Ahaziah of Judah', 'King of Judah', K, E4, 'Son of Jehoram and Athaliah, killed by Jehu after a one-year reign; one of three kings Matthew\'s genealogy omits.'],
+  ['joash', 'joash_1632', 'Joash (Jehoash)', 'King of Judah', K, E4, 'Hidden as an infant from Athaliah\'s purge and crowned at seven; he repaired the temple under the priest Jehoiada.'],
+  ['amaziah', 'amaziah_214', 'Amaziah', 'King of Judah', K, E4, 'Son of Joash who defeated Edom but was routed by Jehoash of Israel and later assassinated.'],
+  ['uzziah', 'uzziah_375', 'Uzziah (Azariah)', 'King of Judah', K, E4, 'A prosperous king struck with leprosy for usurping the priests\' role; Isaiah\'s call came "in the year that King Uzziah died".'],
+  ['jotham', 'jotham_1735', 'Jotham', 'King of Judah', K, E4, 'Son of Uzziah who governed during his father\'s leprosy and "did what was right in the sight of the LORD".'],
+  ['ahaz', 'ahaz_118', 'Ahaz', 'King of Judah', K, E4, 'An idolatrous king who rejected Isaiah\'s Immanuel sign and turned to Assyria for help.'],
+  ['manasseh', 'manasseh_1930', 'Manasseh', 'King of Judah', K, E4, 'Hezekiah\'s son and Judah\'s longest-reigning king, notorious for idolatry, who repented in Babylonian captivity (2 Chr 33).'],
+  ['amon', 'amon_236', 'Amon', 'King of Judah', K, E4, 'Son of Manasseh who continued his father\'s idolatry and was assassinated after two years.'],
+  ['jehoiakim', 'jehoiakim_1085', 'Jehoiakim', 'King of Judah', K, E4, 'Son of Josiah, installed by Pharaoh Neco, who burned Jeremiah\'s scroll and became a vassal of Nebuchadnezzar.'],
+  ['jehoiachin', 'jehoiachin_791', 'Jehoiachin (Jeconiah)', 'King of Judah', K, E5, 'Reigned three months before being taken to Babylon in 597 BC, where he was later released and honoured.'],
+  // Exile → Joseph (1 Chronicles 3; Matthew 1:12–16)
+  ['pedaiah', 'pedaiah_2293', 'Pedaiah', 'Son of Jehoiachin', KF, E5, 'Son of Jehoiachin named as Zerubbabel\'s father in 1 Chronicles 3:19, where Ezra, Haggai and the Gospels name Shealtiel.'],
+  ['shealtiel', 'shealtiel_2456', 'Shealtiel (Salathiel)', 'Son of Jehoiachin', KF, E5, 'Son of the exiled King Jehoiachin, named in Ezra, Haggai, Matthew and Luke as the father of Zerubbabel.'],
+  ['zerubbabel', 'zerubbabel_3054', 'Zerubbabel', 'Governor of Judah', K, E5, 'Davidic heir and Persian-appointed governor who led the first return and rebuilt the temple, urged on by Haggai and Zechariah.'],
+  ['abiud', 'abiud_56', 'Abiud', 'Ancestor of Jesus', KF, EI, 'Son of Zerubbabel named in Matthew 1:13; nothing else is recorded of him.'],
+  ['eliakim', 'eliakim_1087', 'Eliakim', 'Ancestor of Jesus', KF, EI, 'Son of Abiud in Matthew\'s genealogy of Jesus (Matt 1:13).'],
+  ['azor', 'azor_559', 'Azor', 'Ancestor of Jesus', KF, EI, 'Son of Eliakim in Matthew\'s genealogy of Jesus (Matt 1:13–14).'],
+  ['zadok-matt', 'sadoc_2454', 'Zadok (Sadoc)', 'Ancestor of Jesus', KF, EI, 'Son of Azor in Matthew\'s genealogy of Jesus (Matt 1:14).'],
+  ['achim', 'achim_65', 'Achim', 'Ancestor of Jesus', KF, EI, 'Son of Zadok in Matthew\'s genealogy of Jesus (Matt 1:14).'],
+  ['eliud', 'eliud_1164', 'Eliud', 'Ancestor of Jesus', KF, EI, 'Son of Achim in Matthew\'s genealogy of Jesus (Matt 1:14–15).'],
+  ['eleazar-matt', 'eleazar_1069', 'Eleazar', 'Ancestor of Jesus', KF, EI, 'Son of Eliud in Matthew\'s genealogy of Jesus (Matt 1:15).'],
+  ['matthan', 'matthan_1968', 'Matthan', 'Ancestor of Jesus', KF, EI, 'Son of Eleazar and grandfather of Joseph in Matthew\'s genealogy (Matt 1:15).'],
+  ['jacob-matt', 'jacob_683', 'Jacob (father of Joseph)', 'Ancestor of Jesus', KF, EI, 'Named in Matthew 1:16 as the father of Joseph, the husband of Mary (Luke 3:23 names Heli).'],
+  // People from Jonah, Nahum, Habakkuk, Haggai and 3 John
+  ['jonah', 'jonah_1689', 'Jonah', 'Prophet to Nineveh', PR, E4, 'A prophet who fled God\'s call, was swallowed by a great fish, and saw Nineveh repent; Jesus cites "the sign of Jonah".'],
+  ['amittai', 'amittai_219', 'Amittai', 'Father of Jonah', KF, E4, 'Named only as the father of the prophet Jonah, from Gath-hepher (2 Kgs 14:25; Jonah 1:1).'],
+  ['nahum', 'nahum_2145', 'Nahum', 'Prophet', PR, E4, 'The Elkoshite prophet who announced the fall of Nineveh, capital of Assyria.'],
+  ['habakkuk', 'habakkuk_1334', 'Habakkuk', 'Prophet', PR, E4, 'A prophet who questioned God about injustice and the rise of Babylon, concluding "the righteous shall live by his faith".'],
+  ['haggai', 'haggai_1349', 'Haggai', 'Prophet of the Restoration', PR, E5, 'Prophet who in 520 BC roused Zerubbabel, Joshua and the returned exiles to finish rebuilding the temple.'],
+  ['joshua-high-priest', 'joshua_893', 'Joshua (Jeshua) the High Priest', 'High Priest', PT, E5, 'The first high priest after the exile, who led the rebuilding of the altar and temple with Zerubbabel.'],
+  ['jehozadak', 'josedech_815', 'Jehozadak (Josedech)', 'Priest', PT, E5, 'Priest carried into exile by Nebuchadnezzar; father of Joshua the high priest.'],
+  ['darius', 'darius_978', 'Darius I', 'King of Persia', K, E5, 'Persian king whose reign dates Haggai\'s and Zechariah\'s prophecies and who confirmed Cyrus\'s decree to rebuild the temple.'],
+  ['gaius', 'gaius_1272', 'Gaius', 'Beloved Host', KF, E7, 'Recipient of 3 John, commended by "the elder" for walking in the truth and hosting travelling missionaries.'],
+  ['diotrephes', 'diotrephes_1014', 'Diotrephes', 'Church Leader', KF, E7, 'A domineering church leader in 3 John who "loves to be first", rejected the elder\'s authority and refused hospitality.'],
+  ['demetrius', 'demetrius_1007', 'Demetrius', 'Commended Believer', KF, E7, 'A believer commended in 3 John as having "a good testimony from everyone, and from the truth itself".'],
+];
+
+const F = 'Family', M = 'Mentor/Disciple', AC = 'Ally/Companion', R = 'Rival/Adversary';
+exports.edges = [
+  ['shealtiel', 'zerubbabel', F, 'Father of (Ezra, Haggai, Matthew)'],
+  ['haggai', 'zerubbabel', M, 'Exhorted'],
+  ['haggai', 'joshua-high-priest', M, 'Exhorted'],
+  ['zerubbabel', 'joshua-high-priest', AC, 'Co-led rebuilding with'],
+  ['darius', 'zerubbabel', AC, 'Authorized temple rebuilding for'],
+  ['salmon', 'boaz', F, 'Father of'],
+  ['john-apostle', 'gaius', M, 'Commended (3 John)'],
+  ['john-apostle', 'demetrius', AC, 'Commended (3 John)'],
+  ['diotrephes', 'john-apostle', R, 'Rejected the authority of'],
+  ['jehoiakim', 'jeremiah', R, 'Burned the scroll of'],
+  ['isaiah', 'ahaz', M, 'Gave the Immanuel sign to'],
+  ['jesse', 'david', F, 'Father of'],
+];
+
+// Members of the lineage that Matthew 1 omits or replaces (Theographic follows 1 Chronicles 3 here).
+exports.lineageNotes = {
+  'cainan-luke': 'Luke 3:36 only (Septuagint); not in Genesis 11 (Hebrew)',
+  ahaziah: 'Omitted by Matthew 1:8',
+  joash: 'Omitted by Matthew 1:8',
+  amaziah: 'Omitted by Matthew 1:8',
+  jehoiakim: 'Omitted by Matthew 1:11',
+  pedaiah: '1 Chr 3:19; Matthew 1:12 and Luke 3:27 name Shealtiel',
+};

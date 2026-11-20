@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: 246 240 225;
+  --paper-2: 236 226 203;
+  --ink: 31 26 21;
+  --ink-soft: 92 80 66;
+  --rule: 196 180 150;
+  --hebrew: 158 58 34;
+  --aramaic: 31 112 104;
+  --greek: 38 62 128;
+  --role-patriarch: 133 84 38;
+  --role-judge: 96 112 30;
+  --role-king: 176 128 14;
+  --role-prophet: 166 52 34;
+  --role-priest: 112 62 140;
+  --role-apostle: 38 72 150;
+  --role-key: 70 100 112;
+  --rel-family: 186 132 40;
+  --rel-mentor: 24 128 112;
+  --rel-ally: 88 120 180;
+  --rel-rival: 196 34 58;
+  --lineage: 176 28 40;
+  --sea: 205 214 205;
+  --land: 243 235 214;
+  --coast: 150 128 96;
+  --river: 112 150 160;
+  color-scheme: light;
+}
+
+.dark {
+  --paper: 22 19 16;
+  --paper-2: 35 31 26;
+  --ink: 240 231 211;
+  --ink-soft: 178 165 143;
+  --rule: 78 69 57;
+  --hebrew: 229 124 92;
+  --aramaic: 98 196 180;
+  --greek: 136 162 232;
+  --role-patriarch: 210 156 104;
+  --role-judge: 176 192 92;
+  --role-king: 232 190 84;
+  --role-prophet: 236 122 96;
+  --role-priest: 196 146 224;
+  --role-apostle: 128 162 236;
+  --role-key: 138 180 192;
+  --rel-family: 222 176 92;
+  --rel-mentor: 84 200 180;
+  --rel-ally: 140 170 230;
+  --rel-rival: 244 98 116;
+  --lineage: 248 104 104;
+  --sea: 20 27 29;
+  --land: 42 37 30;
+  --coast: 120 104 82;
+  --river: 84 128 140;
+  color-scheme: dark;
+}
+
+/* force-graph hover tooltip */
+.float-tooltip-kap {
+  background: rgb(var(--ink)) !important;
+  color: rgb(var(--paper)) !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+  border-radius: 3px !important;
+  white-space: nowrap;
+}
+
+@layer base {
+  html {
+    @apply bg-paper text-ink antialiased;
+  }
+  body {
+    @apply min-h-screen font-serif;
+    background-image:
+      radial-gradient(ellipse at 15% 0%, rgb(var(--paper-2) / 0.9), transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgb(var(--paper-2) / 0.7), transparent 50%);
+    background-attachment: fixed;
+  }
+  ::selection {
+    background: rgb(var(--hebrew) / 0.25);
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-sans text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-ink-soft;
+  }
+  .panel {
+    @apply rounded-sm border border-rule bg-paper/70 backdrop-blur-sm;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .focus-ring {
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink;
+  }
+}
+
+@keyframes drawer-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-drawer { animation: drawer-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+.animate-fade { animation: fade-in 200ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-drawer, .animate-fade { animation: none; }
+}
+
+/* Map: halo behind labels so they read over coastlines and routes */
+.map-label {
+  paint-order: stroke;
+  stroke: rgb(var(--paper) / 0.8);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+@keyframes map-dash {
+  to { stroke-dashoffset: -22; }
+}
+.map-arc { animation: map-dash 1.4s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .map-arc { animation: none; }
+}
+@keyframes map-pulse {
+  0% { transform: scale(0.7); opacity: 0.35; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+.map-pulse { animation: map-pulse 1.2s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: reduce) {
+  .map-pulse { animation: none; }
+}

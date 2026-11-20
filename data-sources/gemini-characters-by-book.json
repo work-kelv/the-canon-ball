@@ -1,0 +1,877 @@
+[
+  {
+    "order": 1,
+    "book": "Genesis",
+    "testament": "Old",
+    "division": "Pentateuch",
+    "characters": [
+      "Adam",
+      "Eve",
+      "Cain",
+      "Abel",
+      "Noah",
+      "Abraham",
+      "Sarah",
+      "Lot",
+      "Hagar",
+      "Ishmael",
+      "Isaac",
+      "Rebekah",
+      "Esau",
+      "Jacob",
+      "Leah",
+      "Rachel",
+      "Joseph",
+      "Judah"
+    ]
+  },
+  {
+    "order": 2,
+    "book": "Exodus",
+    "testament": "Old",
+    "division": "Pentateuch",
+    "characters": [
+      "Moses",
+      "Aaron",
+      "Miriam",
+      "Pharaoh",
+      "Jethro",
+      "Zipporah",
+      "Joshua",
+      "Bezalel"
+    ]
+  },
+  {
+    "order": 3,
+    "book": "Leviticus",
+    "testament": "Old",
+    "division": "Pentateuch",
+    "characters": [
+      "Moses",
+      "Aaron",
+      "Nadab",
+      "Abihu"
+    ]
+  },
+  {
+    "order": 4,
+    "book": "Numbers",
+    "testament": "Old",
+    "division": "Pentateuch",
+    "characters": [
+      "Moses",
+      "Aaron",
+      "Miriam",
+      "Joshua",
+      "Caleb",
+      "Korah",
+      "Balaam",
+      "Balak",
+      "Eleazar",
+      "Phinehas"
+    ]
+  },
+  {
+    "order": 5,
+    "book": "Deuteronomy",
+    "testament": "Old",
+    "division": "Pentateuch",
+    "characters": [
+      "Moses",
+      "Joshua"
+    ]
+  },
+  {
+    "order": 6,
+    "book": "Joshua",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Joshua",
+      "Rahab",
+      "Achan",
+      "Caleb",
+      "Eleazar"
+    ]
+  },
+  {
+    "order": 7,
+    "book": "Judges",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Othniel",
+      "Ehud",
+      "Deborah",
+      "Barak",
+      "Jael",
+      "Sisera",
+      "Gideon",
+      "Abimelech",
+      "Jephthah",
+      "Samson",
+      "Delilah"
+    ]
+  },
+  {
+    "order": 8,
+    "book": "Ruth",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Ruth",
+      "Naomi",
+      "Boaz"
+    ]
+  },
+  {
+    "order": 9,
+    "book": "1 Samuel",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Samuel",
+      "Hannah",
+      "Eli",
+      "Saul",
+      "Jonathan",
+      "David",
+      "Goliath",
+      "Abigail"
+    ]
+  },
+  {
+    "order": 10,
+    "book": "2 Samuel",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "David",
+      "Joab",
+      "Abner",
+      "Ish-bosheth",
+      "Mephibosheth",
+      "Bathsheba",
+      "Uriah",
+      "Nathan",
+      "Absalom"
+    ]
+  },
+  {
+    "order": 11,
+    "book": "1 Kings",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Solomon",
+      "David",
+      "Bathsheba",
+      "Rehoboam",
+      "Jeroboam",
+      "Elijah",
+      "Ahab",
+      "Jezebel",
+      "Jehoshaphat"
+    ]
+  },
+  {
+    "order": 12,
+    "book": "2 Kings",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Elijah",
+      "Elisha",
+      "Naaman",
+      "Jehu",
+      "Athaliah",
+      "Joash",
+      "Hezekiah",
+      "Isaiah",
+      "Manasseh",
+      "Josiah",
+      "Nebuchadnezzar"
+    ]
+  },
+  {
+    "order": 13,
+    "book": "1 Chronicles",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "David",
+      "Solomon",
+      "Joab",
+      "Zadok",
+      "Nathan"
+    ]
+  },
+  {
+    "order": 14,
+    "book": "2 Chronicles",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Solomon",
+      "Rehoboam",
+      "Asa",
+      "Jehoshaphat",
+      "Joash",
+      "Uzziah",
+      "Hezekiah",
+      "Manasseh",
+      "Josiah",
+      "Cyrus"
+    ]
+  },
+  {
+    "order": 15,
+    "book": "Ezra",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Cyrus",
+      "Zerubbabel",
+      "Jeshua",
+      "Haggai",
+      "Zechariah",
+      "Darius",
+      "Ezra"
+    ]
+  },
+  {
+    "order": 16,
+    "book": "Nehemiah",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Nehemiah",
+      "Ezra",
+      "Artaxerxes",
+      "Sanballat",
+      "Tobiah"
+    ]
+  },
+  {
+    "order": 17,
+    "book": "Esther",
+    "testament": "Old",
+    "division": "Historical",
+    "characters": [
+      "Esther",
+      "Mordecai",
+      "Ahasuerus",
+      "Haman",
+      "Vashti"
+    ]
+  },
+  {
+    "order": 18,
+    "book": "Job",
+    "testament": "Old",
+    "division": "Wisdom & Poetry",
+    "characters": [
+      "Job",
+      "Satan",
+      "Eliphaz",
+      "Bildad",
+      "Zophar",
+      "Elihu"
+    ]
+  },
+  {
+    "order": 19,
+    "book": "Psalms",
+    "testament": "Old",
+    "division": "Wisdom & Poetry",
+    "characters": [
+      "David",
+      "Asaph",
+      "Sons of Korah",
+      "Solomon",
+      "Moses"
+    ]
+  },
+  {
+    "order": 20,
+    "book": "Proverbs",
+    "testament": "Old",
+    "division": "Wisdom & Poetry",
+    "characters": [
+      "Solomon",
+      "Agur",
+      "Lemuel"
+    ]
+  },
+  {
+    "order": 21,
+    "book": "Ecclesiastes",
+    "testament": "Old",
+    "division": "Wisdom & Poetry",
+    "characters": [
+      "Solomon"
+    ]
+  },
+  {
+    "order": 22,
+    "book": "Song of Solomon",
+    "testament": "Old",
+    "division": "Wisdom & Poetry",
+    "characters": [
+      "Solomon",
+      "Shulammite Woman"
+    ]
+  },
+  {
+    "order": 23,
+    "book": "Isaiah",
+    "testament": "Old",
+    "division": "Major Prophets",
+    "characters": [
+      "Isaiah",
+      "Uzziah",
+      "Ahaz",
+      "Hezekiah",
+      "Sennacherib",
+      "Cyrus"
+    ]
+  },
+  {
+    "order": 24,
+    "book": "Jeremiah",
+    "testament": "Old",
+    "division": "Major Prophets",
+    "characters": [
+      "Jeremiah",
+      "Baruch",
+      "Josiah",
+      "Jehoiakim",
+      "Zedekiah",
+      "Nebuchadnezzar",
+      "Ebed-melech"
+    ]
+  },
+  {
+    "order": 25,
+    "book": "Lamentations",
+    "testament": "Old",
+    "division": "Major Prophets",
+    "characters": [
+      "Jeremiah"
+    ]
+  },
+  {
+    "order": 26,
+    "book": "Ezekiel",
+    "testament": "Old",
+    "division": "Major Prophets",
+    "characters": [
+      "Ezekiel",
+      "Nebuchadnezzar"
+    ]
+  },
+  {
+    "order": 27,
+    "book": "Daniel",
+    "testament": "Old",
+    "division": "Major Prophets",
+    "characters": [
+      "Daniel",
+      "Hananiah (Shadrach)",
+      "Mishael (Meshach)",
+      "Azariah (Abednego)",
+      "Nebuchadnezzar",
+      "Belshazzar",
+      "Darius the Mede",
+      "Gabriel",
+      "Michael"
+    ]
+  },
+  {
+    "order": 28,
+    "book": "Hosea",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Hosea",
+      "Gomer",
+      "Jezreel",
+      "Lo-ruhamah",
+      "Lo-ammi"
+    ]
+  },
+  {
+    "order": 29,
+    "book": "Joel",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Joel"
+    ]
+  },
+  {
+    "order": 30,
+    "book": "Amos",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Amos",
+      "Amaziah",
+      "Jeroboam II"
+    ]
+  },
+  {
+    "order": 31,
+    "book": "Obadiah",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Obadiah"
+    ]
+  },
+  {
+    "order": 32,
+    "book": "Jonah",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Jonah",
+      "King of Nineveh"
+    ]
+  },
+  {
+    "order": 33,
+    "book": "Micah",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Micah"
+    ]
+  },
+  {
+    "order": 34,
+    "book": "Nahum",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Nahum"
+    ]
+  },
+  {
+    "order": 35,
+    "book": "Habakkuk",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Habakkuk"
+    ]
+  },
+  {
+    "order": 36,
+    "book": "Zephaniah",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Zephaniah"
+    ]
+  },
+  {
+    "order": 37,
+    "book": "Haggai",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Haggai",
+      "Zerubbabel",
+      "Joshua the High Priest"
+    ]
+  },
+  {
+    "order": 38,
+    "book": "Zechariah",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Zechariah",
+      "Zerubbabel",
+      "Joshua the High Priest"
+    ]
+  },
+  {
+    "order": 39,
+    "book": "Malachi",
+    "testament": "Old",
+    "division": "Minor Prophets",
+    "characters": [
+      "Malachi"
+    ]
+  },
+  {
+    "order": 40,
+    "book": "Matthew",
+    "testament": "New",
+    "division": "Gospels",
+    "characters": [
+      "Jesus",
+      "Mary",
+      "Joseph",
+      "John the Baptist",
+      "Peter",
+      "Andrew",
+      "James",
+      "John",
+      "Matthew",
+      "Judas Iscariot",
+      "Herod the Great",
+      "Pontius Pilate",
+      "Caiaphas"
+    ]
+  },
+  {
+    "order": 41,
+    "book": "Mark",
+    "testament": "New",
+    "division": "Gospels",
+    "characters": [
+      "Jesus",
+      "John the Baptist",
+      "Peter",
+      "James",
+      "John",
+      "Levi (Matthew)",
+      "Mary Magdalene",
+      "Pontius Pilate",
+      "Simon of Cyrene"
+    ]
+  },
+  {
+    "order": 42,
+    "book": "Luke",
+    "testament": "New",
+    "division": "Gospels",
+    "characters": [
+      "Jesus",
+      "Mary",
+      "Joseph",
+      "Zechariah",
+      "Elizabeth",
+      "John the Baptist",
+      "Simeon",
+      "Anna",
+      "Peter",
+      "Martha",
+      "Mary of Bethany",
+      "Lazarus",
+      "Zacchaeus",
+      "Pontius Pilate"
+    ]
+  },
+  {
+    "order": 43,
+    "book": "John",
+    "testament": "New",
+    "division": "Gospels",
+    "characters": [
+      "Jesus",
+      "John the Baptist",
+      "Peter",
+      "Andrew",
+      "Philip",
+      "Nathanael",
+      "Nicodemus",
+      "Samaritan Woman",
+      "Lazarus",
+      "Mary of Bethany",
+      "Martha",
+      "Thomas",
+      "Mary Magdalene",
+      "Caiaphas",
+      "Pontius Pilate"
+    ]
+  },
+  {
+    "order": 44,
+    "book": "Acts",
+    "testament": "New",
+    "division": "Acts",
+    "characters": [
+      "Peter",
+      "John",
+      "Stephen",
+      "Philip the Evangelist",
+      "Saul / Paul",
+      "Barnabas",
+      "Cornelius",
+      "James (brother of Jesus)",
+      "Silas",
+      "Timothy",
+      "Luke",
+      "Lydia",
+      "Priscilla",
+      "Aquila",
+      "Apollos",
+      "Felix",
+      "Festus",
+      "King Agrippa"
+    ]
+  },
+  {
+    "order": 45,
+    "book": "Romans",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Phoebe",
+      "Priscilla",
+      "Aquila",
+      "Tertius"
+    ]
+  },
+  {
+    "order": 46,
+    "book": "1 Corinthians",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Sosthenes",
+      "Apollos",
+      "Cephas (Peter)",
+      "Chloe",
+      "Stephanas"
+    ]
+  },
+  {
+    "order": 47,
+    "book": "2 Corinthians",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Timothy",
+      "Titus"
+    ]
+  },
+  {
+    "order": 48,
+    "book": "Galatians",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Peter (Cephas)",
+      "Barnabas",
+      "James",
+      "Titus"
+    ]
+  },
+  {
+    "order": 49,
+    "book": "Ephesians",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Tychicus"
+    ]
+  },
+  {
+    "order": 50,
+    "book": "Philippians",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Timothy",
+      "Epaphroditus",
+      "Euodia",
+      "Syntyche"
+    ]
+  },
+  {
+    "order": 51,
+    "book": "Colossians",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Timothy",
+      "Epaphras",
+      "Tychicus",
+      "Onesimus",
+      "Archippus"
+    ]
+  },
+  {
+    "order": 52,
+    "book": "1 Thessalonians",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Silvanus (Silas)",
+      "Timothy"
+    ]
+  },
+  {
+    "order": 53,
+    "book": "2 Thessalonians",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Silvanus (Silas)",
+      "Timothy"
+    ]
+  },
+  {
+    "order": 54,
+    "book": "1 Timothy",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Timothy"
+    ]
+  },
+  {
+    "order": 55,
+    "book": "2 Timothy",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Timothy",
+      "Lois",
+      "Eunice",
+      "Onesiphorus",
+      "Luke",
+      "Mark",
+      "Demas"
+    ]
+  },
+  {
+    "order": 56,
+    "book": "Titus",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Titus",
+      "Zenas",
+      "Apollos"
+    ]
+  },
+  {
+    "order": 57,
+    "book": "Philemon",
+    "testament": "New",
+    "division": "Pauline Epistles",
+    "characters": [
+      "Paul",
+      "Philemon",
+      "Onesimus",
+      "Apphia",
+      "Archippus"
+    ]
+  },
+  {
+    "order": 58,
+    "book": "Hebrews",
+    "testament": "New",
+    "division": "General Epistles",
+    "characters": [
+      "Timothy",
+      "Abel",
+      "Enoch",
+      "Noah",
+      "Abraham",
+      "Sarah",
+      "Moses",
+      "Rahab",
+      "David"
+    ]
+  },
+  {
+    "order": 59,
+    "book": "James",
+    "testament": "New",
+    "division": "General Epistles",
+    "characters": [
+      "James (brother of Jesus)"
+    ]
+  },
+  {
+    "order": 60,
+    "book": "1 Peter",
+    "testament": "New",
+    "division": "General Epistles",
+    "characters": [
+      "Peter",
+      "Silvanus (Silas)",
+      "Mark"
+    ]
+  },
+  {
+    "order": 61,
+    "book": "2 Peter",
+    "testament": "New",
+    "division": "General Epistles",
+    "characters": [
+      "Peter",
+      "Paul"
+    ]
+  },
+  {
+    "order": 62,
+    "book": "1 John",
+    "testament": "New",
+    "division": "General Epistles",
+    "characters": [
+      "John"
+    ]
+  },
+  {
+    "order": 63,
+    "book": "2 John",
+    "testament": "New",
+    "division": "General Epistles",
+    "characters": [
+      "John"
+    ]
+  },
+  {
+    "order": 64,
+    "book": "3 John",
+    "testament": "New",
+    "division": "General Epistles",
+    "characters": [
+      "John",
+      "Gaius",
+      "Diotrephes",
+      "Demetrius"
+    ]
+  },
+  {
+    "order": 65,
+    "book": "Jude",
+    "testament": "New",
+    "division": "General Epistles",
+    "characters": [
+      "Jude (brother of Jesus)"
+    ]
+  },
+  {
+    "order": 66,
+    "book": "Revelation",
+    "testament": "New",
+    "division": "Apocalyptic",
+    "characters": [
+      "John",
+      "Jesus",
+      "Michael",
+      "Satan"
+    ]
+  }
+]
