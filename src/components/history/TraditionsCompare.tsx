@@ -197,7 +197,7 @@ export function TraditionsCompare() {
       </div>
 
       {/* Pick two + an at-a-glance fingerprint */}
-      <div className="sticky top-[2.75rem] z-10 -mx-4 space-y-2 border-y border-rule bg-paper/95 px-4 py-2.5 backdrop-blur sm:-mx-8 sm:px-8 sm:py-3">
+      <div style={{ top: 'calc(var(--tabs-h, 44px) - 1px)' }} className="sticky z-10 -mx-4 space-y-2 border-y border-rule bg-paper/95 px-4 py-2.5 backdrop-blur sm:-mx-8 sm:px-8 sm:py-3">
         <Picker label="Compare" value={a} other={b} onChange={setA} />
         <Picker label="with" value={b} other={a} onChange={setB} />
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-0.5">

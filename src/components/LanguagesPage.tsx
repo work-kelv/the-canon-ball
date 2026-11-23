@@ -6,6 +6,7 @@ import { FilterPills } from './FilterPills';
 import { GridView } from './GridView';
 import { BreakdownView } from './BreakdownView';
 import { BookDrawer } from './BookDrawer';
+import { LanguagesIntro } from './LanguagesIntro';
 
 type View = 'grid' | 'breakdown';
 
@@ -61,6 +62,7 @@ export function LanguagesPage() {
       </div>
 
       <main className="pt-8">
+        <LanguagesIntro />
         {view === 'grid' ? (
           <GridView isMatch={isMatch} division={division} onDivision={setDivision} selected={selected} onOpen={setSelected} />
         ) : (

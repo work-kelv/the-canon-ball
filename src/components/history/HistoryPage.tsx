@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BookText, GitBranch, GitCompareArrows, Languages, ListOrdered, Orbit } from 'lucide-react';
 import { FamilyTree } from './FamilyTree';
 import { CreedExplorer } from './CreedExplorer';
@@ -20,12 +20,12 @@ function InsideOutside() {
 }
 
 const TABS = [
-  { id: 'tree', label: 'Family tree', icon: GitBranch, View: FamilyTree },
-  { id: 'traditions', label: 'Traditions', icon: GitCompareArrows, View: TraditionsCompare },
-  { id: 'creeds', label: 'Creeds', icon: BookText, View: CreedExplorer },
-  { id: 'compare', label: 'Inside & outside', icon: Orbit, View: InsideOutside },
-  { id: 'translations', label: 'Translations', icon: Languages, View: TranslationTimeline },
-  { id: 'verses', label: 'Chapters & verses', icon: ListOrdered, View: TextualTransmission },
+  { id: 'tree', label: 'Family tree', short: 'Family tree', icon: GitBranch, View: FamilyTree },
+  { id: 'traditions', label: 'Traditions', short: 'Traditions', icon: GitCompareArrows, View: TraditionsCompare },
+  { id: 'creeds', label: 'Creeds', short: 'Creeds', icon: BookText, View: CreedExplorer },
+  { id: 'compare', label: 'Inside & outside', short: 'In & out', icon: Orbit, View: InsideOutside },
+  { id: 'translations', label: 'Translations', short: 'Translations', icon: Languages, View: TranslationTimeline },
+  { id: 'verses', label: 'Chapters & verses', short: 'Verses', icon: ListOrdered, View: TextualTransmission },
 ] as const;
 type TabId = (typeof TABS)[number]['id'];
 
@@ -48,25 +48,37 @@ export function HistoryPage() {
     if (bar && bar.getBoundingClientRect().top < 0) bar.scrollIntoView({ block: 'start' });
   };
   const { View } = TABS.find((t) => t.id === tab)!;
+  // Share the tab bar's height so bars pinned below it (e.g. the Traditions picker) sit right under it.
+  const navRef = useRef<HTMLElement>(null);
+  const [tabsH, setTabsH] = useState(44);
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setTabsH(el.offsetHeight));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   return (
-    <main className="pt-6">
+    <main className="pt-6" style={{ ['--tabs-h' as string]: `${tabsH}px` }}>
       <nav
+        ref={navRef}
         id="history-tabs"
         aria-label="Church history sections"
-        className="no-scrollbar sticky top-0 z-20 -mx-4 mb-6 flex gap-1 overflow-x-auto border-b border-rule bg-paper/95 px-4 py-2 backdrop-blur sm:-mx-8 sm:px-8"
+        className="sticky top-0 z-20 -mx-4 mb-6 grid grid-cols-3 gap-1 border-b border-rule bg-paper/95 px-4 py-2 backdrop-blur sm:-mx-8 sm:px-8 md:flex"
       >
-        {TABS.map(({ id, label, icon: Icon }) => (
+        {TABS.map(({ id, label, short, icon: Icon }) => (
           <button
             key={id}
             onClick={() => pick(id)}
             aria-current={tab === id ? 'page' : undefined}
-            className={`focus-ring inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 font-sans text-[13px] font-medium ${
+            className={`focus-ring inline-flex shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full px-2 py-1.5 font-sans text-[12.5px] font-medium md:px-3 md:text-[13px] ${
               tab === id ? 'bg-ink text-paper' : 'text-ink-soft hover:bg-ink/5 hover:text-ink'
             }`}
           >
-            <Icon size={14} aria-hidden />
-            {label}
+            <Icon size={14} aria-hidden className="shrink-0" />
+            <span className="md:hidden">{short}</span>
+            <span className="hidden md:inline">{label}</span>
           </button>
         ))}
       </nav>
