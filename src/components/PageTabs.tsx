@@ -60,7 +60,7 @@ export function PageTabs<T extends string>({
     const bar = navRef.current;
     if (bar && bar.getBoundingClientRect().top < 0) bar.scrollIntoView({ block: 'start' });
   };
-  const cols = tabs.length === 3 ? 'grid-cols-3' : 'grid-cols-2';
+  const cols = tabs.length === 4 ? 'grid-cols-2' : 'grid-cols-3';
 
   return (
     <div style={{ ['--tabs-h' as string]: `${h}px` }}>

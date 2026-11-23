@@ -132,8 +132,8 @@ export function HistoryIntro() {
       art={<HistoryArt />}
       lead={
         <p>
-          Two thousand years of the church in four views: how it branched into today’s traditions, what unites and divides them,
-          the creeds that define the Christian faith, and how other movements’ beliefs compare.
+          Two thousand years of the church in five views: how it branched into today’s traditions, what unites and divides them,
+          the creeds that define the Christian faith, how other movements’ beliefs compare, and who’s who among its titles.
         </p>
       }
       cards={[
@@ -144,7 +144,7 @@ export function HistoryIntro() {
           body: (
             <>
               {tab('tree', 'Family tree')}: the great schisms and reformations, from Pentecost to today. {tab('traditions', 'Traditions')}:
-              compare Catholic, Orthodox and Protestant churches on ten questions.
+              compare Catholic, Orthodox and Protestant churches on ten questions. {tab('titles', 'Titles')}: who’s who, from pope to pastor.
             </>
           ),
         },

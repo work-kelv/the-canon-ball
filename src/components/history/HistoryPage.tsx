@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { BookOpen, BookText, Columns4, GitBranch, GitCompareArrows, Orbit } from 'lucide-react';
+import { BookOpen, BookText, Columns4, GitBranch, GitCompareArrows, Orbit, UsersRound } from 'lucide-react';
+import { ChurchTitles } from './ChurchTitles';
 import { CreedCompare } from './CreedCompare';
 import { ViewTabs } from '../ViewTabs';
 import { FamilyTree } from './FamilyTree';
@@ -45,6 +46,7 @@ const TABS = [
   { id: 'traditions', label: 'Traditions', icon: GitCompareArrows, View: TraditionsCompare },
   { id: 'creeds', label: 'Creeds', icon: BookText, View: CreedsTab },
   { id: 'compare', label: 'Core beliefs', short: 'Beliefs', icon: Orbit, View: CoreBeliefsTab },
+  { id: 'titles', label: 'Titles', icon: UsersRound, View: ChurchTitles },
 ] as const;
 type TabId = (typeof TABS)[number]['id'];
 

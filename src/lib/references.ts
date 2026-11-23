@@ -346,5 +346,47 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
       ],
       use: 'How each member church describes itself; summaries in the diagram are brief.',
     },
+    {
+      title: 'Code of Canon Law (1983)',
+      detail: 'Holy See; cann. 331 (the Pope), 349 (cardinals), 435 (metropolitan archbishops), 519 (pastors), 564 (chaplains), 620 (major superiors)',
+      url: 'https://www.vatican.va/archive/cod-iuris-canonici/cic_index_en.html',
+      use: 'Catholic titles on the Titles tab.',
+    },
+    {
+      title: 'Catechism of the Catholic Church, 886, 915, 1562–1571',
+      detail: 'Holy See, 2nd ed. (1997)',
+      url: 'https://www.vatican.va/archive/ENG0015/_INDEX.HTM',
+      use: 'Bishops, priests and deacons; the vows of religious life (Titles tab).',
+    },
+    {
+      title: 'The Rule of St Benedict, chapter 2',
+      detail: 'Benedict of Nursia, c. 530; Christian Classics Ethereal Library',
+      url: 'https://www.ccel.org/ccel/benedict/rule',
+      use: 'The abbot as “Abba, Father”.',
+    },
+    {
+      title: 'The Ecumenical Patriarchate of Constantinople',
+      detail: 'Official website',
+      url: 'https://ecumenicalpatriarchate.org/',
+      use: 'The title of patriarch among the Eastern Orthodox.',
+    },
+    {
+      title: 'How to address the clergy',
+      detail: 'Crockford’s Clerical Directory (Church House Publishing)',
+      url: 'https://www.crockford.org.uk/faq/how-to-address-the-clergy',
+      use: '“The Reverend”, “The Right Reverend” and correct forms of address.',
+    },
+    {
+      title: 'Book of Order',
+      detail: 'Presbyterian Church (USA)',
+      url: 'https://www.pcusa.org/',
+      use: 'Ministers of Word and Sacrament (teaching elders), ruling elders and deacons.',
+    },
+    {
+      title: 'Order of Friars Minor',
+      detail: 'The Franciscans, official website',
+      url: 'https://ofm.org/',
+      use: 'Friars and the mendicant orders.',
+    },
   ],
 };

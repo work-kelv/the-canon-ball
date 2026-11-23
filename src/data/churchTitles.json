@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "intro": "Who is a bishop, a pastor or an elder? Many titles go back to the Greek words of the New Testament; others grew up in particular traditions. Usage varies between churches and countries, so each card says where a title is used.",
+    "traditions": {
+      "catholic": { "label": "Catholic", "css": "--role-king" },
+      "orthodox": { "label": "Orthodox", "css": "--role-priest" },
+      "anglican": { "label": "Anglican", "css": "--lineage" },
+      "protestant": { "label": "Protestant", "css": "--greek" }
+    }
+  },
+  "ladders": [
+    { "id": "catholic", "label": "Catholic", "css": "--role-king", "tiers": ["pope", "cardinal", "archbishop", "bishop", "priest", "deacon"], "note": "Bishops, priests and deacons are the three ordained orders." },
+    { "id": "orthodox", "label": "Orthodox", "css": "--role-priest", "tiers": ["patriarch", "archbishop", "bishop", "priest", "deacon"], "note": "Bishops are chosen from the monks; priests may marry before ordination." },
+    { "id": "anglican", "label": "Anglican", "css": "--lineage", "tiers": ["archbishop", "bishop", "priest", "deacon"], "note": "The same three orders, in self-governing provinces." },
+    { "id": "presbyterian", "label": "Presbyterian", "css": "--role-apostle", "tiers": ["minister", "elder", "deacon"], "note": "No bishops: councils of ministers and elders govern together." },
+    { "id": "baptist", "label": "Baptist", "css": "--role-key", "tiers": ["pastor", "deacon"], "note": "Each congregation governs itself." }
+  ],
+  "groups": [
+    {
+      "id": "lead",
+      "label": "Leading a whole church",
+      "titles": [
+        {
+          "id": "pope",
+          "title": "Pope",
+          "word": "Greek pappas, “father”",
+          "used": ["catholic", "orthodox"],
+          "body": "The Bishop of Rome, whom Catholics regard as the successor of Peter: head of the college of bishops and pastor of the whole Church. The head of the Coptic Orthodox Church of Alexandria is also called Pope.",
+          "refs": ["Matthew 16:18–19"],
+          "sources": ["Code of Canon Law, can. 331", "Coptic Orthodox Church"]
+        },
+        {
+          "id": "patriarch",
+          "title": "Patriarch",
+          "word": "Greek patriarchēs, “father and ruler”",
+          "used": ["orthodox", "catholic"],
+          "body": "The senior bishop of a major self-governing church. The Ecumenical Patriarch of Constantinople is “first among equals” among the Eastern Orthodox; the Russian, Serbian and Romanian churches are also led by patriarchs. Several Eastern Catholic churches, such as the Maronite, have patriarchs too.",
+          "sources": ["Ecumenical Patriarchate", "Code of Canons of the Eastern Churches"]
+        },
+        {
+          "id": "cardinal",
+          "title": "Cardinal",
+          "word": "Latin cardo, “hinge”",
+          "used": ["catholic"],
+          "body": "Senior clergy, almost all of them bishops, appointed by the Pope as his chief advisers. Together they form the College of Cardinals, which elects a new Pope in a conclave; only cardinals under 80 may vote.",
+          "sources": ["Code of Canon Law, can. 349"]
+        }
+      ]
+    },
+    {
+      "id": "region",
+      "label": "Overseeing a region",
+      "titles": [
+        {
+          "id": "archbishop",
+          "title": "Archbishop",
+          "word": "Greek archi-, “chief”, + episkopos, “overseer”",
+          "used": ["catholic", "orthodox", "anglican", "protestant"],
+          "body": "A bishop who leads an archdiocese, usually the chief see of a region. In the Catholic Church a metropolitan archbishop presides over a province of dioceses; Orthodox churches also use “metropolitan”. Anglican provinces and some Lutheran churches (such as Sweden’s) are led by archbishops.",
+          "sources": ["Code of Canon Law, can. 435"]
+        },
+        {
+          "id": "bishop",
+          "title": "Bishop",
+          "word": "Greek episkopos, “overseer”",
+          "used": ["catholic", "orthodox", "anglican", "protestant"],
+          "body": "Oversees the churches and clergy of a diocese and ordains new clergy. Catholic, Orthodox and Anglican churches hold that bishops succeed the apostles. Some Lutheran and Methodist churches also have bishops.",
+          "refs": ["1 Timothy 3:1–2", "Titus 1:7"],
+          "sources": ["Catechism of the Catholic Church, 886", "Thirty-Nine Articles, Art. XXXVI"]
+        }
+      ]
+    },
+    {
+      "id": "congregation",
+      "label": "Serving a congregation",
+      "titles": [
+        {
+          "id": "priest",
+          "title": "Priest",
+          "word": "From Greek presbyteros, “elder”",
+          "used": ["catholic", "orthodox", "anglican"],
+          "body": "Ordained to lead a congregation: to celebrate the Eucharist (the Mass or Divine Liturgy), hear confession, baptise and marry. Some Lutheran churches also call their clergy priests.",
+          "refs": ["Titus 1:5", "James 5:14"],
+          "sources": ["Catechism of the Catholic Church, 1562–1568"]
+        },
+        {
+          "id": "pastor",
+          "title": "Pastor",
+          "word": "Latin pastor, “shepherd”",
+          "used": ["protestant", "catholic"],
+          "body": "The leader of a local congregation who preaches, teaches and cares for its people; the usual title in Baptist, Pentecostal, Lutheran and many other Protestant churches. In Catholic canon law, “pastor” is also the English term for a parish priest.",
+          "refs": ["Ephesians 4:11", "1 Peter 5:2"],
+          "sources": ["Baptist Faith and Message (2000), Art. VI", "Code of Canon Law, can. 519"]
+        },
+        {
+          "id": "minister",
+          "title": "Minister",
+          "word": "Latin minister, “servant”",
+          "used": ["protestant"],
+          "body": "A broad term for anyone authorised to lead worship, preach and conduct ceremonies. In Presbyterian churches the ordained “minister of Word and Sacrament” (also called a teaching elder) serves alongside the ruling elders.",
+          "refs": ["2 Corinthians 3:6"],
+          "sources": ["Presbyterian Church (USA), Book of Order"]
+        },
+        {
+          "id": "elder",
+          "title": "Elder",
+          "word": "Greek presbyteros, “elder”",
+          "used": ["protestant"],
+          "body": "In Presbyterian and Reformed churches, ruling elders are members chosen and ordained to govern the church with the minister; many Baptist, Brethren and non-denominational churches are also led by a team of elders.",
+          "refs": ["Acts 14:23", "1 Timothy 5:17"],
+          "sources": ["Presbyterian Church (USA), Book of Order"]
+        },
+        {
+          "id": "deacon",
+          "title": "Deacon",
+          "word": "Greek diakonos, “servant”",
+          "used": ["catholic", "orthodox", "anglican", "protestant"],
+          "body": "A ministry of service. In Catholic, Orthodox and Anglican churches deacons are ordained clergy who assist at worship and serve the needy, either on the way to the priesthood or permanently. In many Protestant churches deacons are lay members who care for the church’s practical needs.",
+          "refs": ["Acts 6:1–6", "1 Timothy 3:8–13"],
+          "sources": ["Catechism of the Catholic Church, 1569–1571", "Baptist Faith and Message (2000), Art. VI"]
+        }
+      ]
+    },
+    {
+      "id": "address",
+      "label": "How clergy are addressed",
+      "titles": [
+        {
+          "id": "reverend",
+          "title": "The Reverend",
+          "word": "Latin reverendus, “one to be revered”",
+          "used": ["anglican", "protestant", "catholic"],
+          "body": "A style placed before a name, not a job: “The Reverend Jane Smith”, then “Ms Smith”. Bishops are “The Right Reverend” and archbishops “The Most Reverend”. In Britain, “Reverend Smith” on its own is considered incorrect.",
+          "sources": ["Crockford’s Clerical Directory"]
+        },
+        {
+          "id": "father",
+          "title": "Father / Mother",
+          "word": "Latin pater, mater",
+          "used": ["catholic", "orthodox", "anglican"],
+          "body": "“Father” for priests, and “Mother” for the superior of a community of women (in Catholic law, a major superior). Paul calls himself a father to the Corinthians; many Protestants prefer not to use the title, citing Jesus’ words in Matthew 23:9.",
+          "refs": ["1 Corinthians 4:15", "Matthew 23:9"],
+          "sources": ["Code of Canon Law, can. 620"]
+        },
+        {
+          "id": "brother",
+          "title": "Brother / Sister",
+          "word": "Latin frater, soror",
+          "used": ["catholic", "orthodox", "anglican", "protestant"],
+          "body": "Members of religious orders who are not priests; and, in many Protestant and Evangelical churches, how fellow believers address one another.",
+          "refs": ["Matthew 23:8"],
+          "sources": ["Catechism of the Catholic Church, 915"]
+        }
+      ]
+    },
+    {
+      "id": "religious",
+      "label": "Religious life",
+      "titles": [
+        {
+          "id": "monk",
+          "title": "Monk / Nun",
+          "word": "Greek monachos, “solitary”; Latin nonna",
+          "used": ["catholic", "orthodox", "anglican"],
+          "body": "Men and women who take vows, traditionally of poverty, chastity and obedience, and live in community devoted to prayer and work, in a monastery or convent.",
+          "sources": ["Catechism of the Catholic Church, 915"]
+        },
+        {
+          "id": "abbot",
+          "title": "Abbot / Abbess",
+          "word": "Aramaic abba, “father”",
+          "used": ["catholic", "orthodox", "anglican"],
+          "body": "The head of an abbey of monks or nuns. The Rule of St Benedict says the abbot holds the place of Christ in the monastery and is therefore called “Abba, Father”.",
+          "refs": ["Romans 8:15"],
+          "sources": ["Rule of St Benedict, ch. 2"]
+        },
+        {
+          "id": "friar",
+          "title": "Friar",
+          "word": "Latin frater, “brother”",
+          "used": ["catholic", "anglican"],
+          "body": "A member of a mendicant order, such as the Franciscans (1209) or Dominicans (1216), who live among people, preaching and serving, rather than in an enclosed monastery.",
+          "sources": ["Order of Friars Minor (Franciscans)"]
+        }
+      ]
+    },
+    {
+      "id": "beyond",
+      "label": "Beyond the parish",
+      "titles": [
+        {
+          "id": "chaplain",
+          "title": "Chaplain",
+          "word": "Latin cappellanus, keeper of St Martin’s cloak (cappa)",
+          "used": ["catholic", "orthodox", "anglican", "protestant"],
+          "body": "A minister, priest or pastor who serves a community outside a local church: a hospital, prison, school, university or the armed forces.",
+          "sources": ["Code of Canon Law, can. 564"]
+        }
+      ]
+    }
+  ]
+}
