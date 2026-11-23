@@ -156,7 +156,32 @@
           "v": 0.5,
           "text": "Scripture is the inspired, infallible rule; the Spirit still speaks through gifts such as prophecy, always tested by Scripture."
         }
-      }
+      },
+      "why": "Every other disagreement depends on this one. When Christians read the Bible differently, who settles the question: the individual reader, the confessions of a church, or the Church’s teaching office?",
+      "history": "The Reformers’ “Scripture alone” (sola scriptura) challenged the medieval Church. The Council of Trent (1546) answered that the apostles’ teaching comes to us in Scripture and unwritten Tradition together. The Orthodox speak of one Holy Tradition, with Scripture at its heart.",
+      "terms": [
+        {
+          "term": "Sola scriptura",
+          "def": "Scripture is the only infallible rule of faith; creeds and confessions are trusted because they agree with it."
+        },
+        {
+          "term": "Magisterium",
+          "def": "The teaching office of the Pope and the bishops in communion with him (Catholic)."
+        },
+        {
+          "term": "Holy Tradition",
+          "def": "The faith handed down in the whole life of the Church: Scripture, the councils, the Fathers and the liturgy (Orthodox)."
+        }
+      ],
+      "leftRefs": [
+        "2 Timothy 3:16–17",
+        "Acts 17:11"
+      ],
+      "rightRefs": [
+        "2 Thessalonians 2:15",
+        "1 Timothy 3:15",
+        "Matthew 16:18–19"
+      ]
     },
     {
       "id": "salvation",
@@ -200,7 +225,33 @@
           "v": 0,
           "text": "Saved by grace through repentance and faith in Christ. Baptism in the Spirit is a later empowering, not a condition of salvation."
         }
-      }
+      },
+      "why": "The question that sparked the Reformation. Lutherans later called justification “the article by which the church stands or falls”.",
+      "history": "Luther’s 95 Theses (1517) began a dispute about indulgences that became a dispute about how a sinner is made right with God. Trent answered in 1547. In 1999 Catholics and Lutherans signed a Joint Declaration finding a “consensus in basic truths”, while differences remain.",
+      "terms": [
+        {
+          "term": "Justification",
+          "def": "Being put right with God: for Protestants a declaration, for Catholics also an inner renewal."
+        },
+        {
+          "term": "Imputed righteousness",
+          "def": "Christ’s righteousness credited to the believer, who is accepted for Christ’s sake (Protestant)."
+        },
+        {
+          "term": "Theosis",
+          "def": "Becoming by grace a sharer in God’s nature, the Orthodox way of describing salvation."
+        }
+      ],
+      "leftRefs": [
+        "Romans 3:28",
+        "Ephesians 2:8–9",
+        "Galatians 2:16"
+      ],
+      "rightRefs": [
+        "James 2:24",
+        "Philippians 2:12",
+        "2 Peter 1:4"
+      ]
     },
     {
       "id": "eucharist",
@@ -243,7 +294,32 @@
           "v": 0,
           "text": "Mostly memorial: a remembrance of Christ's death and a sign of fellowship until he comes."
         }
-      }
+      },
+      "why": "Jesus said “This is my body.” How literally to take it divided Catholics from Protestants, and Protestants from one another: Luther and Zwingli failed to agree at the Marburg Colloquy (1529).",
+      "history": "The term “transubstantiation” was used at the Fourth Lateran Council (1215) and defined at Trent (1551). Luther kept the real presence; Zwingli taught a memorial; Calvin a spiritual feeding. The Orthodox affirm the change without explaining how.",
+      "terms": [
+        {
+          "term": "Transubstantiation",
+          "def": "The substance of bread and wine becomes Christ’s body and blood, though their appearance remains (Catholic)."
+        },
+        {
+          "term": "Real presence",
+          "def": "Christ is truly present in the Supper, however that is explained."
+        },
+        {
+          "term": "Memorial",
+          "def": "The Supper is a remembrance and proclamation of Christ’s death (Zwingli, Baptists)."
+        }
+      ],
+      "leftRefs": [
+        "Luke 22:19",
+        "1 Corinthians 11:26"
+      ],
+      "rightRefs": [
+        "John 6:53–56",
+        "Matthew 26:26",
+        "1 Corinthians 10:16"
+      ]
     },
     {
       "id": "baptism",
@@ -286,7 +362,34 @@
           "v": 0.5,
           "text": "Believers, by immersion. Many also expect a distinct 'baptism in the Holy Spirit', marked by speaking in tongues."
         }
-      }
+      },
+      "why": "Two linked questions: should babies be baptised, and does baptism itself give new birth or does it signify a faith already there?",
+      "history": "Infant baptism was the common practice of the ancient church. In 1525 the Anabaptists in Zurich began baptising only believers; the Baptists followed in 1609. Pentecostals later added a distinct “baptism in the Spirit”.",
+      "terms": [
+        {
+          "term": "Believers’ baptism",
+          "def": "Baptism only for those old enough to confess faith, usually by immersion."
+        },
+        {
+          "term": "Baptismal regeneration",
+          "def": "God gives new birth through baptism (Catholic, Orthodox, Lutheran)."
+        },
+        {
+          "term": "Covenant sign",
+          "def": "Baptism marks a child of believers as belonging to God’s people, as circumcision did (Reformed)."
+        }
+      ],
+      "leftRefs": [
+        "Acts 8:36–38",
+        "Romans 6:3–4",
+        "Acts 2:41"
+      ],
+      "rightRefs": [
+        "Acts 2:38–39",
+        "Acts 16:33",
+        "Colossians 2:11–12",
+        "John 3:5"
+      ]
     },
     {
       "id": "sacraments",
@@ -329,7 +432,27 @@
           "v": 0,
           "text": "Two ordinances; some churches also practise foot-washing."
         }
-      }
+      },
+      "why": "Does God promise to give grace through particular rites, and which ones did Christ himself establish?",
+      "history": "The list of seven appears in Peter Lombard’s Sentences (c. 1150) and was defined at the Councils of Florence (1439) and Trent (1547). The Reformers kept the two instituted by Christ in the Gospels, baptism and the Lord’s Supper.",
+      "terms": [
+        {
+          "term": "Sacrament",
+          "def": "An outward sign through which God gives inward grace."
+        },
+        {
+          "term": "Ordinance",
+          "def": "A practice kept because Christ commanded it, rather than as a channel of grace (Baptist, Pentecostal)."
+        }
+      ],
+      "leftRefs": [
+        "Matthew 28:19",
+        "Luke 22:19"
+      ],
+      "rightRefs": [
+        "James 5:14–15",
+        "John 20:22–23"
+      ]
     },
     {
       "id": "government",
@@ -372,7 +495,32 @@
           "v": 1,
           "text": "Mixed: bodies such as the Assemblies of God combine local self-government with district and national councils."
         }
-      }
+      },
+      "why": "Who has the authority to teach, to ordain ministers and to discipline: one bishop over a region, elders together, or the whole congregation?",
+      "history": "A single bishop leading each city’s church is attested by about 110 (Ignatius of Antioch). The Pope’s universal jurisdiction, defined at Vatican I (1870), is not accepted by the Orthodox or Protestants. Presbyterian and congregational church order arose at the Reformation.",
+      "terms": [
+        {
+          "term": "Apostolic succession",
+          "def": "An unbroken line of bishops ordained by bishops back to the apostles."
+        },
+        {
+          "term": "Presbyterian",
+          "def": "Government by elders (presbyters) in councils, from the local session to a general assembly."
+        },
+        {
+          "term": "Congregational",
+          "def": "Each local church is self-governing under Christ."
+        }
+      ],
+      "leftRefs": [
+        "Matthew 18:17",
+        "Acts 6:3"
+      ],
+      "rightRefs": [
+        "Matthew 16:18–19",
+        "Titus 1:5",
+        "Acts 15:6"
+      ]
     },
     {
       "id": "mary",
@@ -416,7 +564,32 @@
           "v": 0,
           "text": "Mary is honoured as a faithful believer; prayer is made to God alone, through Christ."
         }
-      }
+      },
+      "why": "All of these churches honour Mary as the mother of Jesus. They differ on her role today and on asking saints to pray for us.",
+      "history": "The Council of Ephesus (431) called Mary Theotokos, “Mother of God”, a title most Reformers also kept. The Catholic dogmas of the Immaculate Conception (1854) and the Assumption (1950) came much later and are not shared by the Orthodox or Protestants.",
+      "terms": [
+        {
+          "term": "Theotokos",
+          "def": "“God-bearer”: Mary bore the one person who is God, so she is Mother of God."
+        },
+        {
+          "term": "Veneration",
+          "def": "Honour given to saints, which Catholics and Orthodox distinguish from the worship due to God alone."
+        },
+        {
+          "term": "Intercession",
+          "def": "Asking someone, living or in heaven, to pray for you."
+        }
+      ],
+      "leftRefs": [
+        "1 Timothy 2:5",
+        "Acts 10:25–26"
+      ],
+      "rightRefs": [
+        "Luke 1:48",
+        "James 5:16",
+        "Revelation 5:8"
+      ]
     },
     {
       "id": "canon",
@@ -457,7 +630,26 @@
           "v": 0,
           "text": "66 books."
         }
-      }
+      },
+      "why": "Which books are Scripture shapes other doctrines; prayer for the dead, for example, is supported from 2 Maccabees.",
+      "history": "The Greek Septuagint used by the early church contained extra books. Jerome called them apocrypha; Luther printed them separately in his 1534 Bible; Trent declared them canonical (1546). The Orthodox include a few more.",
+      "terms": [
+        {
+          "term": "Deuterocanonical",
+          "def": "“Second canon”: Catholic and Orthodox name for the books beyond the Hebrew Bible."
+        },
+        {
+          "term": "Apocrypha",
+          "def": "Protestant name for the same books: useful to read, but not Scripture."
+        }
+      ],
+      "leftRefs": [
+        "Luke 24:44",
+        "Romans 3:2"
+      ],
+      "rightRefs": [
+        "Hebrews 11:35"
+      ]
     },
     {
       "id": "clergy",
@@ -500,7 +692,29 @@
           "v": 1,
           "text": "Married ministers. Many Pentecostal churches have credentialed women ministers from their early years."
         }
-      }
+      },
+      "why": "Two questions in one: may ministers marry, and may women be ordained?",
+      "history": "Married clergy were normal in the early church and remain so in the East. The Latin West required celibacy from the Second Lateran Council (1139). The Reformers allowed marriage; many Protestant churches began ordaining women in the 20th century.",
+      "terms": [
+        {
+          "term": "Celibacy",
+          "def": "Giving up marriage for the sake of the kingdom."
+        },
+        {
+          "term": "Ordination",
+          "def": "Setting someone apart for ministry by the laying on of hands."
+        }
+      ],
+      "leftRefs": [
+        "1 Timothy 3:2",
+        "Galatians 3:28",
+        "Acts 21:9"
+      ],
+      "rightRefs": [
+        "1 Corinthians 7:32–33",
+        "Matthew 19:12",
+        "1 Timothy 2:12"
+      ]
     },
     {
       "id": "afterlife",
@@ -543,7 +757,28 @@
           "v": 0,
           "text": "No purgatory: believers go to be with Christ at death."
         }
-      }
+      },
+      "why": "Do the faithful need cleansing after death, and can the prayers of the living help them?",
+      "history": "Prayer for the dead is ancient and still practised by the Orthodox. Purgatory was defined in the West at the Councils of Lyon (1274), Florence (1439) and Trent (1563). The Reformers rejected it together with indulgences.",
+      "terms": [
+        {
+          "term": "Purgatory",
+          "def": "A final purification after death for those who die in God’s grace (Catholic)."
+        },
+        {
+          "term": "Prayers for the departed",
+          "def": "Praying for the dead, which the Orthodox practise without defining purgatory."
+        }
+      ],
+      "leftRefs": [
+        "Luke 23:43",
+        "Philippians 1:23",
+        "2 Corinthians 5:8"
+      ],
+      "rightRefs": [
+        "1 Corinthians 3:13–15",
+        "Matthew 12:32"
+      ]
     }
   ],
   "boundary": {

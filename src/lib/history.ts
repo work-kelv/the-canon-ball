@@ -102,6 +102,13 @@ export interface Topic {
   note?: string;
   scripture: string[];
   positions: Record<string, { v: number; text: string }>;
+  /** Why the question matters, how the disagreement arose, and the words it turns on. */
+  why: string;
+  history: string;
+  terms: { term: string; def: string }[];
+  /** Passages typically cited by the traditions nearer each pole. */
+  leftRefs: string[];
+  rightRefs: string[];
 }
 export type TestId = 'trinity' | 'deity' | 'cross' | 'scripture' | 'grace';
 export interface BoundaryTest {
