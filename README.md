@@ -1,12 +1,12 @@
 # The Canon Ball
 
-**An interactive guide to the Bible's languages, people and places.**
+**An interactive guide to the Bible: its languages, people and places, and two thousand years of church history.**
 
 **▶ Open the site: https://work-kelv.github.io/the-canon-ball/**
 
 It works on phones and computers, in light or dark mode. You can share a link to any page, book or person.
 
-![The Languages page: all 66 books, coloured by the language they were written in](docs/screenshots/languages-grid.png)
+![The home page: four ways into the Bible](docs/screenshots/home.png)
 
 The site opens on an [introduction page](https://work-kelv.github.io/the-canon-ball/) that leads to four sections:
 
@@ -24,6 +24,8 @@ Any Bible reference on the site (shown with a dotted underline) can be clicked t
 ## 1. The Bible
 
 The Bible page follows the text in the order things happened, in three tabs (each with its own link, such as `languages.html#verses`). Its introduction explains why the Bible is in three languages, with a short timeline.
+
+![The Bible page: all 66 books, coloured by the language they were written in](docs/screenshots/languages-grid.png)
 
 **Original languages.** All 66 books are shown in canonical order. Each one is coloured by its original language, and stronger colour means more chapters.
 
@@ -81,6 +83,8 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
 ## 4. Church History
 
 The Church History page works like a short course: six tabs in learning order, with Previous / Next buttons at the bottom of each. Each tab has its own link (for example `history.html#creeds`). The old `#translations` and `#verses` links now open those tabs on The Bible page.
+
+![Start here: church history in six simple steps](docs/screenshots/history-start.png)
 
 ![The family tree of the church](docs/screenshots/history-tree.png)
 
