@@ -12,9 +12,10 @@ import { StartHere } from './StartHere';
 import { HistoryIntro } from '../PageIntros';
 import { PageTabs, useHashTab } from '../PageTabs';
 
-/** Creeds tab: read one creed line by line, or compare all four side by side. */
+/** Creeds tab: compare all four side by side (default), or read one creed line by line. */
 function CreedsTab() {
-  const [mode, setMode] = useState<'read' | 'compare'>(() => (window.location.hash === '#creeds-compare' ? 'compare' : 'read'));
+  // Compare first (the big picture), then read any one creed line by line.
+  const [mode, setMode] = useState<'read' | 'compare'>(() => (window.location.hash === '#creeds-read' ? 'read' : 'compare'));
   return (
     <div className="space-y-5">
       <ViewTabs<'read' | 'compare'>
@@ -22,8 +23,8 @@ function CreedsTab() {
         value={mode}
         onChange={setMode}
         tabs={[
-          { id: 'read', label: 'Read a creed', icon: BookOpen },
           { id: 'compare', label: 'Compare all four', short: 'Compare', icon: Columns4 },
+          { id: 'read', label: 'Read a creed', short: 'Read one', icon: BookOpen },
         ]}
       />
       {mode === 'read' ? <CreedExplorer /> : <CreedCompare />}

@@ -48,7 +48,7 @@ const STEPS: Step[] = [
       { w: 'Trinity', d: 'one God in three persons: Father, Son and Holy Spirit' },
     ],
     refs: ['Matthew 28:19', 'John 1:1'],
-    next: [{ tab: 'creeds', label: 'Read the creeds, line by line' }],
+    next: [{ tab: 'creeds', label: 'Compare the four creeds' }],
   },
   {
     era: '431 – 1054',

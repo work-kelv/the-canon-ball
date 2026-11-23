@@ -154,7 +154,7 @@ export function HistoryIntro() {
           kicker: 'Creeds & boundaries',
           body: (
             <>
-              {tab('creeds', 'Creeds')}: four historic creeds, line by line and side by side. {tab('compare', 'Core beliefs')}: the families of
+              {tab('creeds', 'Creeds')}: four historic creeds, side by side and line by line. {tab('compare', 'Core beliefs')}: the families of
               churches that share that faith, their member churches, and how other movements differ.
             </>
           ),
