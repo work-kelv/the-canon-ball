@@ -20,6 +20,10 @@ interface Props {
   lead: ReactNode;
   cards: IntroCard[];
   howTo: ReactNode[];
+  /** Optional content between the lead and the cards (e.g. a small timeline). */
+  extra?: ReactNode;
+  /** Optional content after the cards. */
+  afterCards?: ReactNode;
   className?: string;
 }
 
@@ -27,7 +31,7 @@ interface Props {
  * The "Introduction" card at the top of each page: an illustration, a short lead, a few cards
  * explaining what the page shows, and how to use it. It can be folded away; the choice is remembered.
  */
-export function PageIntro({ storageKey, art, css, lead, cards, howTo, className = '' }: Props) {
+export function PageIntro({ storageKey, art, css, lead, cards, howTo, extra, afterCards, className = '' }: Props) {
   const [hidden, setHidden] = useState(() => {
     try {
       return localStorage.getItem(storageKey) === '1';
@@ -83,6 +87,8 @@ export function PageIntro({ storageKey, art, css, lead, cards, howTo, className 
             </div>
           </div>
 
+          {extra}
+
           <div className={`grid gap-3 ${cards.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
             {cards.map((c, i) => (
               <div key={i} className="rounded-md border border-rule px-3.5 py-3" style={{ boxShadow: `inset 3px 0 0 ${cssColor(c.css)}` }}>
@@ -97,6 +103,8 @@ export function PageIntro({ storageKey, art, css, lead, cards, howTo, className 
               </div>
             ))}
           </div>
+
+          {afterCards}
 
           <div>
             <h3 className="eyebrow mb-1.5">How to use it</h3>
