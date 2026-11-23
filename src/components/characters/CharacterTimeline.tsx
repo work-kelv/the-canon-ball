@@ -119,23 +119,8 @@ export function CharacterTimeline({ filters, selectedId, onSelect }: Props) {
         )}
       </div>
 
-      {model.people.length === 0 && model.spiritsShown.length === 0 ? (
-        <p className="px-4 py-12 text-center font-sans text-sm text-ink-soft">No characters match these filters.</p>
-      ) : wide ? (
-        <HorizontalTimeline
-          model={model}
-          arrangement={arrangement}
-          highlight={highlight}
-          zoom={zoom}
-          selectedId={selectedId}
-          onSelect={onSelect}
-        />
-      ) : (
-        <VerticalTimeline model={model} arrangement={arrangement} highlight={highlight} selectedId={selectedId} onSelect={onSelect} />
-      )}
-
-      {/* Legend */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-t border-rule px-3 py-2 font-sans text-[11px] text-ink-soft">
+      {/* Legend (at the top, so the colours are explained before you scroll) */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-rule bg-ink/[0.02] px-3 py-2 font-sans text-[11px] text-ink-soft">
         {ROLES.map((r) => (
           <span key={r.id} className="inline-flex items-center gap-1">
             <span className="h-2 w-4 rounded-full" style={{ background: cssColor(r.css) }} />
@@ -163,6 +148,21 @@ export function CharacterTimeline({ filters, selectedId, onSelect }: Props) {
           <span className="h-2.5 w-2.5 rounded-full" style={{ boxShadow: `0 0 0 2px ${cssColor('--lineage')}` }} /> line of Jesus
         </span>
       </div>
+      {model.people.length === 0 && model.spiritsShown.length === 0 ? (
+        <p className="px-4 py-12 text-center font-sans text-sm text-ink-soft">No characters match these filters.</p>
+      ) : wide ? (
+        <HorizontalTimeline
+          model={model}
+          arrangement={arrangement}
+          highlight={highlight}
+          zoom={zoom}
+          selectedId={selectedId}
+          onSelect={onSelect}
+        />
+      ) : (
+        <VerticalTimeline model={model} arrangement={arrangement} highlight={highlight} selectedId={selectedId} onSelect={onSelect} />
+      )}
+
     </div>
   );
 }

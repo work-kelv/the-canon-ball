@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { ArrowRight, BookOpen, ListVideo, ChevronLeft, ChevronRight, ExternalLink, Feather, Globe2, MapPin, Play, Route, Search, Users, X } from 'lucide-react';
+import { ArrowRight, BookOpen, ListVideo, ChevronLeft, ChevronRight, ExternalLink, Feather, Globe2, MapPin, Maximize2, Minimize2, Play, Route, Search, Users, X } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import {
   type AnimRoute,
@@ -691,6 +691,19 @@ export function MapPage() {
   const [fly, setFly] = useState<{ id: number; points: [number, number][] }>({ id: 0, points: [] });
   const flyTo = (points: [number, number][]) => setFly((f) => ({ id: f.id + 1, points }));
   const mapRef = useRef<HTMLDivElement>(null);
+  // Full-screen map: Esc or the button closes it; the page behind doesn't scroll meanwhile.
+  const [expanded, setExpanded] = useState(false);
+  useEffect(() => {
+    if (!expanded) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setExpanded(false);
+    const prev = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.documentElement.style.overflow = prev;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [expanded]);
 
   const book = mode === 'books' ? geoBooks[order - 1] : null;
   const activeJourneys = journeys.filter((j) => active.has(j.id));
@@ -897,9 +910,21 @@ export function MapPage() {
         {/* The map stays pinned while the journey list scrolls underneath (about 30% of a phone screen). */}
         <div
           ref={mapRef}
-          className="sticky top-0 z-20 order-1 -mx-4 min-w-0 self-start bg-paper/95 px-4 pb-2 pt-2 shadow-[0_6px_12px_-10px_rgb(var(--ink)/0.5)] backdrop-blur md:top-0 md:order-2 md:-ml-3 md:mr-0 md:bg-paper md:pb-0 md:pl-3 md:pr-0 md:pt-2 md:shadow-none md:backdrop-blur-none"
+          className={
+            expanded
+              ? 'fixed inset-0 z-[60] bg-paper p-2 sm:p-4'
+              : 'sticky top-0 z-20 order-1 -mx-4 min-w-0 self-start bg-paper/95 px-4 pb-2 pt-2 shadow-[0_6px_12px_-10px_rgb(var(--ink)/0.5)] backdrop-blur md:top-0 md:order-2 md:-ml-3 md:mr-0 md:bg-paper md:pb-0 md:pl-3 md:pr-0 md:pt-2 md:shadow-none md:backdrop-blur-none'
+          }
         >
-          <div className="panel relative h-[30vh] min-h-[210px] overflow-hidden md:h-[52vh] xl:h-[74vh]">
+          <div className={`panel relative overflow-hidden ${expanded ? 'h-full' : 'h-[30vh] min-h-[210px] md:h-[52vh] xl:h-[74vh]'}`}>
+            <button
+              onClick={() => setExpanded((x) => !x)}
+              aria-label={expanded ? 'Shrink map' : 'Expand map to full screen'}
+              title={expanded ? 'Shrink map (Esc)' : 'Full screen'}
+              className="focus-ring absolute right-2 top-2 z-10 rounded-md border border-rule bg-paper/90 p-1.5 shadow-sm backdrop-blur hover:bg-ink/5"
+            >
+              {expanded ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+            </button>
             <MapCanvas
               mode={mode}
               book={book}

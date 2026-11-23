@@ -5,11 +5,11 @@ import { REFERENCES } from './lib/references';
 
 export type Section = 'languages' | 'characters' | 'map' | 'history';
 
-const NAV: { id: Section; label: string; href: string; icon: typeof Languages }[] = [
-  { id: 'languages', label: 'Languages', href: './', icon: Languages },
-  { id: 'characters', label: 'Characters', href: 'characters.html', icon: Users },
-  { id: 'map', label: 'Map', href: 'map.html', icon: MapIcon },
-  { id: 'history', label: 'Church History', href: 'history.html', icon: Church },
+const NAV: { id: Section; label: string; short: string; href: string; icon: typeof Languages }[] = [
+  { id: 'languages', label: 'Languages', short: 'Languages', href: './', icon: Languages },
+  { id: 'characters', label: 'Characters', short: 'Characters', href: 'characters.html', icon: Users },
+  { id: 'map', label: 'Map', short: 'Map', href: 'map.html', icon: MapIcon },
+  { id: 'history', label: 'Church History', short: 'History', href: 'history.html', icon: Church },
 ];
 
 const INTRO: Record<Section, { eyebrow: string; text: ReactNode }> = {
@@ -125,18 +125,22 @@ export function Shell({ section, children }: { section: Section; children: (dark
             {dark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
         </div>
-        <nav aria-label="Sections" className="mt-5 inline-flex rounded-full border border-ink/70 p-0.5 font-sans text-sm">
-          {NAV.map(({ id, label, href, icon: Icon }) => (
+        <nav
+          aria-label="Sections"
+          className="no-scrollbar mt-5 inline-flex max-w-full overflow-x-auto rounded-full border border-ink/70 p-0.5 font-sans text-[13px] sm:text-sm"
+        >
+          {NAV.map(({ id, label, short, href, icon: Icon }) => (
             <a
               key={id}
               href={href}
               aria-current={section === id ? 'page' : undefined}
-              className={`focus-ring inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 font-medium transition-colors sm:px-4 ${
+              className={`focus-ring inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-3 py-1.5 font-medium transition-colors sm:px-4 ${
                 section === id ? 'bg-ink text-paper' : 'text-ink-soft hover:text-ink'
               }`}
             >
-              <Icon size={15} aria-hidden />
-              {label}
+              <Icon size={15} aria-hidden className="hidden sm:block" />
+              <span className="sm:hidden">{short}</span>
+              <span className="hidden sm:inline">{label}</span>
             </a>
           ))}
         </nav>

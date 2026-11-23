@@ -70,7 +70,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
       role="dialog"
       aria-modal="false"
       aria-labelledby="char-title"
-      className="animate-drawer fixed inset-y-0 right-0 z-50 flex w-full max-w-[28rem] flex-col overflow-y-auto border-l border-rule bg-paper shadow-2xl"
+      className="animate-drawer fixed inset-y-0 right-0 z-50 flex w-full max-w-[28rem] flex-col overflow-y-auto overscroll-contain border-l border-rule bg-paper shadow-2xl"
     >
       {/* Phones: the panel fills the screen, so keep an obvious way back pinned to the top. */}
       <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-rule bg-paper/95 px-3 py-2 backdrop-blur md:hidden">
@@ -250,7 +250,12 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
         <Section
           icon={<BookMarked size={12} aria-hidden />}
           title="Books they appear in"
-          aside={<span className="font-sans text-[11px] text-ink-soft">click to filter</span>}
+          aside={
+            <span className="font-sans text-[11px] text-ink-soft">
+              <span className="md:hidden">tap to see everyone in that book</span>
+              <span className="hidden md:inline">click to show only that book</span>
+            </span>
+          }
         >
           {c.books.length === 0 ? (
             <p className="font-sans text-sm text-ink-soft">No tagged verses in the dataset.</p>

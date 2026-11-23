@@ -1,6 +1,7 @@
+import { Fragment } from 'react';
 import type { Character } from '../../characterTypes';
 import { cssColor, formatYearRange, lineage, roleCss, twelveSons } from '../../lib/characters';
-import { type Arrangement, type Highlight, SON_IDS, groupPeople, type useTimelineModel } from './timelineModel';
+import { type Arrangement, type Highlight, SON_IDS, fmtYear, groupPeople, type useTimelineModel } from './timelineModel';
 
 interface Props {
   model: ReturnType<typeof useTimelineModel>;
@@ -25,25 +26,18 @@ function dateParts(c: Character): [string, string] {
 
 function Row({
   c,
-  span,
   dim,
   selected,
   badge,
   onSelect,
 }: {
   c: Character;
-  span: { start: number; end: number };
   dim: boolean;
   selected: boolean;
   badge: string | null;
   onSelect: () => void;
 }) {
   const role = cssColor(roleCss(c.role));
-  // Mini bar: the grey track is the group's whole span; the coloured part is this person's years.
-  // Short spans (a single year) still get a visible 4% mark, kept inside the track.
-  const total = Math.max(span.end - span.start, 1);
-  const w = Math.max(((c.dates.end - c.dates.start) / total) * 100, 4);
-  const left = Math.min(Math.max(((c.dates.start - span.start) / total) * 100, 0), 100 - w);
   const inLine = LINEAGE_SET.has(c.id);
   return (
     <li>
@@ -81,16 +75,88 @@ function Row({
             )}
           </span>
           <span className="block truncate font-sans text-xs text-ink-soft">{c.title}</span>
-          {c.kind === 'human' && (
-            <span className="mt-1 block h-1 rounded-full bg-ink/[0.07]" aria-hidden>
-              <span
-                className="block h-full rounded-full"
-                style={{ marginLeft: `${left}%`, width: `${w}%`, background: role }}
-              />
-            </span>
-          )}
         </span>
       </button>
+    </li>
+  );
+}
+
+/** Compact "who lived at the same time" chart for one era: everyone packed into lanes on the era's own axis. */
+function EraStrip({
+  members,
+  start,
+  end,
+  isDim,
+  selectedId,
+  onSelect,
+}: {
+  members: Character[];
+  start: number;
+  end: number;
+  isDim: (id: string) => boolean;
+  selectedId: string | null;
+  onSelect: (id: string) => void;
+}) {
+  const lo = Math.min(start, ...members.map((c) => c.dates.start));
+  const hi = Math.max(end, ...members.map((c) => c.dates.end));
+  const span = Math.max(hi - lo, 1);
+  const minW = span * 0.025; // very short spans still get a tappable mark
+  const sorted = [...members].sort((a, b) => a.dates.start - b.dates.start);
+  const laneEnd: number[] = [];
+  const bars = sorted.map((c) => {
+    const s0 = c.dates.start;
+    const e0 = Math.max(c.dates.end, s0 + minW);
+    let lane = 0;
+    while (laneEnd[lane] !== undefined && laneEnd[lane] + span * 0.012 > s0) lane++;
+    laneEnd[lane] = e0;
+    return { c, x: ((s0 - lo) / span) * 100, w: ((e0 - s0) / span) * 100, lane };
+  });
+  const LANE = 9;
+  const fmt = fmtYear;
+  const ticks = [lo, lo + span / 2, hi].map((y) => Math.round(y));
+  return (
+    <div className="border-b border-rule px-3 pb-2 pt-2.5">
+      <div className="eyebrow mb-1.5 !text-[10px]">Who lived at the same time · tap a bar</div>
+      <div className="relative" style={{ height: laneEnd.length * LANE }}>
+        {bars.map(({ c, x, w, lane }) => (
+          <button
+            key={c.id}
+            onClick={() => onSelect(c.id)}
+            aria-label={`${c.name}, ${formatYearRange(c.dates.start, c.dates.end)}`}
+            title={c.name}
+            className="focus-ring absolute flex items-center"
+            style={{ left: `${x}%`, width: `max(${w}%, 6px)`, top: lane * LANE, height: LANE }}
+          >
+            <span
+              className="block h-[6px] w-full rounded-full"
+              style={{
+                background: cssColor(roleCss(c.role)),
+                opacity: isDim(c.id) ? 0.2 : 1,
+                boxShadow: selectedId === c.id ? `0 0 0 2px ${cssColor('--ink')}` : undefined,
+              }}
+            />
+          </button>
+        ))}
+      </div>
+      <div className="mt-1 flex justify-between font-sans text-[10px] tabular-nums text-ink-soft">
+        {ticks.map((t, i) => (
+          <span key={i}>{fmt(t)}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** "~120 years later" marker between two rows when time jumps noticeably. */
+function GapMarker({ years }: { years: number }) {
+  const r = years >= 100 ? Math.round(years / 10) * 10 : Math.round(years / 5) * 5;
+  return (
+    <li aria-hidden className="grid grid-cols-[4.6rem_18px_1fr] items-center gap-x-2 py-0.5">
+      <span />
+      <span className="flex justify-center">
+        <span className="h-1 w-1 rounded-full bg-ink/40" />
+      </span>
+      <span className="font-sans text-[10.5px] italic text-ink-soft">~{r.toLocaleString('en-US')} years later</span>
     </li>
   );
 }
@@ -117,13 +183,9 @@ export function VerticalTimeline({ model, arrangement, highlight, selectedId, on
   return (
     <div>
       <aside className="flex items-center gap-3 border-b border-rule bg-ink/[0.03] px-3 py-2.5 font-sans text-[11.5px] leading-snug text-ink-soft">
-        <span aria-hidden className="block h-1 w-16 shrink-0 rounded-full bg-ink/[0.1]">
-          <span className="ml-[30%] block h-full w-[40%] rounded-full" style={{ background: cssColor('--role-king') }} />
-        </span>
         <span>
-          The line under each name shows <b className="text-ink">when they lived</b>: the grey track is the whole{' '}
-          {arrangement === 'book' ? 'book group' : 'era'}, the coloured part is their years. Its{' '}
-          <b className="text-ink">colour is their role</b> (key below).
+          Each {arrangement === 'book' ? 'book group' : 'era'} opens with a chart of <b className="text-ink">who lived at the same time</b>: one
+          bar per person, <b className="text-ink">coloured by role</b> (key above). The list below runs in date order.
           {highlight !== 'lineage' && (
             <>
               {' '}
@@ -141,20 +203,29 @@ export function VerticalTimeline({ model, arrangement, highlight, selectedId, on
               {g.sub} · {g.members.length} {g.members.length === 1 ? 'person' : 'people'}
             </span>
           </header>
+          {g.members.length > 1 && (
+            <EraStrip members={g.members} start={g.start} end={g.end} isDim={isDim} selectedId={selectedId} onSelect={onSelect} />
+          )}
           <ol className="relative px-1 py-1">
             {/* the vertical rail */}
             <span aria-hidden className="absolute bottom-0 top-0 w-px bg-ink/20" style={{ left: 'calc(0.25rem + 4.6rem + 0.5rem + 9px)' }} />
-            {g.members.map((c) => (
-              <Row
-                key={c.id}
-                c={c}
-                span={g}
-                dim={isDim(c.id)}
-                selected={selectedId === c.id}
-                badge={badgeFor(c)}
-                onSelect={() => onSelect(c.id)}
-              />
-            ))}
+            {g.members.map((c, i) => {
+              const prev = g.members[i - 1];
+              const gap = prev ? c.dates.start - prev.dates.start : 0;
+              const showGap = gap >= 30 && gap >= (g.end - g.start) * 0.08;
+              return (
+                <Fragment key={c.id}>
+                  {showGap && <GapMarker years={gap} />}
+                  <Row
+                    c={c}
+                    dim={isDim(c.id)}
+                    selected={selectedId === c.id}
+                    badge={badgeFor(c)}
+                    onSelect={() => onSelect(c.id)}
+                  />
+                </Fragment>
+              );
+            })}
           </ol>
         </section>
       ))}
@@ -168,7 +239,6 @@ export function VerticalTimeline({ model, arrangement, highlight, selectedId, on
               <Row
                 key={c.id}
                 c={c}
-                span={{ start: c.dates.start, end: c.dates.end }}
                 dim={isDim(c.id)}
                 selected={selectedId === c.id}
                 badge={null}

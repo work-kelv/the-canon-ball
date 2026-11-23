@@ -153,7 +153,20 @@ export function CharactersPage({ dark }: { dark: boolean }) {
           activeBook={filters.book}
           onClose={close}
           onJump={setSelectedId}
-          onBook={(book) => setFilters((f) => ({ ...f, book: f.book === book ? null : book }))}
+          onBook={(book) => {
+            // On a phone the panel covers the whole screen, so close it to reveal the filtered list.
+            if (window.matchMedia('(max-width: 767px)').matches) {
+              setFilters((f) => ({ ...f, book }));
+              close();
+              // After the shorter list renders, bring the filters + list into view.
+              window.setTimeout(() => {
+                const el = controls.current;
+                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'auto' });
+              }, 80);
+            } else {
+              setFilters((f) => ({ ...f, book: f.book === book ? null : book }));
+            }
+          }}
           backLabel={mode === 'graph' ? 'Back to network' : mode === 'directory' ? 'Back to directory' : 'Back to timeline'}
         />
       )}

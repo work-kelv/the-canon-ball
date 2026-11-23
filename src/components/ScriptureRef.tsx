@@ -94,13 +94,28 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
     };
   }, [anchor, onClose, phone]);
 
+  // Phone bottom sheet: freeze whatever is behind it (the page, or a scrolling side panel),
+  // so reaching the end of the passage doesn't start scrolling the background.
+  useEffect(() => {
+    if (!phone) return;
+    const frozen: [HTMLElement, string][] = [];
+    for (let el: HTMLElement | null = anchor; el; el = el.parentElement) {
+      const oy = getComputedStyle(el).overflowY;
+      if (el === document.documentElement || el === document.body || oy === 'auto' || oy === 'scroll') {
+        frozen.push([el, el.style.overflow]);
+        el.style.overflow = 'hidden';
+      }
+    }
+    return () => frozen.forEach(([el, v]) => (el.style.overflow = v));
+  }, [anchor, phone]);
+
   const verses = data ? data[tr] : [];
   const more = data ? data.total - verses.length : 0;
   const name = TRANSLATIONS.find((x) => x.id === tr)!.name;
 
   return createPortal(
     <>
-      {phone && <div className="animate-fade fixed inset-0 z-[70] bg-ink/30" aria-hidden />}
+      {phone && <div className="animate-fade fixed inset-0 z-[70] touch-none bg-ink/30" aria-hidden />}
       <div
         ref={boxRef}
         role="dialog"
@@ -130,7 +145,7 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
             <X size={15} />
           </button>
         </div>
-        <div className="overflow-y-auto px-3.5 py-3">
+        <div className="overflow-y-auto overscroll-contain px-3.5 py-3">
           {data === undefined && <p className="text-sm text-ink-soft">Loading…</p>}
           {data === null && <p className="text-sm text-ink-soft">This passage isn&rsquo;t in the offline text.</p>}
           {data && (

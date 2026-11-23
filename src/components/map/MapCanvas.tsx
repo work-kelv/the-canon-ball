@@ -298,17 +298,21 @@ export function MapCanvas({ mode, book, journeys, showBorders, flyTo, fitPadding
     const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
     const dx = Math.max(x1 - x0, 1);
     const dy = Math.max(y1 - y0, 1);
-    const pt = Math.min(fitPadding?.top ?? 0, h * 0.4);
+    // While a journey plays, keep its route clear of the player bar across the top.
+    const playerH = route ? 48 : 0;
+    const pt = Math.min((fitPadding?.top ?? 0) + playerH, h * 0.4);
     const pl = Math.min(fitPadding?.left ?? 0, w * 0.4);
-    const aw = w - pl;
-    const ah = h - pt;
+    const pb = route ? 10 : 0;
+    const pr = route ? 44 : 0; // room for the stop labels beside the zoom buttons
+    const aw = w - pl - pr;
+    const ah = h - pt - pb;
     const single = dx < 4 && dy < 4;
-    const k = single ? 14 : Math.min(40, 0.8 / Math.max(dx / aw, dy / ah));
+    const k = single ? 14 : Math.min(40, (route ? 0.72 : 0.8) / Math.max(dx / aw, dy / ah));
     const cx = (x0 + x1) / 2;
     const cy = (y0 + y1) / 2;
     // A footprint as wide as the whole map: just show the whole map.
     const target =
-      k <= 1.05 ? zoomIdentity : zoomIdentity.translate(pl + aw / 2, pt + ah / 2).scale(k).translate(-cx, -cy);
+      k <= 1.05 && !route ? zoomIdentity : zoomIdentity.translate(pl + aw / 2, pt + ah / 2).scale(Math.max(k, 1)).translate(-cx, -cy);
     select(svg).transition().duration(850).call(z.transform, target);
   }, [flyTo.id, projection, w, h]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -648,8 +652,7 @@ function RoutePlayer({
   const btn = 'focus-ring rounded-full p-1 hover:bg-ink/10 disabled:opacity-30';
   return (
     <div
-      className="absolute left-2 top-2 max-w-[calc(100%-1rem)] overflow-hidden rounded-full border border-rule bg-paper/95 font-sans shadow-md backdrop-blur sm:max-w-[20rem]"
-      title={route.title}
+      className="absolute left-2 top-2 max-w-[calc(100%-3.5rem)] overflow-hidden rounded-2xl border border-rule bg-paper/95 font-sans shadow-md backdrop-blur sm:max-w-[22rem]"
     >
       <div className="flex items-center gap-1.5 py-1 pl-3 pr-1">
         {playlist && (
@@ -657,7 +660,7 @@ function RoutePlayer({
             {playlist.index + 1}/{playlist.total}
           </span>
         )}
-        <span className="min-w-0 flex-1 truncate text-[12px] font-semibold">{route.title}</span>
+        <span className="line-clamp-2 min-w-0 flex-1 text-[12px] font-semibold leading-tight">{route.title}</span>
         {route.distanceKm > 0 && (
           <span className="shrink-0 text-[10px] tabular-nums text-ink-soft" aria-live="off">
             {kmNow.toLocaleString('en-US')} km
