@@ -127,7 +127,8 @@ export function LanguagesIntro() {
       lead={
         <>
         <p>
-          The Bible has two parts. The <b>Old Testament</b> (39 books) is the Scriptures of Israel, written before Jesus was born; the <b>New Testament</b> (27 books) was written by his first followers in the decades after his death and resurrection.
+          The Bible has two parts. The <b>Old Testament</b> (39 books) is the Scriptures of Israel, written before Jesus was born; the <b>New Testament</b> (27 books) was written by his first followers in the decades after his death and resurrection. These 66 books are shared by every church; Catholic, Orthodox and Ethiopian Bibles add some further books, explained under{' '}
+          <a href="#canon" className="font-medium underline decoration-rule underline-offset-2 hover:decoration-ink">Which books?</a>.
         </p>
         <p className="mt-2">
           The Bible was not first written in English. Its 66 books were written over some 1,500 years in three languages: Hebrew,

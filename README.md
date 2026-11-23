@@ -37,6 +37,10 @@ The Bible page follows the text in the order things happened, in three tabs (eac
 |---|---|
 | ![Daniel's language detail](docs/screenshots/languages-drawer.png) | ![Breakdown in dark mode](docs/screenshots/languages-breakdown-dark.png) |
 
+**Which books?** The site uses the 66 books that every church accepts. This tab sets out how many books each tradition has (Protestant 66, Catholic 73, Eastern Orthodox 76–79, Ethiopian 81). Tap any of the further books, from Tobit to 1 Enoch, to see what it is and which churches include it. Six short points explain why Protestant churches keep 66, citing Athanasius, Jerome, Trent, the Thirty-Nine Articles and the Westminster Confession.
+
+![Which books?](docs/screenshots/languages-canon.png)
+
 **Scrolls to chapters & verses.** John 1:1–5 shown three ways: as a 4th-century continuous Greek manuscript, as scribal sense-lines, and with modern chapter and verse numbers. A strip of milestones follows.
 
 **Translations.** From the Septuagint to today's translation work, with figures from Wycliffe's 2025 statistics. You can filter by era and by kind of milestone.

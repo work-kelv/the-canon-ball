@@ -249,6 +249,13 @@ export function GridView({ isMatch, division, onDivision, selected, onOpen }: Pr
           </div>
         );
       })}
+      <p className="border-t border-rule pt-3 font-sans text-[12.5px] text-ink-soft">
+        These are the 66 books every church accepts. Catholic, Orthodox and Ethiopian Bibles include further books:{' '}
+        <a href="#canon" className="font-medium text-ink underline decoration-rule underline-offset-2 hover:decoration-ink">
+          see which books, and why Protestants keep 66
+        </a>
+        .
+      </p>
     </section>
   );
 }
