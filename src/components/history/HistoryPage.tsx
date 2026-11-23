@@ -51,7 +51,7 @@ const TABS = [
   { id: 'start', label: 'Start here', short: 'Start', icon: Compass, blurb: 'Church history, simply told' },
   { id: 'creeds', label: 'Creeds', icon: BookText, blurb: 'What the early church agreed to believe' },
   { id: 'tree', label: 'Family tree', icon: GitBranch, blurb: 'How one church became many' },
-  { id: 'traditions', label: 'Traditions', icon: GitCompareArrows, blurb: 'How Catholic, Orthodox and Protestant differ today' },
+  { id: 'traditions', label: 'Differences', icon: GitCompareArrows, blurb: 'How the four families of churches differ today' },
   { id: 'compare', label: 'Core beliefs', short: 'Beliefs', icon: Orbit, blurb: 'Who shares the core faith' },
   { id: 'titles', label: 'Titles', icon: UsersRound, blurb: 'Who’s who, from pope to pastor' },
 ] as const;

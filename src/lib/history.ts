@@ -108,6 +108,8 @@ export interface Topic {
   terms: { term: string; def: string }[];
   /** Short names for the two ends of the line, shown on the at-a-glance grid. */
   leftShort: string;
+  /** The Protestant family in one sentence (its branches vary). */
+  protestantSummary: string;
   rightShort: string;
   /** Passages typically cited by the traditions nearer each pole. */
   leftRefs: string[];
@@ -174,16 +176,18 @@ export interface ChurchFamily {
   members: FamilyMember[];
 }
 export const churchFamilies = (traditionsData.boundary as unknown as { families: ChurchFamily[] }).families;
-export interface NonCreedal {
+/** A folded explainer: intro, numbered reasons with quotes, a short story, a side-by-side, sources. */
+export interface Explainer {
   title: string;
   intro: string;
   reasons: { title: string; body: string; quote?: string; cite?: string }[];
-  agHistory: string;
+  storyTitle: string;
+  story: string;
   parallel: { title: string; left: { label: string; text: string }; right: { label: string; text: string }; note: string };
   sources: { label: string; url: string }[];
 }
 export const creedLens = (traditionsData.boundary as unknown as {
-  creedLens: { statuses: Record<CreedStatus, { label: string; note: string }>; notes: Record<CreedId, string>; nonCreedal: NonCreedal };
+  creedLens: { statuses: Record<CreedStatus, { label: string; note: string }>; notes: Record<CreedId, string>; nonCreedal: Explainer; chalcedon: Explainer };
 }).creedLens;
 export const memberCreeds = (f: ChurchFamily, m: FamilyMember): CreedSet => m.creeds ?? f.creeds;
 
@@ -205,6 +209,15 @@ export const traditionsMeta = traditionsData.meta;
 export const commonGround = traditionsData.commonGround as { text: string; ref: string }[];
 export const traditions = traditionsData.traditions as Tradition[];
 export const topics = traditionsData.topics as Topic[];
+/** The four families of churches (as on Core beliefs); the Protestant family is made of its branches. */
+export interface TraditionFamily {
+  id: string;
+  name: string;
+  short: string;
+  css: string;
+  members: string[];
+}
+export const traditionFamilies = traditionsData.families as TraditionFamily[];
 export const boundaryNote = traditionsData.boundary.note;
 export const boundaryTests = traditionsData.boundary.tests as BoundaryTest[];
 export const boundaryGroups = traditionsData.boundary.groups as BoundaryGroup[];

@@ -143,8 +143,8 @@ export function HistoryIntro() {
           kicker: 'Branches & traditions',
           body: (
             <>
-              {tab('tree', 'Family tree')}: the great schisms and reformations, from Pentecost to today. {tab('traditions', 'Traditions')}:
-              compare Catholic, Orthodox and Protestant churches on ten questions. {tab('titles', 'Titles')}: who’s who, from pope to pastor.
+              {tab('tree', 'Family tree')}: the great schisms and reformations, from Pentecost to today. {tab('traditions', 'Differences')}:
+              compare the Catholic, Eastern Orthodox, Oriental Orthodox and Protestant families on ten questions. {tab('titles', 'Titles')}: who’s who, from pope to pastor.
             </>
           ),
         },

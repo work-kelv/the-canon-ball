@@ -6,6 +6,7 @@ import {
   type CreedRow,
   type CreedStatus,
   type PhraseStatus,
+  type Explainer,
   boundaryGroups,
   churchFamilies,
   creedCompare,
@@ -78,13 +79,21 @@ export function CreedStatusMark({ s }: { s: CreedStatus }) {
  * Why some churches (Pentecostal, Baptist and other free churches) do not recite the creeds, though
  * they hold the faith the creeds define. Folded by default; opens in place.
  */
-export function NonCreedalExplainer({ label = 'Why don’t some churches recite the creeds?', defaultOpen = false }: { label?: string; defaultOpen?: boolean }) {
+export function NonCreedalExplainer({ label = 'Why don’t some churches recite the creeds?' }: { label?: string }) {
+  return <ExplainerBox data={creedLens.nonCreedal} label={label} css="--rel-mentor" />;
+}
+
+/** Why the Oriental Orthodox did not accept the Council of Chalcedon (451). */
+export function ChalcedonExplainer({ label = 'Why don’t the Oriental Orthodox accept Chalcedon?' }: { label?: string }) {
+  return <ExplainerBox data={creedLens.chalcedon} label={label} css="--role-judge" />;
+}
+
+function ExplainerBox({ data: n, label, css, defaultOpen = false }: { data: Explainer; label: string; css: string; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
-  const n = creedLens.nonCreedal;
   return (
-    <div className="rounded-md border border-rule" style={{ background: cssColor('--rel-mentor', 0.05) }}>
+    <div className="rounded-md border border-rule" style={{ background: cssColor(css, 0.05) }}>
       <button onClick={() => setOpen((o) => !o)} aria-expanded={open} className="focus-ring flex w-full items-center gap-2 px-3 py-2 text-left font-sans text-[13px] font-semibold">
-        <BookOpenCheck size={15} style={{ color: cssColor('--rel-mentor') }} aria-hidden />
+        <BookOpenCheck size={15} style={{ color: cssColor(css) }} aria-hidden />
         <span className="flex-1">{label}</span>
         <ChevronDown size={14} aria-hidden className={`transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
@@ -95,14 +104,14 @@ export function NonCreedalExplainer({ label = 'Why don’t some churches recite 
           <ol className="space-y-2.5">
             {n.reasons.map((r, i) => (
               <li key={r.title} className="grid grid-cols-[1.4rem_1fr] gap-x-2">
-                <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full font-sans text-[11px] font-bold text-paper" style={{ background: cssColor('--rel-mentor') }}>
+                <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full font-sans text-[11px] font-bold text-paper" style={{ background: cssColor(css) }}>
                   {i + 1}
                 </span>
                 <div>
                   <div className="font-sans text-[13.5px] font-semibold">{r.title}</div>
                   <p className="font-serif text-[14.5px] leading-snug">{r.body}</p>
                   {r.quote && (
-                    <blockquote className="mt-1 border-l-2 pl-3 font-serif text-[14.5px] italic leading-snug" style={{ borderColor: cssColor('--rel-mentor', 0.6) }}>
+                    <blockquote className="mt-1 border-l-2 pl-3 font-serif text-[14.5px] italic leading-snug" style={{ borderColor: cssColor(css, 0.6) }}>
                       “{r.quote}”
                       {r.cite && <span className="mt-0.5 block font-sans text-[11px] not-italic text-ink-soft">{r.cite}</span>}
                     </blockquote>
@@ -112,8 +121,8 @@ export function NonCreedalExplainer({ label = 'Why don’t some churches recite 
             ))}
           </ol>
           <div>
-            <div className="eyebrow mb-1">The Assemblies of God, 1916</div>
-            <p className="font-serif text-[14.5px] leading-relaxed">{n.agHistory}</p>
+            <div className="eyebrow mb-1">{n.storyTitle}</div>
+            <p className="font-serif text-[14.5px] leading-relaxed">{n.story}</p>
           </div>
           <div>
             <div className="eyebrow mb-1.5">{n.parallel.title}</div>
@@ -313,8 +322,9 @@ export function CreedCompare() {
           “Holds its teaching” marks churches that teach the same faith in their own statement of faith rather than reciting the
           historic creed. Within a family, individual churches and congregations vary.
         </p>
-        <div className="mt-3">
+        <div className="mt-3 space-y-2">
           <NonCreedalExplainer />
+          <ChalcedonExplainer />
         </div>
       </div>
     </section>

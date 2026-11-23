@@ -90,12 +90,12 @@ const STEPS: Step[] = [
     title: 'Different churches, one core faith',
     css: '--rel-mentor',
     body: [
-      'Catholic, Orthodox and Protestant churches still differ on questions like the Lord’s Supper, baptism, Mary and church leadership.',
+      'Today there are four great families of churches: Catholic, Eastern Orthodox, Oriental Orthodox and Protestant. They still differ on questions like the Lord’s Supper, baptism, Mary and church leadership.',
       'But they share the core: one God in three persons; Jesus, fully God and fully man; his death for our sins and his resurrection; salvation by God’s grace. Some newer movements that call themselves Christian differ on these core beliefs.',
     ],
     idea: 'The differences between churches are real, but they sit on top of a faith they all share.',
     next: [
-      { tab: 'traditions', label: 'Compare the traditions' },
+      { tab: 'traditions', label: 'Compare the four families' },
       { tab: 'compare', label: 'See who shares the core' },
     ],
   },

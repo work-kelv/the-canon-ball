@@ -2,8 +2,31 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowLeft, ChevronDown, ChevronLeft, ChevronRight, HeartHandshake, History, Info, Lightbulb, X } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
-import { type Topic, commonGround, topics, traditions, traditionsMeta } from '../../lib/history';
+import { type Topic, commonGround, topics, traditionFamilies, traditions, traditionsMeta } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
+import { Segmented } from '../characters/controls';
+
+// ── Units: what is compared. Either the four families (Protestant shown as the range of its
+//    branches) or all eight traditions one by one. ──
+interface Unit {
+  id: string;
+  name: string;
+  short: string;
+  css: string;
+  members: string[];
+}
+type Level = 'families' | 'all';
+const unitsFor = (level: Level): Unit[] =>
+  level === 'families' ? traditionFamilies : traditions.map((t) => ({ id: t.id, name: t.name, short: t.short, css: t.css, members: [t.id] }));
+const tradById = (id: string) => traditions.find((t) => t.id === id)!;
+
+/** Where a unit stands on a question: a point, or a range for a family of several branches. */
+function placeOf(t: Topic, u: Unit) {
+  const vs = u.members.map((m) => t.positions[m].v);
+  const lo = Math.min(...vs);
+  const hi = Math.max(...vs);
+  return { lo, hi, mid: (lo + hi) / 2, text: u.members.length > 1 ? t.protestantSummary : t.positions[u.members[0]].text };
+}
 
 type Verdict = 'same' | 'close' | 'different';
 const VERDICT: Record<Verdict, { label: string; css: string }> = {
@@ -11,11 +34,16 @@ const VERDICT: Record<Verdict, { label: string; css: string }> = {
   close: { label: 'Close', css: '--role-king' },
   different: { label: 'Differ', css: '--rel-rival' },
 };
-const verdictOf = (t: Topic, a: string, b: string): Verdict => {
-  const d = Math.abs(t.positions[a].v - t.positions[b].v);
-  return d === 0 ? 'same' : d <= 1 ? 'close' : 'different';
+/** Distance between two points or ranges; a wide range never fully "agrees". */
+const verdictOf = (t: Topic, a: Unit, b: Unit): Verdict => {
+  const p = placeOf(t, a);
+  const q = placeOf(t, b);
+  const gap = Math.max(0, p.lo - q.hi, q.lo - p.hi);
+  const spread = Math.max(p.hi - p.lo, q.hi - q.lo);
+  if (gap === 0 && spread === 0) return 'same';
+  if (gap === 0 && spread <= 1) return 'close';
+  return gap <= 1 ? 'close' : 'different';
 };
-const byId = (id: string) => traditions.find((t) => t.id === id)!;
 
 function VerdictBadge({ v }: { v: Verdict }) {
   const { label, css } = VERDICT[v];
@@ -27,19 +55,23 @@ function VerdictBadge({ v }: { v: Verdict }) {
   );
 }
 
-/** A tiny track with a dot: where one tradition sits between a question's two answers. */
-function MiniTrack({ v, css }: { v: number; css: string }) {
+const pct = (v: number) => `${(v / 4) * 100}%`;
+
+/** A small track with a dot, or a band when the unit is a range. */
+function MiniTrack({ lo, hi, css }: { lo: number; hi: number; css: string }) {
   return (
     <span className="relative block h-3 w-full">
       <span className="absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-ink/10" />
-      <span className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-paper" style={{ left: `${(v / 4) * 100}%`, background: cssColor(css) }} />
+      {hi > lo && <span className="absolute top-1/2 h-2 -translate-y-1/2 rounded-full" style={{ left: pct(lo), width: `calc(${pct(hi)} - ${pct(lo)})`, background: cssColor(css, 0.35) }} />}
+      <span className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-paper" style={{ left: pct(lo), background: cssColor(css) }} />
+      {hi > lo && <span className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2 ring-paper" style={{ left: pct(hi), background: cssColor(css) }} />}
     </span>
   );
 }
 
-// ── At a glance: one line per question, both answers labelled, all seven traditions on it ──
-function Glance({ onTopic, focus }: { onTopic: (id: string) => void; focus: string[] }) {
-  const pair = focus.length === 2 ? (focus as [string, string]) : null;
+// ── At a glance: one line per question, both answers labelled ──
+function Glance({ units, onTopic, focus }: { units: Unit[]; onTopic: (id: string) => void; focus: string[] }) {
+  const pair = focus.length === 2 ? (focus.map((f) => units.find((u) => u.id === f)!) as [Unit, Unit]) : null;
   return (
     <div className="panel overflow-hidden">
       <div className="grid lg:grid-cols-2">
@@ -62,35 +94,39 @@ function Glance({ onTopic, focus }: { onTopic: (id: string) => void; focus: stri
                   <ChevronRight size={15} className="text-ink-soft transition-transform group-hover:translate-x-0.5" aria-hidden />
                 </span>
               </span>
-              <span className="relative mx-1.5 mt-3 block h-4">
+              <span className="relative mx-1.5 mt-3 block h-5">
                 <span className="absolute inset-x-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-ink/10" />
-                {traditions.map((t) => {
-                  const v = tp.positions[t.id].v;
-                  const n = seen.get(v) ?? 0;
-                  seen.set(v, n + 1);
-                  const dy = n === 0 ? 0 : (n % 2 ? -1 : 1) * Math.ceil(n / 2) * 5;
-                  const strong = focus.includes(t.id);
+                {units.map((u) => {
+                  const p = placeOf(tp, u);
+                  const strong = focus.includes(u.id);
                   const faded = focus.length > 0 && !strong;
+                  const n = seen.get(p.lo) ?? 0;
+                  seen.set(p.lo, n + 1);
+                  const dy = n === 0 ? 0 : (n % 2 ? -1 : 1) * Math.ceil(n / 2) * 5;
+                  const size = strong ? 13 : 10;
+                  const common = { opacity: faded ? 0.25 : 1, zIndex: strong ? 2 : 1, transition: 'all 300ms' } as const;
+                  if (p.hi > p.lo) {
+                    // a family that spans a range: a band from its nearest to its farthest branch
+                    return (
+                      <span
+                        key={u.id}
+                        title={`${u.short}: ${p.text}`}
+                        className="absolute top-1/2 rounded-full ring-2 ring-paper"
+                        style={{ ...common, left: pct(p.lo), width: `calc(${pct(p.hi)} - ${pct(p.lo)})`, height: size - 2, transform: `translateY(calc(-50% + ${dy}px))`, background: cssColor(u.css, strong ? 0.85 : 0.6) }}
+                      />
+                    );
+                  }
                   return (
                     <span
-                      key={t.id}
-                      title={`${t.short}: ${tp.positions[t.id].text}`}
-                      className="absolute top-1/2 rounded-full ring-2 ring-paper transition-all duration-300"
-                      style={{
-                        left: `${(v / 4) * 100}%`,
-                        width: strong ? 13 : 9,
-                        height: strong ? 13 : 9,
-                        transform: `translate(-50%, calc(-50% + ${dy}px))`,
-                        background: cssColor(t.css),
-                        opacity: faded ? 0.25 : 1,
-                        zIndex: strong ? 2 : 1,
-                      }}
+                      key={u.id}
+                      title={`${u.short}: ${p.text}`}
+                      className="absolute top-1/2 rounded-full ring-2 ring-paper"
+                      style={{ ...common, left: pct(p.lo), width: size, height: size, transform: `translate(-50%, calc(-50% + ${dy}px))`, background: cssColor(u.css) }}
                     />
                   );
                 })}
               </span>
-              {/* The two answers, at the two ends of the line */}
-              <span className="mt-1.5 flex justify-between gap-4 font-sans text-[11px] leading-tight text-ink-soft">
+              <span className="mt-1 flex justify-between gap-4 font-sans text-[11px] leading-tight text-ink-soft">
                 <span>← {tp.leftShort}</span>
                 <span className="text-right">{tp.rightShort} →</span>
               </span>
@@ -102,10 +138,10 @@ function Glance({ onTopic, focus }: { onTopic: (id: string) => void; focus: stri
   );
 }
 
-// ── One question in full (shown in the side panel) ──
-function TopicDetail({ topic, focus }: { topic: Topic; focus: string[] }) {
-  const sorted = [...traditions].sort((a, b) => topic.positions[a.id].v - topic.positions[b.id].v);
-  const pair = focus.length === 2 ? (focus as [string, string]) : null;
+// ── One question in full (in the side panel) ──
+function TopicDetail({ topic, units, focus }: { topic: Topic; units: Unit[]; focus: string[] }) {
+  const sorted = [...units].sort((a, b) => placeOf(topic, a).mid - placeOf(topic, b).mid);
+  const pair = focus.length === 2 ? (focus.map((f) => units.find((u) => u.id === f)!) as [Unit, Unit]) : null;
   return (
     <div className="space-y-5">
       <header>
@@ -113,8 +149,7 @@ function TopicDetail({ topic, focus }: { topic: Topic; focus: string[] }) {
         <h3 className="mt-0.5 font-display text-3xl font-semibold leading-tight">{topic.question}</h3>
         {pair && (
           <div className="mt-2 flex flex-wrap items-center gap-2 font-sans text-[12.5px]">
-            <b style={{ color: cssColor(byId(pair[0]).css) }}>{byId(pair[0]).short}</b> and{' '}
-            <b style={{ color: cssColor(byId(pair[1]).css) }}>{byId(pair[1]).short}</b>:
+            <b style={{ color: cssColor(pair[0].css) }}>{pair[0].short}</b> and <b style={{ color: cssColor(pair[1].css) }}>{pair[1].short}</b>:
             <VerdictBadge v={verdictOf(topic, pair[0], pair[1])} />
           </div>
         )}
@@ -133,7 +168,6 @@ function TopicDetail({ topic, focus }: { topic: Topic; focus: string[] }) {
         <p className="font-serif text-[16px] leading-relaxed">{topic.history}</p>
       </section>
 
-      {/* Where they stand: one tradition per row, ordered from one answer to the other */}
       <section>
         <h4 className="eyebrow mb-1.5">Where they stand</h4>
         <div className="mb-1 flex justify-between gap-6 font-sans text-[11.5px] font-semibold leading-tight text-ink-soft">
@@ -141,22 +175,36 @@ function TopicDetail({ topic, focus }: { topic: Topic; focus: string[] }) {
           <span className="max-w-[45%] text-right">{topic.right} →</span>
         </div>
         <ol className="divide-y divide-rule rounded-md border border-rule">
-          {sorted.map((t) => {
-            const p = topic.positions[t.id];
-            const on = focus.includes(t.id);
+          {sorted.map((u) => {
+            const p = placeOf(topic, u);
+            const on = focus.includes(u.id);
             return (
               <li
-                key={t.id}
+                key={u.id}
                 className={`px-3 py-2.5 ${on ? 'bg-ink/[0.05]' : ''}`}
-                style={{ boxShadow: `inset 3px 0 0 ${cssColor(t.css, on ? 1 : 0.6)}`, opacity: focus.length && !on ? 0.65 : 1 }}
+                style={{ boxShadow: `inset 3px 0 0 ${cssColor(u.css, on ? 1 : 0.6)}`, opacity: focus.length && !on ? 0.65 : 1 }}
               >
                 <div className="grid grid-cols-[7.5rem_minmax(0,1fr)] items-center gap-3 sm:grid-cols-[9rem_minmax(0,1fr)]">
-                  <span className="font-sans text-[13px] font-semibold" style={{ color: cssColor(t.css) }}>
-                    {t.name}
+                  <span className="font-sans text-[13px] font-semibold" style={{ color: cssColor(u.css) }}>
+                    {u.name}
                   </span>
-                  <MiniTrack v={p.v} css={t.css} />
+                  <MiniTrack lo={p.lo} hi={p.hi} css={u.css} />
                 </div>
                 <p className="mt-1 font-serif text-[14.5px] leading-snug">{p.text}</p>
+                {u.members.length > 1 && (
+                  <ul className="mt-2 space-y-1.5 border-l-2 pl-3" style={{ borderColor: cssColor(u.css, 0.3) }}>
+                    {[...u.members]
+                      .sort((a, b) => topic.positions[a].v - topic.positions[b].v)
+                      .map((m) => (
+                        <li key={m} className="font-sans text-[12.5px] leading-snug">
+                          <span className="font-semibold" style={{ color: cssColor(tradById(m).css) }}>
+                            {tradById(m).short}:
+                          </span>{' '}
+                          <span className="text-ink/85">{topic.positions[m].text}</span>
+                        </li>
+                      ))}
+                  </ul>
+                )}
               </li>
             );
           })}
@@ -212,7 +260,7 @@ function TopicDetail({ topic, focus }: { topic: Topic; focus: string[] }) {
 }
 
 /** Side panel for one question, like the person panel on the Characters timeline. */
-function QuestionPanel({ index, focus, onStep, onClose }: { index: number; focus: string[]; onStep: (d: -1 | 1) => void; onClose: () => void }) {
+function QuestionPanel({ index, units, focus, onStep, onClose }: { index: number; units: Unit[]; focus: string[]; onStep: (d: -1 | 1) => void; onClose: () => void }) {
   const topic = topics[index];
   const panelRef = useRef<HTMLElement>(null);
   const backRef = useRef<HTMLButtonElement>(null);
@@ -253,7 +301,7 @@ function QuestionPanel({ index, focus, onStep, onClose }: { index: number; focus
           </span>
         </div>
         <div className="px-5 py-5">
-          <TopicDetail topic={topic} focus={focus} />
+          <TopicDetail topic={topic} units={units} focus={focus} />
         </div>
         <div className="mt-auto space-y-3 border-t border-rule px-5 py-4">
           <div className="flex items-center justify-between gap-2">
@@ -275,28 +323,32 @@ function QuestionPanel({ index, focus, onStep, onClose }: { index: number; focus
 }
 
 export function TraditionsCompare() {
+  const [level, setLevel] = useState<Level>('families');
   const [open, setOpen] = useState<number | null>(null);
   const [focus, setFocus] = useState<string[]>([]);
   const [showShared, setShowShared] = useState(false);
+  const units = unitsFor(level);
 
+  const changeLevel = (l: Level) => {
+    setLevel(l);
+    setFocus([]);
+  };
   const toFocus = (id: string) =>
     setFocus((f) => (f.includes(id) ? f.filter((x) => x !== id) : f.length >= 2 ? [f[1], id] : [...f, id]));
   const step = (d: -1 | 1) => setOpen((i) => (i === null ? i : Math.min(topics.length - 1, Math.max(0, i + d))));
 
-  const pair = focus.length === 2 ? (focus as [string, string]) : null;
-  const counts = pair
-    ? (['same', 'close', 'different'] as Verdict[]).map((v) => topics.filter((t) => verdictOf(t, pair[0], pair[1]) === v).length)
-    : null;
+  const pair = focus.length === 2 ? (focus.map((f) => units.find((u) => u.id === f)!) as [Unit, Unit]) : null;
+  const counts = pair ? (['same', 'close', 'different'] as Verdict[]).map((v) => topics.filter((t) => verdictOf(t, pair[0], pair[1]) === v).length) : null;
 
   return (
     <section aria-labelledby="trad-title" className="space-y-5">
       <div>
         <h2 id="trad-title" className="font-display text-3xl font-semibold">
-          Catholic, Orthodox, Protestant: what’s the difference?
+          Four families of churches, ten questions
         </h2>
         <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
-          All of these churches share the same core faith. Where they differ, each of ten questions below is a line between two answers,
-          with every tradition placed along it. Tap a question to read the full story.
+          Catholic, Eastern Orthodox, Oriental Orthodox and Protestant churches share the same core faith. Where they differ, each
+          question below is a line between two answers, with every family placed along it. Tap a question to read the full story.
         </p>
       </div>
 
@@ -352,22 +404,37 @@ export function TraditionsCompare() {
         )}
       </div>
 
-      {/* Compare two: chips, then the ten squares */}
+      {/* Level, then compare two: chips and the ten squares */}
       <div className="rounded-md border border-rule bg-paper/85 px-3 py-3">
+        <div className="mb-3 flex flex-wrap items-center gap-2 border-b border-rule pb-3">
+          <span className="font-sans text-[13px] font-semibold">Show</span>
+          <Segmented<Level>
+            label="Compare at the level of"
+            value={level}
+            onChange={changeLevel}
+            options={[
+              { id: 'families', label: 'The 4 families' },
+              { id: 'all', label: 'All 8 traditions' },
+            ]}
+          />
+          <span className="font-sans text-[11.5px] text-ink-soft">
+            {level === 'families' ? 'Protestants appear as a band: their branches differ among themselves.' : 'The Protestant family split into its five main branches.'}
+          </span>
+        </div>
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="mr-1 font-sans text-[13px] font-semibold">{pair ? 'Comparing' : focus.length ? 'Pick one more' : 'Pick two traditions to compare'}</span>
-          {traditions.map((t) => {
-            const on = focus.includes(t.id);
+          <span className="mr-1 font-sans text-[13px] font-semibold">{pair ? 'Comparing' : focus.length ? 'Pick one more' : 'Pick two to compare'}</span>
+          {units.map((u) => {
+            const on = focus.includes(u.id);
             return (
               <button
-                key={t.id}
-                onClick={() => toFocus(t.id)}
+                key={u.id}
+                onClick={() => toFocus(u.id)}
                 aria-pressed={on}
                 className={`focus-ring inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-sans text-[12.5px] font-medium ${on ? 'border-transparent shadow-sm' : 'border-rule hover:border-ink/50'}`}
-                style={on ? { background: cssColor(t.css), color: cssColor('--paper') } : undefined}
+                style={on ? { background: cssColor(u.css), color: cssColor('--paper') } : undefined}
               >
-                {!on && <span className="h-2 w-2 rounded-full" style={{ background: cssColor(t.css) }} />}
-                {t.short}
+                {!on && <span className="h-2 w-2 rounded-full" style={{ background: cssColor(u.css) }} />}
+                {u.short}
               </button>
             );
           })}
@@ -397,9 +464,8 @@ export function TraditionsCompare() {
               })}
             </div>
             <p className="font-sans text-[13px]">
-              <b style={{ color: cssColor(byId(pair[0]).css) }}>{byId(pair[0]).short}</b> and{' '}
-              <b style={{ color: cssColor(byId(pair[1]).css) }}>{byId(pair[1]).short}</b> agree on <b>{counts[0]}</b>, are close on{' '}
-              <b>{counts[1]}</b> and differ on <b>{counts[2]}</b> of {topics.length} questions.
+              <b style={{ color: cssColor(pair[0].css) }}>{pair[0].short}</b> and <b style={{ color: cssColor(pair[1].css) }}>{pair[1].short}</b> agree on{' '}
+              <b>{counts[0]}</b>, are close on <b>{counts[1]}</b> and differ on <b>{counts[2]}</b> of {topics.length} questions.
               <span className="block text-[11.5px] text-ink-soft">Tap a square to read that question.</span>
             </p>
           </div>
@@ -408,10 +474,12 @@ export function TraditionsCompare() {
 
       <div className="space-y-2">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h3 className="font-display text-xl font-semibold">Ten questions at a glance</h3>
-          <span className="font-sans text-[11.5px] text-ink-soft">Each dot is a tradition · tap a question for the full story</span>
+          <h3 className="font-display text-xl font-semibold">The ten questions</h3>
+          <span className="font-sans text-[11.5px] text-ink-soft">
+            {level === 'families' ? 'Each dot is a family; the blue band is the Protestant range' : 'Each dot is a tradition'} · tap a question for the full story
+          </span>
         </div>
-        <Glance onTopic={(id) => setOpen(topics.findIndex((t) => t.id === id))} focus={focus} />
+        <Glance units={units} onTopic={(id) => setOpen(topics.findIndex((t) => t.id === id))} focus={focus} />
       </div>
 
       <p className="font-sans text-[11px] text-ink-soft">
@@ -425,7 +493,7 @@ export function TraditionsCompare() {
         .
       </p>
 
-      {open !== null && <QuestionPanel index={open} focus={focus} onStep={step} onClose={() => setOpen(null)} />}
+      {open !== null && <QuestionPanel index={open} units={units} focus={focus} onStep={step} onClose={() => setOpen(null)} />}
     </section>
   );
 }

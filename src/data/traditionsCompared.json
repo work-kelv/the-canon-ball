@@ -74,9 +74,16 @@
     {
       "id": "orthodox",
       "name": "Eastern Orthodox",
-      "short": "Orthodox",
+      "short": "Eastern Orthodox",
       "css": "--role-priest",
       "documents": "The seven ecumenical councils; the Church Fathers; the Divine Liturgy"
+    },
+    {
+      "id": "oriental",
+      "name": "Oriental Orthodox",
+      "short": "Oriental Orthodox",
+      "css": "--role-judge",
+      "documents": "The first three ecumenical councils; St Cyril of Alexandria; the Coptic, Ethiopian, Armenian and Syriac liturgies"
     },
     {
       "id": "lutheran",
@@ -155,6 +162,10 @@
         "pentecostal": {
           "v": 0.5,
           "text": "Scripture is the inspired, infallible rule; the Spirit still speaks through gifts such as prophecy, always tested by Scripture."
+        },
+        "oriental": {
+          "v": 3.5,
+          "text": "Holy Tradition, with Scripture at its heart, read through the Fathers (above all St Cyril of Alexandria) and the first three councils."
         }
       },
       "why": "Every other disagreement depends on this one. When Christians read the Bible differently, who settles the question: the individual reader, the confessions of a church, or the Church’s teaching office?",
@@ -183,7 +194,8 @@
         "Matthew 16:18–19"
       ],
       "leftShort": "Scripture alone",
-      "rightShort": "Scripture + Tradition"
+      "rightShort": "Scripture + Tradition",
+      "protestantSummary": "Scripture alone is the final authority. Lutheran, Reformed and Anglican churches also give weight to creeds and confessions; Baptists and Pentecostals give them less."
     },
     {
       "id": "salvation",
@@ -226,6 +238,10 @@
         "pentecostal": {
           "v": 0,
           "text": "Saved by grace through repentance and faith in Christ. Baptism in the Spirit is a later empowering, not a condition of salvation."
+        },
+        "oriental": {
+          "v": 4,
+          "text": "Salvation by grace, received in faith and lived out in the sacraments, prayer, fasting and repentance; like the Eastern Orthodox, they speak of union with God."
         }
       },
       "why": "The question that sparked the Reformation. Lutherans later called justification “the article by which the church stands or falls”.",
@@ -255,7 +271,8 @@
         "2 Peter 1:4"
       ],
       "leftShort": "Faith alone",
-      "rightShort": "Faith + sacraments"
+      "rightShort": "Faith + sacraments",
+      "protestantSummary": "Made right with God by grace alone, through faith alone, for Christ’s sake; good works follow as fruit."
     },
     {
       "id": "eucharist",
@@ -297,6 +314,10 @@
         "pentecostal": {
           "v": 0,
           "text": "Mostly memorial: a remembrance of Christ's death and a sign of fellowship until he comes."
+        },
+        "oriental": {
+          "v": 4,
+          "text": "The bread and wine truly become Christ’s body and blood, received after preparation and fasting."
         }
       },
       "why": "Jesus said “This is my body.” How literally to take it divided Catholics from Protestants, and Protestants from one another: Luther and Zwingli failed to agree at the Marburg Colloquy (1529).",
@@ -325,7 +346,8 @@
         "1 Corinthians 10:16"
       ],
       "leftShort": "A memorial",
-      "rightShort": "Becomes Christ’s body"
+      "rightShort": "Becomes Christ’s body",
+      "protestantSummary": "Views range from Christ’s real presence (Lutheran) to a spiritual feeding (Reformed, Anglican) to a memorial (Baptist, Pentecostal)."
     },
     {
       "id": "baptism",
@@ -367,6 +389,10 @@
         "pentecostal": {
           "v": 0.5,
           "text": "Believers, by immersion. Many also expect a distinct 'baptism in the Holy Spirit', marked by speaking in tongues."
+        },
+        "oriental": {
+          "v": 4,
+          "text": "Infants and adults, by triple immersion, followed at once by chrismation and first communion."
         }
       },
       "why": "Two linked questions: should babies be baptised, and does baptism itself give new birth or does it signify a faith already there?",
@@ -397,7 +423,8 @@
         "John 3:5"
       ],
       "leftShort": "Believers only",
-      "rightShort": "Infants too"
+      "rightShort": "Infants too",
+      "protestantSummary": "Divided: Lutheran, Anglican and Reformed churches baptise infants; Baptists and Pentecostals baptise believers only."
     },
     {
       "id": "sacraments",
@@ -439,6 +466,10 @@
         "pentecostal": {
           "v": 0,
           "text": "Two ordinances; some churches also practise foot-washing."
+        },
+        "oriental": {
+          "v": 4,
+          "text": "Seven sacraments (holy mysteries), as in the Catholic and Eastern Orthodox churches."
         }
       },
       "why": "Does God promise to give grace through particular rites, and which ones did Christ himself establish?",
@@ -462,7 +493,8 @@
         "John 20:22–23"
       ],
       "leftShort": "2 ordinances",
-      "rightShort": "7 sacraments"
+      "rightShort": "7 sacraments",
+      "protestantSummary": "Two, baptism and the Lord’s Supper, kept as sacraments (Lutheran, Anglican, Reformed) or ordinances (Baptist, Pentecostal)."
     },
     {
       "id": "government",
@@ -504,6 +536,10 @@
         "pentecostal": {
           "v": 1,
           "text": "Mixed: bodies such as the Assemblies of God combine local self-government with district and national councils."
+        },
+        "oriental": {
+          "v": 3,
+          "text": "Bishops in apostolic succession under patriarchs (such as the Coptic Pope of Alexandria and the Armenian Catholicos), in self-governing national churches."
         }
       },
       "why": "Who has the authority to teach, to ordain ministers and to discipline: one bishop over a region, elders together, or the whole congregation?",
@@ -532,7 +568,8 @@
         "Acts 15:6"
       ],
       "leftShort": "Each congregation",
-      "rightShort": "Bishops & Pope"
+      "rightShort": "Bishops & Pope",
+      "protestantSummary": "Every form: bishops (Anglican, some Lutheran), councils of elders (Presbyterian), or self-governing congregations (Baptist)."
     },
     {
       "id": "mary",
@@ -575,6 +612,10 @@
         "pentecostal": {
           "v": 0,
           "text": "Mary is honoured as a faithful believer; prayer is made to God alone, through Christ."
+        },
+        "oriental": {
+          "v": 4,
+          "text": "Mary is honoured as Theotokos, Mother of God, with icons, hymns and feasts, and asked to intercede."
         }
       },
       "why": "All of these churches honour Mary as the mother of Jesus. They differ on her role today and on asking saints to pray for us.",
@@ -603,7 +644,8 @@
         "Revelation 5:8"
       ],
       "leftShort": "Honoured, not invoked",
-      "rightShort": "Venerated, asked to pray"
+      "rightShort": "Venerated, asked to pray",
+      "protestantSummary": "Mary is honoured as the mother of the Lord and a model of faith; prayer is made to God alone, through Christ."
     },
     {
       "id": "canon",
@@ -643,6 +685,10 @@
         "pentecostal": {
           "v": 0,
           "text": "66 books."
+        },
+        "oriental": {
+          "v": 4,
+          "text": "Broad canons including the deuterocanonical books; the Ethiopian Church’s is the widest of all, with Enoch and Jubilees."
         }
       },
       "why": "Which books are Scripture shapes other doctrines; prayer for the dead, for example, is supported from 2 Maccabees.",
@@ -665,7 +711,8 @@
         "Hebrews 11:35"
       ],
       "leftShort": "66 books",
-      "rightShort": "73+ books"
+      "rightShort": "73+ books",
+      "protestantSummary": "66 books. The Apocrypha is not Scripture, though Anglicans and Lutherans read it for instruction."
     },
     {
       "id": "clergy",
@@ -707,6 +754,10 @@
         "pentecostal": {
           "v": 1,
           "text": "Married ministers. Many Pentecostal churches have credentialed women ministers from their early years."
+        },
+        "oriental": {
+          "v": 3,
+          "text": "Men only. Married men may become priests, but bishops are chosen from celibate monks."
         }
       },
       "why": "Two questions in one: may ministers marry, and may women be ordained?",
@@ -732,7 +783,8 @@
         "1 Timothy 2:12"
       ],
       "leftShort": "Married; women ordained",
-      "rightShort": "Celibate; men only"
+      "rightShort": "Celibate; men only",
+      "protestantSummary": "Married ministers. Many Protestant churches ordain women; some do not."
     },
     {
       "id": "afterlife",
@@ -774,6 +826,10 @@
         "pentecostal": {
           "v": 0,
           "text": "No purgatory: believers go to be with Christ at death."
+        },
+        "oriental": {
+          "v": 2,
+          "text": "Prays for the departed, without a doctrine of purgatory."
         }
       },
       "why": "Do the faithful need cleansing after death, and can the prayers of the living help them?",
@@ -798,7 +854,8 @@
         "Matthew 12:32"
       ],
       "leftShort": "Straight to Christ",
-      "rightShort": "Purgatory"
+      "rightShort": "Purgatory",
+      "protestantSummary": "No purgatory: believers go to be with Christ when they die."
     }
   ],
   "boundary": {
@@ -1195,6 +1252,51 @@
         "category": "Other movements"
       },
       {
+        "id": "judaism",
+        "ring": "other",
+        "name": "Judaism",
+        "css": "--hebrew",
+        "category": "Other religions",
+        "origin": "The faith of Israel: Abraham, Moses and Sinai; rabbinic Judaism after the Temple’s destruction in AD 70",
+        "self": "The covenant faith of the Jewish people, rooted in the Hebrew Bible and the teaching of the rabbis.",
+        "why": "Christianity grew out of Judaism: Jesus and the apostles were Jews, and the Hebrew Bible is the Christian Old Testament. Judaism does not claim to be Christian. It holds that Jesus did not fulfil the messianic prophecies of an age of peace, and it understands God’s oneness in a way that excludes the Trinity and any divine man.",
+        "affirms": "One God, the Creator; the Hebrew Scriptures (the Christian Old Testament); the Ten Commandments; the hope of the Messiah; and, in traditional Judaism, the resurrection of the dead.",
+        "keyTexts": [
+          "Deuteronomy 6:4",
+          "Isaiah 53:5",
+          "Romans 9:4–5"
+        ],
+        "source": "https://www.myjewishlearning.com/article/what-do-jews-believe-about-jesus/",
+        "tests": {
+          "trinity": {
+            "s": "differs",
+            "text": "“Hear, O Israel: the LORD our God, the LORD is one” (the Shema). God’s oneness is understood to exclude three persons."
+          },
+          "deity": {
+            "s": "differs",
+            "text": "Jesus is not accepted as the Messiah or as divine; the New Testament’s claims that he is equal to God are “hard to reconcile with Judaism’s insistence on God’s oneness” (MyJewishLearning)."
+          },
+          "cross": {
+            "s": "differs",
+            "text": "Jesus’ crucifixion under the Romans is not disputed, but not that his death atoned for sin or that he rose: “What Jews don’t accept is … that he was the Messiah, divine, or that his death had salvific significance” (Aish)."
+          },
+          "scripture": {
+            "s": "partial",
+            "text": "The Hebrew Bible, the same books as the Protestant Old Testament, read with the Oral Torah (the Talmud); the New Testament is not Scripture."
+          },
+          "grace": {
+            "s": "differs",
+            "text": "Relationship with God through his covenant with Israel, repentance (teshuvah) and keeping the commandments, by his mercy, without a saviour’s atoning death."
+          }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        }
+      },
+      {
         "id": "islam",
         "ring": "other",
         "name": "Islam",
@@ -1261,7 +1363,7 @@
       "notes": {
         "apostles": "A Western baptismal creed. The Eastern and Oriental Orthodox share its faith but do not use the text.",
         "nicene": "The most widely shared creed: confessed by Catholic, Eastern Orthodox, Oriental Orthodox and most Protestant churches. Every movement outside the boundary rejects its definition of the Son as “of one substance with the Father”.",
-        "chalcedon": "The line that divides the families inside the boundary: the Oriental Orthodox did not accept the Council of Chalcedon (451), though recent dialogues have found that both sides confess the same Christ in different words.",
+        "chalcedon": "The line that divides the families inside the circle: the Oriental Orthodox did not accept the Council of Chalcedon (451). They confess Christ fully God and fully man, but in Cyril’s words “one nature”, and recent dialogues have found both sides confess the same Christ.",
         "athanasian": "A Latin creed of the West, with its warning clauses. The East does not use it, though it shares the faith it defines."
       },
       "nonCreedal": {
@@ -1291,7 +1393,6 @@
             "body": "Services in these churches are usually free rather than set liturgies, so there is no fixed place in worship where a creed would be said."
           }
         ],
-        "agHistory": "In 1916, two years after it was founded, the Assemblies of God faced a division: a significant minority of its ministers had taken up Oneness teaching, which denied the Trinity. The General Council met in St Louis and voted to “set forth a clear statement of the things most surely believed among us”: the Statement of Fundamental Truths, which firmly affirms the Trinity. Oneness ministers then withdrew. In other words, the Assemblies of God wrote its statement precisely to stand with the faith of the creeds.",
         "parallel": {
           "title": "Same faith, different words: the Trinity",
           "left": {
@@ -1316,6 +1417,60 @@
           {
             "label": "Baptist Faith and Message, preamble",
             "url": "https://bfm.sbc.net/preamble/"
+          }
+        ],
+        "storyTitle": "The Assemblies of God, 1916",
+        "story": "In 1916, two years after it was founded, the Assemblies of God faced a division: a significant minority of its ministers had taken up Oneness teaching, which denied the Trinity. The General Council met in St Louis and voted to “set forth a clear statement of the things most surely believed among us”: the Statement of Fundamental Truths, which firmly affirms the Trinity. Oneness ministers then withdrew. In other words, the Assemblies of God wrote its statement precisely to stand with the faith of the creeds."
+      },
+      "chalcedon": {
+        "title": "Why the Oriental Orthodox did not accept Chalcedon",
+        "intro": "The Oriental Orthodox churches (Coptic, Ethiopian, Armenian, Syriac and Indian) accept the first three councils and confess the Nicene Creed. They parted from the rest of the church over the Council of Chalcedon in 451: not over whether Jesus is fully God and fully man, which both sides confess, but over how to say it, and over how the council was conducted and enforced.",
+        "reasons": [
+          {
+            "title": "“One nature”, not “two natures”",
+            "body": "They follow St Cyril of Alexandria, who spoke of “the one nature of God the Word incarnate”: divinity and humanity truly united in one, without being mixed. Chalcedon’s phrase “in two natures” sounded to them like dividing Christ in two, the error of Nestorius that the Council of Ephesus (431) had condemned.",
+            "quote": "The expression “two natures” implies in itself division or separation, and although those who believe in “the two natures” admit unity, the tone of separation was obvious in the Council of Chalcedon, a matter which prompted us to reject the Council.",
+            "cite": "Pope Shenouda III of Alexandria, The Nature of Christ"
+          },
+          {
+            "title": "Not “Monophysite”",
+            "body": "They equally reject Eutyches, who taught that Christ’s humanity was swallowed up in his divinity. So they refuse the old label “Monophysite” and call their view miaphysite: one united nature, in which nothing of either is lost.",
+            "quote": "Both families agree in condemning the Eutychian heresy.",
+            "cite": "Joint Commission of the Orthodox and Oriental Orthodox Churches, Chambésy, 1990"
+          },
+          {
+            "title": "A council that deposed their patriarch, enforced by the empire",
+            "body": "Chalcedon deposed Dioscorus, the patriarch of Alexandria, and the Byzantine emperors afterwards pressed its decision on Egypt and Syria. The Coptic Church remembers what followed:",
+            "quote": "The Coptic and the Syrian Churches in particular were cruelly persecuted because of their belief, especially during the period which started from the Council of Chalcedon held in 451 AD and continued to the conquest of the Arabs in Egypt and Syria (about 641 AD).",
+            "cite": "Pope Shenouda III, The Nature of Christ"
+          }
+        ],
+        "storyTitle": "Agreement today",
+        "story": "In the 20th century the two sides sat down together. In 1973 Pope Paul VI and Pope Shenouda III of Alexandria signed a common confession of Christ; in 1989 and 1990 theologians of the Eastern and Oriental Orthodox churches agreed that each family’s wording, rightly understood, expresses the same faith, that “both families accept the first three Ecumenical Councils, which form our common heritage”, and that the condemnations of the past “should be lifted”. Full communion has not yet been restored.",
+        "parallel": {
+          "title": "The same safeguards, in different words",
+          "left": {
+            "label": "Chalcedon (451)",
+            "text": "One and the same Christ … in two natures, inconfusedly, unchangeably, indivisibly, inseparably."
+          },
+          "right": {
+            "label": "Catholic–Coptic declaration (1973)",
+            "text": "His divinity is united with His humanity in a real, perfect union without mingling, without commixtion, without confusion, without alteration, without division, without separation."
+          },
+          "note": "Both guard against mixing Christ’s divinity and humanity and against dividing him into two. The 1973 text also calls him “perfect God with respect to His divinity, perfect man with respect to His humanity”."
+        },
+        "sources": [
+          {
+            "label": "Pope Shenouda III, The Nature of Christ",
+            "url": "https://st-takla.org/books/en/pope-shenouda-iii/nature-of-christ/two-natures.html"
+          },
+          {
+            "label": "Common Declaration of Paul VI and Shenouda III (1973)",
+            "url": "https://www.vatican.va/content/paul-vi/en/speeches/1973/may/documents/hf_p-vi_spe_19730510_dichiarazione-comune.html"
+          },
+          {
+            "label": "Orthodox–Oriental Orthodox Joint Commission (1990)",
+            "url": "https://www.ecupatria.org/?p=317"
           }
         ]
       }
@@ -1672,5 +1827,47 @@
         ]
       }
     ]
-  }
+  },
+  "families": [
+    {
+      "id": "catholic",
+      "name": "Catholic",
+      "short": "Catholic",
+      "css": "--role-king",
+      "members": [
+        "catholic"
+      ]
+    },
+    {
+      "id": "orthodox",
+      "name": "Eastern Orthodox",
+      "short": "Eastern Orthodox",
+      "css": "--role-priest",
+      "members": [
+        "orthodox"
+      ]
+    },
+    {
+      "id": "oriental",
+      "name": "Oriental Orthodox",
+      "short": "Oriental Orthodox",
+      "css": "--role-judge",
+      "members": [
+        "oriental"
+      ]
+    },
+    {
+      "id": "protestant",
+      "name": "Protestant",
+      "short": "Protestant",
+      "css": "--greek",
+      "members": [
+        "lutheran",
+        "anglican",
+        "reformed",
+        "baptist",
+        "pentecostal"
+      ]
+    }
+  ]
 }

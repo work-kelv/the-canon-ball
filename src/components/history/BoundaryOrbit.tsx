@@ -22,7 +22,7 @@ import {
 } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
 import { Segmented } from '../characters/controls';
-import { CREED_CSS, CreedStatusMark, NonCreedalExplainer, STATUS_STYLE, statusLook } from './CreedCompare';
+import { ChalcedonExplainer, CREED_CSS, CreedStatusMark, NonCreedalExplainer, STATUS_STYLE, statusLook } from './CreedCompare';
 
 const rad = (d: number) => (d * Math.PI) / 180;
 
@@ -97,7 +97,9 @@ function makeGeom(small: boolean) {
   const ostep = 360 / outside.length;
   const groupPos: Record<string, { x: number; y: number; a: number }> = {};
   for (const g of boundaryGroups) {
-    const a = g.ring === 'other' ? -62 + 3.5 * ostep : -62 + outside.indexOf(g) * ostep;
+    // other religions sit in the gaps between movements (Judaism at the top, Islam lower right)
+    const others = boundaryGroups.filter((x) => x.ring === 'other');
+    const a = g.ring === 'other' ? -62 + [7.5, 3.5][others.indexOf(g) % 2] * ostep : -62 + outside.indexOf(g) * ostep;
     const r = g.ring === 'other' ? OTHER_R : BOUNDARY_R + 30 + departure(g) * step;
     groupPos[g.id] = { ...pt(r, a), a };
   }
@@ -250,6 +252,7 @@ function FamilyDetail({ f, onPick }: { f: ChurchFamily; onPick: (s: Sel) => void
       </Section>
       <Section title="The creeds">
         <CreedRow creeds={f.creeds} note={f.creedNote} />
+        {f.creeds.chalcedon === 'rejects' && <ChalcedonExplainer />}
       </Section>
       <Section title="Where it stands">
         <p className="font-serif text-[15px] leading-relaxed">{f.why}</p>
@@ -287,6 +290,7 @@ function MemberDetail({ f, m, onPick }: { f: ChurchFamily; m: FamilyMember; onPi
       <Section title="The creeds">
         <CreedRow creeds={memberCreeds(f, m)} note={m.creedNote} />
         {Object.values(memberCreeds(f, m)).includes('content') && <NonCreedalExplainer label="Why doesn’t it recite the creeds?" />}
+        {memberCreeds(f, m).chalcedon === 'rejects' && <ChalcedonExplainer label="Why doesn’t it accept Chalcedon?" />}
       </Section>
       {m.tests ? (
         <>
@@ -417,8 +421,9 @@ export function BoundaryOrbit() {
                   </span>
                 ))}
               </div>
-              <div className="mt-2">
+              <div className="mt-2 space-y-2">
                 <NonCreedalExplainer label="What does “Holds its teaching” mean?" />
+                {lens === 'chalcedon' && <ChalcedonExplainer />}
               </div>
             </div>
           )}
@@ -557,7 +562,7 @@ export function BoundaryOrbit() {
               const active = selKey === `g:${g.id}`;
               const hot = active || hover === g.id;
               const col = cssColor(g.css);
-              const below = Math.sin(rad(q.a)) > -0.35;
+              const below = Math.sin(rad(q.a)) > -0.35 || q.y < 70;
               const st = lens ? g.creeds?.[lens] : undefined;
               const initials = g.id === 'christadelphians' ? 'Cd' : g.name.split(/[\s-]+/).filter((w) => /^[A-Z]/.test(w)).slice(0, 2).map((w) => w[0]).join('');
               return (
