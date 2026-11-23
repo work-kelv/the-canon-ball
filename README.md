@@ -31,11 +31,15 @@ The Bible page follows the text in the order things happened, in three tabs (eac
 
 - **Hebrew and Aramaic books.** Ezra and Daniel are split diagonally to show how much of each is in Aramaic. Genesis and Jeremiah, which have only a few Aramaic words, are marked with a small corner.
 - **Book details.** Click any book to see its exact Aramaic passages (for example Daniel 2:4b–7:28), its chapter and verse counts, when it was likely written, and why it used that language.
+- **When written.** A timeline view draws one bar per book, from the earliest to the latest date commonly given, sorted by date or in Bible order. The Old and New Testaments each have their own scale, with Jesus between them and key events (King David, the fall of Jerusalem, the Temple’s destruction) marked.
 - **Breakdown.** A second view filters the books by language and shows how the chapters divide between languages and between parts of the Bible.
+- **Previous / Next.** Buttons at the bottom of every tab step through The Bible page in order, then on to Characters.
 
 | Book detail (Daniel) | Breakdown in dark mode |
 |---|---|
 | ![Daniel's language detail](docs/screenshots/languages-drawer.png) | ![Breakdown in dark mode](docs/screenshots/languages-breakdown-dark.png) |
+
+![When the books were written](docs/screenshots/languages-timeline.png)
 
 **Which books?** The site uses the 66 books that every church accepts. This tab sets out how many books each tradition has (Protestant 66, Catholic 73, Eastern Orthodox 76–79, Ethiopian 81). Tap any of the further books, from Tobit to 1 Enoch, to see what it is and which churches include it. Six short points explain why Protestant churches keep 66, citing Athanasius, Jerome, Trent, the Thirty-Nine Articles and the Westminster Confession.
 

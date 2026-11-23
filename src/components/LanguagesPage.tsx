@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react';
-import { BarChart3, LayoutGrid } from 'lucide-react';
+import { BarChart3, CalendarRange, LayoutGrid } from 'lucide-react';
+import { BookTimeline } from './BookTimeline';
 import type { BibleBook, Division, LanguageFilter } from '../types';
 import { books, matchesFilter, meta } from '../lib/books';
 import { FilterPills } from './FilterPills';
@@ -8,7 +9,7 @@ import { BreakdownView } from './BreakdownView';
 import { BookDrawer } from './BookDrawer';
 import { ViewTabs } from './ViewTabs';
 
-type View = 'grid' | 'breakdown';
+type View = 'grid' | 'timeline' | 'breakdown';
 
 export function LanguagesPage() {
   const [view, setView] = useState<View>('grid');
@@ -37,6 +38,7 @@ export function LanguagesPage() {
           onChange={setView}
           tabs={[
             { id: 'grid', label: 'Canon grid', short: 'Grid', icon: LayoutGrid },
+            { id: 'timeline', label: 'When written', short: 'Timeline', icon: CalendarRange },
             { id: 'breakdown', label: 'Language & division breakdown', short: 'Breakdown', icon: BarChart3 },
           ]}
         />
@@ -52,6 +54,8 @@ export function LanguagesPage() {
       <main className="pt-8">
         {view === 'grid' ? (
           <GridView isMatch={isMatch} division={division} onDivision={setDivision} selected={selected} onOpen={setSelected} />
+        ) : view === 'timeline' ? (
+          <BookTimeline isMatch={isMatch} selected={selected} onOpen={setSelected} />
         ) : (
           <BreakdownView langBooks={langBooks} visible={visible} division={division} onDivision={setDivision} onOpen={setSelected} />
         )}

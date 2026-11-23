@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowLeft, ArrowRight, BookOpen, BookText, Columns4, Compass, GitBranch, GitCompareArrows, Orbit, UsersRound } from 'lucide-react';
+import { BookOpen, BookText, Columns4, Compass, GitBranch, GitCompareArrows, Orbit, UsersRound } from 'lucide-react';
 import { ChurchTitles } from './ChurchTitles';
 import { CreedCompare } from './CreedCompare';
 import { ViewTabs } from '../ViewTabs';
@@ -11,6 +11,7 @@ import { BoundaryOrbit } from './BoundaryOrbit';
 import { StartHere } from './StartHere';
 import { HistoryIntro } from '../PageIntros';
 import { PageTabs, useHashTab } from '../PageTabs';
+import { PageNav } from '../PageNav';
 
 /** Creeds tab: compare all four side by side (default), or read one creed line by line. */
 function CreedsTab() {
@@ -71,9 +72,6 @@ export function HistoryPage() {
     TABS.map((t) => t.id),
     'start',
   );
-  const i = TABS.findIndex((t) => t.id === tab);
-  const prev = TABS[i - 1];
-  const next = TABS[i + 1];
   // Change tab and bring the reader back to the top of the new page.
   const go = (id: string) => {
     setTab(id as TabId);
@@ -103,40 +101,7 @@ export function HistoryPage() {
         {view}
 
         {/* Step through the pages like a course */}
-        <nav aria-label="Previous and next page" className="mt-10 grid gap-3 border-t border-rule pt-6 sm:grid-cols-2">
-          {prev ? (
-            <button onClick={() => go(prev.id)} className="focus-ring group flex items-center gap-3 rounded-md border border-rule bg-paper/80 px-4 py-3 text-left hover:border-ink/40">
-              <ArrowLeft size={18} className="shrink-0 text-ink-soft transition-transform group-hover:-translate-x-0.5" aria-hidden />
-              <span>
-                <span className="eyebrow block">Previous · {i}</span>
-                <span className="font-display text-lg font-semibold">{prev.label}</span>
-                <span className="block font-sans text-[12px] text-ink-soft">{prev.blurb}</span>
-              </span>
-            </button>
-          ) : (
-            <span className="hidden sm:block" />
-          )}
-          {next ? (
-            <button onClick={() => go(next.id)} className="focus-ring group flex items-center justify-end gap-3 rounded-md bg-ink px-4 py-3 text-right text-paper sm:col-start-2">
-              <span>
-                <span className="block font-sans text-[11px] font-semibold uppercase tracking-[0.14em] opacity-75">
-                  Next · {i + 2} of {TABS.length}
-                </span>
-                <span className="font-display text-lg font-semibold">{next.label}</span>
-                <span className="block font-sans text-[12px] opacity-80">{next.blurb}</span>
-              </span>
-              <ArrowRight size={18} className="shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden />
-            </button>
-          ) : (
-            <button onClick={() => go('start')} className="focus-ring group flex items-center justify-end gap-3 rounded-md border border-ink px-4 py-3 text-right hover:bg-ink/5 sm:col-start-2">
-              <span>
-                <span className="eyebrow block">You’ve reached the end</span>
-                <span className="font-display text-lg font-semibold">Back to Start here</span>
-              </span>
-              <ArrowRight size={18} className="shrink-0" aria-hidden />
-            </button>
-          )}
-        </nav>
+        <PageNav tabs={TABS} value={tab} go={go} end={{ eyebrow: 'You’ve reached the end', label: 'Back to Start here', onClick: () => go('start') }} />
       </PageTabs>
     </main>
   );
