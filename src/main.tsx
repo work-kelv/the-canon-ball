@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Shell } from './App';
-import { LanguagesPage } from './components/LanguagesPage';
+import { HomePage } from './components/HomePage';
 import './index.css';
 
 // Old single-page links (#characters, #characters/network, #map) now live on their own pages.
@@ -11,7 +11,7 @@ if (legacy) {
 } else {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
-      <Shell section="languages">{() => <LanguagesPage />}</Shell>
+      <Shell section="home">{() => <HomePage />}</Shell>
     </StrictMode>,
   );
 }

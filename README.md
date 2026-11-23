@@ -8,14 +8,14 @@ It works on phones and computers, in light or dark mode. You can share a link to
 
 ![The Languages page: all 66 books, coloured by the language they were written in](docs/screenshots/languages-grid.png)
 
-The site has four pages:
+The site opens on an [introduction page](https://work-kelv.github.io/the-canon-ball/) that leads to four sections:
 
 | Page | What you can explore |
 |---|---|
-| **[Languages](https://work-kelv.github.io/the-canon-ball/)** | All 66 books and the language each was written in: Hebrew, Aramaic or Koine Greek. |
+| **[Languages](https://work-kelv.github.io/the-canon-ball/languages.html)** | All 66 books and the language each was written in: Hebrew, Aramaic or Koine Greek. |
 | **[Characters](https://work-kelv.github.io/the-canon-ball/characters.html)** | 266 people on one timeline: when they lived, how they are related, and Jesus' line from Adam. |
 | **[Map](https://work-kelv.github.io/the-canon-ball/map.html)** | Where each book was written and set, and 129 journeys you can watch on the map. |
-| **[Church History](https://work-kelv.github.io/the-canon-ball/history.html)** | How the church branched, the historic creeds and their Scriptures, where other movements differ, and how the Bible was translated and divided into chapters and verses. |
+| **[Church History](https://work-kelv.github.io/the-canon-ball/history.html)** | How the church branched, how Catholic, Orthodox and Protestant churches differ, the historic creeds and their Scriptures, who stands outside them, and how the Bible was translated and divided into chapters and verses. |
 
 Any Bible reference on the site (shown with a dotted underline) can be clicked to read the verses. You can switch between two translations, the **World English Bible** and the **Berean Standard Bible**.
 
@@ -74,18 +74,21 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
 
 ## 4. Church History
 
-The Church History page has five tabs. Each tab has its own link (for example `history.html#creeds`).
+The Church History page has six tabs. Each tab has its own link (for example `history.html#creeds`).
 
 ![The family tree of the church](docs/screenshots/history-tree.png)
 
 - **Family tree.** Thirteen traditions on one timeline, from Pentecost to the non-denominational churches. Click a branch to see what it shares with all Christians, what is distinctive to it, and which traditions grew from it.
+- **Traditions.** Pick any two of Catholic, Orthodox, Lutheran, Anglican, Reformed, Baptist and Pentecostal to compare them on ten questions, such as authority, salvation, the Lord's Supper, baptism and Mary. Each question shows a spectrum of where all seven traditions sit, and a row of coloured squares sums up where the two agree and differ. The tab opens with the common ground every tradition shares and the worldwide numbers from Pew Research.
 - **Creeds.** The Apostles', Nicene, Chalcedonian and Athanasian creeds, line by line. Each line comes with the Bible passages behind it, the controversy it answered, and a note on how reliable its text is.
-- **Orthodoxy.** Six benchmarks from the creeds, compared across historic orthodoxy, 4th-century Arianism, Jehovah's Witnesses, Latter-day Saints, Oneness Pentecostalism and Christian Science. Each group is summarised from its own official publications.
+- **Inside & outside.** A diagram with the faith of the creeds at its centre. The Catholic, Orthodox and Protestant churches sit inside the boundary. Six movements that call themselves Christian, and Islam, sit farther out the more of five core beliefs they depart from. Tap one to see why the historic churches draw the line there, what it does share, and its beliefs in its own words. Below the diagram is a detailed table:
+  six benchmarks from the creeds, compared across historic orthodoxy, 4th-century Arianism, Jehovah's Witnesses, Latter-day Saints, Oneness Pentecostalism and Christian Science. Each group is summarised from its own official publications.
 - **Translations.** From the Septuagint to today's translation work, with figures from Wycliffe's 2025 statistics. You can filter by era and by kind of milestone.
 - **Chapters & verses.** John 1:1–5 shown three ways: as a 4th-century continuous Greek manuscript, as scribal sense-lines, and with modern chapter and verse numbers. A strip of milestones follows.
 
 | | |
 |---|---|
+| ![Comparing Orthodox and Lutheran](docs/screenshots/history-traditions.png) | ![Inside and outside the creeds](docs/screenshots/history-orbit.png) |
 | ![Creed explorer](docs/screenshots/history-creeds.png) | ![Chapters and verses](docs/screenshots/history-verses.png) |
 
 ## On a phone
@@ -129,7 +132,7 @@ Built with React, TypeScript, Vite, Tailwind CSS, d3-geo/d3-zoom, react-force-gr
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173  (index.html, characters.html, map.html, history.html)
+npm run dev        # http://localhost:5173  (index.html, languages.html, characters.html, map.html, history.html)
 npm run build      # type-check + production build into dist/
 ```
 
@@ -155,7 +158,7 @@ The hand-written parts (summaries, relationships, journeys and journey histories
 ### Project layout
 
 ```
-index.html · characters.html · map.html · history.html   four pages, each with its own entry in src/
+index.html (home) · languages.html · characters.html · map.html · history.html   five pages, each with its own entry in src/
 src/App.tsx                               shared header, navigation, theme and references
 src/components/                           Languages page
 src/components/characters/                timeline, network, directory, person page

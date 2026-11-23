@@ -1,15 +1,29 @@
 import { useEffect, useState } from 'react';
-import { BookText, GitBranch, Languages, ListOrdered, Scale } from 'lucide-react';
+import { BookText, GitBranch, GitCompareArrows, Languages, ListOrdered, Orbit } from 'lucide-react';
 import { FamilyTree } from './FamilyTree';
 import { CreedExplorer } from './CreedExplorer';
 import { OrthodoxyMatrix } from './OrthodoxyMatrix';
 import { TranslationTimeline } from './TranslationTimeline';
 import { TextualTransmission } from './TextualTransmission';
+import { TraditionsCompare } from './TraditionsCompare';
+import { BoundaryOrbit } from './BoundaryOrbit';
+
+function InsideOutside() {
+  return (
+    <div className="space-y-12">
+      <BoundaryOrbit />
+      <div className="border-t border-rule pt-8">
+        <OrthodoxyMatrix />
+      </div>
+    </div>
+  );
+}
 
 const TABS = [
   { id: 'tree', label: 'Family tree', icon: GitBranch, View: FamilyTree },
+  { id: 'traditions', label: 'Traditions', icon: GitCompareArrows, View: TraditionsCompare },
   { id: 'creeds', label: 'Creeds', icon: BookText, View: CreedExplorer },
-  { id: 'compare', label: 'Orthodoxy', icon: Scale, View: OrthodoxyMatrix },
+  { id: 'compare', label: 'Inside & outside', icon: Orbit, View: InsideOutside },
   { id: 'translations', label: 'Translations', icon: Languages, View: TranslationTimeline },
   { id: 'verses', label: 'Chapters & verses', icon: ListOrdered, View: TextualTransmission },
 ] as const;

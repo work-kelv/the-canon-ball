@@ -1,18 +1,23 @@
 import { useState, type ReactNode } from 'react';
-import { Church, ExternalLink, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
+import { Church, ExternalLink, House, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
 import { langColor } from './lib/books';
 import { REFERENCES } from './lib/references';
 
-export type Section = 'languages' | 'characters' | 'map' | 'history';
+export type Section = 'home' | 'languages' | 'characters' | 'map' | 'history';
 
-const NAV: { id: Section; label: string; short: string; href: string; icon: typeof Languages }[] = [
-  { id: 'languages', label: 'Languages', short: 'Languages', href: './', icon: Languages },
+const NAV: { id: Section; label: string; short: string; href: string; icon: typeof Languages; iconOnly?: boolean }[] = [
+  { id: 'home', label: 'Home', short: 'Home', href: './', icon: House, iconOnly: true },
+  { id: 'languages', label: 'Languages', short: 'Languages', href: 'languages.html', icon: Languages },
   { id: 'characters', label: 'Characters', short: 'Characters', href: 'characters.html', icon: Users },
   { id: 'map', label: 'Map', short: 'Map', href: 'map.html', icon: MapIcon },
   { id: 'history', label: 'Church History', short: 'History', href: 'history.html', icon: Church },
 ];
 
 const INTRO: Record<Section, { eyebrow: string; text: ReactNode }> = {
+  home: {
+    eyebrow: 'An interactive guide to the Bible',
+    text: 'Explore the Bible’s languages, people and places, and how its message was confessed, divided and translated across two thousand years of church history.',
+  },
   languages: {
     eyebrow: 'Sixty-six books · Three tongues',
     text: (
@@ -34,7 +39,7 @@ const INTRO: Record<Section, { eyebrow: string; text: ReactNode }> = {
   },
   history: {
     eyebrow: 'Councils · Creeds · Translations',
-    text: 'How the church branched, what the historic creeds confess and why, where other movements differ, and how the Bible reached the world’s languages — chapter and verse.',
+    text: 'How the church branched, how Catholic, Orthodox and Protestant churches differ, what the historic creeds confess and who stands outside them, and how the Bible reached the world’s languages — chapter and verse.',
   },
 };
 
@@ -129,18 +134,26 @@ export function Shell({ section, children }: { section: Section; children: (dark
           aria-label="Sections"
           className="no-scrollbar mt-5 inline-flex max-w-full overflow-x-auto rounded-full border border-ink/70 p-0.5 font-sans text-[13px] sm:text-sm"
         >
-          {NAV.map(({ id, label, short, href, icon: Icon }) => (
+          {NAV.map(({ id, label, short, href, icon: Icon, iconOnly }) => (
             <a
               key={id}
               href={href}
               aria-current={section === id ? 'page' : undefined}
-              className={`focus-ring inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full px-3 py-1.5 font-medium transition-colors sm:px-4 ${
-                section === id ? 'bg-ink text-paper' : 'text-ink-soft hover:text-ink'
-              }`}
+              aria-label={iconOnly ? label : undefined}
+              title={iconOnly ? label : undefined}
+              className={`focus-ring inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full py-1.5 font-medium transition-colors ${
+                iconOnly ? 'px-2.5' : 'px-3 sm:px-4'
+              } ${section === id ? 'bg-ink text-paper' : 'text-ink-soft hover:text-ink'}`}
             >
-              <Icon size={15} aria-hidden className="hidden sm:block" />
-              <span className="sm:hidden">{short}</span>
-              <span className="hidden sm:inline">{label}</span>
+              {iconOnly ? (
+                <Icon size={16} aria-hidden />
+              ) : (
+                <>
+                  <Icon size={15} aria-hidden className="hidden sm:block" />
+                  <span className="sm:hidden">{short}</span>
+                  <span className="hidden sm:inline">{label}</span>
+                </>
+              )}
             </a>
           ))}
         </nav>

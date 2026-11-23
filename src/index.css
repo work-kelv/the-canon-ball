@@ -140,3 +140,14 @@
 @media (prefers-reduced-motion: reduce) {
   .map-pulse { animation: none; }
 }
+
+/* Church history: the "inside & outside" diagram */
+.orbit-link { animation: map-dash 1.6s linear infinite; }
+@keyframes orbit-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.18); opacity: 0.4; }
+}
+.orbit-pulse { animation: orbit-pulse 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: reduce) {
+  .orbit-link, .orbit-pulse { animation: none; }
+}

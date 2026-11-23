@@ -7,7 +7,38 @@ export interface Reference {
   use: string;
 }
 
-export const REFERENCES: Record<'languages' | 'characters' | 'map' | 'history', Reference[]> = {
+export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'history', Reference[]> = {
+  home: [
+    {
+      title: 'World English Bible (WEB) and Berean Standard Bible (BSB)',
+      detail: 'Both public domain; USFX texts from the open-bibles collection (seven1m/open-bibles)',
+      url: 'https://github.com/seven1m/open-bibles',
+      use: 'The verse text in every Scripture pop-up on the site.',
+    },
+    {
+      title: 'Theographic Bible Metadata',
+      detail: 'Robert Rouse, GitHub repository (CC BY-SA 4.0)',
+      url: 'https://github.com/robertrouse/theographic-bible-metadata',
+      use: 'People, family links, places and verse tags behind the Characters and Map pages.',
+    },
+    {
+      title: 'OpenBible.info Bible Geocoding Data',
+      detail: 'OpenBible.info (CC BY 4.0)',
+      url: 'https://www.openbible.info/geo/',
+      use: 'Modern identifications of ancient places on the Map page.',
+    },
+    {
+      title: 'The Creeds of Christendom',
+      detail: 'Philip Schaff, Christian Classics Ethereal Library',
+      url: 'https://www.ccel.org/ccel/schaff/creeds1',
+      use: 'The creed texts and much of the church history on the Church History page.',
+    },
+    {
+      title: 'More on each page',
+      detail: 'Each page lists the sources it uses in its own References section.',
+      use: 'Languages, Characters, Map and Church History each cite their primary texts and datasets.',
+    },
+  ],
   languages: [
   {
     title: 'World English Bible (WEB) and Berean Standard Bible (BSB)',
@@ -214,6 +245,76 @@ export const REFERENCES: Record<'languages' | 'characters' | 'map' | 'history', 
       detail: 'British Library, Leipzig University Library, St Catherine’s Monastery and the National Library of Russia',
       url: 'https://codexsinaiticus.org/',
       use: 'What a 4th-century uncial page looks like (layout of the John 1 sample).',
+    },
+    {
+      title: 'Catechism of the Catholic Church',
+      detail: 'Holy See, 2nd ed. (1997)',
+      url: 'https://www.vatican.va/archive/ENG0015/_INDEX.HTM',
+      use: 'Catholic positions in the Traditions comparison (Scripture and Tradition, justification, sacraments, Mary, purgatory).',
+    },
+    {
+      title: 'The Orthodox Faith',
+      detail: 'Fr Thomas Hopko, Orthodox Church in America',
+      url: 'https://www.oca.org/orthodoxy/the-orthodox-faith',
+      use: 'Eastern Orthodox positions in the Traditions comparison.',
+    },
+    {
+      title: 'The Book of Concord',
+      detail: 'The Lutheran Confessions (1580), incl. the Augsburg Confession and the Small Catechism',
+      url: 'https://bookofconcord.org/',
+      use: 'Lutheran positions in the Traditions comparison.',
+    },
+    {
+      title: 'The Thirty-Nine Articles of Religion',
+      detail: 'Church of England (1571), printed in the Book of Common Prayer',
+      url: 'https://www.churchofengland.org/prayer-and-worship/worship-texts-and-resources/book-common-prayer/articles-religion',
+      use: 'Anglican positions in the Traditions comparison (Articles VI, XI, XXII, XXV, XXVII, XXVIII).',
+    },
+    {
+      title: 'The Westminster Confession of Faith and Shorter Catechism',
+      detail: 'Westminster Assembly (1646–47); text from the Orthodox Presbyterian Church',
+      url: 'https://www.opc.org/wcf.html',
+      use: 'Reformed / Presbyterian positions in the Traditions comparison.',
+    },
+    {
+      title: 'The Baptist Faith and Message (2000)',
+      detail: 'Southern Baptist Convention',
+      url: 'https://bfm.sbc.net/',
+      use: 'Baptist positions in the Traditions comparison.',
+    },
+    {
+      title: 'Statement of Fundamental Truths',
+      detail: 'Assemblies of God (1916, revised)',
+      url: 'https://ag.org/',
+      use: 'Pentecostal positions in the Traditions comparison.',
+    },
+    {
+      title: 'Joint Declaration on the Doctrine of Justification',
+      detail: 'Lutheran World Federation and the Catholic Church, Augsburg, 31 October 1999',
+      use: 'The note on Catholic–Lutheran agreement about justification.',
+    },
+    {
+      title: 'Global Christianity: A Report on the Size and Distribution of the World’s Christian Population',
+      detail: 'Pew Research Center, December 2011 (data for 2010)',
+      url: 'https://www.pewresearch.org/religion/2011/12/19/global-christianity-exec/',
+      use: 'The shares of Catholic, Protestant and Orthodox Christians worldwide.',
+    },
+    {
+      title: 'Response on the validity of baptism conferred by The Church of Jesus Christ of Latter-day Saints',
+      detail: 'Congregation for the Doctrine of the Faith, 5 June 2001',
+      use: 'The Catholic ruling cited in the Inside & outside diagram.',
+    },
+    {
+      title: 'Groups in their own words',
+      detail: "Official websites of each movement in the Inside & outside diagram",
+      links: [
+        { label: 'uua.org', url: 'https://www.uua.org/beliefs/what-we-believe' },
+        { label: 'iglesianicristo.net', url: 'https://iglesianicristo.net/' },
+        { label: 'Qur’an 4:157', url: 'https://quran.com/4/157' },
+        { label: 'Qur’an 5:116', url: 'https://quran.com/5/116' },
+        { label: 'Doctrine and Covenants 130', url: 'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/130?lang=eng' },
+      ],
+      use: 'How each movement describes its own beliefs (alongside jw.org, churchofjesuschrist.org, upci.org and christianscience.com above).',
     },
   ],
 };

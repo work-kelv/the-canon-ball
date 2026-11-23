@@ -3,6 +3,7 @@ import creedsData from '../data/historicCreeds.json';
 import comparisonData from '../data/theologicalComparison.json';
 import translationsData from '../data/bibleTranslations.json';
 import navigationData from '../data/textualNavigation.json';
+import traditionsData from '../data/traditionsCompared.json';
 
 export interface Branch {
   id: string;
@@ -82,6 +83,65 @@ export const comparisonMeta = comparisonData.meta;
 export const translationStats = translationsData.meta.stats as { value: string; label: string }[];
 export const translationMeta = translationsData.meta;
 export const navigation = navigationData;
+
+// ── Traditions compared & the creedal boundary ──
+export interface Tradition {
+  id: string;
+  name: string;
+  short: string;
+  css: string;
+  documents: string;
+}
+export interface Topic {
+  id: string;
+  name: string;
+  question: string;
+  left: string;
+  right: string;
+  note?: string;
+  scripture: string[];
+  positions: Record<string, { v: number; text: string }>;
+}
+export type TestId = 'trinity' | 'deity' | 'cross' | 'scripture' | 'grace';
+export interface BoundaryTest {
+  id: TestId;
+  label: string;
+  short: string;
+  creed: string;
+  ref: string;
+}
+export interface BoundaryGroup {
+  id: string;
+  ring: 'inside' | 'outside' | 'other';
+  name: string;
+  css: string;
+  origin: string;
+  self: string;
+  why: string;
+  affirms?: string;
+  keyTexts?: string[];
+  source?: string;
+  /** Inside groups store a bare status; others store status + their own teaching. */
+  tests: Record<TestId, Status | { s: Status; text: string }>;
+}
+export const traditionsMeta = traditionsData.meta;
+export const commonGround = traditionsData.commonGround as { text: string; ref: string }[];
+export const traditions = traditionsData.traditions as Tradition[];
+export const topics = traditionsData.topics as Topic[];
+export const boundaryNote = traditionsData.boundary.note;
+export const boundaryTests = traditionsData.boundary.tests as BoundaryTest[];
+export const boundaryGroups = traditionsData.boundary.groups as BoundaryGroup[];
+export const testStatus = (g: BoundaryGroup, t: TestId): Status => {
+  const x = g.tests[t];
+  return typeof x === 'string' ? x : x.s;
+};
+export const testText = (g: BoundaryGroup, t: TestId): string | null => {
+  const x = g.tests[t];
+  return typeof x === 'string' ? null : x.text;
+};
+/** 0 = all core tests affirmed … 5 = none. Partial agreement counts half. */
+export const departure = (g: BoundaryGroup) =>
+  boundaryTests.reduce((n, t) => n + ({ affirms: 0, partial: 0.5, differs: 1 } as const)[testStatus(g, t.id)], 0);
 
 /** Branch colours (CSS variables shared with the rest of the site). */
 export const BRANCH_CSS: Record<string, string> = {

@@ -43,7 +43,7 @@ export function OrthodoxyMatrix() {
     <section aria-labelledby="matrix-title" className="space-y-4">
       <div>
         <h2 id="matrix-title" className="font-display text-3xl font-semibold">
-          Core orthodoxy and divergent groups
+          In detail: six benchmarks, side by side
         </h2>
         <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
           Six benchmarks from the historic creeds, compared across movements. Click any cell to see the creedal clause, the Bible passages
