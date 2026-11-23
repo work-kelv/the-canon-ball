@@ -151,3 +151,9 @@
 @media (prefers-reduced-motion: reduce) {
   .orbit-link, .orbit-pulse { animation: none; }
 }
+
+/* Native dropdown lists: keep options readable even when the closed select is styled dark (active filter). */
+select option {
+  color: rgb(var(--ink));
+  background-color: rgb(var(--paper));
+}

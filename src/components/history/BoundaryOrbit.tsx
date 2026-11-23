@@ -45,8 +45,12 @@ const RING_LABEL: Record<BoundaryGroup['ring'], string> = {
   other: 'A different religion',
 };
 
-const initials = (name: string) =>
-  name
+const ringLabel = (g: BoundaryGroup) => (g.edge ? 'Within, with distinctive teachings' : RING_LABEL[g.ring]);
+
+const ABBR: Record<string, string> = { sda: 'SDA', christadelphians: 'Cd' };
+const initials = (g: BoundaryGroup) =>
+  ABBR[g.id] ??
+  g.name
     .split(/[\s-]+/)
     .filter((w) => /^[A-Z]/.test(w))
     .slice(0, 2)
@@ -55,15 +59,27 @@ const initials = (name: string) =>
 
 /** Node positions: inside groups on the inner ring; the rest farther out the more core beliefs they depart from. */
 const layout = (() => {
-  const inside = boundaryGroups.filter((g) => g.ring === 'inside');
+  const inside = boundaryGroups.filter((g) => g.ring === 'inside' && !g.edge);
+  const edge = boundaryGroups.filter((g) => g.ring === 'inside' && g.edge);
   const outer = boundaryGroups.filter((g) => g.ring !== 'inside');
   const pos: Record<string, { x: number; y: number; r: number; a: number }> = {};
+  const step = 360 / inside.length;
   inside.forEach((g, i) => {
-    const a = (-90 + i * (360 / inside.length)) * (Math.PI / 180);
+    const a = (-90 + i * step) * (Math.PI / 180);
     pos[g.id] = { x: C + INSIDE_R * Math.cos(a), y: C + INSIDE_R * Math.sin(a), r: INSIDE_R, a };
   });
-  outer.forEach((g, i) => {
-    const a = (-62 + i * (360 / outer.length)) * (Math.PI / 180);
+  // Churches inside the boundary but with distinctive teachings sit near its edge, in the gaps between the main families.
+  edge.forEach((g, i) => {
+    const a = (-90 + step / 2 + (i === 0 ? 0 : step * 2)) * (Math.PI / 180);
+    const r = BOUNDARY_R - 30;
+    pos[g.id] = { x: C + r * Math.cos(a), y: C + r * Math.sin(a), r, a };
+  });
+  // Movements outside spread evenly round the circle; other religions sit on the outer ring in the gap at lower right.
+  const outside = outer.filter((g) => g.ring === 'outside');
+  const ostep = 360 / outside.length;
+  const angleOf = (g: BoundaryGroup) => (g.ring === 'other' ? -62 + 3.5 * ostep : -62 + outside.indexOf(g) * ostep);
+  outer.forEach((g) => {
+    const a = angleOf(g) * (Math.PI / 180);
     const r = g.ring === 'other' ? OTHER_R : BOUNDARY_R + 26 + departure(g) * 21;
     pos[g.id] = { x: C + r * Math.cos(a), y: C + r * Math.sin(a), r, a };
   });
@@ -101,7 +117,7 @@ function Detail({ g }: { g: BoundaryGroup }) {
               color: cssColor(g.ring === 'inside' ? '--rel-mentor' : g.ring === 'other' ? '--ink-soft' : '--rel-rival'),
             }}
           >
-            {RING_LABEL[g.ring]}
+            {ringLabel(g)}
           </span>
         </div>
         <h3 className="mt-1 font-display text-2xl font-semibold leading-tight" style={{ color: col }}>
@@ -214,7 +230,7 @@ export function BoundaryOrbit() {
                 <stop offset="100%" stopColor={cssColor('--rel-mentor', 0.03)} />
               </radialGradient>
               <path id="boundary-path" d={`M ${C - BOUNDARY_R - 16 * k},${C} a ${BOUNDARY_R + 16 * k},${BOUNDARY_R + 16 * k} 0 0,0 ${2 * (BOUNDARY_R + 16 * k)},0`} />
-              <path id="other-path" d={`M ${C - OTHER_R - 30},${C} a ${OTHER_R + 30},${OTHER_R + 30} 0 1,1 ${2 * (OTHER_R + 30)},0`} />
+              <path id="other-path" d={`M ${C - OTHER_R - 22 * k},${C} a ${OTHER_R + 22 * k},${OTHER_R + 22 * k} 0 0,0 ${2 * (OTHER_R + 22 * k)},0`} />
             </defs>
 
             {/* rings */}
@@ -229,7 +245,7 @@ export function BoundaryOrbit() {
               </textPath>
             </text>
             <text className="fill-ink-soft font-sans" style={{ letterSpacing: '0.16em', opacity: 0.7, fontSize: 11 * k }}>
-              <textPath href="#other-path" startOffset="50%" textAnchor="middle">
+              <textPath href="#other-path" startOffset="24%" textAnchor="middle">
                 OTHER RELIGIONS
               </textPath>
             </text>
@@ -276,7 +292,7 @@ export function BoundaryOrbit() {
                   role="button"
                   tabIndex={0}
                   aria-pressed={active}
-                  aria-label={`${x.name}: ${RING_LABEL[x.ring]}`}
+                  aria-label={`${x.name}: ${ringLabel(x)}`}
                   className="cursor-pointer outline-none"
                   onClick={() => setSel(x.id)}
                   onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), setSel(x.id))}
@@ -294,18 +310,18 @@ export function BoundaryOrbit() {
                     style={{ transition: 'r 150ms' }}
                   />
                   <text textAnchor="middle" y={5 * k} className="pointer-events-none font-sans font-bold" style={{ fontSize: 13 * k }} fill={active ? cssColor('--paper') : col}>
-                    {initials(x.name)}
+                    {initials(x)}
                   </text>
                   {!small && <text
                     textAnchor="middle"
-                    y={below ? NODE_R + 16 : -NODE_R - (x.ring === 'inside' ? 8 : 20)}
+                    y={below ? NODE_R + 16 : -NODE_R - (x.ring === 'inside' && !x.edge ? 8 : 24)}
                     className={`map-label pointer-events-none font-sans text-[13px] ${active ? 'font-bold' : 'font-semibold'}`}
                     fill={cssColor('--ink')}
                   >
                     {x.name}
                   </text>}
-                  {x.ring !== 'inside' && (
-                    <Beads g={x} x={0} k={k} y={small ? NODE_R + 9 * k : below ? NODE_R + 28 : -NODE_R - 8} />
+                  {(x.ring !== 'inside' || x.edge) && (
+                    <Beads g={x} x={0} k={k} y={small ? NODE_R + 9 * k : below ? NODE_R + 28 : -NODE_R - 9} />
                   )}
                 </g>
               );
@@ -328,7 +344,7 @@ export function BoundaryOrbit() {
                   className="flex h-5 w-5 items-center justify-center rounded-full text-[9px] font-bold"
                   style={{ background: sel === x.id ? cssColor('--paper', 0.25) : cssColor(x.css, 0.15), color: sel === x.id ? undefined : cssColor(x.css) }}
                 >
-                  {initials(x.name)}
+                  {initials(x)}
                 </span>
                 {x.name}
               </button>

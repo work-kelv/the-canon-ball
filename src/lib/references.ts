@@ -119,7 +119,7 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
     {
       title: 'Character checklist (data-sources/gemini-characters-by-book.json)',
       detail: 'AI-generated list of prominent figures per book, supplied by the site author',
-      use: 'Used only to find missing characters; every added person was matched to Theographic.',
+      use: 'Used to find missing characters (every added person was matched to Theographic) and for the “Prominent figures only” filter: the 209 people it names.',
     },
   ],
   map: [

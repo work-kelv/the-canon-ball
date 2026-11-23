@@ -5,31 +5,114 @@
     "shares": {
       "total": "2.18 billion Christians (2010)",
       "parts": [
-        { "id": "catholic", "label": "Catholic", "pct": 50, "css": "--role-king" },
-        { "id": "protestant", "label": "Protestant (broadly defined, incl. Anglican & independent)", "pct": 37, "css": "--greek" },
-        { "id": "orthodox", "label": "Orthodox", "pct": 12, "css": "--role-priest" },
-        { "id": "other", "label": "Other (e.g. Latter-day Saints, Jehovah's Witnesses)", "pct": 1, "css": "--ink-soft" }
+        {
+          "id": "catholic",
+          "label": "Catholic",
+          "pct": 50,
+          "css": "--role-king"
+        },
+        {
+          "id": "protestant",
+          "label": "Protestant (broadly defined, incl. Anglican & independent)",
+          "pct": 37,
+          "css": "--greek"
+        },
+        {
+          "id": "orthodox",
+          "label": "Orthodox",
+          "pct": 12,
+          "css": "--role-priest"
+        },
+        {
+          "id": "other",
+          "label": "Other (e.g. Latter-day Saints, Jehovah's Witnesses)",
+          "pct": 1,
+          "css": "--ink-soft"
+        }
       ],
       "source": "Pew Research Center, Global Christianity (2011), data for 2010"
     }
   },
   "commonGround": [
-    { "text": "One God in three persons: Father, Son and Holy Spirit", "ref": "Matthew 28:19" },
-    { "text": "Jesus Christ, fully God and fully man", "ref": "John 1:14" },
-    { "text": "His death for our sins and bodily resurrection", "ref": "1 Corinthians 15:3–4" },
-    { "text": "Salvation by God's grace in Christ", "ref": "Ephesians 2:8" },
-    { "text": "The Bible as God's inspired word", "ref": "2 Timothy 3:16" },
-    { "text": "Christ's return, the resurrection of the dead and the judgment", "ref": "Acts 1:11" },
-    { "text": "Baptism and the Lord's Supper, commanded by Christ", "ref": "1 Corinthians 11:26" }
+    {
+      "text": "One God in three persons: Father, Son and Holy Spirit",
+      "ref": "Matthew 28:19"
+    },
+    {
+      "text": "Jesus Christ, fully God and fully man",
+      "ref": "John 1:14"
+    },
+    {
+      "text": "His death for our sins and bodily resurrection",
+      "ref": "1 Corinthians 15:3–4"
+    },
+    {
+      "text": "Salvation by God's grace in Christ",
+      "ref": "Ephesians 2:8"
+    },
+    {
+      "text": "The Bible as God's inspired word",
+      "ref": "2 Timothy 3:16"
+    },
+    {
+      "text": "Christ's return, the resurrection of the dead and the judgment",
+      "ref": "Acts 1:11"
+    },
+    {
+      "text": "Baptism and the Lord's Supper, commanded by Christ",
+      "ref": "1 Corinthians 11:26"
+    }
   ],
   "traditions": [
-    { "id": "catholic", "name": "Roman Catholic", "short": "Catholic", "css": "--role-king", "documents": "Catechism of the Catholic Church (1992); Council of Trent; Vatican II" },
-    { "id": "orthodox", "name": "Eastern Orthodox", "short": "Orthodox", "css": "--role-priest", "documents": "The seven ecumenical councils; the Church Fathers; the Divine Liturgy" },
-    { "id": "lutheran", "name": "Lutheran", "short": "Lutheran", "css": "--greek", "documents": "Augsburg Confession (1530); Luther's Small Catechism; Book of Concord (1580)" },
-    { "id": "anglican", "name": "Anglican", "short": "Anglican", "css": "--lineage", "documents": "Thirty-Nine Articles (1571); Book of Common Prayer (1662)" },
-    { "id": "reformed", "name": "Reformed / Presbyterian", "short": "Reformed", "css": "--role-apostle", "documents": "Westminster Confession (1646); Heidelberg Catechism (1563); Calvin's Institutes" },
-    { "id": "baptist", "name": "Baptist", "short": "Baptist", "css": "--role-key", "documents": "Second London Confession (1689); Baptist Faith and Message (2000)" },
-    { "id": "pentecostal", "name": "Pentecostal", "short": "Pentecostal", "css": "--rel-family", "documents": "Assemblies of God Statement of Fundamental Truths (1916)" }
+    {
+      "id": "catholic",
+      "name": "Roman Catholic",
+      "short": "Catholic",
+      "css": "--role-king",
+      "documents": "Catechism of the Catholic Church (1992); Council of Trent; Vatican II"
+    },
+    {
+      "id": "orthodox",
+      "name": "Eastern Orthodox",
+      "short": "Orthodox",
+      "css": "--role-priest",
+      "documents": "The seven ecumenical councils; the Church Fathers; the Divine Liturgy"
+    },
+    {
+      "id": "lutheran",
+      "name": "Lutheran",
+      "short": "Lutheran",
+      "css": "--greek",
+      "documents": "Augsburg Confession (1530); Luther's Small Catechism; Book of Concord (1580)"
+    },
+    {
+      "id": "anglican",
+      "name": "Anglican",
+      "short": "Anglican",
+      "css": "--lineage",
+      "documents": "Thirty-Nine Articles (1571); Book of Common Prayer (1662)"
+    },
+    {
+      "id": "reformed",
+      "name": "Reformed / Presbyterian",
+      "short": "Reformed",
+      "css": "--role-apostle",
+      "documents": "Westminster Confession (1646); Heidelberg Catechism (1563); Calvin's Institutes"
+    },
+    {
+      "id": "baptist",
+      "name": "Baptist",
+      "short": "Baptist",
+      "css": "--role-key",
+      "documents": "Second London Confession (1689); Baptist Faith and Message (2000)"
+    },
+    {
+      "id": "pentecostal",
+      "name": "Pentecostal",
+      "short": "Pentecostal",
+      "css": "--rel-family",
+      "documents": "Assemblies of God Statement of Fundamental Truths (1916)"
+    }
   ],
   "topics": [
     {
@@ -38,15 +121,41 @@
       "question": "Where does final authority lie?",
       "left": "Scripture alone",
       "right": "Scripture within Tradition, taught by the Church",
-      "scripture": ["2 Timothy 3:16–17", "2 Thessalonians 2:15", "Matthew 16:18–19", "Acts 17:11"],
+      "scripture": [
+        "2 Timothy 3:16–17",
+        "2 Thessalonians 2:15",
+        "Matthew 16:18–19",
+        "Acts 17:11"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "Scripture and Sacred Tradition form one deposit of faith, interpreted with authority by the Magisterium: the Pope and the bishops in communion with him." },
-        "orthodox": { "v": 3.5, "text": "Holy Tradition, with Scripture at its heart, is kept by the whole Church; the seven ecumenical councils and the Church Fathers carry authority." },
-        "anglican": { "v": 2, "text": "Scripture contains all things necessary to salvation (Article VI); it is read alongside the early creeds, tradition and reason." },
-        "lutheran": { "v": 1, "text": "Scripture is the only rule and norm; the Lutheran Confessions are held as its faithful explanation." },
-        "reformed": { "v": 1, "text": "Scripture is the supreme judge in all controversies (Westminster Confession 1.10); confessions are subordinate standards." },
-        "baptist": { "v": 0, "text": "Scripture is the sole authority for faith and practice; confessions are not binding creeds, and each church interprets under Christ." },
-        "pentecostal": { "v": 0.5, "text": "Scripture is the inspired, infallible rule; the Spirit still speaks through gifts such as prophecy, always tested by Scripture." }
+        "catholic": {
+          "v": 4,
+          "text": "Scripture and Sacred Tradition form one deposit of faith, interpreted with authority by the Magisterium: the Pope and the bishops in communion with him."
+        },
+        "orthodox": {
+          "v": 3.5,
+          "text": "Holy Tradition, with Scripture at its heart, is kept by the whole Church; the seven ecumenical councils and the Church Fathers carry authority."
+        },
+        "anglican": {
+          "v": 2,
+          "text": "Scripture contains all things necessary to salvation (Article VI); it is read alongside the early creeds, tradition and reason."
+        },
+        "lutheran": {
+          "v": 1,
+          "text": "Scripture is the only rule and norm; the Lutheran Confessions are held as its faithful explanation."
+        },
+        "reformed": {
+          "v": 1,
+          "text": "Scripture is the supreme judge in all controversies (Westminster Confession 1.10); confessions are subordinate standards."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "Scripture is the sole authority for faith and practice; confessions are not binding creeds, and each church interprets under Christ."
+        },
+        "pentecostal": {
+          "v": 0.5,
+          "text": "Scripture is the inspired, infallible rule; the Spirit still speaks through gifts such as prophecy, always tested by Scripture."
+        }
       }
     },
     {
@@ -56,15 +165,41 @@
       "left": "Declared righteous by faith alone",
       "right": "Grace received through faith and the sacraments, renewing the whole person",
       "note": "In 1999 the Catholic Church and the Lutheran World Federation signed a Joint Declaration on the Doctrine of Justification, stating a 'consensus in basic truths' while differences remain.",
-      "scripture": ["Ephesians 2:8–10", "Romans 3:28", "James 2:24", "2 Peter 1:4"],
+      "scripture": [
+        "Ephesians 2:8–10",
+        "Romans 3:28",
+        "James 2:24",
+        "2 Peter 1:4"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "By grace, through faith working in love. Justification includes inner renewal and is nourished by the sacraments (Council of Trent)." },
-        "orthodox": { "v": 4, "text": "Salvation is theosis: union with God by grace, received through faith, the sacramental life and lifelong repentance." },
-        "anglican": { "v": 0.5, "text": "'We are accounted righteous before God, only for the merit of our Lord… by Faith, and not for our own works' (Article XI)." },
-        "lutheran": { "v": 0, "text": "Justified by grace alone through faith alone, for Christ's sake (Augsburg Confession IV). Good works follow as fruit." },
-        "reformed": { "v": 0, "text": "Justified by faith alone; Christ's righteousness is credited to the believer, by God's sovereign grace (Westminster Confession 11)." },
-        "baptist": { "v": 0, "text": "Salvation is by grace through faith in Christ alone; believers are born again and kept by God." },
-        "pentecostal": { "v": 0, "text": "Saved by grace through repentance and faith in Christ. Baptism in the Spirit is a later empowering, not a condition of salvation." }
+        "catholic": {
+          "v": 4,
+          "text": "By grace, through faith working in love. Justification includes inner renewal and is nourished by the sacraments (Council of Trent)."
+        },
+        "orthodox": {
+          "v": 4,
+          "text": "Salvation is theosis: union with God by grace, received through faith, the sacramental life and lifelong repentance."
+        },
+        "anglican": {
+          "v": 0.5,
+          "text": "'We are accounted righteous before God, only for the merit of our Lord… by Faith, and not for our own works' (Article XI)."
+        },
+        "lutheran": {
+          "v": 0,
+          "text": "Justified by grace alone through faith alone, for Christ's sake (Augsburg Confession IV). Good works follow as fruit."
+        },
+        "reformed": {
+          "v": 0,
+          "text": "Justified by faith alone; Christ's righteousness is credited to the believer, by God's sovereign grace (Westminster Confession 11)."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "Salvation is by grace through faith in Christ alone; believers are born again and kept by God."
+        },
+        "pentecostal": {
+          "v": 0,
+          "text": "Saved by grace through repentance and faith in Christ. Baptism in the Spirit is a later empowering, not a condition of salvation."
+        }
       }
     },
     {
@@ -73,15 +208,41 @@
       "question": "What happens at the Lord's Supper?",
       "left": "A memorial of Christ's death",
       "right": "Bread and wine become Christ's body and blood",
-      "scripture": ["John 6:53–56", "Luke 22:19–20", "1 Corinthians 10:16", "1 Corinthians 11:23–26"],
+      "scripture": [
+        "John 6:53–56",
+        "Luke 22:19–20",
+        "1 Corinthians 10:16",
+        "1 Corinthians 11:23–26"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "Transubstantiation: the substance of bread and wine becomes Christ's body and blood. The Mass makes present Christ's one sacrifice." },
-        "orthodox": { "v": 4, "text": "The gifts truly become Christ's body and blood. The Church confesses the change as a mystery, without defining how." },
-        "lutheran": { "v": 3, "text": "Christ's true body and blood are present 'in, with and under' the bread and wine." },
-        "anglican": { "v": 2, "text": "A real, spiritual feeding on Christ. Article XXVIII rejects transubstantiation, but views range from Catholic to Reformed." },
-        "reformed": { "v": 1.5, "text": "Christ is truly received, spiritually, by faith: the Spirit unites believers to him as they eat." },
-        "baptist": { "v": 0, "text": "An ordinance of remembrance that proclaims Christ's death, with bread and cup as symbols of his body and blood." },
-        "pentecostal": { "v": 0, "text": "Mostly memorial: a remembrance of Christ's death and a sign of fellowship until he comes." }
+        "catholic": {
+          "v": 4,
+          "text": "Transubstantiation: the substance of bread and wine becomes Christ's body and blood. The Mass makes present Christ's one sacrifice."
+        },
+        "orthodox": {
+          "v": 4,
+          "text": "The gifts truly become Christ's body and blood. The Church confesses the change as a mystery, without defining how."
+        },
+        "lutheran": {
+          "v": 3,
+          "text": "Christ's true body and blood are present 'in, with and under' the bread and wine."
+        },
+        "anglican": {
+          "v": 2,
+          "text": "A real, spiritual feeding on Christ. Article XXVIII rejects transubstantiation, but views range from Catholic to Reformed."
+        },
+        "reformed": {
+          "v": 1.5,
+          "text": "Christ is truly received, spiritually, by faith: the Spirit unites believers to him as they eat."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "An ordinance of remembrance that proclaims Christ's death, with bread and cup as symbols of his body and blood."
+        },
+        "pentecostal": {
+          "v": 0,
+          "text": "Mostly memorial: a remembrance of Christ's death and a sign of fellowship until he comes."
+        }
       }
     },
     {
@@ -90,15 +251,41 @@
       "question": "Who is baptised, and what does baptism do?",
       "left": "Believers only: a public sign of faith",
       "right": "Infants too: new birth given by God",
-      "scripture": ["Matthew 28:19", "Acts 2:38–39", "Romans 6:3–4", "Acts 16:33"],
+      "scripture": [
+        "Matthew 28:19",
+        "Acts 2:38–39",
+        "Romans 6:3–4",
+        "Acts 16:33"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "Infants and adults. Baptism washes away original sin and gives new birth; usually by pouring." },
-        "orthodox": { "v": 4, "text": "Infants and adults, by triple immersion, followed at once by chrismation and first communion." },
-        "lutheran": { "v": 4, "text": "Infants and adults. Through God's word joined to the water, baptism gives forgiveness and new birth (Small Catechism)." },
-        "anglican": { "v": 3, "text": "Infants and adults; a sign of regeneration by which the baptised are grafted into the Church (Article XXVII)." },
-        "reformed": { "v": 2.5, "text": "Children of believers and adult converts; a sign and seal of the covenant of grace, not saving in itself." },
-        "baptist": { "v": 0, "text": "Believers only, by immersion: an act of obedience picturing death, burial and resurrection with Christ." },
-        "pentecostal": { "v": 0.5, "text": "Believers, by immersion. Many also expect a distinct 'baptism in the Holy Spirit', marked by speaking in tongues." }
+        "catholic": {
+          "v": 4,
+          "text": "Infants and adults. Baptism washes away original sin and gives new birth; usually by pouring."
+        },
+        "orthodox": {
+          "v": 4,
+          "text": "Infants and adults, by triple immersion, followed at once by chrismation and first communion."
+        },
+        "lutheran": {
+          "v": 4,
+          "text": "Infants and adults. Through God's word joined to the water, baptism gives forgiveness and new birth (Small Catechism)."
+        },
+        "anglican": {
+          "v": 3,
+          "text": "Infants and adults; a sign of regeneration by which the baptised are grafted into the Church (Article XXVII)."
+        },
+        "reformed": {
+          "v": 2.5,
+          "text": "Children of believers and adult converts; a sign and seal of the covenant of grace, not saving in itself."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "Believers only, by immersion: an act of obedience picturing death, burial and resurrection with Christ."
+        },
+        "pentecostal": {
+          "v": 0.5,
+          "text": "Believers, by immersion. Many also expect a distinct 'baptism in the Holy Spirit', marked by speaking in tongues."
+        }
       }
     },
     {
@@ -107,15 +294,41 @@
       "question": "How many sacraments are there?",
       "left": "Two ordinances, kept as signs",
       "right": "Seven sacraments, as means of grace",
-      "scripture": ["Matthew 28:19", "Luke 22:19", "James 5:14–15", "John 20:22–23"],
+      "scripture": [
+        "Matthew 28:19",
+        "Luke 22:19",
+        "James 5:14–15",
+        "John 20:22–23"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "Seven: baptism, confirmation, the Eucharist, penance, anointing of the sick, holy orders and marriage." },
-        "orthodox": { "v": 4, "text": "The same seven 'holy mysteries' are usually listed, though the Church does not strictly fix the number." },
-        "lutheran": { "v": 2, "text": "Baptism and the Lord's Supper (confession and absolution sometimes counted as a third), as true means of grace." },
-        "anglican": { "v": 2, "text": "Two 'Sacraments of the Gospel'; the other five are 'commonly called Sacraments' (Article XXV)." },
-        "reformed": { "v": 1.5, "text": "Two sacraments, as signs and seals of the covenant of grace." },
-        "baptist": { "v": 0, "text": "Two ordinances, kept in obedience to Christ rather than as channels of saving grace." },
-        "pentecostal": { "v": 0, "text": "Two ordinances; some churches also practise foot-washing." }
+        "catholic": {
+          "v": 4,
+          "text": "Seven: baptism, confirmation, the Eucharist, penance, anointing of the sick, holy orders and marriage."
+        },
+        "orthodox": {
+          "v": 4,
+          "text": "The same seven 'holy mysteries' are usually listed, though the Church does not strictly fix the number."
+        },
+        "lutheran": {
+          "v": 2,
+          "text": "Baptism and the Lord's Supper (confession and absolution sometimes counted as a third), as true means of grace."
+        },
+        "anglican": {
+          "v": 2,
+          "text": "Two 'Sacraments of the Gospel'; the other five are 'commonly called Sacraments' (Article XXV)."
+        },
+        "reformed": {
+          "v": 1.5,
+          "text": "Two sacraments, as signs and seals of the covenant of grace."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "Two ordinances, kept in obedience to Christ rather than as channels of saving grace."
+        },
+        "pentecostal": {
+          "v": 0,
+          "text": "Two ordinances; some churches also practise foot-washing."
+        }
       }
     },
     {
@@ -124,15 +337,41 @@
       "question": "Who leads the church?",
       "left": "Each congregation governs itself",
       "right": "Bishops in succession, under a universal head",
-      "scripture": ["Matthew 16:18–19", "Acts 14:23", "Acts 15:6", "Titus 1:5"],
+      "scripture": [
+        "Matthew 16:18–19",
+        "Acts 14:23",
+        "Acts 15:6",
+        "Titus 1:5"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "Bishops in apostolic succession under the Pope, the Bishop of Rome, who has universal jurisdiction." },
-        "orthodox": { "v": 3, "text": "Bishops in apostolic succession; self-governing churches in communion. The Ecumenical Patriarch is 'first among equals'." },
-        "anglican": { "v": 3, "text": "Bishops, priests and deacons in self-governing provinces; the Archbishop of Canterbury is a focus of unity." },
-        "lutheran": { "v": 2, "text": "It varies: bishops in the Nordic churches, synods with elected leaders elsewhere." },
-        "reformed": { "v": 1.5, "text": "Presbyterian: each church is led by elders, joined in presbyteries and general assemblies." },
-        "baptist": { "v": 0, "text": "Congregational: each local church governs itself under Christ and cooperates voluntarily." },
-        "pentecostal": { "v": 1, "text": "Mixed: bodies such as the Assemblies of God combine local self-government with district and national councils." }
+        "catholic": {
+          "v": 4,
+          "text": "Bishops in apostolic succession under the Pope, the Bishop of Rome, who has universal jurisdiction."
+        },
+        "orthodox": {
+          "v": 3,
+          "text": "Bishops in apostolic succession; self-governing churches in communion. The Ecumenical Patriarch is 'first among equals'."
+        },
+        "anglican": {
+          "v": 3,
+          "text": "Bishops, priests and deacons in self-governing provinces; the Archbishop of Canterbury is a focus of unity."
+        },
+        "lutheran": {
+          "v": 2,
+          "text": "It varies: bishops in the Nordic churches, synods with elected leaders elsewhere."
+        },
+        "reformed": {
+          "v": 1.5,
+          "text": "Presbyterian: each church is led by elders, joined in presbyteries and general assemblies."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "Congregational: each local church governs itself under Christ and cooperates voluntarily."
+        },
+        "pentecostal": {
+          "v": 1,
+          "text": "Mixed: bodies such as the Assemblies of God combine local self-government with district and national councils."
+        }
       }
     },
     {
@@ -141,15 +380,42 @@
       "question": "How are Mary and the saints honoured?",
       "left": "Honoured as examples; prayer to God alone",
       "right": "Venerated, and asked to pray for us",
-      "scripture": ["Luke 1:28", "Luke 1:46–48", "1 Timothy 2:5", "Hebrews 12:1", "James 5:16"],
+      "scripture": [
+        "Luke 1:28",
+        "Luke 1:46–48",
+        "1 Timothy 2:5",
+        "Hebrews 12:1",
+        "James 5:16"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "Mary is venerated as Mother of God; the Immaculate Conception (1854) and Assumption (1950) are dogma. The saints are asked to intercede." },
-        "orthodox": { "v": 4, "text": "Mary is the Theotokos, honoured above all saints; icons are venerated and the saints' prayers sought. The Immaculate Conception is not taught." },
-        "anglican": { "v": 2, "text": "Mary is honoured and her feasts are kept; practice ranges from Anglo-Catholic devotion to Protestant restraint." },
-        "lutheran": { "v": 1.5, "text": "Mary is honoured as Mother of God and the saints as examples, but they are not invoked (Augsburg Confession XXI)." },
-        "reformed": { "v": 0.5, "text": "Mary is blessed as the mother of the Lord; prayer is made to God alone, through Christ." },
-        "baptist": { "v": 0, "text": "Mary is a model of faith. Christ is the only mediator, so prayer to the saints is not practised." },
-        "pentecostal": { "v": 0, "text": "Mary is honoured as a faithful believer; prayer is made to God alone, through Christ." }
+        "catholic": {
+          "v": 4,
+          "text": "Mary is venerated as Mother of God; the Immaculate Conception (1854) and Assumption (1950) are dogma. The saints are asked to intercede."
+        },
+        "orthodox": {
+          "v": 4,
+          "text": "Mary is the Theotokos, honoured above all saints; icons are venerated and the saints' prayers sought. The Immaculate Conception is not taught."
+        },
+        "anglican": {
+          "v": 2,
+          "text": "Mary is honoured and her feasts are kept; practice ranges from Anglo-Catholic devotion to Protestant restraint."
+        },
+        "lutheran": {
+          "v": 1.5,
+          "text": "Mary is honoured as Mother of God and the saints as examples, but they are not invoked (Augsburg Confession XXI)."
+        },
+        "reformed": {
+          "v": 0.5,
+          "text": "Mary is blessed as the mother of the Lord; prayer is made to God alone, through Christ."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "Mary is a model of faith. Christ is the only mediator, so prayer to the saints is not practised."
+        },
+        "pentecostal": {
+          "v": 0,
+          "text": "Mary is honoured as a faithful believer; prayer is made to God alone, through Christ."
+        }
       }
     },
     {
@@ -158,15 +424,39 @@
       "question": "Which books belong in the Old Testament?",
       "left": "39 books (66 in the whole Bible)",
       "right": "More books (the deuterocanon)",
-      "scripture": ["Luke 24:44", "Romans 3:2"],
+      "scripture": [
+        "Luke 24:44",
+        "Romans 3:2"
+      ],
       "positions": {
-        "catholic": { "v": 3, "text": "73 books in all: the 66 plus Tobit, Judith, 1–2 Maccabees, Wisdom, Sirach, Baruch and longer Esther and Daniel (Council of Trent, 1546)." },
-        "orthodox": { "v": 4, "text": "The Catholic additions plus 1 Esdras, 3 Maccabees, the Prayer of Manasseh and Psalm 151." },
-        "anglican": { "v": 1.5, "text": "66 books. The Apocrypha is read 'for example of life', but not to establish doctrine (Article VI)." },
-        "lutheran": { "v": 1, "text": "66 books. Luther's Bible printed the Apocrypha separately, as 'useful and good to read'." },
-        "reformed": { "v": 0, "text": "66 books. The Apocrypha is 'of no authority in the Church of God' (Westminster Confession 1.3)." },
-        "baptist": { "v": 0, "text": "66 books." },
-        "pentecostal": { "v": 0, "text": "66 books." }
+        "catholic": {
+          "v": 3,
+          "text": "73 books in all: the 66 plus Tobit, Judith, 1–2 Maccabees, Wisdom, Sirach, Baruch and longer Esther and Daniel (Council of Trent, 1546)."
+        },
+        "orthodox": {
+          "v": 4,
+          "text": "The Catholic additions plus 1 Esdras, 3 Maccabees, the Prayer of Manasseh and Psalm 151."
+        },
+        "anglican": {
+          "v": 1.5,
+          "text": "66 books. The Apocrypha is read 'for example of life', but not to establish doctrine (Article VI)."
+        },
+        "lutheran": {
+          "v": 1,
+          "text": "66 books. Luther's Bible printed the Apocrypha separately, as 'useful and good to read'."
+        },
+        "reformed": {
+          "v": 0,
+          "text": "66 books. The Apocrypha is 'of no authority in the Church of God' (Westminster Confession 1.3)."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "66 books."
+        },
+        "pentecostal": {
+          "v": 0,
+          "text": "66 books."
+        }
       }
     },
     {
@@ -175,15 +465,41 @@
       "question": "Who may be ordained, and may ministers marry?",
       "left": "Married ministers; many ordain women",
       "right": "Celibate priests; men only",
-      "scripture": ["1 Timothy 3:2", "1 Corinthians 7:32–33", "Galatians 3:28", "1 Timothy 2:12"],
+      "scripture": [
+        "1 Timothy 3:2",
+        "1 Corinthians 7:32–33",
+        "Galatians 3:28",
+        "1 Timothy 2:12"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "Men only. Latin-rite priests are normally celibate; Eastern Catholic churches have married priests." },
-        "orthodox": { "v": 3, "text": "Men only. Married men may become priests, but bishops are chosen from celibate monks." },
-        "anglican": { "v": 1, "text": "Married clergy. Most provinces ordain women as priests, and many as bishops." },
-        "lutheran": { "v": 1, "text": "Married clergy. Many Lutheran churches ordain women; some do not." },
-        "reformed": { "v": 1.5, "text": "Married ministers and elders. Whether women are ordained varies by denomination." },
-        "baptist": { "v": 2, "text": "Married pastors. Some Baptist bodies, such as the Southern Baptist Convention, keep the pastorate for men; others do not." },
-        "pentecostal": { "v": 1, "text": "Married ministers. Many Pentecostal churches have credentialed women ministers from their early years." }
+        "catholic": {
+          "v": 4,
+          "text": "Men only. Latin-rite priests are normally celibate; Eastern Catholic churches have married priests."
+        },
+        "orthodox": {
+          "v": 3,
+          "text": "Men only. Married men may become priests, but bishops are chosen from celibate monks."
+        },
+        "anglican": {
+          "v": 1,
+          "text": "Married clergy. Most provinces ordain women as priests, and many as bishops."
+        },
+        "lutheran": {
+          "v": 1,
+          "text": "Married clergy. Many Lutheran churches ordain women; some do not."
+        },
+        "reformed": {
+          "v": 1.5,
+          "text": "Married ministers and elders. Whether women are ordained varies by denomination."
+        },
+        "baptist": {
+          "v": 2,
+          "text": "Married pastors. Some Baptist bodies, such as the Southern Baptist Convention, keep the pastorate for men; others do not."
+        },
+        "pentecostal": {
+          "v": 1,
+          "text": "Married ministers. Many Pentecostal churches have credentialed women ministers from their early years."
+        }
       }
     },
     {
@@ -192,131 +508,478 @@
       "question": "Is there a purification after death?",
       "left": "No: believers go straight to be with Christ",
       "right": "Yes: purgatory",
-      "scripture": ["Luke 23:43", "2 Corinthians 5:8", "Philippians 1:23", "1 Corinthians 3:13–15"],
+      "scripture": [
+        "Luke 23:43",
+        "2 Corinthians 5:8",
+        "Philippians 1:23",
+        "1 Corinthians 3:13–15"
+      ],
       "positions": {
-        "catholic": { "v": 4, "text": "Purgatory: those who die in God's grace but are not fully purified are cleansed before heaven, helped by the prayers of the living." },
-        "orthodox": { "v": 2, "text": "Prays for the departed and speaks of growth after death, but does not define a purgatory." },
-        "anglican": { "v": 1, "text": "Article XXII rejects 'the Romish Doctrine concerning Purgatory'; some Anglicans still pray for the departed." },
-        "lutheran": { "v": 0, "text": "No purgatory: those who die in Christ rest with him, awaiting the resurrection." },
-        "reformed": { "v": 0, "text": "No purgatory: believers' souls 'do immediately pass into glory' (Westminster Shorter Catechism 37)." },
-        "baptist": { "v": 0, "text": "No purgatory: to be absent from the body is to be present with the Lord." },
-        "pentecostal": { "v": 0, "text": "No purgatory: believers go to be with Christ at death." }
+        "catholic": {
+          "v": 4,
+          "text": "Purgatory: those who die in God's grace but are not fully purified are cleansed before heaven, helped by the prayers of the living."
+        },
+        "orthodox": {
+          "v": 2,
+          "text": "Prays for the departed and speaks of growth after death, but does not define a purgatory."
+        },
+        "anglican": {
+          "v": 1,
+          "text": "Article XXII rejects 'the Romish Doctrine concerning Purgatory'; some Anglicans still pray for the departed."
+        },
+        "lutheran": {
+          "v": 0,
+          "text": "No purgatory: those who die in Christ rest with him, awaiting the resurrection."
+        },
+        "reformed": {
+          "v": 0,
+          "text": "No purgatory: believers' souls 'do immediately pass into glory' (Westminster Shorter Catechism 37)."
+        },
+        "baptist": {
+          "v": 0,
+          "text": "No purgatory: to be absent from the body is to be present with the Lord."
+        },
+        "pentecostal": {
+          "v": 0,
+          "text": "No purgatory: believers go to be with Christ at death."
+        }
       }
     }
   ],
   "boundary": {
     "note": "'Christian' here means the faith defined by the historic creeds, shared by Catholic, Orthodox and Protestant churches. Most of the movements below call themselves Christian; they are placed outside because their teaching differs from those creeds on core points. This describes doctrine, not the sincerity or worth of any person.",
     "tests": [
-      { "id": "trinity", "label": "The Trinity", "short": "Trinity", "creed": "We believe in one God… and in one Lord Jesus Christ… and in the Holy Spirit (Nicene Creed)", "ref": "Matthew 28:19" },
-      { "id": "deity", "label": "Jesus is fully God", "short": "Jesus is God", "creed": "true God from true God… of one Being with the Father", "ref": "John 1:1" },
-      { "id": "cross", "label": "Atoning death & bodily resurrection", "short": "Cross & empty tomb", "creed": "crucified for us… on the third day he rose again", "ref": "1 Corinthians 15:3–4" },
-      { "id": "scripture", "label": "The Bible as final revelation", "short": "Scripture", "creed": "the faith once for all delivered to the saints", "ref": "Jude 1:3" },
-      { "id": "grace", "label": "Salvation by grace through Christ", "short": "Grace", "creed": "for us and for our salvation he came down from heaven", "ref": "Ephesians 2:8–9" }
+      {
+        "id": "trinity",
+        "label": "The Trinity",
+        "short": "Trinity",
+        "creed": "We believe in one God… and in one Lord Jesus Christ… and in the Holy Spirit (Nicene Creed)",
+        "ref": "Matthew 28:19"
+      },
+      {
+        "id": "deity",
+        "label": "Jesus is fully God",
+        "short": "Jesus is God",
+        "creed": "true God from true God… of one Being with the Father",
+        "ref": "John 1:1"
+      },
+      {
+        "id": "cross",
+        "label": "Atoning death & bodily resurrection",
+        "short": "Cross & empty tomb",
+        "creed": "crucified for us… on the third day he rose again",
+        "ref": "1 Corinthians 15:3–4"
+      },
+      {
+        "id": "scripture",
+        "label": "The Bible as final revelation",
+        "short": "Scripture",
+        "creed": "the faith once for all delivered to the saints",
+        "ref": "Jude 1:3"
+      },
+      {
+        "id": "grace",
+        "label": "Salvation by grace through Christ",
+        "short": "Grace",
+        "creed": "for us and for our salvation he came down from heaven",
+        "ref": "Ephesians 2:8–9"
+      }
     ],
     "groups": [
       {
-        "id": "catholic", "ring": "inside", "name": "Catholic", "css": "--role-king",
+        "id": "catholic",
+        "ring": "inside",
+        "name": "Catholic",
+        "css": "--role-king",
         "origin": "The Western church, in communion with the Bishop of Rome",
         "self": "The one Church founded by Christ, subsisting in the Catholic Church.",
         "why": "Confesses the Nicene Creed in full. Its differences with Orthodox and Protestant churches lie within the shared faith: see the Traditions tab.",
-        "tests": { "trinity": "affirms", "deity": "affirms", "cross": "affirms", "scripture": "affirms", "grace": "affirms" }
+        "tests": {
+          "trinity": "affirms",
+          "deity": "affirms",
+          "cross": "affirms",
+          "scripture": "affirms",
+          "grace": "affirms"
+        }
       },
       {
-        "id": "orthodox", "ring": "inside", "name": "Orthodox", "css": "--role-priest",
+        "id": "orthodox",
+        "ring": "inside",
+        "name": "Orthodox",
+        "css": "--role-priest",
         "origin": "The Eastern churches of the seven ecumenical councils",
         "self": "The undivided Church of the apostles and the councils, kept unchanged.",
         "why": "Confesses the Nicene Creed (without the Western 'and the Son'). Its differences lie within the shared faith: see the Traditions tab.",
-        "tests": { "trinity": "affirms", "deity": "affirms", "cross": "affirms", "scripture": "affirms", "grace": "affirms" }
+        "tests": {
+          "trinity": "affirms",
+          "deity": "affirms",
+          "cross": "affirms",
+          "scripture": "affirms",
+          "grace": "affirms"
+        }
       },
       {
-        "id": "protestant", "ring": "inside", "name": "Protestant", "css": "--greek",
+        "id": "protestant",
+        "ring": "inside",
+        "name": "Protestant",
+        "css": "--greek",
         "origin": "Lutheran, Anglican, Reformed, Baptist, Methodist, Pentecostal and other churches since 1517",
         "self": "Churches reformed by the Scriptures: grace alone, faith alone, Christ alone.",
         "why": "Affirms the Trinity and the content of the Nicene Creed, even where creeds are not recited. Its differences with Catholic and Orthodox lie within the shared faith: see the Traditions tab.",
-        "tests": { "trinity": "affirms", "deity": "affirms", "cross": "affirms", "scripture": "affirms", "grace": "affirms" }
+        "tests": {
+          "trinity": "affirms",
+          "deity": "affirms",
+          "cross": "affirms",
+          "scripture": "affirms",
+          "grace": "affirms"
+        }
       },
       {
-        "id": "oneness", "ring": "outside", "name": "Oneness Pentecostal", "css": "--rel-family",
+        "id": "sda",
+        "ring": "inside",
+        "edge": true,
+        "name": "Seventh-day Adventist",
+        "css": "--rel-ally",
+        "origin": "1863, from the Millerite movement in New England (Ellen G. White, Joseph Bates, James White)",
+        "self": "A Protestant church that keeps the seventh-day Sabbath and proclaims Christ’s soon return.",
+        "why": "It confesses the Trinity, the full deity of Christ, his atoning death and bodily resurrection, salvation by grace through faith, and the Bible as the standard for all teaching (28 Fundamental Beliefs). It is therefore usually placed inside, with distinctive doctrines on the edge: Saturday worship, Christ’s ministry in the heavenly sanctuary since 1844, the soul’s unconsciousness until the resurrection, and the prophetic gift of Ellen White. Some critics have counted it outside; after long study the evangelical scholar Walter Martin concluded it is a Christian denomination, though one with errors in his view.",
+        "affirms": "Everything at the core. The differences are Protestant-style disagreements about the Sabbath, the end times and the state of the dead.",
+        "keyTexts": [
+          "Exodus 20:8–11",
+          "Hebrews 8:1–2",
+          "Ecclesiastes 9:5",
+          "Revelation 19:10"
+        ],
+        "source": "https://www.adventist.org/beliefs/",
+        "tests": {
+          "trinity": {
+            "s": "affirms",
+            "text": "“There is one God: Father, Son, and Holy Spirit, a unity of three coeternal Persons” (Fundamental Belief 2)."
+          },
+          "deity": {
+            "s": "affirms",
+            "text": "Jesus is “forever truly God” who became truly man (Fundamental Belief 4)."
+          },
+          "cross": {
+            "s": "affirms",
+            "text": "Christ’s substitutionary, atoning death and his bodily resurrection."
+          },
+          "scripture": {
+            "s": "affirms",
+            "text": "The 66 books are “the standard by which all teaching and experience must be tested”; Ellen White’s writings are honoured as prophetic but subordinate to the Bible (Fundamental Belief 18)."
+          },
+          "grace": {
+            "s": "affirms",
+            "text": "Salvation by grace through faith in Christ; Sabbath-keeping is the fruit of salvation, not its cause."
+          }
+        }
+      },
+      {
+        "id": "gci",
+        "ring": "inside",
+        "edge": true,
+        "name": "Grace Communion",
+        "css": "--rel-mentor",
+        "origin": "Founded in the 1930s by Herbert W. Armstrong as the Worldwide Church of God; renamed Grace Communion International in 2009",
+        "self": "An evangelical denomination, transformed by grace from its Armstrong-era teaching.",
+        "why": "A rare case of a movement crossing the boundary. Under Herbert Armstrong it denied the Trinity and taught that keeping Old Testament law was needed for salvation. After his death in 1986 its leaders studied the Bible afresh: the church accepted the Trinity in 1993, embraced salvation by grace, and now fully agrees with the statement of faith of the National Association of Evangelicals. It shows that the boundary is about teaching, which can change.",
+        "affirms": "Everything at the core, since the reforms of the 1990s.",
+        "keyTexts": [
+          "Galatians 2:16",
+          "Matthew 28:19"
+        ],
+        "source": "https://www.gci.org/about-us/history/",
+        "tests": {
+          "trinity": {
+            "s": "affirms",
+            "text": "Accepted in 1993 (under Armstrong: rejected)."
+          },
+          "deity": {
+            "s": "affirms",
+            "text": "Jesus is fully God and fully human."
+          },
+          "cross": {
+            "s": "affirms",
+            "text": "Christ’s atoning death and bodily resurrection."
+          },
+          "scripture": {
+            "s": "affirms",
+            "text": "The Bible as the final authority, read in agreement with the evangelical statement of faith."
+          },
+          "grace": {
+            "s": "affirms",
+            "text": "Salvation by grace through faith (under Armstrong: law-keeping was required)."
+          }
+        }
+      },
+      {
+        "id": "oneness",
+        "ring": "outside",
+        "name": "Oneness Pentecostal",
+        "css": "--rel-family",
         "origin": "1913–16, the 'Jesus' Name' controversy in early Pentecostalism; United Pentecostal Church International, 1945",
         "self": "Apostolic Pentecostals, restoring the apostles' teaching and baptism in Jesus' name.",
         "why": "It affirms Jesus' full deity, his cross and resurrection, and the Bible. But it teaches that God is a single person who appears as Father, Son and Spirit. That revives modalism, a view the early church rejected in the 3rd century. Of all the groups here, its standing is the most debated.",
         "affirms": "Jesus is the one true God in the flesh; his atoning death and bodily resurrection; the 66-book Bible.",
-        "keyTexts": ["Colossians 2:9", "Acts 2:38", "John 10:30"],
+        "keyTexts": [
+          "Colossians 2:9",
+          "Acts 2:38",
+          "John 10:30"
+        ],
         "source": "https://www.upci.org/",
         "tests": {
-          "trinity": { "s": "differs", "text": "God is one person who reveals himself as Father, Son and Holy Spirit, not three persons." },
-          "deity": { "s": "affirms", "text": "Jesus is fully God (the one God incarnate) and fully man." },
-          "cross": { "s": "affirms", "text": "Affirms Christ's atoning death and bodily resurrection." },
-          "scripture": { "s": "affirms", "text": "The 66-book Bible is the inspired, final authority." },
-          "grace": { "s": "partial", "text": "Grace through faith, expressed in repentance, baptism in Jesus' name, and the gift of the Spirit with tongues." }
+          "trinity": {
+            "s": "differs",
+            "text": "God is one person who reveals himself as Father, Son and Holy Spirit, not three persons."
+          },
+          "deity": {
+            "s": "affirms",
+            "text": "Jesus is fully God (the one God incarnate) and fully man."
+          },
+          "cross": {
+            "s": "affirms",
+            "text": "Affirms Christ's atoning death and bodily resurrection."
+          },
+          "scripture": {
+            "s": "affirms",
+            "text": "The 66-book Bible is the inspired, final authority."
+          },
+          "grace": {
+            "s": "partial",
+            "text": "Grace through faith, expressed in repentance, baptism in Jesus' name, and the gift of the Spirit with tongues."
+          }
         }
       },
       {
-        "id": "lds", "ring": "outside", "name": "Latter-day Saints", "css": "--role-judge",
+        "id": "lds",
+        "ring": "outside",
+        "name": "Latter-day Saints (Mormon)",
+        "css": "--role-judge",
         "origin": "1830, Joseph Smith, New York",
         "self": "The Church of Jesus Christ of Latter-day Saints: the restoration of the church Jesus founded.",
         "why": "It teaches that the Father, Son and Holy Spirit are three separate beings, and that the Father has a physical body. It also adds new scriptures and continuing revelation. Both depart from the Nicene definition of God and the closed canon. In 2001 the Catholic Church ruled that Latter-day Saint baptism is not valid Christian baptism for these reasons.",
         "affirms": "Jesus as Saviour and Redeemer; his atonement and bodily resurrection; the Bible as scripture.",
-        "keyTexts": ["John 17:21", "Acts 7:55–56"],
+        "keyTexts": [
+          "John 17:21",
+          "Acts 7:55–56"
+        ],
         "source": "https://www.churchofjesuschrist.org/",
         "tests": {
-          "trinity": { "s": "differs", "text": "The Godhead is three separate beings; the Father 'has a body of flesh and bones as tangible as man's' (Doctrine and Covenants 130:22)." },
-          "deity": { "s": "partial", "text": "Jesus is divine and the Son of God, but a separate being from the Father rather than 'of one Being' with him." },
-          "cross": { "s": "affirms", "text": "Christ's atonement (in Gethsemane and on the cross) and his bodily resurrection." },
-          "scripture": { "s": "differs", "text": "An open canon: the Book of Mormon, Doctrine and Covenants and Pearl of Great Price stand beside the Bible, with continuing revelation through living prophets." },
-          "grace": { "s": "partial", "text": "Salvation through Christ's grace together with covenants, ordinances (including temple ordinances) and obedience." }
+          "trinity": {
+            "s": "differs",
+            "text": "The Godhead is three separate beings; the Father 'has a body of flesh and bones as tangible as man's' (Doctrine and Covenants 130:22)."
+          },
+          "deity": {
+            "s": "partial",
+            "text": "Jesus is divine and the Son of God, but a separate being from the Father rather than 'of one Being' with him."
+          },
+          "cross": {
+            "s": "affirms",
+            "text": "Christ's atonement (in Gethsemane and on the cross) and his bodily resurrection."
+          },
+          "scripture": {
+            "s": "differs",
+            "text": "An open canon: the Book of Mormon, Doctrine and Covenants and Pearl of Great Price stand beside the Bible, with continuing revelation through living prophets."
+          },
+          "grace": {
+            "s": "partial",
+            "text": "Salvation through Christ's grace together with covenants, ordinances (including temple ordinances) and obedience."
+          }
         }
       },
       {
-        "id": "inc", "ring": "outside", "name": "Iglesia ni Cristo", "css": "--lineage",
+        "id": "inc",
+        "ring": "outside",
+        "name": "Iglesia ni Cristo",
+        "css": "--lineage",
         "origin": "1914, Felix Y. Manalo, the Philippines",
         "self": "The Church of Christ: the true church re-established in the last days.",
         "why": "Like the 4th-century Arians, it teaches that Christ is not God by nature, and it rejects the Trinity. It also holds that membership in its own church is needed for salvation.",
         "affirms": "Christ as Son of God, Saviour and Lord; his death and resurrection; the Bible as the basis of faith.",
-        "keyTexts": ["John 17:3", "1 Timothy 2:5"],
+        "keyTexts": [
+          "John 17:3",
+          "1 Timothy 2:5"
+        ],
         "source": "https://iglesianicristo.net/",
         "tests": {
-          "trinity": { "s": "differs", "text": "Only the Father is the one true God; the Trinity is rejected." },
-          "deity": { "s": "differs", "text": "Christ is a man, the Son of God, made Lord and Saviour by God, but not God by nature." },
-          "cross": { "s": "affirms", "text": "Christ died for the Church and rose again." },
-          "scripture": { "s": "partial", "text": "The Bible is the basis of faith, as taught through Felix Manalo, regarded as God's last messenger, and his successors." },
-          "grace": { "s": "partial", "text": "Membership in the Iglesia ni Cristo is necessary for salvation." }
+          "trinity": {
+            "s": "differs",
+            "text": "Only the Father is the one true God; the Trinity is rejected."
+          },
+          "deity": {
+            "s": "differs",
+            "text": "Christ is a man, the Son of God, made Lord and Saviour by God, but not God by nature."
+          },
+          "cross": {
+            "s": "affirms",
+            "text": "Christ died for the Church and rose again."
+          },
+          "scripture": {
+            "s": "partial",
+            "text": "The Bible is the basis of faith, as taught through Felix Manalo, regarded as God's last messenger, and his successors."
+          },
+          "grace": {
+            "s": "partial",
+            "text": "Membership in the Iglesia ni Cristo is necessary for salvation."
+          }
         }
       },
       {
-        "id": "jw", "ring": "outside", "name": "Jehovah's Witnesses", "css": "--role-apostle",
+        "id": "jw",
+        "ring": "outside",
+        "name": "Jehovah's Witnesses",
+        "css": "--role-apostle",
         "origin": "1870s, the Bible Student movement of Charles Taze Russell",
         "self": "Worshippers of Jehovah who follow Christ, restoring first-century Christianity.",
         "why": "It revives the Arian view that the Son is a created being, which the Council of Nicaea rejected in 325. It denies the Trinity and the Spirit's personhood, and holds that Jesus was raised as a spirit, not in his body.",
         "affirms": "Jesus as the Son of God, Messiah and ransom; the 66-book Bible; Jesus' coming kingdom.",
-        "keyTexts": ["John 1:1", "Colossians 1:15", "John 14:28"],
+        "keyTexts": [
+          "John 1:1",
+          "Colossians 1:15",
+          "John 14:28"
+        ],
         "source": "https://www.jw.org/en/",
         "tests": {
-          "trinity": { "s": "differs", "text": "Only Jehovah is Almighty God; the holy spirit is his active force, not a person." },
-          "deity": { "s": "differs", "text": "Jesus is God's first creation, identified with the archangel Michael before he became human: 'a god' in their translation of John 1:1." },
-          "cross": { "s": "partial", "text": "Jesus' death is a ransom for mankind, but he was raised as an immortal spirit, not in his body." },
-          "scripture": { "s": "partial", "text": "The 66 books, read in the New World Translation as explained by the Governing Body." },
-          "grace": { "s": "partial", "text": "Salvation through faith in the ransom, with obedience and loyalty to Jehovah's organisation." }
+          "trinity": {
+            "s": "differs",
+            "text": "Only Jehovah is Almighty God; the holy spirit is his active force, not a person."
+          },
+          "deity": {
+            "s": "differs",
+            "text": "Jesus is God's first creation, identified with the archangel Michael before he became human: 'a god' in their translation of John 1:1."
+          },
+          "cross": {
+            "s": "partial",
+            "text": "Jesus' death is a ransom for mankind, but he was raised as an immortal spirit, not in his body."
+          },
+          "scripture": {
+            "s": "partial",
+            "text": "The 66 books, read in the New World Translation as explained by the Governing Body."
+          },
+          "grace": {
+            "s": "partial",
+            "text": "Salvation through faith in the ransom, with obedience and loyalty to Jehovah's organisation."
+          }
         }
       },
       {
-        "id": "cs", "ring": "outside", "name": "Christian Science", "css": "--role-prophet",
+        "id": "christadelphians",
+        "ring": "outside",
+        "name": "Christadelphians",
+        "css": "--role-patriarch",
+        "origin": "1848, John Thomas, USA and Britain (the name “Christadelphian” from 1864)",
+        "self": "Brothers and sisters in Christ, returning to the beliefs of the first-century believers.",
+        "why": "Like the 16th-century Socinians, it holds that Jesus did not exist before his birth and is not God, and that the Holy Spirit is God’s power rather than a person. That rejects the Trinity as defined at Nicaea and Constantinople. It affirms Jesus’ death and bodily resurrection strongly.",
+        "affirms": "Jesus as the sinless Son of God and Messiah; his death and bodily resurrection; his return to set up God’s kingdom on earth; the Bible as the only authority.",
+        "keyTexts": [
+          "John 1:1",
+          "John 8:58",
+          "1 Timothy 2:5"
+        ],
+        "source": "https://www.christadelphians.org/",
+        "tests": {
+          "trinity": {
+            "s": "differs",
+            "text": "God is one, the Father; the Holy Spirit is his power, not a person."
+          },
+          "deity": {
+            "s": "differs",
+            "text": "Jesus is the Son of God, born of Mary, who did not exist before his birth; he is not God."
+          },
+          "cross": {
+            "s": "partial",
+            "text": "Affirms Jesus’ death and bodily resurrection, understanding his sacrifice as representative rather than substitutionary."
+          },
+          "scripture": {
+            "s": "affirms",
+            "text": "The Bible alone, without any other authoritative writings."
+          },
+          "grace": {
+            "s": "partial",
+            "text": "Salvation by grace through faith, with right belief and baptism by immersion essential; the faithful are raised at Christ’s return."
+          }
+        }
+      },
+      {
+        "id": "cs",
+        "ring": "outside",
+        "name": "Christian Science",
+        "css": "--role-prophet",
         "origin": "1879, Mary Baker Eddy, Boston",
         "self": "Church of Christ, Scientist: rediscovering Jesus' healing Christianity.",
         "why": "It reinterprets God as impersonal divine Mind and separates the man Jesus from 'the Christ'. It denies that his death atoned for sin, and it reads the Bible through Science and Health.",
         "affirms": "Jesus' virgin birth, his healing ministry, and the Bible as inspired.",
-        "keyTexts": ["John 1:14", "1 John 4:2–3"],
+        "keyTexts": [
+          "John 1:14",
+          "1 John 4:2–3"
+        ],
         "source": "https://www.christianscience.com/",
         "tests": {
-          "trinity": { "s": "differs", "text": "God is infinite Mind, Spirit, Life, Truth and Love; the 'trinity' is Life, Truth and Love, not three persons." },
-          "deity": { "s": "differs", "text": "Jesus is the human man; 'the Christ' is the divine idea he expressed. Jesus is not God." },
-          "cross": { "s": "differs", "text": "The crucifixion showed divine Love rather than paying for sin; sin, sickness and death are ultimately unreal." },
-          "scripture": { "s": "partial", "text": "The Bible, together with Eddy's Science and Health with Key to the Scriptures as its interpreter." },
-          "grace": { "s": "differs", "text": "Salvation is freedom from the belief in sin, sickness and death, through understanding divine Science." }
+          "trinity": {
+            "s": "differs",
+            "text": "God is infinite Mind, Spirit, Life, Truth and Love; the 'trinity' is Life, Truth and Love, not three persons."
+          },
+          "deity": {
+            "s": "differs",
+            "text": "Jesus is the human man; 'the Christ' is the divine idea he expressed. Jesus is not God."
+          },
+          "cross": {
+            "s": "differs",
+            "text": "The crucifixion showed divine Love rather than paying for sin; sin, sickness and death are ultimately unreal."
+          },
+          "scripture": {
+            "s": "partial",
+            "text": "The Bible, together with Eddy's Science and Health with Key to the Scriptures as its interpreter."
+          },
+          "grace": {
+            "s": "differs",
+            "text": "Salvation is freedom from the belief in sin, sickness and death, through understanding divine Science."
+          }
         }
       },
       {
-        "id": "uu", "ring": "outside", "name": "Unitarian Universalism", "css": "--aramaic",
+        "id": "unification",
+        "ring": "outside",
+        "name": "Unification Church",
+        "css": "--rel-family",
+        "origin": "1954, Sun Myung Moon, Seoul; now the Family Federation for World Peace and Unification",
+        "self": "Completing God’s plan of restoration through the “True Parents”, Sun Myung Moon and Hak Ja Han.",
+        "why": "Its scripture, the Divine Principle, teaches that Jesus’ crucifixion was not God’s original plan and won only spiritual salvation, and that the work is completed by Sun Myung Moon as the Lord of the Second Advent. It adds a new revelation and a new saviour figure, and it departs from every core belief.",
+        "affirms": "Jesus as a son of God and a saviour; the Bible as revelation; a strong emphasis on family.",
+        "keyTexts": [
+          "Hebrews 1:1–2",
+          "John 19:30",
+          "Galatians 1:8"
+        ],
+        "source": "https://familyfed.org/",
+        "tests": {
+          "trinity": {
+            "s": "differs",
+            "text": "The Trinity is reinterpreted through God’s “dual characteristics” and the True Parents, not three eternal persons."
+          },
+          "deity": {
+            "s": "differs",
+            "text": "Jesus is a perfected man, one with God in purpose, but not God himself."
+          },
+          "cross": {
+            "s": "differs",
+            "text": "The crucifixion was not God’s original will and brought only spiritual salvation; physical salvation awaits the Lord of the Second Advent."
+          },
+          "scripture": {
+            "s": "differs",
+            "text": "The Divine Principle is new revelation that completes the Bible."
+          },
+          "grace": {
+            "s": "differs",
+            "text": "Full salvation comes through the True Parents and the Blessing marriage ceremony."
+          }
+        }
+      },
+      {
+        "id": "uu",
+        "ring": "outside",
+        "name": "Unitarian Universalism",
+        "css": "--aramaic",
         "origin": "1961, merger of the Unitarian and Universalist movements",
         "self": "A liberal religion with Jewish and Christian roots, drawing on many sources, with no required creed.",
         "why": "It no longer presents itself as a Christian church and has no creed, so it meets none of the core tests, though some members do call themselves Christian.",
@@ -324,27 +987,63 @@
         "keyTexts": [],
         "source": "https://www.uua.org/beliefs/what-we-believe",
         "tests": {
-          "trinity": { "s": "differs", "text": "Its Unitarian roots reject the Trinity; no belief about God is required." },
-          "deity": { "s": "differs", "text": "Jesus is honoured as a teacher; his deity is not affirmed." },
-          "cross": { "s": "differs", "text": "No belief in the atonement or the resurrection is required." },
-          "scripture": { "s": "differs", "text": "The Bible is one source among many, alongside other traditions, science and experience." },
-          "grace": { "s": "differs", "text": "From its Universalist heritage: no one is finally lost, and no single way of salvation is taught." }
+          "trinity": {
+            "s": "differs",
+            "text": "Its Unitarian roots reject the Trinity; no belief about God is required."
+          },
+          "deity": {
+            "s": "differs",
+            "text": "Jesus is honoured as a teacher; his deity is not affirmed."
+          },
+          "cross": {
+            "s": "differs",
+            "text": "No belief in the atonement or the resurrection is required."
+          },
+          "scripture": {
+            "s": "differs",
+            "text": "The Bible is one source among many, alongside other traditions, science and experience."
+          },
+          "grace": {
+            "s": "differs",
+            "text": "From its Universalist heritage: no one is finally lost, and no single way of salvation is taught."
+          }
         }
       },
       {
-        "id": "islam", "ring": "other", "name": "Islam", "css": "--role-patriarch",
+        "id": "islam",
+        "ring": "other",
+        "name": "Islam",
+        "css": "--role-patriarch",
         "origin": "7th century, Arabia",
         "self": "Submission to the one God. Islam honours Isa (Jesus) as a great prophet and the Messiah, born of the virgin Mary.",
         "why": "Islam does not claim to be Christian. It honours Jesus more than any other religion outside Christianity, but denies his deity, his crucifixion and the Trinity.",
         "affirms": "Jesus' virgin birth, his miracles, his title of Messiah, and his return.",
-        "keyTexts": ["John 1:1", "1 Corinthians 15:3–4"],
+        "keyTexts": [
+          "John 1:1",
+          "1 Corinthians 15:3–4"
+        ],
         "source": "https://quran.com/4/157",
         "tests": {
-          "trinity": { "s": "differs", "text": "God is absolutely one: 'do not say \"Three\"' (Qur'an 4:171)." },
-          "deity": { "s": "differs", "text": "Jesus is a prophet and the Messiah, but not divine and not God's son (Qur'an 5:116–117; 112)." },
-          "cross": { "s": "differs", "text": "'They did not kill him, nor did they crucify him' (Qur'an 4:157); God raised him up to himself." },
-          "scripture": { "s": "differs", "text": "The Qur'an is God's final revelation; earlier scriptures are held to have been altered." },
-          "grace": { "s": "differs", "text": "Salvation through God's mercy, faith and righteous deeds, without an atoning sacrifice." }
+          "trinity": {
+            "s": "differs",
+            "text": "God is absolutely one: 'do not say \"Three\"' (Qur'an 4:171)."
+          },
+          "deity": {
+            "s": "differs",
+            "text": "Jesus is a prophet and the Messiah, but not divine and not God's son (Qur'an 5:116–117; 112)."
+          },
+          "cross": {
+            "s": "differs",
+            "text": "'They did not kill him, nor did they crucify him' (Qur'an 4:157); God raised him up to himself."
+          },
+          "scripture": {
+            "s": "differs",
+            "text": "The Qur'an is God's final revelation; earlier scriptures are held to have been altered."
+          },
+          "grace": {
+            "s": "differs",
+            "text": "Salvation through God's mercy, faith and righteous deeds, without an atoning sacrifice."
+          }
         }
       }
     ]

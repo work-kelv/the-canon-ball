@@ -113,6 +113,8 @@ export interface BoundaryTest {
 export interface BoundaryGroup {
   id: string;
   ring: 'inside' | 'outside' | 'other';
+  /** Inside the boundary, but with distinctive teachings that some dispute. */
+  edge?: boolean;
   name: string;
   css: string;
   origin: string;

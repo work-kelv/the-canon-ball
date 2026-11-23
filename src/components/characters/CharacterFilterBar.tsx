@@ -1,9 +1,10 @@
-import { BookMarked, CalendarRange, RotateCcw, UserRound } from 'lucide-react';
+import { BookMarked, CalendarRange, RotateCcw, Star, UserRound } from 'lucide-react';
 import type { Era, Role } from '../../characterTypes';
 import { books } from '../../lib/books';
 import {
   EMPTY_FILTERS,
   ERAS,
+  KEY_FIGURES,
   ROLES,
   TESTAMENT_ERAS,
   type CharacterFilters,
@@ -89,6 +90,17 @@ export function CharacterFilterBar({ filters, onChange, matchCount }: Props) {
           className="sm:max-w-[14rem]"
         />
       </div>
+      <button
+        onClick={() => set({ keyOnly: !filters.keyOnly })}
+        aria-pressed={filters.keyOnly}
+        title="Show only the prominent figures named for each book in the per-book list"
+        className={`focus-ring inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1.5 font-sans text-[13px] font-medium transition-colors ${
+          filters.keyOnly ? 'border-ink bg-ink text-paper' : 'border-rule bg-paper/70 hover:border-ink/60'
+        }`}
+      >
+        <Star size={13} aria-hidden className={filters.keyOnly ? 'fill-current' : ''} />
+        Prominent figures only <span className="tabular-nums opacity-70">({KEY_FIGURES.size})</span>
+      </button>
       <div className="ml-auto flex items-center gap-2 font-sans text-xs tabular-nums text-ink-soft" aria-live="polite">
         <span>
           <b className="font-semibold text-ink">{matchCount}</b> of {characters.length} people

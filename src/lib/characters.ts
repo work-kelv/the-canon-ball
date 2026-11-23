@@ -1,4 +1,5 @@
 import data from '../data/biblicalCharacters.json';
+import keyFigureData from '../data/keyFigures.json';
 import type {
   Character,
   CharacterMeta,
@@ -112,9 +113,14 @@ export interface CharacterFilters {
   era: Era | null;
   role: Role | null;
   query: string;
+  /** Only the people named in the per-book list of prominent figures. */
+  keyOnly: boolean;
 }
 
-export const EMPTY_FILTERS: CharacterFilters = { testament: null, book: null, era: null, role: null, query: '' };
+/** Characters named in data-sources/gemini-characters-by-book.json (see scripts/characters/build-highlights.cjs). */
+export const KEY_FIGURES = new Set<string>(keyFigureData.ids);
+
+export const EMPTY_FILTERS: CharacterFilters = { testament: null, book: null, era: null, role: null, query: '', keyOnly: false };
 
 /** Eras whose people "belong" to each testament (Intertestamental sits between and is in neither). */
 export const TESTAMENT_ERAS: Record<'Old' | 'New', Era[]> = {
@@ -127,13 +133,14 @@ export function matchesCharacter(c: Character, f: CharacterFilters): boolean {
   if (f.book && !c.books.some((b) => b.book === f.book)) return false;
   if (f.era && c.era !== f.era) return false;
   if (f.role && c.role !== f.role) return false;
+  if (f.keyOnly && !KEY_FIGURES.has(c.id)) return false;
   const q = f.query.trim().toLowerCase();
   if (q && !`${c.name} ${c.title}`.toLowerCase().includes(q)) return false;
   return true;
 }
 
 export function isFiltering(f: CharacterFilters): boolean {
-  return !!(f.testament || f.book || f.era || f.role || f.query.trim());
+  return !!(f.testament || f.book || f.era || f.role || f.keyOnly || f.query.trim());
 }
 
 // ── Book grouping ("time of the books") ──
