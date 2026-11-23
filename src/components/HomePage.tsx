@@ -66,6 +66,7 @@ const FEATURES: Feature[] = [
     blurb: 'How the church branched, where its traditions differ, what the creeds confess, and who stands outside them.',
     points: ['A family tree from Pentecost to today', 'Catholic, Orthodox and Protestant compared', 'The four creeds, line by line and side by side'],
     tries: [
+      { label: 'Start here: the story simply told', href: 'history.html#start' },
       { label: 'Compare two traditions', href: 'history.html#traditions' },
       { label: 'Core beliefs compared', href: 'history.html#compare' },
     ],

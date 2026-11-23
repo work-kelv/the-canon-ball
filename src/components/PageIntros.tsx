@@ -132,8 +132,8 @@ export function HistoryIntro() {
       art={<HistoryArt />}
       lead={
         <p>
-          Two thousand years of the church in five views: how it branched into today’s traditions, what unites and divides them,
-          the creeds that define the Christian faith, how other movements’ beliefs compare, and who’s who among its titles.
+          Two thousand years of the church, as a short course. New to it? Begin with the first tab, Start here, which tells the
+          whole story simply; each page then goes deeper, and the button at the bottom of every page takes you to the next.
         </p>
       }
       cards={[

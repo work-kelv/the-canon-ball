@@ -80,10 +80,11 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
 
 ## 4. Church History
 
-The Church History page has five tabs. Each tab has its own link (for example `history.html#creeds`). The old `#translations` and `#verses` links now open those tabs on The Bible page.
+The Church History page works like a short course: six tabs in learning order, with Previous / Next buttons at the bottom of each. Each tab has its own link (for example `history.html#creeds`). The old `#translations` and `#verses` links now open those tabs on The Bible page.
 
 ![The family tree of the church](docs/screenshots/history-tree.png)
 
+- **Start here.** Church history simply told, in six steps (one church; agreeing on the creeds; the first splits; the Reformation; different churches, one core faith; who's who), each with a key idea, simple definitions, and a button to the tab that goes deeper.
 - **Family tree.** Thirteen traditions on one timeline, from Pentecost to the non-denominational churches. Click a branch to see what it shares with all Christians, what is distinctive to it, and which traditions grew from it.
 - **Traditions.** Seven traditions (Catholic, Orthodox, Lutheran, Anglican, Reformed, Baptist, Pentecostal) on ten questions such as authority, salvation, the Lord's Supper, baptism and Mary. An "at a glance" grid puts every tradition on one line per question; tap a question for why it matters, how the disagreement arose (with dates), each tradition's position in order, key terms, and the passages each side cites. Tap two traditions to highlight them and see where they agree, are close or differ. The tab opens with the common ground every tradition shares and the worldwide numbers from Pew Research.
 - **Creeds.** The Apostles', Nicene, Chalcedonian and Athanasian creeds, line by line, or all four compared: what each added, a clause-by-clause table with each creed's own words, and which churches confess which creed. Each line comes with the Bible passages behind it, the controversy it answered, and a note on how reliable its text is.
