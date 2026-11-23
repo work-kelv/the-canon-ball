@@ -10,7 +10,7 @@ import { BOOK_NAME, displayRef, findRefs } from '../../src/lib/scriptureRefs.ts'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const [webPath, bsbPath] = process.argv.slice(2);
-const MAX_VERSES = 4; // verses stored per reference; longer passages link out
+const MAX_VERSES = Infinity; // every verse of each reference is stored, so the pop-up shows the whole passage
 
 // ── Parse USFX into book → chapter → [{ v, t }] ──
 function parseUsfx(file) {
@@ -131,7 +131,7 @@ fs.writeFileSync(
       translations: { web: 'World English Bible (WEB)', bsb: 'Berean Standard Bible (BSB)' },
       license: 'Both public domain',
       source: 'https://github.com/seven1m/open-bibles (eng-web.usfx.xml, eng-bsb.usfx.xml)',
-      note: `Up to ${MAX_VERSES} verses are stored per reference; longer passages link to the full text.`,
+      note: 'Every verse of each reference is stored, so the pop-up can show the whole passage.',
     },
     refs,
   }) + '\n',

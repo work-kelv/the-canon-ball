@@ -81,7 +81,11 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
       if (boxRef.current?.contains(t) || anchor.contains(t)) return;
       onClose();
     };
-    const onScroll = () => !phone && onClose();
+    // Scrolling the page closes the desktop pop-up; scrolling the passage inside it must not.
+    const onScroll = (e: Event) => {
+      if (phone || boxRef.current?.contains(e.target as Node)) return;
+      onClose();
+    };
     window.addEventListener('keydown', onKey);
     document.addEventListener('mousedown', onDown);
     document.addEventListener('touchstart', onDown);
@@ -121,7 +125,7 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
         role="dialog"
         aria-label={`${data?.display ?? displayRef(found.segments)} — ${name}`}
         className={`fixed z-[71] flex flex-col overflow-hidden border border-rule bg-paper font-sans text-ink shadow-2xl ${
-          phone ? 'inset-x-0 bottom-0 max-h-[70vh] rounded-t-xl' : 'w-[22rem] max-w-[calc(100vw-16px)] rounded-md'
+          phone ? 'inset-x-0 bottom-0 max-h-[75vh] rounded-t-xl' : 'max-h-[min(70vh,34rem)] w-[24rem] max-w-[calc(100vw-16px)] rounded-md'
         }`}
         style={phone ? undefined : { left: pos?.left ?? -9999, top: pos?.top ?? -9999 }}
       >
@@ -145,7 +149,7 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
             <X size={15} />
           </button>
         </div>
-        <div className="overflow-y-auto overscroll-contain px-3.5 py-3">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3.5 py-3">
           {data === undefined && <p className="text-sm text-ink-soft">Loading…</p>}
           {data === null && <p className="text-sm text-ink-soft">This passage isn&rsquo;t in the offline text.</p>}
           {data && (
