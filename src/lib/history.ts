@@ -106,6 +106,9 @@ export interface Topic {
   why: string;
   history: string;
   terms: { term: string; def: string }[];
+  /** Short names for the two ends of the line, shown on the at-a-glance grid. */
+  leftShort: string;
+  rightShort: string;
   /** Passages typically cited by the traditions nearer each pole. */
   leftRefs: string[];
   rightRefs: string[];
