@@ -5,16 +5,26 @@ import { cssColor } from '../../lib/characters';
 import { RefText } from '../ScriptureRef';
 
 type TraditionId = keyof typeof data.meta.traditions;
+/** A family that uses the title, optionally narrowed (e.g. Protestant · Anglican). */
+type Use = TraditionId | { f: TraditionId; note: string };
+interface Ladder {
+  id: string;
+  label: string;
+  css: string;
+  tiers: string[];
+  branches?: { label: string; tiers: string[] }[];
+  note: string;
+}
 interface Title {
   id: string;
   title: string;
   word: string;
-  used: string[];
+  used: Use[];
   body: string;
   refs?: string[];
   sources: string[];
 }
-const groups = data.groups as { id: string; label: string; titles: Title[] }[];
+const groups = data.groups as unknown as { id: string; label: string; titles: Title[] }[];
 const byId = Object.fromEntries(groups.flatMap((g) => g.titles).map((t) => [t.id, t]));
 const TRAD = data.meta.traditions as Record<TraditionId, { label: string; css: string }>;
 
@@ -40,13 +50,10 @@ export function ChurchTitles() {
       <div>
         <h3 className="eyebrow mb-2">Who’s who, from the top · tap a title</h3>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {data.ladders.map((l) => (
-            <div key={l.id} className="rounded-md border border-rule bg-paper/85 p-3" style={{ boxShadow: `inset 0 3px 0 ${cssColor(l.css)}` }}>
-              <div className="font-display text-lg font-semibold" style={{ color: cssColor(l.css) }}>
-                {l.label}
-              </div>
-              <ol className="mt-1.5 space-y-1">
-                {l.tiers.map((t, i) => (
+          {(data.ladders as Ladder[]).map((l) => {
+            const Rungs = ({ tiers }: { tiers: string[] }) => (
+              <ol className="space-y-1">
+                {tiers.map((t, i) => (
                   <li key={t} style={{ paddingLeft: i * 6 }}>
                     <button
                       onClick={() => jump(t)}
@@ -58,9 +65,32 @@ export function ChurchTitles() {
                   </li>
                 ))}
               </ol>
-              <p className="mt-2 font-sans text-[11.5px] leading-snug text-ink-soft">{l.note}</p>
-            </div>
-          ))}
+            );
+            return (
+              <div
+                key={l.id}
+                className={`rounded-md border border-rule bg-paper/85 p-3 ${l.branches ? 'sm:col-span-2 lg:col-span-2' : ''}`}
+                style={{ boxShadow: `inset 0 3px 0 ${cssColor(l.css)}` }}
+              >
+                <div className="mb-1.5 font-display text-lg font-semibold" style={{ color: cssColor(l.css) }}>
+                  {l.label}
+                </div>
+                {l.branches ? (
+                  <div className="grid gap-x-3 gap-y-3 sm:grid-cols-2">
+                    {l.branches.map((br) => (
+                      <div key={br.label}>
+                        <div className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-wide text-ink-soft">{br.label}</div>
+                        <Rungs tiers={br.tiers} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <Rungs tiers={l.tiers} />
+                )}
+                <p className="mt-2 font-sans text-[11.5px] leading-snug text-ink-soft">{l.note}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -81,11 +111,14 @@ export function ChurchTitles() {
                 </div>
                 <div className="mt-1 flex flex-wrap gap-1">
                   {t.used.map((u) => {
-                    const tr = TRAD[u as TraditionId];
+                    const id = typeof u === 'string' ? u : u.f;
+                    const note = typeof u === 'string' ? null : u.note;
+                    const tr = TRAD[id];
                     return (
-                      <span key={u} className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[10.5px] font-semibold" style={{ background: cssColor(tr.css, 0.12), color: cssColor(tr.css) }}>
+                      <span key={id} className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[10.5px] font-semibold" style={{ background: cssColor(tr.css, 0.12), color: cssColor(tr.css) }}>
                         <span className="h-1.5 w-1.5 rounded-full" style={{ background: cssColor(tr.css) }} />
                         {tr.label}
+                        {note && <span className="font-normal opacity-80">· {note}</span>}
                       </span>
                     );
                   })}

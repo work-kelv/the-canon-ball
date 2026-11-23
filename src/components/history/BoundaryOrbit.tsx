@@ -22,7 +22,7 @@ import {
 } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
 import { Segmented } from '../characters/controls';
-import { CREED_CSS, CreedStatusMark, STATUS_STYLE } from './CreedCompare';
+import { CREED_CSS, CreedStatusMark, STATUS_STYLE, statusLook } from './CreedCompare';
 
 const rad = (d: number) => (d * Math.PI) / 180;
 
@@ -81,7 +81,7 @@ function makeGeom(small: boolean) {
     const [a0, a1] = SPANS[f.id];
     const core = f.members.filter((m) => !m.edge);
     const edge = f.members.filter((m) => m.edge);
-    const end = edge.length ? a1 - 24 : a1;
+    const end = edge.length ? a1 - 40 : a1;
     const two = core.length > 4;
     core.forEach((m, i) => {
       const a = a0 + ((i + 0.5) / core.length) * (end - a0);
@@ -89,7 +89,7 @@ function makeGeom(small: boolean) {
       memberPos[m.id] = pt(r, a);
     });
     edge.forEach((m, i) => {
-      memberPos[m.id] = pt(WEDGE_IN + band * 0.62, end + 6 + i * 11);
+      memberPos[m.id] = pt(WEDGE_IN + band * 0.55, end + 10 + i * 19);
     });
   }
 
@@ -342,8 +342,9 @@ export function BoundaryOrbit() {
   const small = useSmall();
   const k = small ? 1.45 : 1; // larger text and dots on phones, where the drawing shrinks
   const { S, C, CORE_R, BOUNDARY_R, OTHER_R, step, pt, memberPos, groupPos, arcPath, wedgePath } = useMemo(() => makeGeom(small), [small]);
-  const DOT = small ? 17 : 11;
-  const NODE_R = 20 * (small ? 1.25 : 1);
+  // One size for every circle, inside the circle of churches and beyond it.
+  const DOT = small ? 21 : 15;
+  const NODE_R = DOT;
   const selKey = keyOf(sel);
 
   const famOf = (id: string) => churchFamilies.find((f) => f.id === id)!;
@@ -359,17 +360,19 @@ export function BoundaryOrbit() {
   const linkCss = selGroup ? selGroup.css : selFamily!.css;
 
   // How a node looks through the creed lens
-  const lensStyle = (s: CreedStatus | undefined) =>
-    !lens || !s ? { opacity: 1 } : { opacity: s === 'rejects' ? 0.3 : s === 'unused' ? 0.55 : 1 };
-  const Badge = ({ s, x, y }: { s?: CreedStatus; x: number; y: number }) =>
-    lens && s ? (
+  const lensStyle = (s: CreedStatus | undefined) => ({ opacity: lens && s ? statusLook(s).opacity : 1 });
+  const Badge = ({ s, x, y }: { s?: CreedStatus; x: number; y: number }) => {
+    if (!lens || !s) return null;
+    const l = statusLook(s);
+    return (
       <g transform={`translate(${x},${y})`} aria-hidden>
-        <circle r={7 * k} fill={cssColor('--paper')} stroke={cssColor(STATUS_STYLE[s].css)} strokeWidth={1.5} />
-        <text textAnchor="middle" y={3.6 * k} className="font-sans font-bold" style={{ fontSize: 10 * k }} fill={cssColor(STATUS_STYLE[s].css)}>
+        <circle r={small ? 10 : 7.5} fill={s === 'content' ? cssColor('--paper') : l.fill === cssColor('--paper') ? cssColor('--paper') : l.fill} stroke={l.stroke} strokeWidth={1.8} strokeDasharray={l.dash} />
+        <text textAnchor="middle" y={small ? 4.5 : 3.4} className="font-sans font-bold" style={{ fontSize: small ? 13 : 10 }} fill={s === 'content' || s === 'unused' ? l.stroke : cssColor('--paper')}>
           {STATUS_STYLE[s].mark}
         </text>
       </g>
-    ) : null;
+    );
+  };
 
   return (
     <section aria-labelledby="orbit-title" className="space-y-4">
@@ -449,12 +452,14 @@ export function BoundaryOrbit() {
             {/* family wedges */}
             {churchFamilies.map((f) => {
               const [a0, a1] = SPANS[f.id];
-              const on = selFamily?.id === f.id;
+              const whole = sel.kind === 'family' && sel.id === f.id; // the whole family is selected
+              const within = sel.kind === 'member' && sel.family === f.id; // one of its churches is
+              const fillA = lens ? 0.05 : whole ? 0.34 : within ? 0.18 : sel.kind === 'family' ? 0.06 : 0.1;
               return (
                 <g key={f.id} className="cursor-pointer" onClick={() => setSel({ kind: 'family', id: f.id })}>
                   <title>{f.name}</title>
-                  <path d={wedgePath(a0, a1)} fill={cssColor(f.css, on ? 0.2 : 0.1)} stroke={cssColor('--paper')} strokeWidth={3} style={{ transition: 'fill 200ms' }} />
-                  <text className="pointer-events-none font-sans font-semibold" style={{ letterSpacing: small ? '0.08em' : '0.12em', fontSize: small ? 15 : 9.5 }} fill={cssColor(f.css)}>
+                  <path d={wedgePath(a0, a1)} fill={lens ? cssColor('--ink', fillA) : cssColor(f.css, fillA)} stroke={cssColor('--paper')} strokeWidth={3} style={{ transition: 'fill 250ms' }} />
+                  <text className={`pointer-events-none font-sans ${whole ? 'font-bold' : 'font-semibold'}`} style={{ letterSpacing: small ? '0.08em' : '0.12em', fontSize: small ? 15 : 9.5, opacity: sel.kind === 'family' && !whole && !lens ? 0.55 : 1 }} fill={cssColor(f.css)}>
                     <textPath href={`#fam-${f.id}`} startOffset="50%" textAnchor="middle">
                       {FAMILY_LABEL[f.id][small ? 1 : 0]}
                     </textPath>
@@ -462,6 +467,17 @@ export function BoundaryOrbit() {
                 </g>
               );
             })}
+            {/* Bold outline around the selected family, drawn above the neighbouring wedges */}
+            {sel.kind === 'family' && !lens && (
+              <path
+                d={wedgePath(...SPANS[sel.id])}
+                fill="none"
+                stroke={cssColor(famOf(sel.id).css)}
+                strokeWidth={3.5}
+                strokeLinejoin="round"
+                className="pointer-events-none"
+              />
+            )}
             <circle cx={C} cy={C} r={BOUNDARY_R} fill="none" stroke={cssColor('--rel-mentor', 0.75)} strokeWidth={1.5} strokeDasharray="6 5" />
             {/* On phones the outer circles sit close in, so the dashed line is explained by the legend instead. */}
             <text className={`fill-ink-soft font-sans ${small ? 'hidden' : ''}`} style={{ letterSpacing: '0.16em', fontSize: 11 * k }}>
@@ -511,19 +527,21 @@ export function BoundaryOrbit() {
                   >
                     <title>{m.name}</title>
                     {active && <circle cx={p.x} cy={p.y} r={DOT + 7} fill={cssColor(f.css, 0.22)} className="orbit-pulse" />}
-                    <circle
-                      cx={p.x}
-                      cy={p.y}
-                      r={DOT}
-                      fill={active ? cssColor(f.css) : cssColor('--paper')}
-                      stroke={cssColor(f.css)}
-                      strokeWidth={2}
-                      strokeDasharray={m.edge ? '3 2' : undefined}
-                    />
-                    <text x={p.x} y={p.y + (small ? 4.5 : 3.2)} textAnchor="middle" className="pointer-events-none font-sans font-bold" style={{ fontSize: small ? (m.abbr.length > 2 ? 11 : 13) : m.abbr.length > 2 ? 7 : 8.5 }} fill={active ? cssColor('--paper') : cssColor(f.css)}>
-                      {m.abbr}
-                    </text>
-                    <Badge s={st} x={p.x + DOT * 0.8} y={p.y - DOT * 0.8} />
+                    {(() => {
+                      const look = st ? statusLook(st) : null;
+                      const famOn = sel.kind === 'family' && sel.id === f.id;
+                      const fill = look ? look.fill : active || famOn ? cssColor(f.css) : cssColor('--paper');
+                      const txt = look ? look.text : active || famOn ? cssColor('--paper') : cssColor(f.css);
+                      return (
+                        <>
+                          <circle cx={p.x} cy={p.y} r={DOT} fill={fill} stroke={look ? look.stroke : cssColor(f.css)} strokeWidth={look ? 2.5 : 2} strokeDasharray={look ? look.dash : m.edge ? '3 2' : undefined} />
+                          <text x={p.x} y={p.y + (small ? 4.5 : 3.4)} textAnchor="middle" className="pointer-events-none font-sans font-bold" style={{ fontSize: small ? (m.abbr.length > 2 ? 11 : 13) : m.abbr.length > 2 ? 8.5 : 10 }} fill={txt}>
+                            {m.abbr}
+                          </text>
+                        </>
+                      );
+                    })()}
+                    <Badge s={st} x={p.x + DOT * 0.78} y={p.y - DOT * 0.78} />
                   </g>
                 );
               }),
@@ -554,8 +572,14 @@ export function BoundaryOrbit() {
                   <title>{g.name}</title>
                   <g transform={`translate(${q.x},${q.y})`}>
                     {active && <circle r={NODE_R + 9} fill={cssColor(g.css, 0.18)} className="orbit-pulse" />}
-                    <circle r={hot ? NODE_R + 2 : NODE_R} fill={active ? col : cssColor('--paper')} stroke={col} strokeWidth={2.5} strokeDasharray={g.ring === 'other' ? '3 3' : undefined} />
-                    <text textAnchor="middle" y={5 * k} className="pointer-events-none font-sans font-bold" style={{ fontSize: 13 * k }} fill={active ? cssColor('--paper') : col}>
+                    <circle
+                      r={hot ? NODE_R + 2 : NODE_R}
+                      fill={st ? statusLook(st).fill : active ? col : cssColor('--paper')}
+                      stroke={st ? statusLook(st).stroke : col}
+                      strokeWidth={st ? 2.5 : 2}
+                      strokeDasharray={st ? statusLook(st).dash : g.ring === 'other' ? '3 3' : undefined}
+                    />
+                    <text textAnchor="middle" y={small ? 4.5 : 3.6} className="pointer-events-none font-sans font-bold" style={{ fontSize: small ? 13 : 10.5 }} fill={st ? statusLook(st).text : active ? cssColor('--paper') : col}>
                       {initials}
                     </text>
                     {!small && (

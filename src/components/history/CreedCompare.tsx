@@ -35,18 +35,41 @@ function PhraseMark({ s, css }: { s: PhraseStatus; css: string }) {
   );
 }
 
+/**
+ * The four creed statuses, told apart by colour and by shape (for colour-blind readers too):
+ * confessed = solid green ✓, agrees = green ring with ◐, not used = dashed grey –, rejects = solid red ✕.
+ */
 export const STATUS_STYLE: Record<CreedStatus, { css: string; mark: string }> = {
-  confessed: { css: '--rel-mentor', mark: '●' },
-  content: { css: '--aramaic', mark: '◐' },
-  unused: { css: '--ink-soft', mark: '○' },
+  confessed: { css: '--rel-mentor', mark: '✓' },
+  content: { css: '--rel-mentor', mark: '◐' },
+  unused: { css: '--ink-soft', mark: '–' },
   rejects: { css: '--rel-rival', mark: '✕' },
 };
 
+export function statusLook(s: CreedStatus) {
+  const c = (a = 1) => cssColor(STATUS_STYLE[s].css, a);
+  switch (s) {
+    case 'confessed':
+      return { fill: c(), stroke: c(), text: cssColor('--paper'), dash: undefined, opacity: 1 };
+    case 'content':
+      return { fill: c(0.16), stroke: c(), text: c(), dash: undefined, opacity: 1 };
+    case 'unused':
+      return { fill: cssColor('--paper'), stroke: c(0.7), text: c(), dash: '3 3', opacity: 0.75 };
+    case 'rejects':
+      return { fill: c(), stroke: c(), text: cssColor('--paper'), dash: undefined, opacity: 1 };
+  }
+}
+
 export function CreedStatusMark({ s }: { s: CreedStatus }) {
-  const { css, mark } = STATUS_STYLE[s];
+  const l = statusLook(s);
   return (
-    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[13px] font-bold" style={{ color: cssColor(css), background: cssColor(css, 0.12) }} title={creedLens.statuses[s].label} aria-label={creedLens.statuses[s].label}>
-      {mark}
+    <span
+      className="inline-flex h-6 w-6 items-center justify-center rounded-full text-[13px] font-bold leading-none"
+      style={{ color: l.text, background: l.fill, border: `2px ${l.dash ? 'dashed' : 'solid'} ${l.stroke}` }}
+      title={creedLens.statuses[s].label}
+      aria-label={creedLens.statuses[s].label}
+    >
+      {STATUS_STYLE[s].mark}
     </span>
   );
 }
