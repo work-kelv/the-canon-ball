@@ -1,3 +1,4 @@
+import { CharactersIntro } from '../PageIntros';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { GanttChart, LayoutList, Share2 } from 'lucide-react';
 import {
@@ -80,6 +81,7 @@ export function CharactersPage({ dark }: { dark: boolean }) {
 
   return (
     <div style={{ ['--controls-h' as string]: `${controlsH}px` }}>
+      <CharactersIntro />
       <div
         ref={controls}
         className="z-30 -mx-4 space-y-3 border-b border-rule bg-paper/90 px-4 pb-4 pt-2 backdrop-blur sm:-mx-8 sm:px-8"

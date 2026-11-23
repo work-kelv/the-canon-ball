@@ -1,3 +1,4 @@
+import { MapIntro } from '../PageIntros';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { ArrowRight, BookOpen, ListVideo, ChevronLeft, ChevronRight, ExternalLink, Feather, Globe2, MapPin, Maximize2, Minimize2, Play, Route, Search, Users, X } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
@@ -817,7 +818,8 @@ export function MapPage() {
   };
 
   return (
-    <div className="pt-4">
+    <div className="pt-6">
+      <MapIntro />
       {/* Controls */}
       <div className="flex min-w-0 flex-wrap items-center gap-2 pb-3">
         <Segmented<Mode>

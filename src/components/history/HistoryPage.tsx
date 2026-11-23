@@ -7,6 +7,7 @@ import { TranslationTimeline } from './TranslationTimeline';
 import { TextualTransmission } from './TextualTransmission';
 import { TraditionsCompare } from './TraditionsCompare';
 import { BoundaryOrbit } from './BoundaryOrbit';
+import { HistoryIntro } from '../PageIntros';
 
 function InsideOutside() {
   return (
@@ -61,6 +62,7 @@ export function HistoryPage() {
 
   return (
     <main className="pt-6" style={{ ['--tabs-h' as string]: `${tabsH}px` }}>
+      <HistoryIntro />
       <nav
         ref={navRef}
         id="history-tabs"
