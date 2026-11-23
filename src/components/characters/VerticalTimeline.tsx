@@ -1,4 +1,5 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import type { Character } from '../../characterTypes';
 import { cssColor, formatYearRange, lineage, roleCss, twelveSons } from '../../lib/characters';
 import { type Arrangement, type Highlight, SON_IDS, fmtYear, groupPeople, type useTimelineModel } from './timelineModel';
@@ -12,6 +13,8 @@ interface Props {
 }
 
 const LINEAGE_SET = new Set(lineage);
+/** People shown per era before "Show all" (phones). */
+const PREVIEW = 4;
 const SON_ORDER: Record<string, number> = Object.fromEntries(SON_IDS.map((id, i) => [id, i + 1]));
 const TWELVE_SET = new Set(['jacob', ...SON_IDS, ...twelveSons.map((s) => s.mother)]);
 
@@ -163,6 +166,14 @@ function GapMarker({ years }: { years: number }) {
 
 export function VerticalTimeline({ model, arrangement, highlight, selectedId, onSelect }: Props) {
   const groups = groupPeople(model.people, arrangement === 'book' ? 'book' : 'era');
+  const [open, setOpen] = useState<Set<string>>(() => new Set());
+  const toggleGroup = (key: string) =>
+    setOpen((s) => {
+      const n = new Set(s);
+      if (n.has(key)) n.delete(key);
+      else n.add(key);
+      return n;
+    });
   const isDim = (id: string) =>
     highlight === 'lineage'
       ? !LINEAGE_SET.has(id)
@@ -185,7 +196,7 @@ export function VerticalTimeline({ model, arrangement, highlight, selectedId, on
       <aside className="flex items-center gap-3 border-b border-rule bg-ink/[0.03] px-3 py-2.5 font-sans text-[11.5px] leading-snug text-ink-soft">
         <span>
           Each {arrangement === 'book' ? 'book group' : 'era'} opens with a chart of <b className="text-ink">who lived at the same time</b>: one
-          bar per person, <b className="text-ink">coloured by role</b> (key above). The list below runs in date order.
+          bar per person, <b className="text-ink">coloured by role</b> (key above). The list runs in date order; long eras show the first few, with “Show all” for the rest.
           {highlight !== 'lineage' && (
             <>
               {' '}
@@ -206,27 +217,50 @@ export function VerticalTimeline({ model, arrangement, highlight, selectedId, on
           {g.members.length > 1 && (
             <EraStrip members={g.members} start={g.start} end={g.end} isDim={isDim} selectedId={selectedId} onSelect={onSelect} />
           )}
-          <ol className="relative px-1 py-1">
-            {/* the vertical rail */}
-            <span aria-hidden className="absolute bottom-0 top-0 w-px bg-ink/20" style={{ left: 'calc(0.25rem + 4.6rem + 0.5rem + 9px)' }} />
-            {g.members.map((c, i) => {
-              const prev = g.members[i - 1];
-              const gap = prev ? c.dates.start - prev.dates.start : 0;
-              const showGap = gap >= 30 && gap >= (g.end - g.start) * 0.08;
-              return (
-                <Fragment key={c.id}>
-                  {showGap && <GapMarker years={gap} />}
-                  <Row
-                    c={c}
-                    dim={isDim(c.id)}
-                    selected={selectedId === c.id}
-                    badge={badgeFor(c)}
-                    onSelect={() => onSelect(c.id)}
-                  />
-                </Fragment>
-              );
-            })}
-          </ol>
+          {(() => {
+            // Long eras start folded to a short preview (the chart above is the overview);
+            // a search, filter or highlight opens everything.
+            const foldable = !model.filtering && g.members.length > PREVIEW + 2;
+            const isOpen = !foldable || open.has(g.key) || g.members.some((m) => m.id === selectedId && g.members.indexOf(m) >= PREVIEW);
+            const list = isOpen ? g.members : g.members.slice(0, PREVIEW);
+            return (
+              <>
+                <ol className="relative px-1 py-1">
+                  {/* the vertical rail */}
+                  <span aria-hidden className="absolute bottom-0 top-0 w-px bg-ink/20" style={{ left: 'calc(0.25rem + 4.6rem + 0.5rem + 9px)' }} />
+                  {list.map((c, i) => {
+                    const prev = list[i - 1];
+                    const gap = prev ? c.dates.start - prev.dates.start : 0;
+                    const showGap = gap >= 30 && gap >= (g.end - g.start) * 0.08;
+                    return (
+                      <Fragment key={c.id}>
+                        {showGap && <GapMarker years={gap} />}
+                        <Row
+                          c={c}
+                          dim={isDim(c.id)}
+                          selected={selectedId === c.id}
+                          badge={badgeFor(c)}
+                          onSelect={() => onSelect(c.id)}
+                        />
+                      </Fragment>
+                    );
+                  })}
+                </ol>
+                {foldable && (
+                  <div className="px-3 pb-3">
+                    <button
+                      onClick={() => toggleGroup(g.key)}
+                      aria-expanded={isOpen}
+                      className="focus-ring flex w-full items-center justify-center gap-1.5 rounded-full border border-rule py-2 font-sans text-[13px] font-medium hover:border-ink/50 active:bg-ink/5"
+                    >
+                      {isOpen ? 'Show fewer' : `Show all ${g.members.length} people`}
+                      <ChevronDown size={14} aria-hidden className={isOpen ? 'rotate-180' : ''} />
+                    </button>
+                  </div>
+                )}
+              </>
+            );
+          })()}
         </section>
       ))}
       {model.spiritsShown.length > 0 && (

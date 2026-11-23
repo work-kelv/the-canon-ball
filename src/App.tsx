@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { Church, ExternalLink, House, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
+import { ChevronDown, Church, ExternalLink, House, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
 import { langColor } from './lib/books';
 import { REFERENCES } from './lib/references';
 
@@ -13,33 +13,36 @@ const NAV: { id: Section; label: string; short: string; href: string; icon: type
   { id: 'history', label: 'Church History', short: 'History', href: 'history.html', icon: Church },
 ];
 
-const INTRO: Record<Section, { eyebrow: string; text: ReactNode }> = {
+const INTRO: Record<Section, { eyebrow: string; title?: string; text: ReactNode }> = {
   home: {
     eyebrow: 'An interactive guide to the Bible',
     text: 'Explore the Bible’s languages, people and places, and how its message was confessed, divided and translated across two thousand years of church history.',
   },
   languages: {
     eyebrow: 'Sixty-six books · Three tongues',
+    title: 'Languages',
     text: (
       <>
-        The Protestant Bible by the languages it was first written in —{' '}
-        <span style={{ color: langColor('Hebrew') }}>Biblical Hebrew</span>,{' '}
-        <span style={{ color: langColor('Aramaic') }}>Biblical Aramaic</span> and{' '}
-        <span style={{ color: langColor('Greek') }}>Koine Greek</span>.
+        The 66 books by the language they were first written in:{' '}
+        <span style={{ color: langColor('Hebrew') }}>Hebrew</span>, <span style={{ color: langColor('Aramaic') }}>Aramaic</span> and{' '}
+        <span style={{ color: langColor('Greek') }}>Greek</span>.
       </>
     ),
   },
   characters: {
     eyebrow: 'Lives · Lineage · Eras',
-    text: 'The people of Scripture — who they were, whom they loved, mentored and opposed, when they lived, and where in the canon they appear.',
+    title: 'Characters',
+    text: '266 people of the Bible: when they lived, and how they were connected.',
   },
   map: {
     eyebrow: 'Places · Routes · Settings',
-    text: 'Where each book was written and where it is set — with the great journeys of Scripture across the Mediterranean and the Ancient Near East.',
+    title: 'Map',
+    text: 'Where each book was written and set, and the journeys its people made.',
   },
   history: {
     eyebrow: 'Councils · Creeds · Translations',
-    text: 'How the church branched, how Catholic, Orthodox and Protestant churches differ, what the historic creeds confess and who stands outside them, and how the Bible reached the world’s languages — chapter and verse.',
+    title: 'Church History',
+    text: 'How the church branched, what it confesses, and how the Bible reached every language.',
   },
 };
 
@@ -59,14 +62,19 @@ function useTheme() {
   return [dark, toggle] as const;
 }
 
+const REFS_PREVIEW = 4;
+
 function References({ section }: { section: Section }) {
+  const all = REFERENCES[section];
+  const [open, setOpen] = useState(all.length <= REFS_PREVIEW + 1);
+  const shown = open ? all : all.slice(0, REFS_PREVIEW);
   return (
     <section aria-labelledby="refs" className="mt-12 border-t border-rule pt-6">
       <h2 id="refs" className="font-display text-xl font-semibold">
-        References
+        References <span className="font-sans text-sm font-normal text-ink-soft">({all.length})</span>
       </h2>
       <ol className="mt-3 grid gap-x-8 gap-y-4 font-sans text-[13px] leading-snug md:grid-cols-2">
-        {REFERENCES[section].map((r, i) => (
+        {shown.map((r, i) => (
           <li key={r.title} className="flex gap-3">
             <span className="w-5 shrink-0 text-right tabular-nums text-ink-soft">{i + 1}.</span>
             <div className="min-w-0">
@@ -97,67 +105,102 @@ function References({ section }: { section: Section }) {
           </li>
         ))}
       </ol>
+      {!open && (
+        <button
+          onClick={() => setOpen(true)}
+          className="focus-ring mt-4 inline-flex items-center gap-1.5 rounded-full border border-rule px-3.5 py-1.5 font-sans text-[13px] font-medium hover:border-ink/50"
+        >
+          Show all {all.length} references <ChevronDown size={14} aria-hidden />
+        </button>
+      )}
     </section>
   );
 }
 
-/** Shared page frame for the four pages (index, characters, map, history). */
+/** Shared page frame: a hero header on the home page, a slim bar and page title on the section pages. */
 export function Shell({ section, children }: { section: Section; children: (dark: boolean) => ReactNode }) {
   const [dark, toggleTheme] = useTheme();
   const intro = INTRO[section];
+  const themeButton = (
+    <button
+      onClick={toggleTheme}
+      className="focus-ring shrink-0 rounded-full border border-rule p-2.5 hover:bg-ink/5"
+      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+      title={dark ? 'Light mode' : 'Dark mode'}
+    >
+      {dark ? <Sun size={18} /> : <Moon size={18} />}
+    </button>
+  );
+  const nav = (
+    <nav
+      aria-label="Sections"
+      className="no-scrollbar inline-flex max-w-full overflow-x-auto rounded-full border border-ink/70 p-0.5 font-sans text-[13px] sm:text-sm"
+    >
+      {NAV.map(({ id, label, short, href, icon: Icon, iconOnly }) => (
+        <a
+          key={id}
+          href={href}
+          aria-current={section === id ? 'page' : undefined}
+          aria-label={iconOnly ? label : undefined}
+          title={iconOnly ? label : undefined}
+          className={`focus-ring inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full py-1.5 font-medium transition-colors ${
+            iconOnly ? 'px-2.5' : 'px-3 sm:px-4'
+          } ${section === id ? 'bg-ink text-paper' : 'text-ink-soft hover:text-ink'}`}
+        >
+          {iconOnly ? (
+            <Icon size={16} aria-hidden />
+          ) : (
+            <>
+              <Icon size={15} aria-hidden className="hidden sm:block" />
+              <span className="sm:hidden">{short}</span>
+              <span className="hidden sm:inline">{label}</span>
+            </>
+          )}
+        </a>
+      ))}
+    </nav>
+  );
   return (
     <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-8">
-      <header className="border-b-[3px] border-double border-ink pb-4 pt-8 sm:pt-10">
-        <div className="flex items-start justify-between gap-4">
-          <div>
+      {section === 'home' ? (
+        <header className="border-b-[3px] border-double border-ink pb-4 pt-8 sm:pt-10">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="eyebrow flex items-center gap-1.5">
+                <ScrollText size={13} aria-hidden />
+                {intro.eyebrow}
+              </p>
+              <h1 className="mt-2 font-display text-4xl font-bold leading-[0.95] tracking-tight sm:text-6xl">The Canon Ball</h1>
+              <p className="mt-3 max-w-2xl text-lg leading-snug text-ink-soft">{intro.text}</p>
+            </div>
+            {themeButton}
+          </div>
+          <div className="mt-5">{nav}</div>
+        </header>
+      ) : (
+        <header>
+          {/* Slim site bar: name (home), sections, theme */}
+          <div className="flex items-center justify-between gap-3 border-b border-rule pb-3 pt-4">
+            <a href="./" className="focus-ring rounded-sm font-display text-xl font-bold tracking-tight sm:text-2xl">
+              The Canon Ball
+            </a>
+            <div className="flex items-center gap-2">
+              <div className="hidden lg:block">{nav}</div>
+              {themeButton}
+            </div>
+          </div>
+          <div className="mt-3 lg:hidden">{nav}</div>
+          {/* The page's own title */}
+          <div className="border-b-[3px] border-double border-ink pb-4 pt-5 sm:pt-7">
             <p className="eyebrow flex items-center gap-1.5">
               <ScrollText size={13} aria-hidden />
               {intro.eyebrow}
             </p>
-            <h1 className="mt-2 font-display text-4xl font-bold leading-[0.95] tracking-tight sm:text-6xl">
-              <a href="./" className="focus-ring rounded-sm">
-                The Canon Ball
-              </a>
-            </h1>
-            <p className="mt-3 max-w-2xl text-lg leading-snug text-ink-soft">{intro.text}</p>
+            <h1 className="mt-1.5 font-display text-4xl font-bold leading-none tracking-tight sm:text-5xl">{intro.title}</h1>
+            <p className="mt-2 max-w-2xl text-[17px] leading-snug text-ink-soft">{intro.text}</p>
           </div>
-          <button
-            onClick={toggleTheme}
-            className="focus-ring shrink-0 rounded-full border border-rule p-2.5 hover:bg-ink/5"
-            aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={dark ? 'Light mode' : 'Dark mode'}
-          >
-            {dark ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
-        </div>
-        <nav
-          aria-label="Sections"
-          className="no-scrollbar mt-5 inline-flex max-w-full overflow-x-auto rounded-full border border-ink/70 p-0.5 font-sans text-[13px] sm:text-sm"
-        >
-          {NAV.map(({ id, label, short, href, icon: Icon, iconOnly }) => (
-            <a
-              key={id}
-              href={href}
-              aria-current={section === id ? 'page' : undefined}
-              aria-label={iconOnly ? label : undefined}
-              title={iconOnly ? label : undefined}
-              className={`focus-ring inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full py-1.5 font-medium transition-colors ${
-                iconOnly ? 'px-2.5' : 'px-3 sm:px-4'
-              } ${section === id ? 'bg-ink text-paper' : 'text-ink-soft hover:text-ink'}`}
-            >
-              {iconOnly ? (
-                <Icon size={16} aria-hidden />
-              ) : (
-                <>
-                  <Icon size={15} aria-hidden className="hidden sm:block" />
-                  <span className="sm:hidden">{short}</span>
-                  <span className="hidden sm:inline">{label}</span>
-                </>
-              )}
-            </a>
-          ))}
-        </nav>
-      </header>
+        </header>
+      )}
 
       {children(dark)}
 

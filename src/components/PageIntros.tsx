@@ -6,14 +6,14 @@ import { PageIntro } from './PageIntro';
 export function CharactersIntro() {
   return (
     <PageIntro
-      storageKey="characters-intro-hidden"
+      storageKey="characters-intro"
       className="mb-5 mt-6"
       css="--role-king"
       art={<CharactersArt />}
       lead={
         <p>
-          266 people of the Bible, from Adam to the early church. See when each of them lived, how they were related (as family,
-          mentors, allies or rivals), and which books they appear in. Every person links to the verses that mention them.
+          From Adam to the early church: see when each person lived, how they were related (as family, mentors, allies or
+          rivals), and which books they appear in. Every person links to the verses that mention them.
         </p>
       }
       cards={[
@@ -63,15 +63,14 @@ export function CharactersIntro() {
 export function MapIntro() {
   return (
     <PageIntro
-      storageKey="map-intro-hidden"
+      storageKey="map-intro"
       className="mb-4"
       css="--lineage"
       art={<MapArt />}
       lead={
         <p>
-          Where each book of the Bible was written, where its story is set, and the journeys its people made, drawn on a map of the
-          ancient Mediterranean and Near East. Watch a journey unfold stop by stop, with the distance travelled and the passage
-          behind each step.
+          A map of the ancient Mediterranean and Near East. Pick a book or one of the great journeys and watch it unfold stop by
+          stop, with the distance travelled and the passage behind each step, or tap any place for its modern site.
         </p>
       }
       cards={[
@@ -126,7 +125,8 @@ export function HistoryIntro() {
   );
   return (
     <PageIntro
-      storageKey="history-intro-hidden"
+      storageKey="history-intro"
+      moreLabel="What each tab shows"
       className="mb-5"
       css="--role-priest"
       art={<HistoryArt />}

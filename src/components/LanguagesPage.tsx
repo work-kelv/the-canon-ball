@@ -7,6 +7,7 @@ import { GridView } from './GridView';
 import { BreakdownView } from './BreakdownView';
 import { BookDrawer } from './BookDrawer';
 import { LanguagesIntro } from './LanguagesIntro';
+import { ViewTabs } from './ViewTabs';
 
 type View = 'grid' | 'breakdown';
 
@@ -30,28 +31,18 @@ export function LanguagesPage() {
 
   return (
     <>
+      {/* Explanation first, then the controls it explains. */}
+      <LanguagesIntro />
       <div className="sticky top-0 z-30 -mx-4 space-y-3 border-b border-rule bg-paper/90 px-4 py-3 backdrop-blur sm:-mx-8 sm:px-8">
-        <nav aria-label="Views" className="flex gap-1 font-sans text-sm">
-          {(
-            [
-              ['grid', 'Canon grid', LayoutGrid],
-              ['breakdown', 'Language & division breakdown', BarChart3],
-            ] as const
-          ).map(([id, label, Icon]) => (
-            <button
-              key={id}
-              onClick={() => setView(id)}
-              aria-current={view === id ? 'page' : undefined}
-              className={`focus-ring inline-flex items-center gap-2 border-b-2 px-3 py-1.5 font-medium transition-colors ${
-                view === id ? 'border-ink text-ink' : 'border-transparent text-ink-soft hover:text-ink'
-              }`}
-            >
-              <Icon size={15} aria-hidden />
-              <span className="hidden sm:inline">{label}</span>
-              <span className="sm:hidden">{id === 'grid' ? 'Grid' : 'Breakdown'}</span>
-            </button>
-          ))}
-        </nav>
+        <ViewTabs<View>
+          label="Views"
+          value={view}
+          onChange={setView}
+          tabs={[
+            { id: 'grid', label: 'Canon grid', short: 'Grid', icon: LayoutGrid },
+            { id: 'breakdown', label: 'Language & division breakdown', short: 'Breakdown', icon: BarChart3 },
+          ]}
+        />
         <FilterPills
           filter={filter}
           onFilter={setFilter}
@@ -62,7 +53,6 @@ export function LanguagesPage() {
       </div>
 
       <main className="pt-8">
-        <LanguagesIntro />
         {view === 'grid' ? (
           <GridView isMatch={isMatch} division={division} onDivision={setDivision} selected={selected} onOpen={setSelected} />
         ) : (

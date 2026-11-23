@@ -1,4 +1,5 @@
 import { CharactersIntro } from '../PageIntros';
+import { ViewTabs } from '../ViewTabs';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { GanttChart, LayoutList, Share2 } from 'lucide-react';
 import {
@@ -87,28 +88,17 @@ export function CharactersPage({ dark }: { dark: boolean }) {
         className="z-30 -mx-4 space-y-3 border-b border-rule bg-paper/90 px-4 pb-4 pt-2 backdrop-blur sm:-mx-8 sm:px-8"
       >
         <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-2 border-b border-rule">
-        <nav aria-label="Character views" className="-mb-px flex gap-1 font-sans text-sm">
-          {(
-            [
-              ['timeline', 'Timeline', 'Timeline', GanttChart],
-              ['graph', 'Relationship network', 'Network', Share2],
-              ['directory', 'Era directory', 'Directory', LayoutList],
-            ] as const
-          ).map(([id, label, short, Icon]) => (
-            <button
-              key={id}
-              onClick={() => setMode(id)}
-              aria-current={mode === id ? 'page' : undefined}
-              className={`focus-ring inline-flex items-center gap-1.5 whitespace-nowrap border-b-2 px-2 py-2.5 font-medium transition-colors sm:gap-2 sm:px-3 ${
-                mode === id ? 'border-ink text-ink' : 'border-transparent text-ink-soft hover:text-ink'
-              }`}
-            >
-              <Icon size={15} aria-hidden />
-              <span className="hidden sm:inline">{label}</span>
-              <span className="sm:hidden">{short}</span>
-            </button>
-          ))}
-        </nav>
+        <ViewTabs<Mode>
+          label="Character views"
+          value={mode}
+          onChange={setMode}
+          className="mb-2"
+          tabs={[
+            { id: 'timeline', label: 'Timeline', icon: GanttChart },
+            { id: 'graph', label: 'Relationship network', short: 'Network', icon: Share2 },
+            { id: 'directory', label: 'Era directory', short: 'Directory', icon: LayoutList },
+          ]}
+        />
         <SearchBox
           value={filters.query}
           onChange={(query) => setFilters((f) => ({ ...f, query }))}

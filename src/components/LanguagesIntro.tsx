@@ -119,8 +119,9 @@ const why = (title: string, body: ReactNode) => (
 export function LanguagesIntro() {
   return (
     <PageIntro
-      storageKey="languages-intro-hidden"
-      className="mb-8"
+      storageKey="languages-intro"
+      moreLabel="Why three languages? How to read the grid"
+      className="mb-4 mt-6"
       css="--hebrew"
       art={<LanguagesArt />}
       lead={
@@ -128,7 +129,7 @@ export function LanguagesIntro() {
           The Bible was not first written in English. Its 66 books were written over some 1,500 years in three languages: Hebrew,
           Aramaic and Greek. Each was the language its first readers understood, so the languages change as God’s people moved
           from a small nation to life under great empires, and then to churches spread across the Roman world. This page shows
-          which language each book was written in, and how much of it. The picture shows all 66 books as bars, coloured by language.
+          which language each book was written in, and how much of it.
         </p>
       }
       extra={<LanguageTimeline />}

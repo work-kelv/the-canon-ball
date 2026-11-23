@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { BookOpenText, ChevronDown, ChevronUp } from 'lucide-react';
+import { BookOpenText, ChevronDown } from 'lucide-react';
 import { cssColor } from '../lib/characters';
 
 export interface IntroCard {
@@ -12,7 +12,7 @@ export interface IntroCard {
 }
 
 interface Props {
-  /** localStorage key for the hidden/shown choice (one per page). */
+  /** localStorage key for the open/closed choice (one per page). */
   storageKey: string;
   art: ReactNode;
   /** Accent behind the illustration. */
@@ -20,7 +20,9 @@ interface Props {
   lead: ReactNode;
   cards: IntroCard[];
   howTo: ReactNode[];
-  /** Optional content between the lead and the cards (e.g. a small timeline). */
+  /** Label of the button that opens the details, e.g. "Why three languages? How to read the grid". */
+  moreLabel?: string;
+  /** Optional content at the top of the details (e.g. a small timeline). */
   extra?: ReactNode;
   /** Optional content after the cards. */
   afterCards?: ReactNode;
@@ -28,65 +30,61 @@ interface Props {
 }
 
 /**
- * The "Introduction" card at the top of each page: an illustration, a short lead, a few cards
- * explaining what the page shows, and how to use it. It can be folded away; the choice is remembered.
+ * The Introduction at the top of each section page. The short lead and the illustration are always
+ * shown; the cards and "How to use it" open on request, so the page's content starts on the first screen.
+ * The open/closed choice is remembered per page.
  */
-export function PageIntro({ storageKey, art, css, lead, cards, howTo, extra, afterCards, className = '' }: Props) {
-  const [hidden, setHidden] = useState(() => {
+export function PageIntro({ storageKey, art, css, lead, cards, howTo, moreLabel = 'How this page works', extra, afterCards, className = '' }: Props) {
+  const key = `${storageKey}-details`;
+  const [open, setOpen] = useState(() => {
     try {
-      return localStorage.getItem(storageKey) === '1';
+      return localStorage.getItem(key) === '1';
     } catch {
       return false;
     }
   });
   const toggle = () => {
-    const next = !hidden;
-    setHidden(next);
+    const next = !open;
+    setOpen(next);
     try {
-      localStorage.setItem(storageKey, next ? '1' : '0');
+      localStorage.setItem(key, next ? '1' : '0');
     } catch {
       /* storage unavailable */
     }
   };
   const id = `${storageKey}-title`;
+  const detailsId = `${storageKey}-details`;
 
   return (
     <section aria-labelledby={id} className={`overflow-hidden rounded-md border border-rule bg-paper/80 ${className}`}>
-      <div className="flex items-center justify-between gap-3 px-4 py-3">
-        <h2 id={id} className="flex items-center gap-2 font-display text-xl font-semibold">
-          <BookOpenText size={17} className="text-ink-soft" aria-hidden />
-          Introduction
-        </h2>
-        <button
-          onClick={toggle}
-          aria-expanded={!hidden}
-          className="focus-ring inline-flex items-center gap-1 rounded-full border border-rule px-2.5 py-1 font-sans text-[12px] text-ink-soft hover:border-ink/50 hover:text-ink"
+      <div className="grid items-center gap-x-5 gap-y-3 px-4 py-4 md:grid-cols-[minmax(0,1fr)_minmax(0,16rem)]">
+        <div className="min-w-0">
+          <h2 id={id} className="eyebrow mb-1.5 flex items-center gap-1.5">
+            <BookOpenText size={13} aria-hidden />
+            Introduction
+          </h2>
+          <div className="max-w-3xl font-serif text-[15.5px] leading-relaxed">{lead}</div>
+          <button
+            onClick={toggle}
+            aria-expanded={open}
+            aria-controls={detailsId}
+            className="focus-ring mt-3 inline-flex items-center gap-1.5 rounded-full border border-rule px-3 py-1.5 font-sans text-[12.5px] font-medium hover:border-ink/50"
+          >
+            {open ? 'Hide details' : moreLabel}
+            <ChevronDown size={14} aria-hidden className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+          </button>
+        </div>
+        <div
+          aria-hidden
+          className="hidden h-24 overflow-hidden rounded-md border border-rule px-3 pt-3 md:block"
+          style={{ background: cssColor(css, 0.05) }}
         >
-          {hidden ? (
-            <>
-              Show <ChevronDown size={13} aria-hidden />
-            </>
-          ) : (
-            <>
-              Hide <ChevronUp size={13} aria-hidden />
-            </>
-          )}
-        </button>
+          {art}
+        </div>
       </div>
 
-      {!hidden && (
-        <div className="space-y-4 border-t border-rule px-4 pb-4 pt-4">
-          <div className="grid items-center gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,19rem)]">
-            <div className="order-2 max-w-3xl font-serif text-[16px] leading-relaxed md:order-1">{lead}</div>
-            <div
-              aria-hidden
-              className="order-1 h-24 overflow-hidden rounded-md border border-rule px-3 pt-3 md:order-2 md:h-28"
-              style={{ background: cssColor(css, 0.05) }}
-            >
-              {art}
-            </div>
-          </div>
-
+      {open && (
+        <div id={detailsId} className="space-y-4 border-t border-rule px-4 pb-4 pt-4">
           {extra}
 
           <div className={`grid gap-3 ${cards.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
