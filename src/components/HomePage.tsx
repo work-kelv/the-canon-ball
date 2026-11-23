@@ -64,10 +64,10 @@ const FEATURES: Feature[] = [
     css: '--role-priest',
     art: <HistoryArt />,
     blurb: 'How the church branched, where its traditions differ, what the creeds confess, and who stands outside them.',
-    points: ['A family tree from Pentecost to today', 'Catholic, Orthodox and Protestant compared', 'The creeds, line by line, with their Scriptures'],
+    points: ['A family tree from Pentecost to today', 'Catholic, Orthodox and Protestant compared', 'The four creeds, line by line and side by side'],
     tries: [
       { label: 'Compare two traditions', href: 'history.html#traditions' },
-      { label: 'Who counts as Christian?', href: 'history.html#compare' },
+      { label: 'Core beliefs compared', href: 'history.html#compare' },
     ],
   },
 ];
@@ -77,7 +77,7 @@ const QUESTIONS: { q: string; href: string; css: string }[] = [
   { q: 'How far did Paul travel on his journeys?', href: 'map.html#journeys', css: '--lineage' },
   { q: 'Why is part of Daniel in Aramaic?', href: 'languages.html', css: '--aramaic' },
   { q: 'How do Catholics and Baptists differ on baptism?', href: 'history.html#traditions', css: '--role-king' },
-  { q: 'Why aren’t Jehovah’s Witnesses counted as Christian?', href: 'history.html#compare', css: '--rel-rival' },
+  { q: 'How do Jehovah’s Witnesses’ beliefs differ from the creeds?', href: 'history.html#compare', css: '--rel-rival' },
   { q: 'Where did chapter and verse numbers come from?', href: 'languages.html#verses', css: '--greek' },
 ];
 

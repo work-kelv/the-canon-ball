@@ -1,4 +1,7 @@
-import { BookText, GitBranch, GitCompareArrows, Orbit } from 'lucide-react';
+import { useState } from 'react';
+import { BookOpen, BookText, Columns4, GitBranch, GitCompareArrows, Orbit } from 'lucide-react';
+import { CreedCompare } from './CreedCompare';
+import { ViewTabs } from '../ViewTabs';
 import { FamilyTree } from './FamilyTree';
 import { CreedExplorer } from './CreedExplorer';
 import { OrthodoxyMatrix } from './OrthodoxyMatrix';
@@ -7,7 +10,26 @@ import { BoundaryOrbit } from './BoundaryOrbit';
 import { HistoryIntro } from '../PageIntros';
 import { PageTabs, useHashTab } from '../PageTabs';
 
-function InsideOutside() {
+/** Creeds tab: read one creed line by line, or compare all four side by side. */
+function CreedsTab() {
+  const [mode, setMode] = useState<'read' | 'compare'>(() => (window.location.hash === '#creeds-compare' ? 'compare' : 'read'));
+  return (
+    <div className="space-y-5">
+      <ViewTabs<'read' | 'compare'>
+        label="Creed views"
+        value={mode}
+        onChange={setMode}
+        tabs={[
+          { id: 'read', label: 'Read a creed', icon: BookOpen },
+          { id: 'compare', label: 'Compare all four', short: 'Compare', icon: Columns4 },
+        ]}
+      />
+      {mode === 'read' ? <CreedExplorer /> : <CreedCompare />}
+    </div>
+  );
+}
+
+function CoreBeliefsTab() {
   return (
     <div className="space-y-12">
       <BoundaryOrbit />
@@ -21,8 +43,8 @@ function InsideOutside() {
 const TABS = [
   { id: 'tree', label: 'Family tree', icon: GitBranch, View: FamilyTree },
   { id: 'traditions', label: 'Traditions', icon: GitCompareArrows, View: TraditionsCompare },
-  { id: 'creeds', label: 'Creeds', icon: BookText, View: CreedExplorer },
-  { id: 'compare', label: 'Inside & outside', short: 'In & out', icon: Orbit, View: InsideOutside },
+  { id: 'creeds', label: 'Creeds', icon: BookText, View: CreedsTab },
+  { id: 'compare', label: 'Core beliefs', short: 'Beliefs', icon: Orbit, View: CoreBeliefsTab },
 ] as const;
 type TabId = (typeof TABS)[number]['id'];
 

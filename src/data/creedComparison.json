@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "note": "Quotations are from the creed texts used on this page (Book of Common Prayer 1662 for the Apostles', Nicene and Athanasian Creeds; Schaff's translation of Chalcedon). 'In full' means the creed spells the point out; 'briefly' means it is affirmed without being defined; a gap means the creed does not address it.",
+    "statuses": {
+      "explicit": "Stated in full",
+      "brief": "Mentioned briefly",
+      "absent": "Not addressed"
+    }
+  },
+  "creeds": [
+    {
+      "id": "apostles",
+      "short": "Apostles’",
+      "year": 200,
+      "yearLabel": "c. 2nd century (final text 8th)",
+      "purpose": "A baptismal summary",
+      "added": "The simplest outline of the faith: Father, Son and Spirit, the story of Jesus, and the hope of the resurrection. The only creed to mention the “communion of saints”."
+    },
+    {
+      "id": "nicene",
+      "short": "Nicene",
+      "year": 325,
+      "yearLabel": "325, expanded 381",
+      "purpose": "Answering Arius: is the Son created?",
+      "added": "Defines the Son as “of one substance with the Father”, “begotten, not made”; in 381 adds the Holy Spirit as “Lord and giver of life”, worshipped with the Father and the Son."
+    },
+    {
+      "id": "chalcedon",
+      "short": "Chalcedonian",
+      "year": 451,
+      "yearLabel": "451",
+      "purpose": "Answering Nestorius and Eutyches: how is Christ both God and man?",
+      "added": "Not a creed for worship but a definition: one Christ “in two natures”, without confusion, change, division or separation. Calls Mary “Mother of God”."
+    },
+    {
+      "id": "athanasian",
+      "short": "Athanasian",
+      "year": 500,
+      "yearLabel": "c. 440–540",
+      "purpose": "Teaching the Trinity and the Incarnation in detail",
+      "added": "The fullest statement of the Trinity (“one God in Trinity, and Trinity in Unity”) and of Christ’s two natures, framed by warnings that this faith is necessary for salvation."
+    }
+  ],
+  "groups": [
+    {
+      "id": "god",
+      "label": "God and the Trinity",
+      "rows": [
+        {
+          "id": "creator",
+          "label": "One God, the Father, Maker of all",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "I believe in God the Father Almighty, Maker of heaven and earth" },
+            "nicene": { "s": "explicit", "q": "I believe in one God the Father Almighty, Maker of heaven and earth, And of all things visible and invisible" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "brief", "q": "The Father is made of none: neither created, nor begotten." }
+          }
+        },
+        {
+          "id": "trinity",
+          "label": "Three persons, one God",
+          "note": "Only the Athanasian Creed uses the words “Trinity” and “Persons”; the others name Father, Son and Spirit without defining how they are one.",
+          "cells": {
+            "apostles": { "s": "brief", "q": "God the Father … Jesus Christ his only Son … the Holy Ghost" },
+            "nicene": { "s": "brief", "q": "Who with the Father and the Son together is worshipped and glorified" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "We worship one God in Trinity, and Trinity in Unity; Neither confounding the Persons: nor dividing the Substance." }
+          }
+        }
+      ]
+    },
+    {
+      "id": "son",
+      "label": "Jesus Christ",
+      "rows": [
+        {
+          "id": "deity",
+          "label": "Eternally begotten, truly God",
+          "note": "The heart of the Nicene Creed, written against Arius, who taught that the Son was created.",
+          "cells": {
+            "apostles": { "s": "brief", "q": "Jesus Christ his only Son our Lord" },
+            "nicene": { "s": "explicit", "q": "Begotten of his Father before all worlds, God of God, Light of Light, Very God of very God, Begotten, not made, Being of one substance with the Father" },
+            "chalcedon": { "s": "explicit", "q": "consubstantial with the Father according to the Godhead … begotten before all ages of the Father" },
+            "athanasian": { "s": "explicit", "q": "God, of the Substance of the Father, begotten before the worlds … Equal to the Father, as touching his Godhead" }
+          }
+        },
+        {
+          "id": "incarnation",
+          "label": "Became man, born of the Virgin Mary",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "conceived by the Holy Ghost, Born of the Virgin Mary" },
+            "nicene": { "s": "explicit", "q": "was incarnate by the Holy Ghost of the Virgin Mary, And was made man" },
+            "chalcedon": { "s": "explicit", "q": "born of the Virgin Mary, the Mother of God, according to the Manhood" },
+            "athanasian": { "s": "explicit", "q": "Man, of the Substance of his Mother, born in the world" }
+          }
+        },
+        {
+          "id": "natures",
+          "label": "Two natures in one person",
+          "note": "The question of Chalcedon. The Oriental Orthodox did not accept its wording, preferring “one united nature”.",
+          "cells": {
+            "apostles": { "s": "absent" },
+            "nicene": { "s": "brief", "q": "Very God of very God … And was made man" },
+            "chalcedon": { "s": "explicit", "q": "to be acknowledged in two natures, inconfusedly, unchangeably, indivisibly, inseparably … concurring in one Person" },
+            "athanasian": { "s": "explicit", "q": "Who although he be God and Man: yet he is not two, but one Christ" }
+          }
+        },
+        {
+          "id": "theotokos",
+          "label": "Mary called “Mother of God”",
+          "note": "The title (Theotokos) affirmed at Ephesus in 431 and repeated at Chalcedon: Mary bore the one person who is God.",
+          "cells": {
+            "apostles": { "s": "absent" },
+            "nicene": { "s": "absent" },
+            "chalcedon": { "s": "explicit", "q": "the Virgin Mary, the Mother of God" },
+            "athanasian": { "s": "absent" }
+          }
+        },
+        {
+          "id": "cross",
+          "label": "Suffered under Pilate, crucified, buried",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "Suffered under Pontius Pilate, Was crucified, dead, and buried" },
+            "nicene": { "s": "explicit", "q": "was crucified also for us under Pontius Pilate. He suffered and was buried" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "brief", "q": "Who suffered for our salvation" }
+          }
+        },
+        {
+          "id": "hell",
+          "label": "Descended into hell",
+          "note": "Usually understood as Christ truly dying and entering the realm of the dead; the Nicene Creed omits it.",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "He descended into hell" },
+            "nicene": { "s": "absent" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "descended into hell" }
+          }
+        },
+        {
+          "id": "risen",
+          "label": "Rose again on the third day",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "The third day he rose again from the dead" },
+            "nicene": { "s": "explicit", "q": "the third day he rose again according to the Scriptures" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "rose again the third day from the dead" }
+          }
+        },
+        {
+          "id": "ascended",
+          "label": "Ascended, seated at God’s right hand",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "He ascended into heaven, And sitteth on the right hand of God the Father Almighty" },
+            "nicene": { "s": "explicit", "q": "ascended into heaven, And sitteth on the right hand of the Father" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "He ascended into heaven, he sitteth on the right hand of the Father, God Almighty" }
+          }
+        },
+        {
+          "id": "return",
+          "label": "Will come again to judge",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "From thence he shall come to judge the quick and the dead" },
+            "nicene": { "s": "explicit", "q": "he shall come again with glory to judge both the quick and the dead: Whose kingdom shall have no end" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "from whence he shall come to judge the quick and the dead" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "spirit",
+      "label": "The Holy Spirit",
+      "rows": [
+        {
+          "id": "spirit",
+          "label": "The Holy Spirit is God",
+          "cells": {
+            "apostles": { "s": "brief", "q": "I believe in the Holy Ghost" },
+            "nicene": { "s": "explicit", "q": "the Holy Ghost, The Lord and giver of life … Who with the Father and the Son together is worshipped and glorified, Who spake by the Prophets" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "the Father is God, the Son is God: and the Holy Ghost is God. And yet they are not three Gods: but one God" }
+          }
+        },
+        {
+          "id": "filioque",
+          "label": "Proceeds from the Father “and the Son”",
+          "note": "The filioque. The Greek original of 381 says only “from the Father”; “and the Son” was added in the Latin West (Toledo, 589; Rome, 1014) and became a cause of the East–West Schism. The Eastern and Oriental Orthodox recite the creed without it.",
+          "cells": {
+            "apostles": { "s": "absent" },
+            "nicene": { "s": "explicit", "q": "Who proceedeth from the Father and the Son (Western text)" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "The Holy Ghost is of the Father and of the Son: neither made, nor created, nor begotten, but proceeding" }
+          }
+        }
+      ]
+    },
+    {
+      "id": "church",
+      "label": "Church, salvation and the end",
+      "rows": [
+        {
+          "id": "church",
+          "label": "The Church",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "The holy Catholick Church" },
+            "nicene": { "s": "explicit", "q": "one Catholick and Apostolick Church" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "absent" }
+          }
+        },
+        {
+          "id": "saints",
+          "label": "The communion of saints",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "The Communion of Saints" },
+            "nicene": { "s": "absent" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "absent" }
+          }
+        },
+        {
+          "id": "forgiveness",
+          "label": "Forgiveness of sins, baptism",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "The Forgiveness of sins" },
+            "nicene": { "s": "explicit", "q": "one Baptism for the remission of sins" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "absent" }
+          }
+        },
+        {
+          "id": "resurrection",
+          "label": "Resurrection of the body, eternal life",
+          "cells": {
+            "apostles": { "s": "explicit", "q": "The Resurrection of the body, And the life everlasting" },
+            "nicene": { "s": "explicit", "q": "the Resurrection of the dead, And the life of the world to come" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "all men shall rise again with their bodies … they that have done good shall go into life everlasting: and they that have done evil into everlasting fire" }
+          }
+        },
+        {
+          "id": "warning",
+          "label": "Belief necessary for salvation",
+          "note": "The Athanasian Creed’s “warning” (damnatory) clauses. Some churches that receive the creed, such as many Anglican provinces, no longer read it in worship partly because of them.",
+          "cells": {
+            "apostles": { "s": "absent" },
+            "nicene": { "s": "absent" },
+            "chalcedon": { "s": "absent" },
+            "athanasian": { "s": "explicit", "q": "Whosoever will be saved: before all things it is necessary that he hold the Catholick Faith … without doubt he shall perish everlastingly." }
+          }
+        }
+      ]
+    }
+  ]
+}

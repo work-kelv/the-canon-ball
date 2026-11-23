@@ -547,7 +547,7 @@
     }
   ],
   "boundary": {
-    "note": "'Christian' here means the faith defined by the historic creeds, shared by Catholic, Orthodox and Protestant churches. Most of the movements below call themselves Christian; they are placed outside because their teaching differs from those creeds on core points. This describes doctrine, not the sincerity or worth of any person.",
+    "note": "This compares beliefs, not people. “The historic faith” means the faith of the creeds shared by Catholic, Orthodox and Protestant churches. Most of the movements beyond the circle call themselves Christian; they are placed there because their teaching differs from those creeds on core points, as they themselves often say. It is not a judgement on anyone’s sincerity or worth.",
     "tests": [
       {
         "id": "trinity",
@@ -587,132 +587,6 @@
     ],
     "groups": [
       {
-        "id": "catholic",
-        "ring": "inside",
-        "name": "Catholic",
-        "css": "--role-king",
-        "origin": "The Western church, in communion with the Bishop of Rome",
-        "self": "The one Church founded by Christ, subsisting in the Catholic Church.",
-        "why": "Confesses the Nicene Creed in full. Its differences with Orthodox and Protestant churches lie within the shared faith: see the Traditions tab.",
-        "tests": {
-          "trinity": "affirms",
-          "deity": "affirms",
-          "cross": "affirms",
-          "scripture": "affirms",
-          "grace": "affirms"
-        }
-      },
-      {
-        "id": "orthodox",
-        "ring": "inside",
-        "name": "Orthodox",
-        "css": "--role-priest",
-        "origin": "The Eastern churches of the seven ecumenical councils",
-        "self": "The undivided Church of the apostles and the councils, kept unchanged.",
-        "why": "Confesses the Nicene Creed (without the Western 'and the Son'). Its differences lie within the shared faith: see the Traditions tab.",
-        "tests": {
-          "trinity": "affirms",
-          "deity": "affirms",
-          "cross": "affirms",
-          "scripture": "affirms",
-          "grace": "affirms"
-        }
-      },
-      {
-        "id": "protestant",
-        "ring": "inside",
-        "name": "Protestant",
-        "css": "--greek",
-        "origin": "Lutheran, Anglican, Reformed, Baptist, Methodist, Pentecostal and other churches since 1517",
-        "self": "Churches reformed by the Scriptures: grace alone, faith alone, Christ alone.",
-        "why": "Affirms the Trinity and the content of the Nicene Creed, even where creeds are not recited. Its differences with Catholic and Orthodox lie within the shared faith: see the Traditions tab.",
-        "tests": {
-          "trinity": "affirms",
-          "deity": "affirms",
-          "cross": "affirms",
-          "scripture": "affirms",
-          "grace": "affirms"
-        }
-      },
-      {
-        "id": "sda",
-        "ring": "inside",
-        "edge": true,
-        "name": "Seventh-day Adventist",
-        "css": "--rel-ally",
-        "origin": "1863, from the Millerite movement in New England (Ellen G. White, Joseph Bates, James White)",
-        "self": "A Protestant church that keeps the seventh-day Sabbath and proclaims Christ’s soon return.",
-        "why": "It confesses the Trinity, the full deity of Christ, his atoning death and bodily resurrection, salvation by grace through faith, and the Bible as the standard for all teaching (28 Fundamental Beliefs). It is therefore usually placed inside, with distinctive doctrines on the edge: Saturday worship, Christ’s ministry in the heavenly sanctuary since 1844, the soul’s unconsciousness until the resurrection, and the prophetic gift of Ellen White. Some critics have counted it outside; after long study the evangelical scholar Walter Martin concluded it is a Christian denomination, though one with errors in his view.",
-        "affirms": "Everything at the core. The differences are Protestant-style disagreements about the Sabbath, the end times and the state of the dead.",
-        "keyTexts": [
-          "Exodus 20:8–11",
-          "Hebrews 8:1–2",
-          "Ecclesiastes 9:5",
-          "Revelation 19:10"
-        ],
-        "source": "https://www.adventist.org/beliefs/",
-        "tests": {
-          "trinity": {
-            "s": "affirms",
-            "text": "“There is one God: Father, Son, and Holy Spirit, a unity of three coeternal Persons” (Fundamental Belief 2)."
-          },
-          "deity": {
-            "s": "affirms",
-            "text": "Jesus is “forever truly God” who became truly man (Fundamental Belief 4)."
-          },
-          "cross": {
-            "s": "affirms",
-            "text": "Christ’s substitutionary, atoning death and his bodily resurrection."
-          },
-          "scripture": {
-            "s": "affirms",
-            "text": "The 66 books are “the standard by which all teaching and experience must be tested”; Ellen White’s writings are honoured as prophetic but subordinate to the Bible (Fundamental Belief 18)."
-          },
-          "grace": {
-            "s": "affirms",
-            "text": "Salvation by grace through faith in Christ; Sabbath-keeping is the fruit of salvation, not its cause."
-          }
-        }
-      },
-      {
-        "id": "gci",
-        "ring": "inside",
-        "edge": true,
-        "name": "Grace Communion",
-        "css": "--rel-mentor",
-        "origin": "Founded in the 1930s by Herbert W. Armstrong as the Worldwide Church of God; renamed Grace Communion International in 2009",
-        "self": "An evangelical denomination, transformed by grace from its Armstrong-era teaching.",
-        "why": "A rare case of a movement crossing the boundary. Under Herbert Armstrong it denied the Trinity and taught that keeping Old Testament law was needed for salvation. After his death in 1986 its leaders studied the Bible afresh: the church accepted the Trinity in 1993, embraced salvation by grace, and now fully agrees with the statement of faith of the National Association of Evangelicals. It shows that the boundary is about teaching, which can change.",
-        "affirms": "Everything at the core, since the reforms of the 1990s.",
-        "keyTexts": [
-          "Galatians 2:16",
-          "Matthew 28:19"
-        ],
-        "source": "https://www.gci.org/about-us/history/",
-        "tests": {
-          "trinity": {
-            "s": "affirms",
-            "text": "Accepted in 1993 (under Armstrong: rejected)."
-          },
-          "deity": {
-            "s": "affirms",
-            "text": "Jesus is fully God and fully human."
-          },
-          "cross": {
-            "s": "affirms",
-            "text": "Christ’s atoning death and bodily resurrection."
-          },
-          "scripture": {
-            "s": "affirms",
-            "text": "The Bible as the final authority, read in agreement with the evangelical statement of faith."
-          },
-          "grace": {
-            "s": "affirms",
-            "text": "Salvation by grace through faith (under Armstrong: law-keeping was required)."
-          }
-        }
-      },
-      {
         "id": "oneness",
         "ring": "outside",
         "name": "Oneness Pentecostal",
@@ -748,7 +622,14 @@
             "s": "partial",
             "text": "Grace through faith, expressed in repentance, baptism in Jesus' name, and the gift of the Spirit with tongues."
           }
-        }
+        },
+        "creeds": {
+          "apostles": "unused",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Restorationist & nontrinitarian"
       },
       {
         "id": "lds",
@@ -785,7 +666,14 @@
             "s": "partial",
             "text": "Salvation through Christ's grace together with covenants, ordinances (including temple ordinances) and obedience."
           }
-        }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Restorationist & nontrinitarian"
       },
       {
         "id": "inc",
@@ -822,7 +710,14 @@
             "s": "partial",
             "text": "Membership in the Iglesia ni Cristo is necessary for salvation."
           }
-        }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Restorationist & nontrinitarian"
       },
       {
         "id": "jw",
@@ -860,7 +755,14 @@
             "s": "partial",
             "text": "Salvation through faith in the ransom, with obedience and loyalty to Jehovah's organisation."
           }
-        }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Restorationist & nontrinitarian"
       },
       {
         "id": "christadelphians",
@@ -898,7 +800,14 @@
             "s": "partial",
             "text": "Salvation by grace through faith, with right belief and baptism by immersion essential; the faithful are raised at Christ’s return."
           }
-        }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Restorationist & nontrinitarian"
       },
       {
         "id": "cs",
@@ -935,7 +844,14 @@
             "s": "differs",
             "text": "Salvation is freedom from the belief in sin, sickness and death, through understanding divine Science."
           }
-        }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Other movements"
       },
       {
         "id": "unification",
@@ -973,7 +889,14 @@
             "s": "differs",
             "text": "Full salvation comes through the True Parents and the Blessing marriage ceremony."
           }
-        }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Other movements"
       },
       {
         "id": "uu",
@@ -1007,7 +930,14 @@
             "s": "differs",
             "text": "From its Universalist heritage: no one is finally lost, and no single way of salvation is taught."
           }
-        }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Other movements"
       },
       {
         "id": "islam",
@@ -1044,7 +974,387 @@
             "s": "differs",
             "text": "Salvation through God's mercy, faith and righteous deeds, without an atoning sacrifice."
           }
+        },
+        "creeds": {
+          "apostles": "rejects",
+          "nicene": "rejects",
+          "chalcedon": "rejects",
+          "athanasian": "rejects"
+        },
+        "category": "Other religions"
+      }
+    ],
+    "creedLens": {
+      "statuses": {
+        "confessed": {
+          "label": "Confessed",
+          "note": "Officially adopted, or recited in worship"
+        },
+        "content": {
+          "label": "Agrees with it",
+          "note": "Holds its teaching, though the tradition does not use creeds formally"
+        },
+        "unused": {
+          "label": "Not used",
+          "note": "Shares the faith, but does not use this text"
+        },
+        "rejects": {
+          "label": "Rejects",
+          "note": "Rejects this creed or its teaching"
         }
+      },
+      "notes": {
+        "apostles": "A Western baptismal creed. The Eastern and Oriental Orthodox share its faith but do not use the text.",
+        "nicene": "The most widely shared creed: confessed by Catholic, Eastern Orthodox, Oriental Orthodox and most Protestant churches. Every movement outside the boundary rejects its definition of the Son as “of one substance with the Father”.",
+        "chalcedon": "The line that divides the families inside the boundary: the Oriental Orthodox did not accept the Council of Chalcedon (451), though recent dialogues have found that both sides confess the same Christ in different words.",
+        "athanasian": "A Latin creed of the West, with its warning clauses. The East does not use it, though it shares the faith it defines."
+      }
+    },
+    "families": [
+      {
+        "id": "catholic",
+        "name": "Catholic",
+        "css": "--role-king",
+        "about": "One church in communion with the Pope, made up of 24 self-governing (sui iuris) churches: the Latin Church and 23 Eastern Catholic churches. They share one faith and the Pope’s authority, but keep their own liturgies, languages and customs.",
+        "self": "The one Church founded by Christ, subsisting in the Catholic Church.",
+        "why": "Confesses the Nicene Creed in full. Its differences with Orthodox and Protestant churches lie within the shared faith: see the Traditions tab.",
+        "creeds": {
+          "apostles": "confessed",
+          "nicene": "confessed",
+          "chalcedon": "confessed",
+          "athanasian": "confessed"
+        },
+        "creedNote": "The Latin Church recites the Nicene Creed with “and the Son”; several Eastern Catholic churches leave it out.",
+        "tests": {
+          "trinity": "affirms",
+          "deity": "affirms",
+          "cross": "affirms",
+          "scripture": "affirms",
+          "grace": "affirms"
+        },
+        "members": [
+          {
+            "id": "latin",
+            "abbr": "La",
+            "name": "Latin Church",
+            "about": "The Roman Catholic Church of the West, by far the largest, worshipping in the Roman rite."
+          },
+          {
+            "id": "maronite",
+            "abbr": "Ma",
+            "name": "Maronite Catholic Church",
+            "about": "Based mainly in Lebanon, worshipping with an ancient Syriac liturgy."
+          },
+          {
+            "id": "ukrainian",
+            "abbr": "UG",
+            "name": "Ukrainian Greek Catholic Church",
+            "about": "Follows the Byzantine liturgy of the Orthodox East while in full communion with the Pope (since the Union of Brest, 1596)."
+          },
+          {
+            "id": "syro-malabar",
+            "abbr": "SM",
+            "name": "Syro-Malabar Church",
+            "about": "The St Thomas Christians of Kerala, India, who trace their faith to the apostle Thomas; they worship in the East Syriac tradition."
+          }
+        ]
+      },
+      {
+        "id": "eastern-orthodox",
+        "name": "Eastern Orthodox",
+        "css": "--role-priest",
+        "about": "A communion of self-governing churches, organised largely by nation and language rather than by doctrine. They share one faith and the Byzantine liturgy; the Ecumenical Patriarch of Constantinople is “first among equals”.",
+        "self": "The undivided Church of the apostles and the councils, kept unchanged.",
+        "why": "Confesses the Nicene Creed (without the Western 'and the Son'). Its differences lie within the shared faith: see the Traditions tab.",
+        "creeds": {
+          "apostles": "unused",
+          "nicene": "confessed",
+          "chalcedon": "confessed",
+          "athanasian": "unused"
+        },
+        "creedNote": "Recites the Nicene Creed in its original form, without the Western “and the Son”.",
+        "tests": {
+          "trinity": "affirms",
+          "deity": "affirms",
+          "cross": "affirms",
+          "scripture": "affirms",
+          "grace": "affirms"
+        },
+        "members": [
+          {
+            "id": "russian",
+            "abbr": "Ru",
+            "name": "Russian Orthodox Church",
+            "about": "The largest Orthodox church by membership."
+          },
+          {
+            "id": "greek",
+            "abbr": "Gr",
+            "name": "Greek Orthodox Church",
+            "about": "The Ecumenical Patriarchate of Constantinople and the Church of Greece, rooted in the Greek-speaking churches of the New Testament."
+          },
+          {
+            "id": "serbian",
+            "abbr": "Se",
+            "name": "Serbian Orthodox Church",
+            "about": "A major national church of Eastern Europe, self-governing since St Sava in 1219."
+          },
+          {
+            "id": "romanian",
+            "abbr": "Ro",
+            "name": "Romanian Orthodox Church",
+            "about": "One of the largest Orthodox churches, and the main church of Romania and Moldova."
+          }
+        ]
+      },
+      {
+        "id": "oriental-orthodox",
+        "name": "Oriental Orthodox",
+        "css": "--role-judge",
+        "about": "The ancient churches that did not accept the Council of Chalcedon (451). They speak of one united divine-human nature of Christ, following St Cyril of Alexandria. Their communion is ancient and largely national.",
+        "self": "The churches of the first three councils, keeping the faith of St Cyril of Alexandria.",
+        "why": "Confesses the Nicene Creed and the Trinity. It parted from the rest of the church over how to describe Christ’s natures at Chalcedon (451), not over whether he is fully God and fully man; recent dialogues have found that both sides confess the same Christ in different words.",
+        "creeds": {
+          "apostles": "unused",
+          "nicene": "confessed",
+          "chalcedon": "rejects",
+          "athanasian": "unused"
+        },
+        "creedNote": "Recites the Nicene Creed without “and the Son”; does not accept the Chalcedonian Definition.",
+        "tests": {
+          "trinity": "affirms",
+          "deity": "affirms",
+          "cross": "affirms",
+          "scripture": "affirms",
+          "grace": "affirms"
+        },
+        "members": [
+          {
+            "id": "coptic",
+            "abbr": "Co",
+            "name": "Coptic Orthodox Church",
+            "about": "The church of Egypt, which traces its founding to St Mark, and the largest Christian church in the Middle East."
+          },
+          {
+            "id": "ethiopian",
+            "abbr": "Et",
+            "name": "Ethiopian Orthodox Tewahedo Church",
+            "about": "One of Africa’s oldest churches, with distinctive customs and the widest biblical canon, which includes Enoch and Jubilees."
+          },
+          {
+            "id": "armenian",
+            "abbr": "Ar",
+            "name": "Armenian Apostolic Church",
+            "about": "The church of Armenia, traditionally the first nation to adopt Christianity as its state religion, in 301."
+          }
+        ]
+      },
+      {
+        "id": "protestant",
+        "name": "Protestant",
+        "css": "--greek",
+        "about": "Churches shaped by the Reformation from 1517: Scripture alone, grace alone, faith alone. Because each reads Scripture for itself, this is the family with the most denominations. They share the creeds’ faith, though some do not recite creeds at all.",
+        "self": "Churches reformed by the Scriptures: grace alone, faith alone, Christ alone.",
+        "why": "Affirms the Trinity and the content of the Nicene Creed, even where creeds are not recited. Its differences with Catholic and Orthodox lie within the shared faith: see the Traditions tab.",
+        "creeds": {
+          "apostles": "confessed",
+          "nicene": "confessed",
+          "chalcedon": "content",
+          "athanasian": "confessed"
+        },
+        "creedNote": "Varies by denomination: the Lutheran, Reformed and Anglican confessions formally receive the three “ecumenical” creeds; Baptist, Pentecostal and other free churches hold their teaching without reciting them.",
+        "tests": {
+          "trinity": "affirms",
+          "deity": "affirms",
+          "cross": "affirms",
+          "scripture": "affirms",
+          "grace": "affirms"
+        },
+        "members": [
+          {
+            "id": "lutheran",
+            "abbr": "Lu",
+            "name": "Lutheran",
+            "examples": "Evangelical Lutheran Church in America (ELCA), Lutheran Church–Missouri Synod (LCMS)",
+            "about": "From Martin Luther’s reform in Germany. The Book of Concord (1580) receives the three ecumenical creeds.",
+            "creeds": {
+              "apostles": "confessed",
+              "nicene": "confessed",
+              "chalcedon": "content",
+              "athanasian": "confessed"
+            }
+          },
+          {
+            "id": "reformed",
+            "abbr": "Re",
+            "name": "Reformed / Presbyterian",
+            "examples": "Presbyterian Church (USA), Dutch Reformed churches, Church of Scotland",
+            "about": "From Zwingli and Calvin in Switzerland. The Belgic Confession (Article 9) receives the three creeds.",
+            "creeds": {
+              "apostles": "confessed",
+              "nicene": "confessed",
+              "chalcedon": "content",
+              "athanasian": "confessed"
+            }
+          },
+          {
+            "id": "anglican",
+            "abbr": "An",
+            "name": "Anglican / Episcopal",
+            "examples": "Church of England, The Episcopal Church (USA), Church of Nigeria",
+            "about": "From the English Reformation. Article VIII of the Thirty-Nine Articles: the three creeds “ought thoroughly to be received and believed”.",
+            "creeds": {
+              "apostles": "confessed",
+              "nicene": "confessed",
+              "chalcedon": "content",
+              "athanasian": "confessed"
+            }
+          },
+          {
+            "id": "methodist",
+            "abbr": "Me",
+            "name": "Methodist",
+            "examples": "United Methodist Church, African Methodist Episcopal Church",
+            "about": "From John and Charles Wesley’s revival in 18th-century England. The Apostles’ and Nicene Creeds are said in worship.",
+            "creeds": {
+              "apostles": "confessed",
+              "nicene": "confessed",
+              "chalcedon": "content",
+              "athanasian": "unused"
+            }
+          },
+          {
+            "id": "baptist",
+            "abbr": "Ba",
+            "name": "Baptist",
+            "examples": "Southern Baptist Convention, American Baptist Churches USA, National Baptist Convention",
+            "about": "Believers’ baptism and self-governing congregations. Baptists hold the creeds’ teaching but prefer confessions of faith to fixed creeds.",
+            "creeds": {
+              "apostles": "content",
+              "nicene": "content",
+              "chalcedon": "content",
+              "athanasian": "content"
+            }
+          },
+          {
+            "id": "pentecostal",
+            "abbr": "Pe",
+            "name": "Pentecostal / Charismatic",
+            "examples": "Assemblies of God, Church of God in Christ; charismatic church networks such as Hillsong and Bethel",
+            "about": "From the Azusa Street revival (1906), stressing the gifts of the Spirit. Trinitarian, but rarely recites creeds.",
+            "creeds": {
+              "apostles": "content",
+              "nicene": "content",
+              "chalcedon": "content",
+              "athanasian": "content"
+            }
+          },
+          {
+            "id": "anabaptist",
+            "abbr": "Ab",
+            "name": "Anabaptist",
+            "examples": "Mennonites, Amish, Brethren",
+            "about": "The Radical Reformation’s heirs, known for believers’ baptism, nonviolence and simple living. Their confessions (such as Dordrecht, 1632) teach the Trinity.",
+            "creeds": {
+              "apostles": "content",
+              "nicene": "content",
+              "chalcedon": "content",
+              "athanasian": "content"
+            }
+          },
+          {
+            "id": "sda",
+            "edge": true,
+            "name": "Seventh-day Adventist",
+            "origin": "1863, from the Millerite movement in New England (Ellen G. White, Joseph Bates, James White)",
+            "self": "A Protestant church that keeps the seventh-day Sabbath and proclaims Christ’s soon return.",
+            "why": "It confesses the Trinity, the full deity of Christ, his atoning death and bodily resurrection, salvation by grace through faith, and the Bible as the standard for all teaching (28 Fundamental Beliefs). It is therefore usually placed inside, with distinctive doctrines on the edge: Saturday worship, Christ’s ministry in the heavenly sanctuary since 1844, the soul’s unconsciousness until the resurrection, and the prophetic gift of Ellen White. Some critics have counted it outside; after long study the evangelical scholar Walter Martin concluded it is a Christian denomination, though one with errors in his view.",
+            "affirms": "Everything at the core. The differences are Protestant-style disagreements about the Sabbath, the end times and the state of the dead.",
+            "keyTexts": [
+              "Exodus 20:8–11",
+              "Hebrews 8:1–2",
+              "Ecclesiastes 9:5",
+              "Revelation 19:10"
+            ],
+            "source": "https://www.adventist.org/beliefs/",
+            "tests": {
+              "trinity": {
+                "s": "affirms",
+                "text": "“There is one God: Father, Son, and Holy Spirit, a unity of three coeternal Persons” (Fundamental Belief 2)."
+              },
+              "deity": {
+                "s": "affirms",
+                "text": "Jesus is “forever truly God” who became truly man (Fundamental Belief 4)."
+              },
+              "cross": {
+                "s": "affirms",
+                "text": "Christ’s substitutionary, atoning death and his bodily resurrection."
+              },
+              "scripture": {
+                "s": "affirms",
+                "text": "The 66 books are “the standard by which all teaching and experience must be tested”; Ellen White’s writings are honoured as prophetic but subordinate to the Bible (Fundamental Belief 18)."
+              },
+              "grace": {
+                "s": "affirms",
+                "text": "Salvation by grace through faith in Christ; Sabbath-keeping is the fruit of salvation, not its cause."
+              }
+            },
+            "abbr": "SDA",
+            "examples": "Seventh-day Adventist Church",
+            "about": "Keeps the Sabbath on Saturday and stresses Christ’s soon return.",
+            "creeds": {
+              "apostles": "content",
+              "nicene": "content",
+              "chalcedon": "content",
+              "athanasian": "content"
+            }
+          },
+          {
+            "id": "gci",
+            "edge": true,
+            "name": "Grace Communion",
+            "origin": "Founded in the 1930s by Herbert W. Armstrong as the Worldwide Church of God; renamed Grace Communion International in 2009",
+            "self": "An evangelical denomination, transformed by grace from its Armstrong-era teaching.",
+            "why": "A rare case of a movement crossing the boundary. Under Herbert Armstrong it denied the Trinity and taught that keeping Old Testament law was needed for salvation. After his death in 1986 its leaders studied the Bible afresh: the church accepted the Trinity in 1993, embraced salvation by grace, and now fully agrees with the statement of faith of the National Association of Evangelicals. It shows that the boundary is about teaching, which can change.",
+            "affirms": "Everything at the core, since the reforms of the 1990s.",
+            "keyTexts": [
+              "Galatians 2:16",
+              "Matthew 28:19"
+            ],
+            "source": "https://www.gci.org/about-us/history/",
+            "tests": {
+              "trinity": {
+                "s": "affirms",
+                "text": "Accepted in 1993 (under Armstrong: rejected)."
+              },
+              "deity": {
+                "s": "affirms",
+                "text": "Jesus is fully God and fully human."
+              },
+              "cross": {
+                "s": "affirms",
+                "text": "Christ’s atoning death and bodily resurrection."
+              },
+              "scripture": {
+                "s": "affirms",
+                "text": "The Bible as the final authority, read in agreement with the evangelical statement of faith."
+              },
+              "grace": {
+                "s": "affirms",
+                "text": "Salvation by grace through faith (under Armstrong: law-keeping was required)."
+              }
+            },
+            "abbr": "GC",
+            "examples": "Grace Communion International (formerly the Worldwide Church of God)",
+            "about": "A movement that crossed the boundary: it embraced the Trinity in 1993.",
+            "creeds": {
+              "apostles": "content",
+              "nicene": "content",
+              "chalcedon": "content",
+              "athanasian": "content"
+            }
+          }
+        ]
       }
     ]
   }

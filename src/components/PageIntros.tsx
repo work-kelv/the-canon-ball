@@ -133,7 +133,7 @@ export function HistoryIntro() {
       lead={
         <p>
           Two thousand years of the church in four views: how it branched into today’s traditions, what unites and divides them,
-          the creeds that define the Christian faith, and which movements stand outside them, and why.
+          the creeds that define the Christian faith, and how other movements’ beliefs compare.
         </p>
       }
       cards={[
@@ -154,8 +154,8 @@ export function HistoryIntro() {
           kicker: 'Creeds & boundaries',
           body: (
             <>
-              {tab('creeds', 'Creeds')}: four historic creeds, line by line, with their Scriptures. {tab('compare', 'Inside & outside')}:
-              which movements share that faith, and why others are counted outside it.
+              {tab('creeds', 'Creeds')}: four historic creeds, line by line and side by side. {tab('compare', 'Core beliefs')}: the families of
+              churches that share that faith, their member churches, and how other movements differ.
             </>
           ),
         },

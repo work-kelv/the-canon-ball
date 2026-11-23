@@ -4,6 +4,7 @@ import comparisonData from '../data/theologicalComparison.json';
 import translationsData from '../data/bibleTranslations.json';
 import navigationData from '../data/textualNavigation.json';
 import traditionsData from '../data/traditionsCompared.json';
+import creedCompareData from '../data/creedComparison.json';
 
 export interface Branch {
   id: string;
@@ -113,6 +114,9 @@ export interface BoundaryTest {
 export interface BoundaryGroup {
   id: string;
   ring: 'inside' | 'outside' | 'other';
+  /** e.g. 'Restorationist & nontrinitarian'. */
+  category?: string;
+  creeds?: CreedSet;
   /** Inside the boundary, but with distinctive teachings that some dispute. */
   edge?: boolean;
   name: string;
@@ -126,6 +130,58 @@ export interface BoundaryGroup {
   /** Inside groups store a bare status; others store status + their own teaching. */
   tests: Record<TestId, Status | { s: Status; text: string }>;
 }
+export type CreedId = 'apostles' | 'nicene' | 'chalcedon' | 'athanasian';
+export type CreedStatus = 'confessed' | 'content' | 'unused' | 'rejects';
+export type CreedSet = Record<CreedId, CreedStatus>;
+export interface FamilyMember {
+  id: string;
+  abbr: string;
+  name: string;
+  about: string;
+  examples?: string;
+  /** Inside the shared faith, but with distinctive teachings (Adventists, Grace Communion). */
+  edge?: boolean;
+  creeds?: CreedSet;
+  origin?: string;
+  self?: string;
+  why?: string;
+  affirms?: string;
+  keyTexts?: string[];
+  source?: string;
+  tests?: BoundaryGroup['tests'];
+}
+export interface ChurchFamily {
+  id: string;
+  name: string;
+  css: string;
+  about: string;
+  self: string;
+  why: string;
+  creeds: CreedSet;
+  creedNote: string;
+  tests: BoundaryGroup['tests'];
+  members: FamilyMember[];
+}
+export const churchFamilies = (traditionsData.boundary as unknown as { families: ChurchFamily[] }).families;
+export const creedLens = (traditionsData.boundary as unknown as {
+  creedLens: { statuses: Record<CreedStatus, { label: string; note: string }>; notes: Record<CreedId, string> };
+}).creedLens;
+export const memberCreeds = (f: ChurchFamily, m: FamilyMember): CreedSet => m.creeds ?? f.creeds;
+
+// ── Creeds compared ──
+export type PhraseStatus = 'explicit' | 'brief' | 'absent';
+export interface CreedRow {
+  id: string;
+  label: string;
+  note?: string;
+  cells: Record<CreedId, { s: PhraseStatus; q?: string }>;
+}
+export const creedCompare = creedCompareData as unknown as {
+  meta: { note: string; statuses: Record<PhraseStatus, string> };
+  creeds: { id: CreedId; short: string; year: number; yearLabel: string; purpose: string; added: string }[];
+  groups: { id: string; label: string; rows: CreedRow[] }[];
+};
+
 export const traditionsMeta = traditionsData.meta;
 export const commonGround = traditionsData.commonGround as { text: string; ref: string }[];
 export const traditions = traditionsData.traditions as Tradition[];
