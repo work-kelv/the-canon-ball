@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "note": "How readers found their way around Scripture before and after chapters and verses. Dates are approximate."
+  },
+  "categories": {
+    "manuscript": "Manuscript navigation",
+    "chapters": "Chapter divisions",
+    "verses": "Verse numbering"
+  },
+  "milestones": [
+    {
+      "id": "scriptio-continua",
+      "category": "manuscript",
+      "year": -300,
+      "dateLabel": "c. 300 BC – AD 800",
+      "title": "Scriptio continua",
+      "description": "Greek and Latin books were written in continuous capital letters with no spaces, little punctuation and no lowercase. Texts were read aloud and often memorised; readers worked out the word breaks as they went. (Hebrew scribes, by contrast, generally separated words.)",
+      "example": "ΕΝΑΡΧΗΗΝΟΛΟΓΟΣ…"
+    },
+    {
+      "id": "parashiyot",
+      "category": "manuscript",
+      "year": -200,
+      "dateLabel": "Ancient (already in the Dead Sea Scrolls)",
+      "title": "Hebrew parashiyot",
+      "description": "Torah scrolls are divided by blank spaces: an 'open' section (petuchah) starts a new line, a 'closed' section (setumah) leaves a gap within the line. These paragraphs, together with the weekly reading portions, guided synagogue reading."
+    },
+    {
+      "id": "eusebian",
+      "category": "manuscript",
+      "year": 320,
+      "dateLabel": "c. AD 310–330",
+      "title": "Eusebian Canons",
+      "description": "Eusebius of Caesarea numbered the Gospels into sections (Matthew 355, Mark 233, Luke 342, John 232) and drew up ten tables showing which sections are parallel in which Gospels. Section numbers in the margin pointed readers to the tables at the front of the book.",
+      "keyFigure": "Eusebius of Caesarea"
+    },
+    {
+      "id": "colometry",
+      "category": "manuscript",
+      "year": 400,
+      "dateLabel": "4th–9th century",
+      "title": "Colometry and stichometry",
+      "description": "Some manuscripts laid out the text in sense-lines (cola) to help public reading. Scribes also counted 'lines' (stichoi) of standard length and recorded the total at the end of a book — a check on completeness and a basis for paying the copyist."
+    },
+    {
+      "id": "masoretic-verses",
+      "category": "verses",
+      "year": 930,
+      "dateLabel": "c. AD 900–950",
+      "title": "Masoretic verse divisions",
+      "description": "The Masoretes of Tiberias fixed the Hebrew text with vowel points and accents. Each verse ends with the sof pasuq mark (׃). Verse divisions themselves are older (the Talmud already speaks of them), but they were not numbered until a Hebrew concordance by Rabbi Isaac Nathan (c. 1440) applied numbers within Langton’s chapters.",
+      "keyFigure": "Aaron ben Asher (Aleppo Codex, c. 930)"
+    },
+    {
+      "id": "langton",
+      "category": "chapters",
+      "year": 1205,
+      "dateLabel": "c. 1205–1228",
+      "title": "Stephen Langton’s chapters",
+      "description": "While teaching at the University of Paris, Stephen Langton — later Archbishop of Canterbury — divided the Latin Vulgate into the chapters still used today. The Paris Bibles copied by university stationers spread his system across Europe.",
+      "keyFigure": "Stephen Langton"
+    },
+    {
+      "id": "stephanus-nt",
+      "category": "verses",
+      "year": 1551,
+      "dateLabel": "1551",
+      "title": "Stephanus numbers New Testament verses",
+      "description": "The Paris printer Robert Estienne (Stephanus) added numbered verses to his fourth edition of the Greek New Testament, printed in Geneva. According to his son, he marked many of them while travelling between Paris and Lyon.",
+      "keyFigure": "Robert Estienne (Stephanus)"
+    },
+    {
+      "id": "stephanus-1555",
+      "category": "verses",
+      "year": 1555,
+      "dateLabel": "1555",
+      "title": "First complete Bible with chapters and verses",
+      "description": "Stephanus’s 1555 Latin Vulgate was the first complete Bible divided into both chapters and numbered verses throughout.",
+      "keyFigure": "Robert Estienne (Stephanus)"
+    },
+    {
+      "id": "geneva-1560",
+      "category": "verses",
+      "year": 1560,
+      "dateLabel": "1560",
+      "title": "Geneva Bible",
+      "description": "The first English Bible with both chapters and numbered verses (its 1557 New Testament had already used verses). The system was adopted by the King James Version and nearly every Bible since.",
+      "keyFigure": "William Whittingham and the Geneva exiles"
+    }
+  ],
+  "sample": {
+    "reference": "John 1:1–5",
+    "greekUncial": "ΕΝΑΡΧΗΗΝΟΛΟΓΟΣΚΑΙΟΛΟΓΟΣΗΝΠΡΟΣΤΟΝΘΝΚΑΙΘΣΗΝΟΛΟΓΟΣΟΥΤΟΣΗΝΕΝΑΡΧΗΠΡΟΣΤΟΝΘΝΠΑΝΤΑΔΙΑΥΤΟΥΕΓΕΝΕΤΟΚΑΙΧΩΡΙΣΑΥΤΟΥΕΓΕΝΕΤΟΟΥΔΕΕΝΟΓΕΓΟΝΕΝΕΝΑΥΤΩΖΩΗΗΝΚΑΙΗΖΩΗΗΝΤΟΦΩΣΤΩΝΑΝΘΡΩΠΩΝΚΑΙΤΟΦΩΣΕΝΤΗΣΚΟΤΙΑΦΑΙΝΕΙΚΑΙΗΣΚΟΤΙΑΑΥΤΟΟΥΚΑΤΕΛΑΒΕΝ",
+    "nominaSacra": ["ΘΝ", "ΘΣ"],
+    "verses": [
+      { "v": 1, "text": "In the beginning was the Word, and the Word was with God, and the Word was God." },
+      { "v": 2, "text": "The same was in the beginning with God." },
+      { "v": 3, "text": "All things were made through him. Without him was not anything made that has been made." },
+      { "v": 4, "text": "In him was life, and the life was the light of men." },
+      { "v": 5, "text": "The light shines in the darkness, and the darkness hasn’t overcome it." }
+    ],
+    "senseLines": [
+      "In the beginning was the Word,",
+      "and the Word was with God,",
+      "and the Word was God.",
+      "The same was in the beginning with God.",
+      "All things were made through him.",
+      "Without him was not anything made that has been made.",
+      "In him was life,",
+      "and the life was the light of men.",
+      "The light shines in the darkness,",
+      "and the darkness hasn’t overcome it."
+    ],
+    "translation": "World English Bible (public domain)"
+  }
+}

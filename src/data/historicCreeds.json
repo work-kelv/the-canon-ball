@@ -1,0 +1,284 @@
+{
+  "meta": {
+    "translations": "Apostles’, Nicene and Athanasian Creeds: Book of Common Prayer (1662). Chalcedonian Definition: Philip Schaff, The Creeds of Christendom, vol. II (1877). All public domain.",
+    "reliabilityPrinciple": "The councils did not have the apostles’ original manuscripts; they argued from copies of the Scriptures and the faith handed down in the churches. What can be verified is (1) that bishops from many regions met and debated openly, (2) that the creed texts are preserved in the councils’ own records and early writers, and (3) that the New Testament passages the creeds summarise are already present in manuscripts older than the councils (e.g. P46, P66, P75 c. AD 175–225; Codex Sinaiticus and Vaticanus c. 325–360)."
+  },
+  "creeds": [
+    {
+      "id": "apostles",
+      "name": "Apostles’ Creed",
+      "date": "c. 2nd–8th century",
+      "origin": "Baptismal confession of the church at Rome (the 'Old Roman Symbol'); received text first found complete in Pirminius (early 8th c.).",
+      "summary": "The baptismal faith of the Western church: what new believers confessed when they were baptised.",
+      "reliabilityNote": "Not written by the apostles, despite a 4th-century legend. Its core is the Old Roman Symbol, attested in Greek by Marcellus of Ancyra (c. 340) and in Latin by Rufinus (c. 404); its outline already appears in the 'rule of faith' of Irenaeus (c. 180) and Tertullian (c. 200). Each article summarises teaching found in New Testament manuscripts that predate it.",
+      "clauses": [
+        {
+          "clauseText": "I believe in God the Father Almighty, Maker of heaven and earth:",
+          "scriptureReferences": ["Genesis 1:1", "Matthew 6:9", "Acts 17:24"],
+          "historicalContext": "Against Marcion and the Gnostics, who separated the Father of Jesus from a lesser god who made the material world. The creed insists the Father is the Creator."
+        },
+        {
+          "clauseText": "And in Jesus Christ his only Son our Lord,",
+          "scriptureReferences": ["John 3:16", "Matthew 16:16", "Romans 10:9", "Philippians 2:11"],
+          "historicalContext": "Confessing Jesus as 'Lord' (Kyrios) — the title of God in the Greek Old Testament — set Christians against the imperial cult’s 'Caesar is lord'."
+        },
+        {
+          "clauseText": "Who was conceived by the Holy Ghost, Born of the Virgin Mary,",
+          "scriptureReferences": ["Matthew 1:18–25", "Luke 1:26–35", "Isaiah 7:14"],
+          "historicalContext": "Answers both the Ebionites (Jesus a merely human son of Joseph) and the Docetists (Jesus only seemed to have a body): his birth was real and his origin divine."
+        },
+        {
+          "clauseText": "Suffered under Pontius Pilate, Was crucified, dead, and buried:",
+          "scriptureReferences": ["Mark 15:15", "John 19:16–18", "1 Corinthians 15:3–4"],
+          "historicalContext": "Naming a Roman governor anchors the faith in datable history, against Gnostic myths in which Christ did not truly suffer.",
+          "reliabilityNote": "Pilate is independently attested by Tacitus (Annals 15.44) and the Pilate Stone found at Caesarea (1961)."
+        },
+        {
+          "clauseText": "He descended into hell;",
+          "scriptureReferences": ["1 Peter 3:18–20", "Acts 2:27–31", "Ephesians 4:9"],
+          "historicalContext": "Affirms that Christ truly died and entered the realm of the dead (Hades). Its exact meaning has been debated since the early church.",
+          "reliabilityNote": "A later addition: absent from the Old Roman Symbol, it first appears in Rufinus’ creed of Aquileia (c. 404)."
+        },
+        {
+          "clauseText": "The third day he rose again from the dead,",
+          "scriptureReferences": ["1 Corinthians 15:3–8", "Luke 24:1–7", "Matthew 28:5–6"],
+          "historicalContext": "A bodily resurrection, against Gnostic teachers who spiritualised it.",
+          "reliabilityNote": "1 Corinthians 15:3–8 quotes a formula Paul 'received' — widely dated by historians to within a few years of the crucifixion."
+        },
+        {
+          "clauseText": "He ascended into heaven, And sitteth on the right hand of God the Father Almighty;",
+          "scriptureReferences": ["Acts 1:9–11", "Mark 16:19", "Hebrews 1:3", "Psalm 110:1"],
+          "historicalContext": "Christ’s present reign: Psalm 110:1 is the Old Testament verse most quoted in the New."
+        },
+        {
+          "clauseText": "From thence he shall come to judge the quick and the dead.",
+          "scriptureReferences": ["Acts 10:42", "2 Timothy 4:1", "Matthew 25:31–32", "1 Peter 4:5"],
+          "historicalContext": "'Quick' means living. The early church expected Christ’s personal return as judge of all."
+        },
+        {
+          "clauseText": "I believe in the Holy Ghost;",
+          "scriptureReferences": ["John 14:16–17", "Acts 5:3–4", "Matthew 28:19"],
+          "historicalContext": "Follows the threefold baptismal formula of Matthew 28:19 — Father, Son and Holy Spirit."
+        },
+        {
+          "clauseText": "The holy Catholick Church; The Communion of Saints;",
+          "scriptureReferences": ["Matthew 16:18", "Ephesians 4:4–6", "Hebrews 12:22–24", "1 John 1:3"],
+          "historicalContext": "'Catholic' means universal — the one church throughout the world, against breakaway sects.",
+          "reliabilityNote": "'The communion of saints' is a 5th-century addition, first found in Gaul (Nicetas of Remesiana)."
+        },
+        {
+          "clauseText": "The Forgiveness of sins;",
+          "scriptureReferences": ["Acts 2:38", "Ephesians 1:7", "Colossians 1:14", "1 John 1:9"],
+          "historicalContext": "Linked to baptism; also answered rigorist groups (e.g. the Novatianists) who denied forgiveness for serious sins after baptism."
+        },
+        {
+          "clauseText": "The Resurrection of the body, And the life everlasting. Amen.",
+          "scriptureReferences": ["1 Corinthians 15:42–44", "John 5:28–29", "Philippians 3:21"],
+          "historicalContext": "The Latin says 'resurrection of the flesh' — a deliberate answer to Gnostics who despised the body and hoped only for the soul’s escape."
+        }
+      ]
+    },
+    {
+      "id": "nicene",
+      "name": "Nicene Creed",
+      "date": "AD 325, expanded 381",
+      "origin": "Council of Nicaea (325), revised at the First Council of Constantinople (381); text preserved in the Acts of the Council of Chalcedon (451).",
+      "summary": "The most widely shared Christian confession — used by Catholic, Orthodox and most Protestant churches — defining the full deity of the Son and the Holy Spirit.",
+      "reliabilityNote": "Nicaea gathered some 250–318 bishops, mostly from the East with Western representatives (Hosius of Córdoba, papal legates); Constantinople about 150. The debates turned on Scripture — John 1, Proverbs 8:22, Colossians 1:15 — and on the faith already confessed in baptism. The 381 text was read aloud and affirmed at Chalcedon by bishops from across the empire, and our two oldest complete Bibles, Codex Sinaiticus and Vaticanus, were copied in these same decades.",
+      "clauses": [
+        {
+          "clauseText": "I believe in one God the Father Almighty, Maker of heaven and earth, And of all things visible and invisible:",
+          "scriptureReferences": ["Deuteronomy 6:4", "Genesis 1:1", "Colossians 1:16"],
+          "historicalContext": "Opens with the Shema — one God — and makes him Creator of the spiritual ('invisible') world as well as the material, against Gnostic dualism."
+        },
+        {
+          "clauseText": "And in one Lord Jesus Christ, the only-begotten Son of God, Begotten of his Father before all worlds,",
+          "scriptureReferences": ["John 1:14", "John 1:18", "John 1:1–2", "Colossians 1:15–17"],
+          "historicalContext": "Arius taught 'there was when he was not' — that the Son had a beginning. 'Before all worlds' affirms the Son’s eternal generation."
+        },
+        {
+          "clauseText": "God of God, Light of Light, Very God of very God, Begotten, not made,",
+          "scriptureReferences": ["John 1:1", "Hebrews 1:3", "John 8:58", "John 20:28"],
+          "historicalContext": "The heart of the anti-Arian confession: the Son is not the highest creature but true God from true God — 'begotten, not made'."
+        },
+        {
+          "clauseText": "Being of one substance with the Father; By whom all things were made:",
+          "scriptureReferences": ["John 10:30", "John 1:3", "Hebrews 1:2"],
+          "historicalContext": "Homoousios ('of the same substance') was chosen at Nicaea because Arians could agree with every purely biblical phrase while reading it their own way.",
+          "reliabilityNote": "The word was controversial for decades; it was defended at length by Athanasius and finally reaffirmed in 381."
+        },
+        {
+          "clauseText": "Who for us men and for our salvation came down from heaven, And was incarnate by the Holy Ghost of the Virgin Mary, And was made man,",
+          "scriptureReferences": ["John 6:38", "Luke 1:35", "John 1:14", "Philippians 2:6–8"],
+          "historicalContext": "'Was made man' was pressed in 381 against Apollinarius, who taught that the divine Word took the place of a human mind in Jesus."
+        },
+        {
+          "clauseText": "And was crucified also for us under Pontius Pilate. He suffered and was buried,",
+          "scriptureReferences": ["1 Corinthians 15:3–4", "Isaiah 53:5", "Mark 15:15"],
+          "historicalContext": "'For us' states the purpose of the cross; Pilate fixes it in history (added in 381)."
+        },
+        {
+          "clauseText": "And the third day he rose again according to the Scriptures,",
+          "scriptureReferences": ["1 Corinthians 15:4", "Luke 24:44–46", "Psalm 16:10"],
+          "historicalContext": "Quotes Paul’s early formula almost word for word: 'according to the Scriptures' points to Old Testament prophecy."
+        },
+        {
+          "clauseText": "And ascended into heaven, And sitteth on the right hand of the Father.",
+          "scriptureReferences": ["Acts 1:9", "Hebrews 10:12", "Psalm 110:1"],
+          "historicalContext": "Christ’s exaltation in his risen humanity."
+        },
+        {
+          "clauseText": "And he shall come again with glory to judge both the quick and the dead: Whose kingdom shall have no end.",
+          "scriptureReferences": ["Matthew 25:31", "Luke 1:33", "Daniel 7:14"],
+          "historicalContext": "'Whose kingdom shall have no end' (added 381) answered Marcellus of Ancyra, who taught that the Son’s reign would end when he handed the kingdom back to the Father."
+        },
+        {
+          "clauseText": "And I believe in the Holy Ghost, The Lord and giver of life,",
+          "scriptureReferences": ["2 Corinthians 3:17", "John 6:63", "Romans 8:2", "Romans 8:11"],
+          "historicalContext": "The 381 expansion against the Pneumatomachians ('Spirit-fighters'), who denied the Spirit’s full deity."
+        },
+        {
+          "clauseText": "Who proceedeth from the Father and the Son, Who with the Father and the Son together is worshipped and glorified,",
+          "scriptureReferences": ["John 15:26", "Matthew 28:19", "2 Corinthians 13:14"],
+          "historicalContext": "The Spirit receives the same worship as Father and Son.",
+          "reliabilityNote": "'And the Son' (filioque) is not in the 381 text. It was added in Spain (Toledo, 589), adopted at Rome in 1014, and remains a point of division with the Orthodox churches."
+        },
+        {
+          "clauseText": "Who spake by the Prophets.",
+          "scriptureReferences": ["2 Peter 1:21", "Acts 28:25", "1 Peter 1:10–11"],
+          "historicalContext": "Affirms the unity of Old and New Testaments — the same Spirit spoke through the prophets — against Marcion, who rejected the Old Testament."
+        },
+        {
+          "clauseText": "And I believe one Catholick and Apostolick Church.",
+          "scriptureReferences": ["Ephesians 2:19–20", "Ephesians 4:4–5", "Matthew 16:18"],
+          "historicalContext": "The four 'marks' of the church are one, holy, catholic and apostolic; the 1662 Prayer Book text omits 'holy'."
+        },
+        {
+          "clauseText": "I acknowledge one Baptism for the remission of sins.",
+          "scriptureReferences": ["Ephesians 4:5", "Acts 2:38"],
+          "historicalContext": "'One baptism' settled 3rd-century disputes over rebaptising those baptised by heretics or the lapsed."
+        },
+        {
+          "clauseText": "And I look for the Resurrection of the dead, And the life of the world to come. Amen.",
+          "scriptureReferences": ["1 Corinthians 15:20–22", "Revelation 21:1–4", "Daniel 12:2"],
+          "historicalContext": "Christian hope is bodily resurrection and a renewed creation, not escape from the material world."
+        }
+      ]
+    },
+    {
+      "id": "chalcedon",
+      "name": "Chalcedonian Definition",
+      "date": "AD 451",
+      "origin": "Council of Chalcedon (451), building on Pope Leo I’s Tome and Cyril of Alexandria’s letters.",
+      "summary": "Defines how Jesus is both God and man: one person in two natures, against both dividing him (Nestorius) and blending him (Eutyches).",
+      "reliabilityNote": "About 520 bishops attended — the largest of the early councils — and its acts survive in Greek and Latin. Its Christology was openly contested: the Oriental Orthodox churches rejected the wording while still confessing Christ fully God and fully man, a dispute later dialogues (e.g. 1989–90) have largely narrowed.",
+      "clauses": [
+        {
+          "clauseText": "We, then, following the holy Fathers, all with one consent, teach men to confess one and the same Son, our Lord Jesus Christ,",
+          "scriptureReferences": ["1 Timothy 2:5", "Hebrews 13:8"],
+          "historicalContext": "'One and the same' is repeated throughout against Nestorius, who seemed to speak of two Sons — the eternal Word and the man Jesus."
+        },
+        {
+          "clauseText": "the same perfect in Godhead and also perfect in manhood; truly God and truly man, of a reasonable [rational] soul and body;",
+          "scriptureReferences": ["John 1:1", "John 1:14", "Colossians 2:9", "Hebrews 2:14", "Hebrews 2:17", "Luke 2:52"],
+          "historicalContext": "'A rational soul' rules out Apollinarianism: Jesus had a fully human mind and will, so he could grow in wisdom (Luke 2:52)."
+        },
+        {
+          "clauseText": "consubstantial [coessential] with the Father according to the Godhead, and consubstantial with us according to the Manhood; in all things like unto us, without sin;",
+          "scriptureReferences": ["John 10:30", "Hebrews 4:15", "2 Corinthians 5:21"],
+          "historicalContext": "A double homoousios: of one substance with God and with us — against Eutyches, who denied that Christ’s humanity was of the same nature as ours."
+        },
+        {
+          "clauseText": "begotten before all ages of the Father according to the Godhead, and in these latter days, for us and for our salvation, born of the Virgin Mary, the Mother of God, according to the Manhood;",
+          "scriptureReferences": ["John 1:14", "Galatians 4:4", "Luke 1:35", "Luke 1:43"],
+          "historicalContext": "'Mother of God' (Theotokos), affirmed at Ephesus (431), safeguards the unity of Christ’s person: the one Mary bore is God the Word made flesh."
+        },
+        {
+          "clauseText": "one and the same Christ, Son, Lord, Only-begotten, to be acknowledged in two natures, inconfusedly, unchangeably, indivisibly, inseparably;",
+          "scriptureReferences": ["John 1:14", "Philippians 2:6–7", "Romans 9:5"],
+          "historicalContext": "The four famous adverbs: 'without confusion, without change' answer Eutyches; 'without division, without separation' answer Nestorius."
+        },
+        {
+          "clauseText": "the distinction of natures being by no means taken away by the union, but rather the property of each nature being preserved, and concurring in one Person and one Subsistence, not parted or divided into two persons,",
+          "scriptureReferences": ["Matthew 26:38–39", "John 11:35", "John 11:43"],
+          "historicalContext": "Following Leo’s Tome: each nature acts in communion with the other — Jesus weeps at Lazarus’ tomb (humanity) and raises him (deity), yet one person does both."
+        },
+        {
+          "clauseText": "but one and the same Son, and only begotten, God the Word, the Lord Jesus Christ, as the prophets from the beginning [have declared] concerning Him, and the Lord Jesus Christ Himself has taught us, and the Creed of the holy Fathers has handed down to us.",
+          "scriptureReferences": ["Hebrews 1:1–2", "Luke 24:27", "Jude 3"],
+          "historicalContext": "Grounds the definition in three authorities in order: the prophets, Christ’s own teaching, and the creed of Nicaea–Constantinople."
+        }
+      ]
+    },
+    {
+      "id": "athanasian",
+      "name": "Athanasian Creed",
+      "date": "c. AD 440–540",
+      "origin": "Latin, probably southern Gaul; named 'Quicunque vult' from its first words. Attributed to Athanasius only from the 7th century.",
+      "summary": "A detailed teaching creed on the Trinity and the Incarnation, written to be learned and recited.",
+      "reliabilityNote": "Not by Athanasius and not issued by any council; first clearly quoted by Caesarius of Arles (c. 542). It was received by the Western churches — it is in the Lutheran Book of Concord and Article VIII of the Anglican Thirty-nine Articles — but is not used liturgically in the East. Its condemnatory clauses have been debated even by churches that accept its doctrine.",
+      "clauses": [
+        {
+          "clauseText": "Whosoever will be saved: before all things it is necessary that he hold the Catholick Faith. Which Faith except every one do keep whole and undefiled: without doubt he shall perish everlastingly.",
+          "scriptureReferences": ["Jude 3", "Hebrews 11:6", "John 3:36"],
+          "historicalContext": "The warning frame. Many modern churches that affirm the creed’s doctrine omit or soften these clauses in worship."
+        },
+        {
+          "clauseText": "And the Catholick Faith is this: That we worship one God in Trinity, and Trinity in Unity; Neither confounding the Persons: nor dividing the Substance.",
+          "scriptureReferences": ["Deuteronomy 6:4", "Matthew 28:19", "2 Corinthians 13:14"],
+          "historicalContext": "Two errors in one line: 'confounding the Persons' is Sabellianism (one person in three modes); 'dividing the Substance' is Arianism or tritheism."
+        },
+        {
+          "clauseText": "For there is one Person of the Father, another of the Son: and another of the Holy Ghost. But the Godhead of the Father, of the Son, and of the Holy Ghost, is all one: the Glory equal, the Majesty co-eternal.",
+          "scriptureReferences": ["Matthew 3:16–17", "John 14:16", "John 10:30"],
+          "historicalContext": "At Jesus’ baptism the Father speaks, the Son is baptised and the Spirit descends — three persons, one God."
+        },
+        {
+          "clauseText": "Such as the Father is, such is the Son: and such is the Holy Ghost. The Father uncreate, the Son uncreate: and the Holy Ghost uncreate. The Father incomprehensible, the Son incomprehensible: and the Holy Ghost incomprehensible. The Father eternal, the Son eternal: and the Holy Ghost eternal.",
+          "scriptureReferences": ["John 1:1–3", "Hebrews 9:14", "Psalm 90:2"],
+          "historicalContext": "Each attribute of God is applied equally to all three, ruling out any created or subordinate Son or Spirit."
+        },
+        {
+          "clauseText": "And yet they are not three eternals: but one eternal. So the Father is God, the Son is God: and the Holy Ghost is God. And yet they are not three Gods: but one God.",
+          "scriptureReferences": ["Isaiah 45:5", "1 Corinthians 8:6", "Acts 5:3–4"],
+          "historicalContext": "Guards against tritheism — three gods — while affirming each person is fully God."
+        },
+        {
+          "clauseText": "The Father is made of none: neither created, nor begotten. The Son is of the Father alone: not made, nor created, but begotten. The Holy Ghost is of the Father and of the Son: neither made, nor created, nor begotten, but proceeding.",
+          "scriptureReferences": ["John 1:14", "John 15:26", "Galatians 4:6"],
+          "historicalContext": "Distinguishes the persons by their relations (unbegotten, begotten, proceeding). 'And of the Son' reflects the Latin filioque."
+        },
+        {
+          "clauseText": "And in this Trinity none is afore, or after other: none is greater, or less than another; But the whole three Persons are co-eternal together: and co-equal.",
+          "scriptureReferences": ["John 5:18", "Philippians 2:6"],
+          "historicalContext": "Against subordinationism — ranking the Son or Spirit below the Father in being."
+        },
+        {
+          "clauseText": "Furthermore, it is necessary to everlasting salvation: that he also believe rightly the Incarnation of our Lord Jesus Christ. For the right Faith is, that we believe and confess: that our Lord Jesus Christ, the Son of God, is God and Man;",
+          "scriptureReferences": ["John 1:14", "1 John 4:2–3", "Matthew 16:16"],
+          "historicalContext": "The second half turns from the Trinity to the person of Christ, following Chalcedon."
+        },
+        {
+          "clauseText": "God, of the Substance of the Father, begotten before the worlds: and Man, of the Substance of his Mother, born in the world; Perfect God, and perfect Man: of a reasonable soul and human flesh subsisting; Equal to the Father, as touching his Godhead: and inferior to the Father, as touching his Manhood.",
+          "scriptureReferences": ["John 10:30", "John 14:28", "Galatians 4:4"],
+          "historicalContext": "Reconciles 'I and the Father are one' with 'the Father is greater than I': equal in deity, lesser in his assumed humanity."
+        },
+        {
+          "clauseText": "Who although he be God and Man: yet he is not two, but one Christ; One, not by conversion of the Godhead into flesh: but by taking of the Manhood into God; One altogether, not by confusion of Substance: but by unity of Person.",
+          "scriptureReferences": ["Philippians 2:7", "Colossians 2:9"],
+          "historicalContext": "Not two Christs (Nestorius) and not a blended nature (Eutyches)."
+        },
+        {
+          "clauseText": "Who suffered for our salvation: descended into hell, rose again the third day from the dead. He ascended into heaven, he sitteth on the right hand of the Father, God Almighty: from whence he shall come to judge the quick and the dead.",
+          "scriptureReferences": ["1 Peter 3:18", "1 Corinthians 15:4", "Acts 1:11"],
+          "historicalContext": "Repeats the saving events of the Apostles’ Creed."
+        },
+        {
+          "clauseText": "At whose coming all men shall rise again with their bodies: and shall give account for their own works. And they that have done good shall go into life everlasting: and they that have done evil into everlasting fire. This is the Catholick Faith: which except a man believe faithfully, he cannot be saved.",
+          "scriptureReferences": ["John 5:28–29", "Matthew 25:46", "2 Corinthians 5:10"],
+          "historicalContext": "Closes with the bodily resurrection and final judgement, echoing Jesus’ words in John 5 and Matthew 25."
+        }
+      ]
+    }
+  ]
+}

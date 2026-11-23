@@ -7,7 +7,7 @@ export interface Reference {
   use: string;
 }
 
-export const REFERENCES: Record<'languages' | 'characters' | 'map', Reference[]> = {
+export const REFERENCES: Record<'languages' | 'characters' | 'map' | 'history', Reference[]> = {
   languages: [
   {
     title: 'World English Bible (WEB) and Berean Standard Bible (BSB)',
@@ -137,6 +137,83 @@ export const REFERENCES: Record<'languages' | 'characters' | 'map', Reference[]>
       title: 'Bible text references',
       detail: 'Acts 13–28; Genesis 11–22; Exodus 12–19; Numbers 13–33; 2 Kings 25; Ezra 1–8; Nehemiah 1–2; the Gospels',
       use: 'Every journey stop cites its passage. Rivers and lakes are hand-traced approximations; where-written and setting pins are editorial (see each note).',
+    },
+  ],
+  history: [
+    {
+      title: 'World English Bible (WEB) and Berean Standard Bible (BSB)',
+      detail: 'Both public domain; USFX texts from the open-bibles collection (seven1m/open-bibles)',
+      url: 'https://github.com/seven1m/open-bibles',
+      links: [
+        { label: 'World English Bible', url: 'https://worldenglish.bible/' },
+        { label: 'Berean Standard Bible', url: 'https://berean.bible/' },
+      ],
+      use: 'Verse pop-ups for the creed clauses and the comparison, and the John 1:1–5 sample (WEB).',
+    },
+    {
+      title: 'The Creeds of Christendom',
+      detail: 'Philip Schaff, 1877 (6th ed. 1931), Christian Classics Ethereal Library',
+      url: 'https://www.ccel.org/ccel/schaff/creeds1',
+      links: [{ label: 'Vol. 2: Greek and Latin creeds', url: 'https://www.ccel.org/ccel/schaff/creeds2' }],
+      use: "Texts and histories of the Apostles', Nicene, Chalcedonian and Athanasian creeds (Chalcedon in Schaff's translation).",
+    },
+    {
+      title: 'The Book of Common Prayer (1662)',
+      detail: 'Church of England',
+      use: 'English text of the Athanasian Creed ("Quicunque vult").',
+    },
+    {
+      title: 'Early Christian Creeds',
+      detail: 'J. N. D. Kelly, 3rd ed., Longman, 1972',
+      use: "Background on how the Apostles' and Nicene creeds developed.",
+    },
+    {
+      title: 'History of the Christian Church',
+      detail: 'Philip Schaff, Christian Classics Ethereal Library',
+      url: 'https://www.ccel.org/ccel/schaff/hcc3',
+      links: [{ label: 'Vol. 4: Mediaeval Christianity', url: 'https://www.ccel.org/ccel/schaff/hcc4' }],
+      use: 'The councils, the Church of the East and Oriental Orthodox divisions, and the East–West schism of 1054.',
+    },
+    {
+      title: 'Religion timelines',
+      detail: 'Association of Religion Data Archives (ARDA)',
+      url: 'https://www.thearda.com/us-religion/history/timelines',
+      use: 'Dates and key figures for the Reformation and later Protestant branches.',
+    },
+    {
+      title: 'Official statements of the groups compared',
+      detail: "Each group's own website",
+      links: [
+        { label: 'jw.org', url: 'https://www.jw.org/' },
+        { label: 'churchofjesuschrist.org', url: 'https://www.churchofjesuschrist.org/' },
+        { label: 'upci.org', url: 'https://www.upci.org/' },
+        { label: 'christianscience.com', url: 'https://www.christianscience.com/' },
+      ],
+      use: "Each group's position is summarised from what it says about itself.",
+    },
+    {
+      title: 'Bible translation statistics, 2025',
+      detail: 'Wycliffe Global Alliance',
+      url: 'https://www.wycliffe.net/resources/statistics/',
+      links: [{ label: 'ProgressBible', url: 'https://progress.bible/' }],
+      use: '"Scripture today" figures: languages, translations in progress, and access.',
+    },
+    {
+      title: 'The Leon Levy Dead Sea Scrolls Digital Library',
+      detail: 'Israel Antiquities Authority',
+      url: 'https://www.deadseascrolls.org.il/',
+      use: 'Dating and discovery of the Qumran scrolls.',
+    },
+    {
+      title: 'The Text of the New Testament',
+      detail: 'Bruce M. Metzger and Bart D. Ehrman, 4th ed., Oxford University Press, 2005',
+      use: 'Manuscripts (P52, the great codices), scriptio continua, nomina sacra, Eusebian canons, and the early printed editions.',
+    },
+    {
+      title: 'Codex Sinaiticus Project',
+      detail: 'British Library, Leipzig University Library, St Catherine’s Monastery and the National Library of Russia',
+      url: 'https://codexsinaiticus.org/',
+      use: 'What a 4th-century uncial page looks like (layout of the John 1 sample).',
     },
   ],
 };

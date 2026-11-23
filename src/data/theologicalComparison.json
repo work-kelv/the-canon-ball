@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "purpose": "A descriptive comparison of how several movements relate to the teaching of the historic creeds. Each group’s position is summarised from its own official publications and standard reference works, in terms its members would recognise. Individual members’ views vary, and the summaries are necessarily brief.",
+    "statusLegend": {
+      "affirms": "Agrees with the historic creedal position",
+      "partial": "Agrees in part, or affirms with significantly different definitions",
+      "differs": "Teaches a different position from the historic creeds"
+    }
+  },
+  "benchmarks": [
+    {
+      "id": "trinity",
+      "name": "Nature of God (Trinity)",
+      "orthodoxPosition": "One God eternally existing as three co-equal, co-eternal persons: Father, Son and Holy Spirit.",
+      "creedClause": "“We worship one God in Trinity, and Trinity in Unity; Neither confounding the Persons: nor dividing the Substance.” (Athanasian Creed)",
+      "scripture": ["Deuteronomy 6:4", "Matthew 28:19", "2 Corinthians 13:14", "John 1:1", "Acts 5:3–4"]
+    },
+    {
+      "id": "christ",
+      "name": "Identity of Jesus (fully God & fully man)",
+      "orthodoxPosition": "Jesus Christ is the eternal Son, true God and true man, one person in two natures.",
+      "creedClause": "“Truly God and truly man… in two natures, inconfusedly, unchangeably, indivisibly, inseparably.” (Chalcedon); “Begotten, not made, of one substance with the Father.” (Nicene)",
+      "scripture": ["John 1:1", "John 1:14", "Colossians 2:9", "Philippians 2:6–8", "Hebrews 4:15", "John 20:28"]
+    },
+    {
+      "id": "canon",
+      "name": "Scriptural authority (closed canon)",
+      "orthodoxPosition": "The Scriptures are inspired and authoritative; the canon is closed. (Protestants receive 66 books; Catholic and Orthodox churches also receive the deuterocanonical books.)",
+      "creedClause": "“[The Holy Ghost] who spake by the Prophets.” (Nicene)",
+      "scripture": ["2 Timothy 3:16–17", "2 Peter 1:20–21", "Jude 3", "Hebrews 1:1–2"]
+    },
+    {
+      "id": "salvation",
+      "name": "Salvation",
+      "orthodoxPosition": "Salvation is God’s gift of grace, received through faith in Christ’s atoning death and resurrection. (Traditions differ on the role of the sacraments and good works.)",
+      "creedClause": "“Who for us men and for our salvation came down from heaven… I acknowledge one Baptism for the remission of sins.” (Nicene)",
+      "scripture": ["Ephesians 2:8–9", "Romans 3:23–24", "John 3:16", "Acts 4:12", "Titus 3:5"]
+    },
+    {
+      "id": "resurrection",
+      "name": "Resurrection",
+      "orthodoxPosition": "Jesus rose bodily from the dead; all will be raised bodily at his return.",
+      "creedClause": "“The third day he rose again according to the Scriptures… I look for the Resurrection of the dead.” (Nicene)",
+      "scripture": ["1 Corinthians 15:3–8", "Luke 24:39", "John 20:27", "John 2:19–21", "1 Corinthians 15:42–44"]
+    },
+    {
+      "id": "continuity",
+      "name": "Historical continuity",
+      "orthodoxPosition": "The church has continued, however imperfectly, in the apostolic faith summarised in the creeds since the first century.",
+      "creedClause": "“I believe one Catholick and Apostolick Church.” (Nicene)",
+      "scripture": ["Matthew 16:18", "Matthew 28:20", "Ephesians 2:20", "Jude 3"]
+    }
+  ],
+  "groups": [
+    {
+      "id": "orthodoxy",
+      "name": "Historic orthodoxy",
+      "family": "historic",
+      "origin": "1st century; defined in the ecumenical creeds (325–451)",
+      "description": "The shared confession of Catholic, Eastern Orthodox and Protestant churches. These traditions differ on many questions, but all affirm the Nicene Creed and the Chalcedonian Definition.",
+      "sources": [],
+      "positions": {
+        "trinity": { "status": "affirms", "summary": "One God in three persons (Nicene and Athanasian Creeds)." },
+        "christ": { "status": "affirms", "summary": "Fully God and fully man, one person in two natures (Chalcedon)." },
+        "canon": { "status": "affirms", "summary": "Inspired Scripture, closed canon (differences over the deuterocanonical books)." },
+        "salvation": { "status": "affirms", "summary": "By grace through faith in Christ; differences over sacraments and works between traditions." },
+        "resurrection": { "status": "affirms", "summary": "Christ’s bodily resurrection; future bodily resurrection of all." },
+        "continuity": { "status": "affirms", "summary": "Claims continuity with the apostolic faith through the creeds and councils." }
+      }
+    },
+    {
+      "id": "arianism",
+      "name": "Arianism (4th century)",
+      "family": "divergent",
+      "origin": "c. 318, Arius of Alexandria; condemned at Nicaea (325) and Constantinople (381); persisted among Germanic peoples until the 7th century",
+      "description": "Taught that the Son was the first and greatest of God’s creatures, through whom everything else was made.",
+      "sources": [],
+      "positions": {
+        "trinity": { "status": "differs", "summary": "Only the Father is eternal, unbegotten God; the Son and Spirit are created beings.", "differingClause": "“Being of one substance with the Father.”", "keyTexts": ["Proverbs 8:22", "Colossians 1:15", "John 14:28"] },
+        "christ": { "status": "differs", "summary": "The Son is divine in rank but created: 'there was when he was not'.", "differingClause": "“Begotten, not made.”" },
+        "canon": { "status": "affirms", "summary": "Used the same Scriptures; the dispute was over their interpretation." },
+        "salvation": { "status": "partial", "summary": "Salvation through the Son as mediator — but Athanasius argued that only one who is truly God can unite us to God." },
+        "resurrection": { "status": "affirms", "summary": "Affirmed Christ’s resurrection." },
+        "continuity": { "status": "differs", "summary": "Rejected by the councils as a departure from the faith handed down." }
+      }
+    },
+    {
+      "id": "jw",
+      "name": "Jehovah’s Witnesses",
+      "family": "divergent",
+      "origin": "1870s, Bible Student movement of Charles Taze Russell; name adopted 1931",
+      "description": "A restorationist movement led by a Governing Body, known for door-to-door ministry and the New World Translation.",
+      "sources": ["https://www.jw.org/en/"],
+      "positions": {
+        "trinity": { "status": "differs", "summary": "Jehovah alone is Almighty God; Jesus is God’s first creation and the holy spirit is God’s active force, not a person.", "differingClause": "“We worship one God in Trinity.”", "keyTexts": ["John 14:28", "Colossians 1:15", "1 Corinthians 8:6"] },
+        "christ": { "status": "differs", "summary": "Jesus is 'a god' (New World Translation of John 1:1), identified with the archangel Michael before his human life; not God incarnate.", "differingClause": "“Very God of very God.”" },
+        "canon": { "status": "affirms", "summary": "Accepts the 66-book canon as inspired (read in the New World Translation, interpreted through the Governing Body’s publications)." },
+        "salvation": { "status": "differs", "summary": "Faith in Jesus’ ransom sacrifice together with obedience, baptism and active service; 144,000 rule in heaven, others hope for everlasting life on a paradise earth." },
+        "resurrection": { "status": "differs", "summary": "Jesus was raised as a spirit creature; his human body was not raised.", "differingClause": "“The third day he rose again.” (understood bodily)", "keyTexts": ["1 Peter 3:18", "1 Corinthians 15:45"] },
+        "continuity": { "status": "differs", "summary": "Teaches a great apostasy after the apostles; true worship restored through the Bible Students in the 19th century." }
+      }
+    },
+    {
+      "id": "lds",
+      "name": "Latter-day Saints (LDS)",
+      "family": "divergent",
+      "origin": "1830, Joseph Smith, New York; The Church of Jesus Christ of Latter-day Saints",
+      "description": "A restorationist church that accepts the Bible together with further scripture and continuing revelation through living prophets.",
+      "sources": ["https://www.churchofjesuschrist.org/"],
+      "positions": {
+        "trinity": { "status": "differs", "summary": "The Godhead is three distinct beings — Heavenly Father, Jesus Christ and the Holy Ghost — one in purpose; the Father and Son have glorified bodies of flesh and bone.", "differingClause": "“Neither… dividing the Substance.”" },
+        "christ": { "status": "partial", "summary": "Jesus is divine, the Son of God and Savior of the world, but understood as the firstborn spirit child of Heavenly Father rather than 'of one substance' with him.", "differingClause": "“Being of one substance with the Father.”" },
+        "canon": { "status": "differs", "summary": "An open canon: the Bible plus the Book of Mormon, Doctrine and Covenants, Pearl of Great Price, and ongoing revelation." },
+        "salvation": { "status": "partial", "summary": "Salvation through the Atonement of Jesus Christ by grace; exaltation also requires faith, repentance, baptism, receiving the Holy Ghost, temple ordinances and enduring to the end." },
+        "resurrection": { "status": "affirms", "summary": "Jesus rose with a physical body, and all people will be resurrected bodily." },
+        "continuity": { "status": "differs", "summary": "Teaches a Great Apostasy after the apostles and the restoration of priesthood authority through Joseph Smith." }
+      }
+    },
+    {
+      "id": "oneness",
+      "name": "Oneness Pentecostalism",
+      "family": "divergent",
+      "origin": "1913–1916, 'Jesus’ Name' controversy within early Pentecostalism; United Pentecostal Church International (1945)",
+      "description": "A Pentecostal movement that baptises in the name of Jesus only and rejects the doctrine of three persons.",
+      "sources": ["https://www.upci.org/"],
+      "positions": {
+        "trinity": { "status": "differs", "summary": "God is one person who has revealed himself as Father, Son and Holy Spirit — manifestations, not three distinct persons.", "differingClause": "“Neither confounding the Persons.”", "keyTexts": ["Deuteronomy 6:4", "Colossians 2:9", "Isaiah 9:6"] },
+        "christ": { "status": "partial", "summary": "Jesus is fully God and fully man — the one God incarnate — but 'Son' refers to his humanity, not an eternal second person.", "differingClause": "“Begotten of his Father before all worlds.”" },
+        "canon": { "status": "affirms", "summary": "Accepts the 66-book Bible as the inspired and final authority." },
+        "salvation": { "status": "partial", "summary": "Commonly teaches that repentance, water baptism in Jesus’ name and the baptism of the Holy Spirit with speaking in tongues are all part of the new birth.", "keyTexts": ["Acts 2:38", "John 3:5"] },
+        "resurrection": { "status": "affirms", "summary": "Affirms Christ’s bodily resurrection and the future resurrection." },
+        "continuity": { "status": "partial", "summary": "Emerged in the 20th century but sees itself as restoring the apostolic baptismal practice of Acts." }
+      }
+    },
+    {
+      "id": "cs",
+      "name": "Christian Science",
+      "family": "divergent",
+      "origin": "1879, Mary Baker Eddy, Boston; Church of Christ, Scientist",
+      "description": "Teaches that spiritual reality is the only true reality and that healing comes through understanding God as divine Mind.",
+      "sources": ["https://www.christianscience.com/"],
+      "positions": {
+        "trinity": { "status": "differs", "summary": "God is infinite divine Mind, Principle, Life, Truth and Love; the 'triunity' of Life, Truth and Love is not three persons." },
+        "christ": { "status": "differs", "summary": "Distinguishes the human Jesus from 'the Christ', the divine idea he expressed; Jesus is not God.", "differingClause": "“Very God of very God.”" },
+        "canon": { "status": "partial", "summary": "The Bible is 'our sufficient guide to eternal Life', read with Science and Health with Key to the Scriptures as its authoritative interpretation." },
+        "salvation": { "status": "differs", "summary": "Salvation is deliverance from the belief in sin, sickness and death through understanding divine Science." },
+        "resurrection": { "status": "differs", "summary": "Jesus’ resurrection demonstrated the power of Spirit over material belief; matter is not ultimately real.", "differingClause": "“The Resurrection of the body.”" },
+        "continuity": { "status": "differs", "summary": "Founded in 1879 as a rediscovery of the healing Christianity of the first century." }
+      }
+    }
+  ]
+}

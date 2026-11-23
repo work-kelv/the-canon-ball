@@ -1,14 +1,15 @@
 import { useState, type ReactNode } from 'react';
-import { ExternalLink, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
+import { Church, ExternalLink, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
 import { langColor } from './lib/books';
 import { REFERENCES } from './lib/references';
 
-export type Section = 'languages' | 'characters' | 'map';
+export type Section = 'languages' | 'characters' | 'map' | 'history';
 
 const NAV: { id: Section; label: string; href: string; icon: typeof Languages }[] = [
   { id: 'languages', label: 'Languages', href: './', icon: Languages },
   { id: 'characters', label: 'Characters', href: 'characters.html', icon: Users },
   { id: 'map', label: 'Map', href: 'map.html', icon: MapIcon },
+  { id: 'history', label: 'Church History', href: 'history.html', icon: Church },
 ];
 
 const INTRO: Record<Section, { eyebrow: string; text: ReactNode }> = {
@@ -30,6 +31,10 @@ const INTRO: Record<Section, { eyebrow: string; text: ReactNode }> = {
   map: {
     eyebrow: 'Places · Routes · Settings',
     text: 'Where each book was written and where it is set — with the great journeys of Scripture across the Mediterranean and the Ancient Near East.',
+  },
+  history: {
+    eyebrow: 'Councils · Creeds · Translations',
+    text: 'How the church branched, what the historic creeds confess and why, where other movements differ, and how the Bible reached the world’s languages — chapter and verse.',
   },
 };
 
@@ -91,7 +96,7 @@ function References({ section }: { section: Section }) {
   );
 }
 
-/** Shared page frame for the three pages (index.html, characters.html, map.html). */
+/** Shared page frame for the four pages (index, characters, map, history). */
 export function Shell({ section, children }: { section: Section; children: (dark: boolean) => ReactNode }) {
   const [dark, toggleTheme] = useTheme();
   const intro = INTRO[section];

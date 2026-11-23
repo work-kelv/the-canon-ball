@@ -342,7 +342,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
         </p>
         <button
           onClick={onClose}
-          className="focus-ring flex w-full items-center justify-center gap-2 rounded-full border border-ink py-3 font-sans text-sm font-medium active:bg-ink/10 md:hidden"
+          className="focus-ring flex w-full items-center justify-center gap-2 rounded-full border border-ink py-3 font-sans text-sm font-medium hover:bg-ink/5 active:bg-ink/10"
         >
           <ArrowLeft size={16} aria-hidden />
           {backLabel}

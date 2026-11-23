@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "note": "A simplified family tree of major historic branches. Each branch has many sub-traditions; dates mark the conventional point of emergence, not the first appearance of every idea. 'Shared essentials' lists what the branch holds in common with the historic creeds; 'distinctives' lists characteristic teaching and practice.",
+    "sources": ["Philip Schaff, History of the Christian Church (CCEL)", "Association of Religion Data Archives (ARDA), religion timelines"]
+  },
+  "branches": [
+    {
+      "id": "early",
+      "name": "Early Church",
+      "parentId": null,
+      "year": 30,
+      "keyEvent": "Pentecost in Jerusalem (Acts 2), c. AD 30–33; the gospel spreads through the Roman world and beyond.",
+      "keyFigures": ["Peter", "Paul", "James", "Ignatius of Antioch", "Irenaeus", "Athanasius", "Augustine"],
+      "distinctives": [
+        "Apostolic preaching summarised in a 'rule of faith' and baptismal creeds",
+        "Seven ecumenical councils, from Nicaea (325) to Nicaea II (787)",
+        "Bishops, presbyters and deacons; baptism and the Eucharist at the centre of worship"
+      ],
+      "sharedEssentials": ["One God, Father, Son and Holy Spirit", "Jesus Christ fully God and fully man", "His death and bodily resurrection", "The Scriptures of the prophets and apostles", "Baptism and the Lord’s Supper"]
+    },
+    {
+      "id": "east-syriac",
+      "name": "Church of the East",
+      "parentId": "early",
+      "year": 431,
+      "keyEvent": "Does not receive the Council of Ephesus (431); organises under the Persian Empire and sends missions along the Silk Road to China (Xi’an Stele, 781).",
+      "keyFigures": ["Mar Aba I", "Patriarch Timothy I", "Alopen (missionary to China)"],
+      "distinctives": [
+        "Syriac liturgy and theology (Theodore of Mopsuestia honoured)",
+        "Christ’s two natures (kyane) and two qnome in one person (parsopa)",
+        "Historic missions across Central Asia, India and China"
+      ],
+      "sharedEssentials": ["Nicene Creed", "Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture (Peshitta)"]
+    },
+    {
+      "id": "oriental",
+      "name": "Oriental Orthodox",
+      "parentId": "early",
+      "year": 451,
+      "keyEvent": "Rejects the Definition of the Council of Chalcedon (451) as too close to Nestorius; Coptic, Syriac, Armenian, Ethiopian, Eritrean and Malankara churches.",
+      "keyFigures": ["Cyril of Alexandria", "Dioscorus of Alexandria", "Severus of Antioch"],
+      "distinctives": [
+        "Miaphysite Christology: 'one incarnate nature of God the Word', united without mixture",
+        "Ancient liturgies (St Mark, St James, St Basil) and fasting traditions",
+        "The Ethiopian church keeps the broadest biblical canon (81 books)"
+      ],
+      "sharedEssentials": ["Nicene Creed", "Trinity", "Christ fully God and fully man (rejecting Chalcedon’s wording, not its intent to affirm both)", "Bodily resurrection", "Scripture and sacraments"]
+    },
+    {
+      "id": "eastern",
+      "name": "Eastern Orthodox",
+      "parentId": "early",
+      "year": 1054,
+      "keyEvent": "The East–West Schism of 1054 between Constantinople and Rome, after centuries of estrangement (papal authority, the filioque).",
+      "keyFigures": ["Photius the Great", "Michael Cerularius", "Gregory Palamas", "Seraphim of Sarov"],
+      "distinctives": [
+        "Nicene Creed without the filioque ('and the Son')",
+        "Icons venerated (Nicaea II, 787); Divine Liturgy of St John Chrysostom",
+        "Salvation as theosis; self-governing (autocephalous) national churches"
+      ],
+      "sharedEssentials": ["Nicene and Chalcedonian faith", "Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture and Holy Tradition"]
+    },
+    {
+      "id": "catholic",
+      "name": "Roman Catholic",
+      "parentId": "early",
+      "year": 1054,
+      "keyEvent": "The Western (Latin) church after 1054, under the bishop of Rome; later shaped by the Council of Trent (1545–63) and Vatican II (1962–65).",
+      "keyFigures": ["Gregory the Great", "Thomas Aquinas", "Ignatius of Loyola", "Teresa of Ávila"],
+      "distinctives": [
+        "Primacy and infallibility of the pope; the Magisterium",
+        "Seven sacraments; the Mass as sacrifice; transubstantiation",
+        "Canon includes the deuterocanonical books; Scripture and Tradition together"
+      ],
+      "sharedEssentials": ["Apostles’, Nicene and Athanasian Creeds", "Trinity", "Christ fully God and fully man", "Bodily resurrection", "Inspired Scripture"]
+    },
+    {
+      "id": "lutheran",
+      "name": "Lutheran",
+      "parentId": "catholic",
+      "year": 1517,
+      "keyEvent": "Martin Luther’s Ninety-five Theses (Wittenberg, 1517); the Augsburg Confession (1530).",
+      "keyFigures": ["Martin Luther", "Philip Melanchthon", "Johann Sebastian Bach"],
+      "distinctives": [
+        "Justification by grace through faith alone; Law and Gospel",
+        "Real presence of Christ in the Lord’s Supper; infant baptism",
+        "Liturgical worship and hymnody; Book of Concord (1580)"
+      ],
+      "sharedEssentials": ["The three ecumenical creeds (in the Book of Concord)", "Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture as final authority"]
+    },
+    {
+      "id": "reformed",
+      "name": "Reformed / Presbyterian",
+      "parentId": "catholic",
+      "year": 1523,
+      "keyEvent": "Zwingli’s reforms in Zurich (1523) and Calvin’s Geneva (from 1536); the Heidelberg Catechism (1563) and Westminster Confession (1646).",
+      "keyFigures": ["Ulrich Zwingli", "John Calvin", "John Knox", "Heinrich Bullinger"],
+      "distinctives": [
+        "The sovereignty of God; covenant theology",
+        "Government by elders (presbyterian polity)",
+        "Worship ordered by Scripture; the Lord’s Supper as spiritual feeding on Christ"
+      ],
+      "sharedEssentials": ["Apostles’ and Nicene Creeds", "Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture as final authority"]
+    },
+    {
+      "id": "anabaptist",
+      "name": "Anabaptist",
+      "parentId": "reformed",
+      "year": 1525,
+      "keyEvent": "First believer’s baptisms in Zurich (21 January 1525) among Zwingli’s former students; the Schleitheim Confession (1527).",
+      "keyFigures": ["Conrad Grebel", "Felix Manz", "Menno Simons", "Jakob Hutter"],
+      "distinctives": [
+        "Baptism of believers only; the church as a gathered, disciplined community",
+        "Nonresistance and refusal of oaths; separation of church and state",
+        "Mennonites, Amish, Hutterites and Brethren today"
+      ],
+      "sharedEssentials": ["Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture", "Generally affirm the Apostles’ Creed"]
+    },
+    {
+      "id": "anglican",
+      "name": "Anglican",
+      "parentId": "catholic",
+      "year": 1534,
+      "keyEvent": "The Act of Supremacy (1534) separates the English church from Rome; Cranmer’s Book of Common Prayer (1549/1662) and the Thirty-nine Articles (1571).",
+      "keyFigures": ["Thomas Cranmer", "Elizabeth I", "Richard Hooker", "John Henry Newman"],
+      "distinctives": [
+        "Bishops in historic succession; the Book of Common Prayer",
+        "A 'middle way' between Rome and continental Protestantism",
+        "The worldwide Anglican Communion"
+      ],
+      "sharedEssentials": ["The three creeds (Article VIII)", "Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture contains all things necessary to salvation"]
+    },
+    {
+      "id": "baptist",
+      "name": "Baptist",
+      "parentId": "anglican",
+      "year": 1609,
+      "keyEvent": "John Smyth’s English Separatist congregation in Amsterdam baptises believers (1609); Thomas Helwys returns to found the first Baptist church in England (1612).",
+      "keyFigures": ["John Smyth", "Thomas Helwys", "Roger Williams", "Charles Spurgeon"],
+      "distinctives": [
+        "Believer’s baptism by immersion",
+        "Autonomy of the local congregation",
+        "Religious liberty; Second London Confession (1689)"
+      ],
+      "sharedEssentials": ["Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture as final authority"]
+    },
+    {
+      "id": "methodist",
+      "name": "Methodist",
+      "parentId": "anglican",
+      "year": 1739,
+      "keyEvent": "John and Charles Wesley begin open-air preaching (1739) within the Church of England; the Methodist Episcopal Church is organised in America (1784).",
+      "keyFigures": ["John Wesley", "Charles Wesley", "George Whitefield", "Francis Asbury"],
+      "distinctives": [
+        "Arminian theology: grace offered to all",
+        "Emphasis on holiness and assurance; small-group 'class meetings'",
+        "Connexional church government; a tradition of hymn singing"
+      ],
+      "sharedEssentials": ["Apostles’ and Nicene Creeds", "Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture"]
+    },
+    {
+      "id": "pentecostal",
+      "name": "Pentecostal / Charismatic",
+      "parentId": "methodist",
+      "year": 1906,
+      "keyEvent": "Growing out of the Holiness movement, the Azusa Street Revival in Los Angeles (1906) spreads Pentecostalism worldwide; Charismatic renewal in older churches from the 1960s.",
+      "keyFigures": ["Charles Parham", "William J. Seymour", "Aimee Semple McPherson"],
+      "distinctives": [
+        "Baptism in the Holy Spirit, often with speaking in tongues",
+        "Spiritual gifts, healing and expressive worship",
+        "Rapid growth in the Global South"
+      ],
+      "sharedEssentials": ["Trinity (Oneness Pentecostals are the exception)", "Christ fully God and fully man", "Bodily resurrection", "Scripture"]
+    },
+    {
+      "id": "nondenominational",
+      "name": "Non-Denominational",
+      "parentId": "baptist",
+      "year": 1965,
+      "keyEvent": "Independent evangelical churches multiply from the 1960s (Jesus Movement, Calvary Chapel from 1965, later megachurches), drawing on Baptist, Pentecostal and wider evangelical streams.",
+      "keyFigures": ["Chuck Smith (Calvary Chapel)", "Independent pastors and networks"],
+      "distinctives": [
+        "Local church autonomy without a denominational label",
+        "Contemporary worship; expository preaching",
+        "Usually believer’s baptism and an evangelical statement of faith"
+      ],
+      "sharedEssentials": ["Trinity", "Christ fully God and fully man", "Bodily resurrection", "Scripture as final authority"]
+    }
+  ]
+}

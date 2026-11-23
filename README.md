@@ -8,13 +8,14 @@ It works on phones and computers, in light or dark mode. You can share a link to
 
 ![The Languages page: all 66 books, coloured by the language they were written in](docs/screenshots/languages-grid.png)
 
-The site has three pages:
+The site has four pages:
 
 | Page | What you can explore |
 |---|---|
 | **[Languages](https://work-kelv.github.io/the-canon-ball/)** | All 66 books and the language each was written in: Hebrew, Aramaic or Koine Greek. |
 | **[Characters](https://work-kelv.github.io/the-canon-ball/characters.html)** | 266 people on one timeline: when they lived, how they are related, and Jesus' line from Adam. |
 | **[Map](https://work-kelv.github.io/the-canon-ball/map.html)** | Where each book was written and set, and 129 journeys you can watch on the map. |
+| **[Church History](https://work-kelv.github.io/the-canon-ball/history.html)** | How the church branched, the historic creeds and their Scriptures, where other movements differ, and how the Bible was translated and divided into chapters and verses. |
 
 Any Bible reference on the site (shown with a dotted underline) can be clicked to read the verses. You can switch between two translations, the **World English Bible** and the **Berean Standard Bible**.
 
@@ -71,6 +72,22 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
 |---|---|
 | ![Paul's second journey](docs/screenshots/map-great-journeys.png) | ![Scripture pop-up](docs/screenshots/scripture-popup.png) |
 
+## 4. Church History
+
+The Church History page has five tabs. Each tab has its own link (for example `history.html#creeds`).
+
+![The family tree of the church](docs/screenshots/history-tree.png)
+
+- **Family tree.** Thirteen traditions on one timeline, from Pentecost to the non-denominational churches. Click a branch to see what it shares with all Christians, what is distinctive to it, and which traditions grew from it.
+- **Creeds.** The Apostles', Nicene, Chalcedonian and Athanasian creeds, line by line. Each line comes with the Bible passages behind it, the controversy it answered, and a note on how reliable its text is.
+- **Orthodoxy.** Six benchmarks from the creeds, compared across historic orthodoxy, 4th-century Arianism, Jehovah's Witnesses, Latter-day Saints, Oneness Pentecostalism and Christian Science. Each group is summarised from its own official publications.
+- **Translations.** From the Septuagint to today's translation work, with figures from Wycliffe's 2025 statistics. You can filter by era and by kind of milestone.
+- **Chapters & verses.** John 1:1–5 shown three ways: as a 4th-century continuous Greek manuscript, as scribal sense-lines, and with modern chapter and verse numbers. A strip of milestones follows.
+
+| | |
+|---|---|
+| ![Creed explorer](docs/screenshots/history-creeds.png) | ![Chapters and verses](docs/screenshots/history-verses.png) |
+
 ## On a phone
 
 On a phone the timeline turns vertical, and the map stays pinned to the top while you read.
@@ -93,6 +110,8 @@ Each page ends with its own reference list. Wikipedia is not used as a source; t
 | [Sefaria](https://www.sefaria.org/texts/Tanakh) and the [SBL Greek New Testament](https://sblgnt.com/) | The Hebrew and Aramaic passages and Greek words cited on the Languages page | — |
 | [Pleiades](https://pleiades.stoa.org/) | Gazetteer links on place cards | — |
 | [Natural Earth](https://www.naturalearthdata.com/), via [world-atlas](https://github.com/topojson/world-atlas) | Coastlines and modern borders | Public domain |
+| [Schaff, *The Creeds of Christendom*](https://www.ccel.org/ccel/schaff/creeds1) and [*History of the Christian Church*](https://www.ccel.org/ccel/schaff/hcc3) | Creed texts and church history | Public domain |
+| [Wycliffe Global Alliance statistics](https://www.wycliffe.net/resources/statistics/) | Bible translation figures (2025) | — |
 | [Bible-kjv](https://github.com/aruljohn/Bible-kjv) | Book order and chapter and verse counts | — |
 
 **Notes on accuracy**
@@ -110,7 +129,7 @@ Built with React, TypeScript, Vite, Tailwind CSS, d3-geo/d3-zoom, react-force-gr
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173  (index.html, characters.html, map.html)
+npm run dev        # http://localhost:5173  (index.html, characters.html, map.html, history.html)
 npm run build      # type-check + production build into dist/
 ```
 
@@ -136,11 +155,12 @@ The hand-written parts (summaries, relationships, journeys and journey histories
 ### Project layout
 
 ```
-index.html · characters.html · map.html   three pages, each with its own entry in src/
+index.html · characters.html · map.html · history.html   four pages, each with its own entry in src/
 src/App.tsx                               shared header, navigation, theme and references
 src/components/                           Languages page
 src/components/characters/                timeline, network, directory, person page
 src/components/map/                       map, journey animation, book and journey panels
+src/components/history/                   family tree, creeds, comparison, translations, chapters & verses
 src/components/ScriptureRef.tsx           clickable references with WEB / BSB pop-ups
 src/data/                                 generated datasets
 scripts/                                  data build scripts and curated content
