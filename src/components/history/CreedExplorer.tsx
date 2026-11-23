@@ -72,7 +72,6 @@ export function CreedExplorer() {
           setCreedId(v);
           setIdx(0);
         }}
-        className="max-w-full overflow-x-auto"
         options={creeds.map((c) => ({ id: c.id, label: c.name.replace(' Definition', '') }))}
       />
       <div className="rounded-md border border-rule bg-paper/70 px-4 py-3">

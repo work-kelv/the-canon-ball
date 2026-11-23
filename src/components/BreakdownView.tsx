@@ -253,12 +253,12 @@ export function BreakdownView({ langBooks, visible, division, onDivision, onOpen
         {visible.length === 0 ? (
           <p className="p-5 font-sans text-sm text-ink-soft">No books match these filters.</p>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="mt-3 w-full min-w-[560px] font-sans text-sm">
+          <div>
+            <table className="mt-3 w-full font-sans text-sm">
               <thead>
                 <tr className="border-y border-rule text-left">
                   {['#', 'Book', 'Division', 'Ch.', 'Language'].map((h) => (
-                    <th key={h} scope="col" className="eyebrow px-3 py-2 first:pl-5 last:pr-5">
+                    <th key={h} scope="col" className={`eyebrow px-3 py-2 first:pl-5 last:pr-5 ${h === 'Division' ? 'hidden sm:table-cell' : ''}`}>
                       {h}
                     </th>
                   ))}
@@ -283,7 +283,7 @@ export function BreakdownView({ langBooks, visible, division, onDivision, onOpen
                         {b.name}
                       </button>
                     </td>
-                    <td className="px-3 py-2 text-ink-soft">{b.division}</td>
+                    <td className="hidden px-3 py-2 text-ink-soft sm:table-cell">{b.division}</td>
                     <td className="px-3 py-2 tabular-nums">{b.chapters}</td>
                     <td className="py-2 pl-3 pr-5">
                       <div className="flex items-center gap-2">

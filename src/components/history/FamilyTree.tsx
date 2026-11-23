@@ -106,7 +106,7 @@ export function FamilyTree() {
   useEffect(() => {
     const el = boxRef.current;
     if (!el) return;
-    const ro = new ResizeObserver(() => setBoxW(Math.max(760, el.clientWidth - 2)));
+    const ro = new ResizeObserver(() => setBoxW(Math.max(600, el.clientWidth - 2)));
     ro.observe(el);
     return () => ro.disconnect();
   }, []);

@@ -132,9 +132,8 @@ export function HistoryIntro() {
       art={<HistoryArt />}
       lead={
         <p>
-          Two thousand years of the church in six views: how it branched into today’s traditions, what unites and divides them, the
-          creeds that define the Christian faith and who stands outside them, and how the Bible itself was copied, divided into
-          chapters and verses, and translated into the world’s languages.
+          Two thousand years of the church in four views: how it branched into today’s traditions, what unites and divides them,
+          the creeds that define the Christian faith, and which movements stand outside them, and why.
         </p>
       }
       cards={[
@@ -161,13 +160,20 @@ export function HistoryIntro() {
           ),
         },
         {
-          title: 'The Book',
+          title: 'The Bible itself',
           css: '--greek',
-          kicker: 'Copying & translating',
+          kicker: 'On The Bible page',
           body: (
             <>
-              {tab('translations', 'Translations')}: from the Septuagint to today’s 7,000+ languages. {tab('verses', 'Chapters & verses')}:
-              how ancient scrolls became numbered verses.
+              How the text was copied, divided into chapters and verses, and translated into the world’s languages:{' '}
+              <a href="languages.html#verses" className="font-sans text-[13px] font-semibold underline decoration-rule underline-offset-2 hover:decoration-ink">
+                Scrolls to verses
+              </a>{' '}
+              and{' '}
+              <a href="languages.html#translations" className="font-sans text-[13px] font-semibold underline decoration-rule underline-offset-2 hover:decoration-ink">
+                Translations
+              </a>
+              .
             </>
           ),
         },

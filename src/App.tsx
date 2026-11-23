@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { ChevronDown, Church, ExternalLink, House, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
+import { BookOpenText, ChevronDown, Church, ExternalLink, House, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
 import { langColor } from './lib/books';
 import { REFERENCES } from './lib/references';
 
@@ -7,7 +7,7 @@ export type Section = 'home' | 'languages' | 'characters' | 'map' | 'history';
 
 const NAV: { id: Section; label: string; short: string; href: string; icon: typeof Languages; iconOnly?: boolean }[] = [
   { id: 'home', label: 'Home', short: 'Home', href: './', icon: House, iconOnly: true },
-  { id: 'languages', label: 'Languages', short: 'Languages', href: 'languages.html', icon: Languages },
+  { id: 'languages', label: 'The Bible', short: 'Bible', href: 'languages.html', icon: BookOpenText },
   { id: 'characters', label: 'Characters', short: 'Characters', href: 'characters.html', icon: Users },
   { id: 'map', label: 'Map', short: 'Map', href: 'map.html', icon: MapIcon },
   { id: 'history', label: 'Church History', short: 'History', href: 'history.html', icon: Church },
@@ -19,13 +19,13 @@ const INTRO: Record<Section, { eyebrow: string; title?: string; text: ReactNode 
     text: 'Explore the Bible’s languages, people and places, and how its message was confessed, divided and translated across two thousand years of church history.',
   },
   languages: {
-    eyebrow: 'Sixty-six books · Three tongues',
-    title: 'Languages',
+    eyebrow: 'Languages · Manuscripts · Translations',
+    title: 'The Bible',
     text: (
       <>
-        The 66 books by the language they were first written in:{' '}
-        <span style={{ color: langColor('Hebrew') }}>Hebrew</span>, <span style={{ color: langColor('Aramaic') }}>Aramaic</span> and{' '}
-        <span style={{ color: langColor('Greek') }}>Greek</span>.
+        How the 66 books were written in <span style={{ color: langColor('Hebrew') }}>Hebrew</span>,{' '}
+        <span style={{ color: langColor('Aramaic') }}>Aramaic</span> and <span style={{ color: langColor('Greek') }}>Greek</span>, copied
+        by hand, divided into chapters and verses, and translated.
       </>
     ),
   },
@@ -40,9 +40,9 @@ const INTRO: Record<Section, { eyebrow: string; title?: string; text: ReactNode 
     text: 'Where each book was written and set, and the journeys its people made.',
   },
   history: {
-    eyebrow: 'Councils · Creeds · Translations',
+    eyebrow: 'Branches · Traditions · Creeds',
     title: 'Church History',
-    text: 'How the church branched, what it confesses, and how the Bible reached every language.',
+    text: 'How the church branched, where its traditions differ, and what the creeds confess.',
   },
 };
 

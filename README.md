@@ -12,7 +12,7 @@ The site opens on an [introduction page](https://work-kelv.github.io/the-canon-b
 
 | Page | What you can explore |
 |---|---|
-| **[Languages](https://work-kelv.github.io/the-canon-ball/languages.html)** | All 66 books and the language each was written in: Hebrew, Aramaic or Koine Greek. |
+| **[The Bible](https://work-kelv.github.io/the-canon-ball/languages.html)** | The text itself: the language each of the 66 books was written in, how scrolls became chapters and verses, and how the Bible was translated. |
 | **[Characters](https://work-kelv.github.io/the-canon-ball/characters.html)** | 266 people on one timeline: when they lived, how they are related, and Jesus' line from Adam. |
 | **[Map](https://work-kelv.github.io/the-canon-ball/map.html)** | Where each book was written and set, and 129 journeys you can watch on the map. |
 | **[Church History](https://work-kelv.github.io/the-canon-ball/history.html)** | How the church branched, how Catholic, Orthodox and Protestant churches differ, the historic creeds and their Scriptures, who stands outside them, and how the Bible was translated and divided into chapters and verses. |
@@ -21,9 +21,11 @@ Any Bible reference on the site (shown with a dotted underline) can be clicked t
 
 ---
 
-## 1. Languages
+## 1. The Bible
 
-All 66 books are shown in canonical order. Each one is coloured by its original language, and stronger colour means more chapters.
+The Bible page follows the text in the order things happened, in three tabs (each with its own link, such as `languages.html#verses`). Its introduction explains why the Bible is in three languages, with a short timeline.
+
+**Original languages.** All 66 books are shown in canonical order. Each one is coloured by its original language, and stronger colour means more chapters.
 
 - **Hebrew and Aramaic books.** Ezra and Daniel are split diagonally to show how much of each is in Aramaic. Genesis and Jeremiah, which have only a few Aramaic words, are marked with a small corner.
 - **Book details.** Click any book to see its exact Aramaic passages (for example Daniel 2:4b–7:28), its chapter and verse counts, when it was likely written, and why it used that language.
@@ -32,6 +34,10 @@ All 66 books are shown in canonical order. Each one is coloured by its original 
 | Book detail (Daniel) | Breakdown in dark mode |
 |---|---|
 | ![Daniel's language detail](docs/screenshots/languages-drawer.png) | ![Breakdown in dark mode](docs/screenshots/languages-breakdown-dark.png) |
+
+**Scrolls to chapters & verses.** John 1:1–5 shown three ways: as a 4th-century continuous Greek manuscript, as scribal sense-lines, and with modern chapter and verse numbers. A strip of milestones follows.
+
+**Translations.** From the Septuagint to today's translation work, with figures from Wycliffe's 2025 statistics. You can filter by era and by kind of milestone.
 
 ## 2. Characters
 
@@ -74,7 +80,7 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
 
 ## 4. Church History
 
-The Church History page has six tabs. Each tab has its own link (for example `history.html#creeds`).
+The Church History page has four tabs. Each tab has its own link (for example `history.html#creeds`). The old `#translations` and `#verses` links now open those tabs on The Bible page.
 
 ![The family tree of the church](docs/screenshots/history-tree.png)
 
@@ -83,13 +89,11 @@ The Church History page has six tabs. Each tab has its own link (for example `hi
 - **Creeds.** The Apostles', Nicene, Chalcedonian and Athanasian creeds, line by line. Each line comes with the Bible passages behind it, the controversy it answered, and a note on how reliable its text is.
 - **Inside & outside.** A diagram with the faith of the creeds at its centre. The Catholic, Orthodox and Protestant churches sit inside the boundary. Seventh-day Adventists and Grace Communion (formerly the Worldwide Church of God, which crossed the boundary in the 1990s) sit just inside it. Eight movements that call themselves Christian sit farther out: Latter-day Saints (Mormons), Jehovah's Witnesses, Christadelphians, Iglesia ni Cristo, Oneness Pentecostals, Christian Science, the Unification Church and Unitarian Universalism. They sit farther out, as does Islam, the more of five core beliefs they depart from. Tap one to see why the historic churches draw the line there, what it does share, and its beliefs in its own words. Below the diagram is a detailed table:
   six benchmarks from the creeds, compared across historic orthodoxy, 4th-century Arianism, Jehovah's Witnesses, Latter-day Saints, Oneness Pentecostalism and Christian Science. Each group is summarised from its own official publications.
-- **Translations.** From the Septuagint to today's translation work, with figures from Wycliffe's 2025 statistics. You can filter by era and by kind of milestone.
-- **Chapters & verses.** John 1:1–5 shown three ways: as a 4th-century continuous Greek manuscript, as scribal sense-lines, and with modern chapter and verse numbers. A strip of milestones follows.
 
 | | |
 |---|---|
 | ![Comparing Orthodox and Lutheran](docs/screenshots/history-traditions.png) | ![Inside and outside the creeds](docs/screenshots/history-orbit.png) |
-| ![Creed explorer](docs/screenshots/history-creeds.png) | ![Chapters and verses](docs/screenshots/history-verses.png) |
+| ![Creed explorer](docs/screenshots/history-creeds.png) | ![Chapters and verses (The Bible page)](docs/screenshots/history-verses.png) |
 
 ## On a phone
 

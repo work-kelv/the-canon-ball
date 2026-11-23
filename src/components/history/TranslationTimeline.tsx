@@ -62,7 +62,7 @@ export function TranslationTimeline() {
       </div>
 
       <div className="space-y-2">
-        <div className="no-scrollbar flex gap-1.5 overflow-x-auto">
+        <div className="flex flex-wrap gap-1.5">
           {ERAS.map((e) => (
             <button
               key={e.id}

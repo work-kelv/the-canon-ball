@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { HeartHandshake, Info } from 'lucide-react';
+import { ChevronDown, HeartHandshake, Info } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { type Topic, type Tradition, commonGround, topics, traditions, traditionsMeta } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
@@ -105,7 +105,7 @@ function Spectrum({ topic, a, b }: { topic: Topic; a: string; b: string }) {
 
 function Picker({ label, value, other, onChange }: { label: string; value: string; other: string; onChange: (id: string) => void }) {
   return (
-    <div className="no-scrollbar -mx-4 flex items-center gap-1.5 overflow-x-auto px-4 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
+    <div className="hidden flex-wrap items-center gap-1.5 sm:flex">
       <span className="eyebrow w-[4.6rem] shrink-0">{label}</span>
       {traditions.map((t) => {
         const on = t.id === value;
@@ -127,6 +127,30 @@ function Picker({ label, value, other, onChange }: { label: string; value: strin
         );
       })}
     </div>
+  );
+}
+
+/** Phones: the two choices as dropdowns side by side, so the pinned bar stays one line tall. */
+function PickerSelect({ value, other, onChange, label }: { value: string; other: string; onChange: (id: string) => void; label: string }) {
+  const t = byId(value);
+  return (
+    <label className="relative min-w-0 flex-1">
+      <span className="sr-only">{label}</span>
+      <span aria-hidden className="pointer-events-none absolute left-3 top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full" style={{ background: cssColor(t.css) }} />
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="focus-ring w-full appearance-none truncate rounded-full border-2 bg-paper py-1.5 pl-7 pr-7 font-sans text-[13px] font-semibold"
+        style={{ borderColor: cssColor(t.css), color: cssColor(t.css) }}
+      >
+        {traditions.map((x) => (
+          <option key={x.id} value={x.id} disabled={x.id === other}>
+            {x.short}
+          </option>
+        ))}
+      </select>
+      <ChevronDown size={14} aria-hidden className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" style={{ color: cssColor(t.css) }} />
+    </label>
   );
 }
 
@@ -200,6 +224,11 @@ export function TraditionsCompare() {
       <div style={{ top: 'calc(var(--tabs-h, 44px) - 1px)' }} className="sticky z-10 -mx-4 space-y-2 border-y border-rule bg-paper/95 px-4 py-2.5 backdrop-blur sm:-mx-8 sm:px-8 sm:py-3">
         <Picker label="Compare" value={a} other={b} onChange={setA} />
         <Picker label="with" value={b} other={a} onChange={setB} />
+        <div className="flex items-center gap-2 sm:hidden">
+          <PickerSelect label="Compare" value={a} other={b} onChange={setA} />
+          <span className="font-sans text-[12px] font-semibold text-ink-soft">vs</span>
+          <PickerSelect label="with" value={b} other={a} onChange={setB} />
+        </div>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pt-0.5">
           <div className="flex gap-1" aria-hidden>
             {topics.map((t, i) => (

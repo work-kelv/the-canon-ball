@@ -121,15 +121,16 @@ export function LanguagesIntro() {
     <PageIntro
       storageKey="languages-intro"
       moreLabel="Why three languages? How to read the grid"
-      className="mb-4 mt-6"
+      className="mb-5"
       css="--hebrew"
       art={<LanguagesArt />}
       lead={
         <p>
           The Bible was not first written in English. Its 66 books were written over some 1,500 years in three languages: Hebrew,
           Aramaic and Greek. Each was the language its first readers understood, so the languages change as God’s people moved
-          from a small nation to life under great empires, and then to churches spread across the Roman world. This page shows
-          which language each book was written in, and how much of it.
+          from a small nation to life under great empires, and then to churches spread across the Roman world. Start with
+          which language each book was written in, then follow the text as scribes copied it, divided it into chapters and verses,
+          and translated it into the world’s languages.
         </p>
       }
       extra={<LanguageTimeline />}
@@ -177,8 +178,8 @@ export function LanguagesIntro() {
           cross was written in Hebrew, Latin and Greek <Ref r="John 19:20" pre="(" post=")" />; at Pentecost each listener heard “in our own
           language” <Ref r="Acts 2:8" pre="(" post=")" />; and Revelation pictures worshippers “from every nation, tribe, people and language”
           {' '}<Ref r="Revelation 7:9" pre="(" post=")" />. Translation has continued ever since; see{' '}
-          <a href="history.html#translations" className="underline decoration-rule underline-offset-2 hover:decoration-ink">
-            Church History → Translations
+          <a href="#translations" className="underline decoration-rule underline-offset-2 hover:decoration-ink">
+            the Translations tab
           </a>
           .
         </p>

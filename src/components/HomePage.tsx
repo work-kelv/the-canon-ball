@@ -20,13 +20,16 @@ interface Feature {
 const FEATURES: Feature[] = [
   {
     href: 'languages.html',
-    title: 'Languages',
+    title: 'The Bible',
     icon: Languages,
     css: '--hebrew',
     art: <LanguagesArt />,
-    blurb: 'All 66 books by the language they were first written in: Hebrew, Aramaic or Koine Greek.',
-    points: ['Grid, chart and breakdown views', 'The Aramaic passages, chapter by chapter', 'Original-language words with their meanings'],
-    tries: [{ label: 'Which books contain Aramaic?', href: 'languages.html' }],
+    blurb: 'How the 66 books were written in Hebrew, Aramaic and Greek, copied by hand, numbered into chapters and verses, and translated.',
+    points: ['Every book by its original language', 'From ancient scrolls to chapter and verse', 'Translations from the Septuagint to today'],
+    tries: [
+      { label: 'Which books contain Aramaic?', href: 'languages.html' },
+      { label: 'How the Bible was translated', href: 'languages.html#translations' },
+    ],
   },
   {
     href: 'characters.html',
@@ -60,8 +63,8 @@ const FEATURES: Feature[] = [
     icon: Church,
     css: '--role-priest',
     art: <HistoryArt />,
-    blurb: 'How the church branched, what the creeds confess, and how the Bible reached the world’s languages.',
-    points: ['Catholic, Orthodox and Protestant compared', 'The creeds, line by line, with their Scriptures', 'From ancient scrolls to chapter and verse'],
+    blurb: 'How the church branched, where its traditions differ, what the creeds confess, and who stands outside them.',
+    points: ['A family tree from Pentecost to today', 'Catholic, Orthodox and Protestant compared', 'The creeds, line by line, with their Scriptures'],
     tries: [
       { label: 'Compare two traditions', href: 'history.html#traditions' },
       { label: 'Who counts as Christian?', href: 'history.html#compare' },
@@ -75,7 +78,7 @@ const QUESTIONS: { q: string; href: string; css: string }[] = [
   { q: 'Why is part of Daniel in Aramaic?', href: 'languages.html', css: '--aramaic' },
   { q: 'How do Catholics and Baptists differ on baptism?', href: 'history.html#traditions', css: '--role-king' },
   { q: 'Why aren’t Jehovah’s Witnesses counted as Christian?', href: 'history.html#compare', css: '--rel-rival' },
-  { q: 'Where did chapter and verse numbers come from?', href: 'history.html#verses', css: '--greek' },
+  { q: 'Where did chapter and verse numbers come from?', href: 'languages.html#verses', css: '--greek' },
 ];
 
 const STATS: [string, string][] = [

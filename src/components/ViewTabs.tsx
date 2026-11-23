@@ -26,7 +26,7 @@ export function ViewTabs<T extends string>({
   className?: string;
 }) {
   return (
-    <nav aria-label={label} className={`no-scrollbar flex gap-1 overflow-x-auto font-sans ${className}`}>
+    <nav aria-label={label} className={`flex flex-wrap gap-1 font-sans ${className}`}>
       {tabs.map(({ id, label: l, short, icon: Icon }) => (
         <button
           key={id}

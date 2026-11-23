@@ -64,7 +64,7 @@ export function OrthodoxyMatrix() {
             </button>
           ))}
         </div>
-        <div className="flex flex-wrap items-center gap-1.5">
+        <div className="hidden flex-wrap items-center gap-1.5 lg:flex">
           <span className="eyebrow mr-1 w-full sm:w-24">Benchmarks</span>
           {benchmarks.map((x) => (
             <button key={x.id} onClick={() => toggle(shownBench, x.id, setShownBench)} aria-pressed={shownBench.has(x.id)} className={pill(shownBench.has(x.id))}>
@@ -74,7 +74,41 @@ export function OrthodoxyMatrix() {
         </div>
       </div>
 
-      <div className="panel overflow-x-auto">
+      {/* Phones: one benchmark at a time, every group listed under it (no sideways-scrolling table). */}
+      <div className="space-y-2 lg:hidden">
+        <div className="eyebrow">Benchmark</div>
+        <div className="flex flex-wrap gap-1.5">
+          {benchmarks.map((bm) => (
+            <button key={bm.id} onClick={() => setCell({ g: cell.g, b: bm.id })} aria-pressed={cell.b === bm.id} className={pill(cell.b === bm.id)}>
+              {bm.name.replace(/ \(.*\)$/, '')}
+            </button>
+          ))}
+        </div>
+        <ul className="panel divide-y divide-rule">
+          {gs.map((x) => {
+            const p = x.positions[cell.b];
+            const active = cell.g === x.id;
+            return (
+              <li key={x.id}>
+                <button
+                  onClick={() => setCell({ g: x.id, b: cell.b })}
+                  aria-pressed={active}
+                  className={`focus-ring block w-full px-3 py-2.5 text-left ${active ? 'bg-ink/[0.06]' : ''} ${x.family === 'historic' ? 'bg-ink/[0.03]' : ''}`}
+                >
+                  <span className="flex items-baseline justify-between gap-2">
+                    <span className="font-display text-[16px] font-semibold leading-tight">{x.name}</span>
+                    <Badge s={p.status} />
+                  </span>
+                  <span className="mt-0.5 line-clamp-2 block font-sans text-[12.5px] leading-snug text-ink-soft">{p.summary}</span>
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        <p className="font-sans text-[11px] text-ink-soft">Tap a group for the full comparison below.</p>
+      </div>
+
+      <div className="panel hidden overflow-x-auto lg:block">
         <table className="w-full min-w-[720px] border-collapse font-sans text-[12.5px]">
           <thead>
             <tr>

@@ -48,7 +48,7 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
       { label: 'World English Bible', url: 'https://worldenglish.bible/' },
       { label: 'Berean Standard Bible', url: 'https://berean.bible/' },
     ],
-    use: 'The verse text shown when you click any Scripture reference on this page (switch WEB / BSB in the pop-up).',
+    use: 'The verse text shown when you click any Scripture reference on this page (switch WEB / BSB in the pop-up), and the John 1:1–5 sample on the Scrolls to verses tab (WEB).',
   },
     {
       title: 'Hebrew Bible (Masoretic Text) — Hebrew & Aramaic',
@@ -82,6 +82,30 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
       detail: 'BiblicalTraining.org library article',
       url: 'https://www.biblicaltraining.org/library/manuscripts-of-the-bible',
       use: 'Background on the manuscript tradition and original languages.',
+    },
+    {
+      title: 'Bible translation statistics, 2025',
+      detail: 'Wycliffe Global Alliance',
+      url: 'https://www.wycliffe.net/resources/statistics/',
+      links: [{ label: 'ProgressBible', url: 'https://progress.bible/' }],
+      use: '"Scripture today" figures: languages, translations in progress, and access.',
+    },
+    {
+      title: 'The Leon Levy Dead Sea Scrolls Digital Library',
+      detail: 'Israel Antiquities Authority',
+      url: 'https://www.deadseascrolls.org.il/',
+      use: 'Dating and discovery of the Qumran scrolls.',
+    },
+    {
+      title: 'The Text of the New Testament',
+      detail: 'Bruce M. Metzger and Bart D. Ehrman, 4th ed., Oxford University Press, 2005',
+      use: 'Manuscripts (P52, the great codices), scriptio continua, nomina sacra, Eusebian canons, and the early printed editions.',
+    },
+    {
+      title: 'Codex Sinaiticus Project',
+      detail: 'British Library, Leipzig University Library, St Catherine’s Monastery and the National Library of Russia',
+      url: 'https://codexsinaiticus.org/',
+      use: 'What a 4th-century uncial page looks like (layout of the John 1 sample on the Scrolls to verses tab).',
     },
   ],
   characters: [
@@ -179,7 +203,7 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
         { label: 'World English Bible', url: 'https://worldenglish.bible/' },
         { label: 'Berean Standard Bible', url: 'https://berean.bible/' },
       ],
-      use: 'Verse pop-ups for the creed clauses and the comparison, and the John 1:1–5 sample (WEB).',
+      use: 'Verse pop-ups for the creed clauses and the comparisons.',
     },
     {
       title: 'The Creeds of Christendom',
@@ -221,30 +245,6 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
         { label: 'christianscience.com', url: 'https://www.christianscience.com/' },
       ],
       use: "Each group's position is summarised from what it says about itself.",
-    },
-    {
-      title: 'Bible translation statistics, 2025',
-      detail: 'Wycliffe Global Alliance',
-      url: 'https://www.wycliffe.net/resources/statistics/',
-      links: [{ label: 'ProgressBible', url: 'https://progress.bible/' }],
-      use: '"Scripture today" figures: languages, translations in progress, and access.',
-    },
-    {
-      title: 'The Leon Levy Dead Sea Scrolls Digital Library',
-      detail: 'Israel Antiquities Authority',
-      url: 'https://www.deadseascrolls.org.il/',
-      use: 'Dating and discovery of the Qumran scrolls.',
-    },
-    {
-      title: 'The Text of the New Testament',
-      detail: 'Bruce M. Metzger and Bart D. Ehrman, 4th ed., Oxford University Press, 2005',
-      use: 'Manuscripts (P52, the great codices), scriptio continua, nomina sacra, Eusebian canons, and the early printed editions.',
-    },
-    {
-      title: 'Codex Sinaiticus Project',
-      detail: 'British Library, Leipzig University Library, St Catherine’s Monastery and the National Library of Russia',
-      url: 'https://codexsinaiticus.org/',
-      use: 'What a 4th-century uncial page looks like (layout of the John 1 sample).',
     },
     {
       title: 'Catechism of the Catholic Church',

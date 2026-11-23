@@ -1,11 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Shell } from './App';
-import { LanguagesPage } from './components/LanguagesPage';
+import { BiblePage } from './components/BiblePage';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Shell section="languages">{() => <LanguagesPage />}</Shell>
+    <Shell section="languages">{() => <BiblePage />}</Shell>
   </StrictMode>,
 );

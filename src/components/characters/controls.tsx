@@ -83,7 +83,7 @@ export function Segmented<T extends string | null>({
   className?: string;
 }) {
   return (
-    <div role="radiogroup" aria-label={label} className={`inline-flex rounded-full border border-rule bg-paper/70 p-0.5 font-sans text-[13px] ${className}`}>
+    <div role="radiogroup" aria-label={label} className={`inline-flex max-w-full flex-wrap gap-0.5 rounded-[1.1rem] border border-rule bg-paper/70 p-0.5 font-sans text-[13px] ${className}`}>
       {options.map((o) => (
         <button
           key={String(o.id)}

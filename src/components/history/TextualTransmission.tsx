@@ -51,7 +51,6 @@ export function TextualTransmission() {
         label="Page layout"
         value={view}
         onChange={setView}
-        className="max-w-full overflow-x-auto"
         options={[
           { id: 'ancient', label: '1 · Ancient manuscript' },
           { id: 'scribal', label: '2 · Scribal sections' },
@@ -156,13 +155,13 @@ export function TextualTransmission() {
             <KindBadge key={k} kind={k} />
           ))}
         </div>
-        <ol className="no-scrollbar -mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 sm:-mx-8 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0 xl:grid-cols-5">
+        <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {navigation.milestones.map((m) => {
             const kind = kindOf(m.category);
             return (
               <li
                 key={m.id}
-                className="w-64 shrink-0 snap-start rounded-md lg:w-auto border border-rule bg-paper/85 p-3"
+                className="rounded-md lg:w-auto border border-rule bg-paper/85 p-3"
                 style={{ boxShadow: `inset 0 3px 0 ${cssColor(KIND_INFO[kind].css)}` }}
               >
                 <div className="font-sans text-[12px] font-semibold tabular-nums">{m.dateLabel}</div>
@@ -175,7 +174,7 @@ export function TextualTransmission() {
             );
           })}
         </ol>
-        <p className="font-sans text-[11px] text-ink-soft">These milestones also appear in the Translations timeline.<span className="lg:hidden"> Swipe for more.</span></p>
+        <p className="font-sans text-[11px] text-ink-soft">These milestones also appear in the Translations timeline.</p>
       </div>
     </section>
   );

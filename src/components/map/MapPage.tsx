@@ -845,7 +845,7 @@ export function MapPage() {
             },
           ]}
         />
-        <div role="group" aria-label="Zoom to region" className="no-scrollbar flex max-w-full gap-1.5 overflow-x-auto">
+        <div role="group" aria-label="Zoom to region" className="flex max-w-full flex-wrap gap-1.5">
           {REGIONS.map((r) => (
             <button
               key={r.id}

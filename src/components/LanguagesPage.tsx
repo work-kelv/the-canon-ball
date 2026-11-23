@@ -6,7 +6,6 @@ import { FilterPills } from './FilterPills';
 import { GridView } from './GridView';
 import { BreakdownView } from './BreakdownView';
 import { BookDrawer } from './BookDrawer';
-import { LanguagesIntro } from './LanguagesIntro';
 import { ViewTabs } from './ViewTabs';
 
 type View = 'grid' | 'breakdown';
@@ -31,9 +30,7 @@ export function LanguagesPage() {
 
   return (
     <>
-      {/* Explanation first, then the controls it explains. */}
-      <LanguagesIntro />
-      <div className="sticky top-0 z-30 -mx-4 space-y-3 border-b border-rule bg-paper/90 px-4 py-3 backdrop-blur sm:-mx-8 sm:px-8">
+      <div style={{ top: 'calc(var(--tabs-h, 44px) - 1px)' }} className="sticky z-10 -mx-4 -mt-6 space-y-3 border-b border-rule bg-paper/90 px-4 py-3 backdrop-blur sm:-mx-8 sm:px-8">
         <ViewTabs<View>
           label="Views"
           value={view}

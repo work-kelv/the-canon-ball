@@ -157,3 +157,13 @@ select option {
   color: rgb(var(--ink));
   background-color: rgb(var(--paper));
 }
+
+/* The few areas that still scroll sideways on purpose (zoomed timeline, zoomed family tree, wide tables):
+   a thin scrollbar in the page's own colours instead of the chunky system one. */
+.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--ink) / 0.25) transparent;
+}
+.overflow-x-auto::-webkit-scrollbar { height: 6px; }
+.overflow-x-auto::-webkit-scrollbar-thumb { background: rgb(var(--ink) / 0.25); border-radius: 3px; }
+.overflow-x-auto::-webkit-scrollbar-track { background: transparent; }
