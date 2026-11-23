@@ -1,6 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { RefText } from '../ScriptureRef';
-import { ArrowLeft, ArrowRight, BookMarked, CalendarRange, ChevronDown, ChevronUp, Gauge, GitCommitVertical, Users, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookMarked, CalendarRange, ChevronDown, ChevronUp, Gauge, GitCommitVertical, Users } from 'lucide-react';
 import type { Character, RelType } from '../../characterTypes';
 import {
   ERAS,
@@ -72,10 +72,12 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
       aria-labelledby="char-title"
       className="animate-drawer fixed inset-y-0 right-0 z-50 flex w-full max-w-[28rem] flex-col overflow-y-auto overscroll-contain border-l border-rule bg-paper shadow-2xl"
     >
-      {/* Phones: the panel fills the screen, so keep an obvious way back pinned to the top. */}
-      <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-rule bg-paper/95 px-3 py-2 backdrop-blur md:hidden">
+      {/* An obvious way back, pinned to the top on every screen size. */}
+      <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-rule bg-paper/95 px-3 py-2 backdrop-blur">
         <button
+          ref={closeRef}
           onClick={onClose}
+          title="Esc"
           className="focus-ring inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 font-sans text-sm font-medium text-paper active:opacity-80"
         >
           <ArrowLeft size={16} aria-hidden />
@@ -85,20 +87,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
       </div>
       <div className="relative px-6 pb-5 pt-5" style={{ background: cssColor(roleCss(c.role), 0.12) }}>
         <span aria-hidden className="absolute inset-x-0 top-0 h-1" style={{ background: role }} />
-        <div className="flex items-center justify-between">
-          <span className="eyebrow">
-            {c.testament === 'Both' ? 'Old & New Testament' : `${c.testament} Testament`}
-          </span>
-          <button
-            ref={closeRef}
-            onClick={onClose}
-            className="focus-ring hidden rounded-full p-1.5 hover:bg-ink/10 md:inline-flex"
-            aria-label="Close inspector"
-            title="Close (Esc)"
-          >
-            <X size={18} />
-          </button>
-        </div>
+        <span className="eyebrow">{c.testament === 'Both' ? 'Old & New Testament' : `${c.testament} Testament`}</span>
         <h2 id="char-title" className="mt-2 font-display text-4xl font-semibold leading-tight tracking-tight">
           {c.name}
         </h2>
