@@ -218,6 +218,18 @@ export interface TraditionFamily {
   members: string[];
 }
 export const traditionFamilies = traditionsData.families as TraditionFamily[];
+/** The overview table: the four families side by side, by identity and by teaching. */
+export interface OverviewRow {
+  id: string;
+  label: string;
+  /** Set on teaching rows: the question that opens in full. */
+  topic?: string;
+  cells: Record<string, string>;
+}
+export const familyOverview = (traditionsData as unknown as { familyOverview: { groups: { label: string; rows: OverviewRow[] }[] } }).familyOverview;
+export const familyMembers = (traditionsData as unknown as {
+  familyMembers: Record<string, { blurb: string; members: { id: string; note: string }[] }>;
+}).familyMembers;
 export const boundaryNote = traditionsData.boundary.note;
 export const boundaryTests = traditionsData.boundary.tests as BoundaryTest[];
 export const boundaryGroups = traditionsData.boundary.groups as BoundaryGroup[];

@@ -125,13 +125,18 @@ export function LanguagesIntro() {
       css="--hebrew"
       art={<LanguagesArt />}
       lead={
+        <>
         <p>
+          The Bible has two parts. The <b>Old Testament</b> (39 books) is the Scriptures of Israel, written before Jesus was born; the <b>New Testament</b> (27 books) was written by his first followers in the decades after his death and resurrection.
+        </p>
+        <p className="mt-2">
           The Bible was not first written in English. Its 66 books were written over some 1,500 years in three languages: Hebrew,
           Aramaic and Greek. Each was the language its first readers understood, so the languages change as God’s people moved
           from a small nation to life under great empires, and then to churches spread across the Roman world. Start with
           which language each book was written in, then follow the text as scribes copied it, divided it into chapters and verses,
           and translated it into the world’s languages.
         </p>
+        </>
       }
       extra={<LanguageTimeline />}
       cards={[

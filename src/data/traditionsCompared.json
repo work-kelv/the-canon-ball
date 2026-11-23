@@ -1869,5 +1869,233 @@
         "pentecostal"
       ]
     }
-  ]
+  ],
+  "familyOverview": {
+    "groups": [
+      {
+        "label": "Who they are",
+        "rows": [
+          {
+            "id": "origins",
+            "label": "Origins",
+            "cells": {
+              "catholic": "The Western church of Rome, tracing its bishops to Peter and Paul",
+              "orthodox": "The Greek-speaking East; separated from Rome in 1054",
+              "oriental": "Egypt, Syria, Armenia, Ethiopia and India; parted after Chalcedon (451)",
+              "protestant": "The Reformation, from 1517: Luther, Calvin and the English church"
+            }
+          },
+          {
+            "id": "leaders",
+            "label": "Led by",
+            "cells": {
+              "catholic": "The Pope and the bishops in communion with him",
+              "orthodox": "Patriarchs and bishops of self-governing churches; the Ecumenical Patriarch is “first among equals”",
+              "oriental": "Patriarchs and bishops of national churches, such as the Coptic Pope",
+              "protestant": "Varies: bishops, councils of elders, or each congregation"
+            }
+          },
+          {
+            "id": "where",
+            "label": "Where today",
+            "cells": {
+              "catholic": "Worldwide: Latin America, Europe, Africa, the Philippines",
+              "orthodox": "Eastern Europe, Russia, Greece, the Middle East",
+              "oriental": "Egypt, Ethiopia, Eritrea, Armenia, Syria, Lebanon, India",
+              "protestant": "Worldwide, growing fastest in Africa, Asia and Latin America"
+            }
+          },
+          {
+            "id": "worship",
+            "label": "Worship",
+            "cells": {
+              "catholic": "The Mass: a set liturgy, in the Latin and Eastern rites",
+              "orthodox": "The Divine Liturgy, sung, with icons and incense",
+              "oriental": "Ancient liturgies in Coptic, Ge’ez, Armenian and Syriac",
+              "protestant": "From set liturgies (Lutheran, Anglican) to free worship (Baptist, Pentecostal)"
+            }
+          },
+          {
+            "id": "size",
+            "label": "Share of Christians (2010)",
+            "cells": {
+              "catholic": "About 50%",
+              "orthodox": "About 12% (with Oriental Orthodox)",
+              "oriental": "Counted with Eastern Orthodox",
+              "protestant": "About 37%"
+            }
+          }
+        ]
+      },
+      {
+        "label": "What they teach",
+        "rows": [
+          {
+            "id": "authority",
+            "topic": "authority",
+            "label": "Authority",
+            "cells": {
+              "catholic": "Scripture and Tradition, taught by the Pope and bishops",
+              "orthodox": "Holy Tradition, with Scripture at its heart",
+              "oriental": "Holy Tradition, with Scripture at its heart",
+              "protestant": "Scripture alone"
+            }
+          },
+          {
+            "id": "salvation",
+            "topic": "salvation",
+            "label": "Salvation",
+            "cells": {
+              "catholic": "Grace, through faith and the sacraments; inner renewal",
+              "orthodox": "Theosis: union with God by grace",
+              "oriental": "Grace, faith and the sacramental life; union with God",
+              "protestant": "Grace alone, through faith alone"
+            }
+          },
+          {
+            "id": "eucharist",
+            "topic": "eucharist",
+            "label": "Lord’s Supper",
+            "cells": {
+              "catholic": "Transubstantiation",
+              "orthodox": "A real change into Christ’s body and blood, kept a mystery",
+              "oriental": "A real change into Christ’s body and blood",
+              "protestant": "From real presence (Lutheran) to a memorial (Baptist)"
+            }
+          },
+          {
+            "id": "baptism",
+            "topic": "baptism",
+            "label": "Baptism",
+            "cells": {
+              "catholic": "Infants and adults; new birth",
+              "orthodox": "Infants and adults, by triple immersion",
+              "oriental": "Infants and adults, by triple immersion",
+              "protestant": "Infants (Lutheran, Anglican, Reformed) or believers only (Baptist, Pentecostal)"
+            }
+          },
+          {
+            "id": "sacraments",
+            "topic": "sacraments",
+            "label": "Sacraments",
+            "cells": {
+              "catholic": "Seven",
+              "orthodox": "Seven “holy mysteries”",
+              "oriental": "Seven",
+              "protestant": "Two: baptism and the Lord’s Supper"
+            }
+          },
+          {
+            "id": "government",
+            "topic": "government",
+            "label": "Church leadership",
+            "cells": {
+              "catholic": "Bishops under the Pope",
+              "orthodox": "Bishops in self-governing churches",
+              "oriental": "Bishops under national patriarchs",
+              "protestant": "Bishops, elders or congregations"
+            }
+          },
+          {
+            "id": "mary",
+            "topic": "mary",
+            "label": "Mary & the saints",
+            "cells": {
+              "catholic": "Venerated; Immaculate Conception and Assumption are dogma",
+              "orthodox": "Theotokos, venerated; saints asked to pray",
+              "oriental": "Theotokos, venerated; saints asked to pray",
+              "protestant": "Honoured as a model of faith; not prayed to"
+            }
+          },
+          {
+            "id": "canon",
+            "topic": "canon",
+            "label": "Old Testament",
+            "cells": {
+              "catholic": "46 books (73 in all)",
+              "orthodox": "49 or more books",
+              "oriental": "Broad; the Ethiopian canon is the widest",
+              "protestant": "39 books (66 in all)"
+            }
+          },
+          {
+            "id": "clergy",
+            "topic": "clergy",
+            "label": "Clergy",
+            "cells": {
+              "catholic": "Men only; Latin-rite priests celibate",
+              "orthodox": "Men only; married priests, celibate bishops",
+              "oriental": "Men only; married priests, celibate bishops",
+              "protestant": "Married ministers; many ordain women"
+            }
+          },
+          {
+            "id": "afterlife",
+            "topic": "afterlife",
+            "label": "After death",
+            "cells": {
+              "catholic": "Purgatory",
+              "orthodox": "Prayer for the departed; no purgatory defined",
+              "oriental": "Prayer for the departed; no purgatory defined",
+              "protestant": "No purgatory"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "familyMembers": {
+    "catholic": {
+      "blurb": "One church in communion with the Pope.",
+      "members": [
+        {
+          "id": "catholic",
+          "note": "The Latin Church and 23 Eastern Catholic churches"
+        }
+      ]
+    },
+    "orthodox": {
+      "blurb": "A communion of self-governing churches.",
+      "members": [
+        {
+          "id": "orthodox",
+          "note": "Russian, Greek, Serbian, Romanian and other national churches"
+        }
+      ]
+    },
+    "oriental": {
+      "blurb": "The ancient churches that did not accept Chalcedon.",
+      "members": [
+        {
+          "id": "oriental",
+          "note": "Coptic, Ethiopian, Eritrean, Armenian, Syriac and Indian churches"
+        }
+      ]
+    },
+    "protestant": {
+      "blurb": "The churches of the Reformation and the movements that followed.",
+      "members": [
+        {
+          "id": "lutheran",
+          "note": "Martin Luther, Germany, 1517"
+        },
+        {
+          "id": "anglican",
+          "note": "The Church of England, 1534"
+        },
+        {
+          "id": "reformed",
+          "note": "Zwingli and Calvin, Switzerland, 1520s–30s"
+        },
+        {
+          "id": "baptist",
+          "note": "English Separatists, 1609"
+        },
+        {
+          "id": "pentecostal",
+          "note": "The Azusa Street revival, 1906"
+        }
+      ]
+    }
+  }
 }

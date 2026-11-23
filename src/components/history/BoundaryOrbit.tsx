@@ -396,7 +396,7 @@ export function BoundaryOrbit() {
         {boundaryNote}
       </p>
 
-      <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)]">
+      <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:grid-rows-[auto_1fr]">
         <div className="lg:col-start-1 lg:row-start-1">
           {/* Creed lens */}
           <div className="mb-2 flex flex-wrap items-center gap-2">
@@ -421,10 +421,7 @@ export function BoundaryOrbit() {
                   </span>
                 ))}
               </div>
-              <div className="mt-2 space-y-2">
-                <NonCreedalExplainer label="What does “Holds its teaching” mean?" />
-                {lens === 'chalcedon' && <ChalcedonExplainer />}
-              </div>
+
             </div>
           )}
 
@@ -615,6 +612,13 @@ export function BoundaryOrbit() {
               );
             })}
           </svg>
+
+          {lens && (
+            <div className="mt-2 space-y-2">
+              <NonCreedalExplainer label="What does “Holds its teaching” mean?" />
+              {lens === 'chalcedon' && <ChalcedonExplainer />}
+            </div>
+          )}
 
           {/* Phones: names as tappable chips */}
           <div className="mt-2 space-y-2 sm:hidden">

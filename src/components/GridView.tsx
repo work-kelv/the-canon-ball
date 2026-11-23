@@ -162,8 +162,8 @@ export function GridView({ isMatch, division, onDivision, selected, onOpen }: Pr
   const [sizing, setSizing] = useState<Sizing>('uniform');
 
   const testaments: { id: Testament; title: string; sub: string }[] = [
-    { id: 'Old', title: 'Old Testament', sub: 'Biblical Hebrew, with Aramaic portions' },
-    { id: 'New', title: 'New Testament', sub: 'Koine Greek' },
+    { id: 'Old', title: 'Old Testament', sub: 'Written before Jesus · Biblical Hebrew, with Aramaic portions' },
+    { id: 'New', title: 'New Testament', sub: 'Written after Jesus · Koine Greek' },
   ];
 
   return (
