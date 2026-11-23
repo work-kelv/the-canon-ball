@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import {
+  ArrowLeft,
   BookOpen,
   CalendarRange,
   ChevronLeft,
@@ -281,6 +282,15 @@ export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
               <RefText text={book.context} />
             </blockquote>
           </Section>
+
+          {/* Same pattern as "Back to timeline" on the Characters page */}
+          <button
+            onClick={onClose}
+            className="focus-ring flex w-full items-center justify-center gap-2 rounded-full border border-ink py-3 font-sans text-sm font-medium hover:bg-ink/5 active:bg-ink/10"
+          >
+            <ArrowLeft size={16} aria-hidden />
+            Back to all 66 books
+          </button>
         </div>
       </div>
     </div>
