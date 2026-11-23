@@ -22,7 +22,7 @@ import {
 } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
 import { Segmented } from '../characters/controls';
-import { CREED_CSS, CreedStatusMark, STATUS_STYLE, statusLook } from './CreedCompare';
+import { CREED_CSS, CreedStatusMark, NonCreedalExplainer, STATUS_STYLE, statusLook } from './CreedCompare';
 
 const rad = (d: number) => (d * Math.PI) / 180;
 
@@ -285,7 +285,8 @@ function MemberDetail({ f, m, onPick }: { f: ChurchFamily; m: FamilyMember; onPi
         </button>
       </Section>
       <Section title="The creeds">
-        <CreedRow creeds={memberCreeds(f, m)} />
+        <CreedRow creeds={memberCreeds(f, m)} note={m.creedNote} />
+        {Object.values(memberCreeds(f, m)).includes('content') && <NonCreedalExplainer label="Why doesn’t it recite the creeds?" />}
       </Section>
       {m.tests ? (
         <>
@@ -415,6 +416,9 @@ export function BoundaryOrbit() {
                     <CreedStatusMark s={s} /> {creedLens.statuses[s].label}
                   </span>
                 ))}
+              </div>
+              <div className="mt-2">
+                <NonCreedalExplainer label="What does “Holds its teaching” mean?" />
               </div>
             </div>
           )}

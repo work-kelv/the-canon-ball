@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { ChevronDown, Info } from 'lucide-react';
+import { BookOpenCheck, ChevronDown, ExternalLink, Info } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import {
   type CreedId,
@@ -71,6 +71,73 @@ export function CreedStatusMark({ s }: { s: CreedStatus }) {
     >
       {STATUS_STYLE[s].mark}
     </span>
+  );
+}
+
+/**
+ * Why some churches (Pentecostal, Baptist and other free churches) do not recite the creeds, though
+ * they hold the faith the creeds define. Folded by default; opens in place.
+ */
+export function NonCreedalExplainer({ label = 'Why don’t some churches recite the creeds?', defaultOpen = false }: { label?: string; defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
+  const n = creedLens.nonCreedal;
+  return (
+    <div className="rounded-md border border-rule" style={{ background: cssColor('--rel-mentor', 0.05) }}>
+      <button onClick={() => setOpen((o) => !o)} aria-expanded={open} className="focus-ring flex w-full items-center gap-2 px-3 py-2 text-left font-sans text-[13px] font-semibold">
+        <BookOpenCheck size={15} style={{ color: cssColor('--rel-mentor') }} aria-hidden />
+        <span className="flex-1">{label}</span>
+        <ChevronDown size={14} aria-hidden className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <div className="space-y-3 border-t border-rule px-3 pb-3 pt-3">
+          <h4 className="font-display text-lg font-semibold leading-tight">{n.title}</h4>
+          <p className="font-serif text-[15px] leading-relaxed">{n.intro}</p>
+          <ol className="space-y-2.5">
+            {n.reasons.map((r, i) => (
+              <li key={r.title} className="grid grid-cols-[1.4rem_1fr] gap-x-2">
+                <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full font-sans text-[11px] font-bold text-paper" style={{ background: cssColor('--rel-mentor') }}>
+                  {i + 1}
+                </span>
+                <div>
+                  <div className="font-sans text-[13.5px] font-semibold">{r.title}</div>
+                  <p className="font-serif text-[14.5px] leading-snug">{r.body}</p>
+                  {r.quote && (
+                    <blockquote className="mt-1 border-l-2 pl-3 font-serif text-[14.5px] italic leading-snug" style={{ borderColor: cssColor('--rel-mentor', 0.6) }}>
+                      “{r.quote}”
+                      {r.cite && <span className="mt-0.5 block font-sans text-[11px] not-italic text-ink-soft">{r.cite}</span>}
+                    </blockquote>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ol>
+          <div>
+            <div className="eyebrow mb-1">The Assemblies of God, 1916</div>
+            <p className="font-serif text-[14.5px] leading-relaxed">{n.agHistory}</p>
+          </div>
+          <div>
+            <div className="eyebrow mb-1.5">{n.parallel.title}</div>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {[n.parallel.left, n.parallel.right].map((x, i) => (
+                <div key={x.label} className="rounded-md border border-rule bg-paper px-3 py-2" style={{ boxShadow: `inset 3px 0 0 ${cssColor(i === 0 ? '--rel-family' : '--greek')}` }}>
+                  <div className="font-sans text-[11px] font-semibold uppercase tracking-wide text-ink-soft">{x.label}</div>
+                  <p className="mt-0.5 font-serif text-[14px] italic leading-snug">“{x.text}”</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-1.5 font-sans text-[12px] text-ink-soft">{n.parallel.note}</p>
+          </div>
+          <div className="flex flex-wrap gap-x-3 gap-y-1 font-sans text-[11.5px]">
+            <span className="text-ink-soft">Sources:</span>
+            {n.sources.map((s) => (
+              <a key={s.url} href={s.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 underline decoration-rule underline-offset-2 hover:decoration-ink">
+                {s.label} <ExternalLink size={10} aria-hidden />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -243,9 +310,12 @@ export function CreedCompare() {
           ))}
         </div>
         <p className="mt-2 font-sans text-[11px] text-ink-soft">
-          “Agrees with it” marks traditions that hold a creed’s teaching but do not use creeds formally. Within a family, individual
-          churches and congregations vary.
+          “Holds its teaching” marks churches that teach the same faith in their own statement of faith rather than reciting the
+          historic creed. Within a family, individual churches and congregations vary.
         </p>
+        <div className="mt-3">
+          <NonCreedalExplainer />
+        </div>
       </div>
     </section>
   );

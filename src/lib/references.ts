@@ -280,13 +280,15 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
       title: 'The Baptist Faith and Message (2000)',
       detail: 'Southern Baptist Convention',
       url: 'https://bfm.sbc.net/',
+      links: [{ label: 'Preamble', url: 'https://bfm.sbc.net/preamble/' }],
       use: 'Baptist positions in the Traditions comparison.',
     },
     {
       title: 'Statement of Fundamental Truths',
-      detail: 'Assemblies of God (1916, revised)',
-      url: 'https://ag.org/',
-      use: 'Pentecostal positions in the Traditions comparison.',
+      detail: 'Assemblies of God (1916, revised); see its preamble and “The Adorable Godhead”',
+      url: 'https://ag.org/Beliefs/Statement-of-Fundamental-Truths',
+      links: [{ label: 'This Week in AG History: Oct. 21, 1916', url: 'https://news.ag.org/en/Features/This-Week-in-AG-History-Oct-21-1916' }],
+      use: 'Pentecostal positions in the Traditions comparison, and why the Assemblies of God holds the creeds’ faith in its own statement rather than reciting the creeds.',
     },
     {
       title: 'Joint Declaration on the Doctrine of Justification',

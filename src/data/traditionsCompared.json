@@ -1246,8 +1246,8 @@
           "note": "Officially adopted, or recited in worship"
         },
         "content": {
-          "label": "Agrees with it",
-          "note": "Holds its teaching, though the tradition does not use creeds formally"
+          "label": "Holds its teaching",
+          "note": "Teaches the same truths in its own statement of faith, but does not recite or formally adopt the historic creed"
         },
         "unused": {
           "label": "Not used",
@@ -1263,6 +1263,61 @@
         "nicene": "The most widely shared creed: confessed by Catholic, Eastern Orthodox, Oriental Orthodox and most Protestant churches. Every movement outside the boundary rejects its definition of the Son as “of one substance with the Father”.",
         "chalcedon": "The line that divides the families inside the boundary: the Oriental Orthodox did not accept the Council of Chalcedon (451), though recent dialogues have found that both sides confess the same Christ in different words.",
         "athanasian": "A Latin creed of the West, with its warning clauses. The East does not use it, though it shares the faith it defines."
+      },
+      "nonCreedal": {
+        "title": "Why some churches don’t recite the creeds, yet hold the same faith",
+        "intro": "Many churches born in revival or in the free-church tradition (Pentecostals such as the Assemblies of God, Baptists, Anabaptists, Adventists and others) do not adopt the ancient creeds or recite them in worship. Instead each writes its own statement of faith. This is a difference of form, not of faith: on the Trinity and on who Jesus is, their statements teach what the creeds teach.",
+        "reasons": [
+          {
+            "title": "The Bible alone binds the conscience",
+            "body": "Any human wording, however good, is not Scripture. The Assemblies of God says of its own statement:",
+            "quote": "The phraseology employed in this Statement is not inspired nor contended for, but the truth set forth is held to be essential to a full-gospel ministry.",
+            "cite": "Assemblies of God, Statement of Fundamental Truths, preamble"
+          },
+          {
+            "title": "A basis of fellowship, written by the church itself",
+            "body": "Rather than inherit an ancient formula, these churches agree together on what they believe, in their own words, and keep it open to correction by the Bible.",
+            "quote": "The Bible is our all-sufficient rule for faith and practice. This Statement of Fundamental Truths is intended simply as a basis of fellowship among us.",
+            "cite": "Assemblies of God, Statement of Fundamental Truths, preamble"
+          },
+          {
+            "title": "Confessions are not final or infallible",
+            "body": "Baptists make the same point about their own confession of faith:",
+            "quote": "We do not regard them as complete statements of our faith, having any quality of finality or infallibility … the sole authority for faith and practice among Baptists is the Scriptures of the Old and New Testaments.",
+            "cite": "Baptist Faith and Message, preamble"
+          },
+          {
+            "title": "Free worship",
+            "body": "Services in these churches are usually free rather than set liturgies, so there is no fixed place in worship where a creed would be said."
+          }
+        ],
+        "agHistory": "In 1916, two years after it was founded, the Assemblies of God faced a division: a significant minority of its ministers had taken up Oneness teaching, which denied the Trinity. The General Council met in St Louis and voted to “set forth a clear statement of the things most surely believed among us”: the Statement of Fundamental Truths, which firmly affirms the Trinity. Oneness ministers then withdrew. In other words, the Assemblies of God wrote its statement precisely to stand with the faith of the creeds.",
+        "parallel": {
+          "title": "Same faith, different words: the Trinity",
+          "left": {
+            "label": "Assemblies of God (1916)",
+            "text": "The Father, the Son and the Holy Spirit are never identical as to Person; nor confused as to relation; nor divided in respect to the Godhead; nor opposed as to cooperation."
+          },
+          "right": {
+            "label": "Athanasian Creed (c. 500)",
+            "text": "We worship one God in Trinity, and Trinity in Unity; Neither confounding the Persons: nor dividing the Substance."
+          },
+          "note": "The Assemblies of God adds that the words “Trinity” and “persons”, though not found in Scripture, “are words in harmony with Scripture”."
+        },
+        "sources": [
+          {
+            "label": "AG Statement of Fundamental Truths",
+            "url": "https://ag.org/Beliefs/Statement-of-Fundamental-Truths"
+          },
+          {
+            "label": "This Week in AG History: Oct. 21, 1916",
+            "url": "https://news.ag.org/en/Features/This-Week-in-AG-History-Oct-21-1916"
+          },
+          {
+            "label": "Baptist Faith and Message, preamble",
+            "url": "https://bfm.sbc.net/preamble/"
+          }
+        ]
       }
     },
     "families": [
@@ -1489,7 +1544,8 @@
               "nicene": "content",
               "chalcedon": "content",
               "athanasian": "content"
-            }
+            },
+            "creedNote": "Does not adopt creeds, but its confessions of faith (such as the Baptist Faith and Message) teach the Trinity and the full deity and humanity of Christ."
           },
           {
             "id": "pentecostal",
@@ -1502,7 +1558,8 @@
               "nicene": "content",
               "chalcedon": "content",
               "athanasian": "content"
-            }
+            },
+            "creedNote": "Does not recite the creeds, but its statements of faith teach the same Trinity and Christ. The Assemblies of God wrote its Statement of Fundamental Truths in 1916 specifically to affirm the Trinity, in words close to the Athanasian Creed."
           },
           {
             "id": "anabaptist",
@@ -1515,7 +1572,8 @@
               "nicene": "content",
               "chalcedon": "content",
               "athanasian": "content"
-            }
+            },
+            "creedNote": "Does not recite creeds, but its confessions of faith (such as Dordrecht, 1632) teach the Trinity and the person of Christ."
           },
           {
             "id": "sda",
@@ -1562,7 +1620,8 @@
               "nicene": "content",
               "chalcedon": "content",
               "athanasian": "content"
-            }
+            },
+            "creedNote": "Historically wary of creeds, but its 28 Fundamental Beliefs teach the Trinity and the full deity of Christ."
           },
           {
             "id": "gci",
@@ -1607,7 +1666,8 @@
               "nicene": "content",
               "chalcedon": "content",
               "athanasian": "content"
-            }
+            },
+            "creedNote": "Affirms the Statement of Faith of the National Association of Evangelicals, which teaches the Trinity."
           }
         ]
       }

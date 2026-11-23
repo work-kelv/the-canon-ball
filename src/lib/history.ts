@@ -159,6 +159,7 @@ export interface FamilyMember {
   keyTexts?: string[];
   source?: string;
   tests?: BoundaryGroup['tests'];
+  creedNote?: string;
 }
 export interface ChurchFamily {
   id: string;
@@ -173,8 +174,16 @@ export interface ChurchFamily {
   members: FamilyMember[];
 }
 export const churchFamilies = (traditionsData.boundary as unknown as { families: ChurchFamily[] }).families;
+export interface NonCreedal {
+  title: string;
+  intro: string;
+  reasons: { title: string; body: string; quote?: string; cite?: string }[];
+  agHistory: string;
+  parallel: { title: string; left: { label: string; text: string }; right: { label: string; text: string }; note: string };
+  sources: { label: string; url: string }[];
+}
 export const creedLens = (traditionsData.boundary as unknown as {
-  creedLens: { statuses: Record<CreedStatus, { label: string; note: string }>; notes: Record<CreedId, string> };
+  creedLens: { statuses: Record<CreedStatus, { label: string; note: string }>; notes: Record<CreedId, string>; nonCreedal: NonCreedal };
 }).creedLens;
 export const memberCreeds = (f: ChurchFamily, m: FamilyMember): CreedSet => m.creeds ?? f.creeds;
 
