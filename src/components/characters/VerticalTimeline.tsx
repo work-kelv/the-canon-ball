@@ -52,7 +52,7 @@ function Row({
       >
         <span className="pt-0.5 text-right font-sans leading-tight tabular-nums text-ink-soft">
           <span className="block text-[12px] text-ink">{dateParts(c)[0]}</span>
-          <span className="block text-[10px] uppercase tracking-wider">{dateParts(c)[1]}</span>
+          <span className="block text-[12px] uppercase tracking-wider">{dateParts(c)[1]}</span>
         </span>
         <span className="relative flex h-full justify-center">
           <span className="relative z-[1] mt-1 h-3 w-3 rounded-full ring-[3px] ring-paper" style={{ background: role }} />
@@ -61,13 +61,13 @@ function Row({
           <span className="flex items-baseline gap-1.5">
             {badge && (
               <span
-                className="shrink-0 rounded-full px-1.5 font-sans text-[10px] font-semibold leading-4 text-paper"
+                className="shrink-0 rounded-full px-1.5 font-sans text-[12px] font-semibold leading-4 text-paper"
                 style={{ background: badge.startsWith('Gen') ? cssColor('--lineage') : cssColor('--rel-family') }}
               >
                 {badge}
               </span>
             )}
-            <span className="truncate font-display text-[16px] font-semibold leading-tight">{c.name}</span>
+            <span className="min-w-0 break-words font-display text-[16px] font-semibold leading-tight">{c.name}</span>
             {inLine && (
               <span
                 className="h-1.5 w-1.5 shrink-0 translate-y-[-2px] rounded-full"
@@ -77,7 +77,7 @@ function Row({
               />
             )}
           </span>
-          <span className="block truncate font-sans text-xs text-ink-soft">{c.title}</span>
+          <span className="block break-words font-sans text-xs leading-snug text-ink-soft">{c.title}</span>
         </span>
       </button>
     </li>
@@ -119,15 +119,15 @@ function EraStrip({
   const ticks = [lo, lo + span / 2, hi].map((y) => Math.round(y));
   return (
     <div className="border-b border-rule px-3 pb-2 pt-2.5">
-      <div className="eyebrow mb-1.5 !text-[10px]">Who lived at the same time · tap a bar</div>
-      <div className="relative" style={{ height: laneEnd.length * LANE }}>
+      <div className="eyebrow mb-1.5">Who lived at the same time</div>
+      {/* A picture of overlapping lives; each person is also a full-size row below (a tap here still opens them). */}
+      <div className="relative" style={{ height: laneEnd.length * LANE }} aria-hidden>
         {bars.map(({ c, x, w, lane }) => (
-          <button
+          <span
             key={c.id}
             onClick={() => onSelect(c.id)}
-            aria-label={`${c.name}, ${formatYearRange(c.dates.start, c.dates.end)}`}
-            title={c.name}
-            className="focus-ring absolute flex items-center"
+            title={`${c.name}, ${formatYearRange(c.dates.start, c.dates.end)}`}
+            className="absolute flex cursor-pointer items-center"
             style={{ left: `${x}%`, width: `max(${w}%, 6px)`, top: lane * LANE, height: LANE }}
           >
             <span
@@ -138,10 +138,10 @@ function EraStrip({
                 boxShadow: selectedId === c.id ? `0 0 0 2px ${cssColor('--ink')}` : undefined,
               }}
             />
-          </button>
+          </span>
         ))}
       </div>
-      <div className="mt-1 flex justify-between font-sans text-[10px] tabular-nums text-ink-soft">
+      <div className="mt-1 flex justify-between font-sans text-[12px] tabular-nums text-ink-soft">
         {ticks.map((t, i) => (
           <span key={i}>{fmt(t)}</span>
         ))}
@@ -159,7 +159,7 @@ function GapMarker({ years }: { years: number }) {
       <span className="flex justify-center">
         <span className="h-1 w-1 rounded-full bg-ink/40" />
       </span>
-      <span className="font-sans text-[10.5px] italic text-ink-soft">~{r.toLocaleString('en-US')} years later</span>
+      <span className="font-sans text-[12px] italic text-ink-soft">~{r.toLocaleString('en-US')} years later</span>
     </li>
   );
 }
@@ -193,7 +193,7 @@ export function VerticalTimeline({ model, arrangement, highlight, selectedId, on
 
   return (
     <div>
-      <aside className="flex items-center gap-3 border-b border-rule bg-ink/[0.03] px-3 py-2.5 font-sans text-[11.5px] leading-snug text-ink-soft">
+      <aside className="flex items-center gap-3 border-b border-rule bg-ink/[0.03] px-3 py-2.5 font-sans text-[12px] leading-snug text-ink-soft">
         <span>
           Each {arrangement === 'book' ? 'book group' : 'era'} opens with a chart of <b className="text-ink">who lived at the same time</b>: one
           bar per person, <b className="text-ink">coloured by role</b> (key above). The list runs in date order; long eras show the first few, with “Show all” for the rest.
@@ -210,7 +210,7 @@ export function VerticalTimeline({ model, arrangement, highlight, selectedId, on
         <section key={g.key} aria-label={g.label}>
           <header className="sticky top-0 z-20 border-b border-rule bg-paper/95 px-3 py-2 backdrop-blur">
             <h3 className="font-display text-lg font-semibold leading-tight">{g.label}</h3>
-            <span className="font-sans text-[11px] tabular-nums text-ink-soft">
+            <span className="font-sans text-[12px] tabular-nums text-ink-soft">
               {g.sub} · {g.members.length} {g.members.length === 1 ? 'person' : 'people'}
             </span>
           </header>

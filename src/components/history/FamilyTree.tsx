@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Check, Minus, Plus, Sparkles } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { BRANCH_CSS, type Branch, branchMeta, branches, branchesInTreeOrder } from '../../lib/history';
+import { DetailHeader, DetailSheet, useMedia } from '../DetailSheet';
+import { ScrollFade } from '../ScrollFade';
 
 // Piecewise time scale: the early centuries are compressed so the many modern branches have room.
 const KNOTS: [number, number][] = [
@@ -100,6 +102,9 @@ function BranchCard({ b, onPick }: { b: Branch; onPick: (id: string) => void }) 
 
 export function FamilyTree() {
   const [sel, setSel] = useState('early');
+  // Phones open a branch in a sheet; wider screens show it under the tree.
+  const md = useMedia('(min-width: 768px)');
+  const [sheet, setSheet] = useState(false);
   const [zoom, setZoom] = useState(1);
   const boxRef = useRef<HTMLDivElement>(null);
   const [boxW, setBoxW] = useState(980);
@@ -117,6 +122,9 @@ export function FamilyTree() {
   const rowY = Object.fromEntries(rows.map((b, i) => [b.id, TOP + i * ROW]));
   const height = TOP + rows.length * ROW + 10;
   const selected = branches.find((b) => b.id === sel)!;
+  const si = rows.findIndex((b) => b.id === sel);
+  const prevB = si > 0 ? () => setSel(rows[si - 1].id) : null;
+  const nextB = si >= 0 && si < rows.length - 1 ? () => setSel(rows[si + 1].id) : null;
 
   return (
     <div className="space-y-4">
@@ -133,7 +141,7 @@ export function FamilyTree() {
       </div>
 
       {/* Desktop: branching timeline */}
-      <div ref={boxRef} className="panel hidden overflow-x-auto md:block">
+      <ScrollFade innerRef={boxRef} label="Family tree timeline (scrolls sideways when zoomed)" className="panel" outerClassName="hidden md:block">
         <svg width={width} height={height} className="block" role="img" aria-label="Branching timeline of Christian traditions">
           {/* time axis */}
           {TICKS.map((t) => (
@@ -192,32 +200,47 @@ export function FamilyTree() {
             East–West Schism, 1054
           </text>
         </svg>
-      </div>
+      </ScrollFade>
 
       {/* Phones: indented list */}
       <ol className="space-y-1 md:hidden">
         {rows.map((b) => (
           <li key={b.id} style={{ paddingLeft: b.depth * 14 }}>
             <button
-              onClick={() => setSel(b.id)}
-              className={`focus-ring flex w-full items-center gap-2 rounded-md border px-3 py-2 text-left ${sel === b.id ? 'border-ink bg-paper shadow-sm' : 'border-rule'}`}
+              onClick={() => {
+                setSel(b.id);
+                setSheet(true);
+              }}
+              aria-haspopup="dialog"
+              className={`focus-ring flex min-h-11 w-full items-center gap-2 rounded-md border px-3 py-2 text-left ${sel === b.id ? 'border-ink bg-paper shadow-sm' : 'border-rule'}`}
             >
               <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: cssColor(BRANCH_CSS[b.id] ?? '--ink') }} />
               <span className="min-w-0 flex-1 font-display text-[16px] font-semibold">{b.name}</span>
               <span className="font-sans text-xs tabular-nums text-ink-soft">{b.year}</span>
             </button>
-            {sel === b.id && (
-              <div className="mt-2">
-                <BranchCard b={b} onPick={setSel} />
-              </div>
-            )}
           </li>
         ))}
       </ol>
 
       <div className="hidden md:block">
+        <DetailHeader title={selected.name} position={`${si + 1} of ${rows.length}`} onPrev={prevB} onNext={nextB} className="mb-2" />
         <BranchCard b={selected} onPick={setSel} />
       </div>
+      {sheet && !md && (
+        <DetailSheet
+          label={selected.name}
+          backLabel="Back to the family tree"
+          onClose={() => setSheet(false)}
+          title={selected.name}
+          position={`${si + 1} of ${rows.length}`}
+          onPrev={prevB}
+          onNext={nextB}
+        >
+          <div className="p-4">
+            <BranchCard b={selected} onPick={setSel} />
+          </div>
+        </DetailSheet>
+      )}
       <p className="font-sans text-[12px] text-ink-soft">{branchMeta.note}</p>
     </div>
   );

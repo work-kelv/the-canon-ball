@@ -58,8 +58,8 @@ There are 266 people, from Adam to the early church. The list includes everyone 
 
 - **Timeline.** Everyone is placed on one time axis. You can arrange people by when they lived or by book; "By book" puts Ezra and Nehemiah together, for example. Move your mouse across the timeline to see who was alive in a given year.
 - **Line of Jesus.** A red line traces all 65 generations from Adam to Jesus.
-- **Filters.** Narrow the list by Old or New Testament, era, book, role, or a name search. The timeline zooms to fit whoever is left.
-- **Person page.** Click anyone to see a short biography, their dates and how certain they are, which books they appear in, and their relationships. You can jump straight to a related person.
+- **Filters.** Narrow the list by Old or New Testament, era, book, role, or a name search. The timeline zooms to fit whoever is left. On a phone the filters fold into one row (Filters · number active, the count, Clear); tap Filters for a sheet where every change applies at once and the button shows the live count ("Show 70 people").
+- **Person page.** Click anyone to see a short biography, their dates and how certain they are, which books they appear in, and their relationships. You can jump straight to a related person, or step through everyone shown with ‹ ›.
 - **Relationship network.** A web of 441 family, mentor, ally and rival relationships.
 
 | Person page (David) | Relationship network |
@@ -83,7 +83,7 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
   - The Babylonian exile and return
   - Jesus' ministry
   - Paul's three missionary journeys and his voyage to Rome
-- **Place details.** Click any place to see its modern site and country, a note from Easton's Bible Dictionary, the books that mention it, and the people connected with it.
+- **Place details.** Click any place (‹ › steps through a journey's stops or a book's key places) to see its modern site and country, a note from Easton's Bible Dictionary, the books that mention it, and the people connected with it.
 
 | Great journeys (Paul's 2nd journey) | Click a reference to read it |
 |---|---|
@@ -116,6 +116,8 @@ The Church History page works like a short course on one scrolling page: seven n
 ## On a phone
 
 On a phone the timeline turns vertical, and the map stays pinned to the top while you read.
+
+**Details, the same way everywhere.** Every detail view (a book of the Bible, a person, a question in Differences, a key person in church history, a church in Core beliefs, a branch of the family tree, a benchmark, a place on the map) opens the same way: as a sheet from the bottom on a phone and from the right on wider screens, with **← Back** at the top and bottom, **‹ ›** to step through the list, **Esc** to close and the arrow keys to step. On wide screens, the explorers in Core beliefs, the family tree and the benchmark table keep their details beside the diagram, with the same controls. On a phone the map's place sheet covers only the lower half, so the map stays visible above it. Long names wrap rather than being cut off, and tables or timelines that scroll sideways show a soft fade and a "Scroll →" hint instead of a scrollbar.
 
 | Timeline | Map |
 |---|---|

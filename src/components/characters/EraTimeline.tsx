@@ -44,8 +44,8 @@ function Chip({
         />
       </span>
       <span className="min-w-0">
-        <span className="block truncate font-display text-[15px] font-semibold leading-tight">{c.name}</span>
-        <span className="block truncate font-sans text-[11px] text-ink-soft">
+        <span className="block break-words font-display text-[15px] font-semibold leading-tight">{c.name}</span>
+        <span className="block break-words font-sans text-[12px] leading-snug text-ink-soft">
           {c.title}
           {bookVerses != null && <> · <span className="text-ink">{bookVerses} vv.</span></>}
         </span>
@@ -68,7 +68,7 @@ export function EraTimeline({ filters, selectedId, onSelect }: Props) {
         return (
           <li key={era.id}>
             {firstNT && (
-              <div className="my-4 flex items-center gap-3 font-sans text-[11px] uppercase tracking-[0.2em] text-ink-soft">
+              <div className="my-4 flex items-center gap-3 font-sans text-[12px] uppercase tracking-[0.2em] text-ink-soft">
                 <span className="h-px flex-1 bg-rule" />
                 New Testament
                 <span className="h-px flex-1 bg-rule" />

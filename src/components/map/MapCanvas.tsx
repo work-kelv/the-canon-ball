@@ -354,7 +354,7 @@ export function MapCanvas({ mode, book, journeys, showBorders, flyTo, fitPadding
             <g key={l.placeId} className="cursor-pointer" onClick={(e) => { e.stopPropagation(); onSelect({ kind: 'place', placeId: l.placeId }); }}>
               <circle cx={x} cy={y} r={r} fill={cssColor('--greek', 0.22)} stroke={cssColor('--greek', 0.9)} strokeWidth={isSel ? 2.5 : 1.2} />
               {!dup && (
-                <text x={x + r + 3} y={y + 4} className="map-label font-sans text-[11px] font-semibold" style={{ fill: ink }}>
+                <text x={x + r + 3} y={y + 4} className="map-label font-sans text-[12px] font-semibold" style={{ fill: ink }}>
                   {l.name}
                   <tspan className="font-normal" style={{ fill: cssColor('--ink-soft') }}> {l.mentionCount}</tspan>
                 </text>
@@ -393,7 +393,7 @@ export function MapCanvas({ mode, book, journeys, showBorders, flyTo, fitPadding
                 <circle cx={p.x} cy={p.y - 17} r={3.4} fill={paper} />
                 <g transform={`translate(${p.x}, ${up ? p.y - 34 : p.y + 16})`}>
                   <rect x={-textW(p.label) / 2 - 7} y={-12} width={textW(p.label) + 14} height={19} rx={9.5} fill={p.color} />
-                  <text textAnchor="middle" y={2} className="font-sans text-[11px] font-semibold" style={{ fill: paper }}>
+                  <text textAnchor="middle" y={2} className="font-sans text-[12px] font-semibold" style={{ fill: paper }}>
                     {p.label}
                   </text>
                 </g>
@@ -437,11 +437,11 @@ export function MapCanvas({ mode, book, journeys, showBorders, flyTo, fitPadding
                       }}
                     >
                       <circle cx={x} cy={y} r={isSel ? 11 : 9} fill={col} stroke={isSel ? ink : paper} strokeWidth={isSel ? 2.5 : 1.5} />
-                      <text x={x} y={y + 3.6} textAnchor="middle" className="pointer-events-none font-sans text-[10px] font-bold" style={{ fill: paper }}>
+                      <text x={x} y={y + 3.6} textAnchor="middle" className="pointer-events-none font-sans text-[12px] font-bold" style={{ fill: paper }}>
                         {wp.n}
                       </text>
                       {k >= 2.2 && (
-                        <text x={x + 13} y={y + 4} className="map-label pointer-events-none font-sans text-[11px] font-semibold" style={{ fill: ink }}>
+                        <text x={x + 13} y={y + 4} className="map-label pointer-events-none font-sans text-[12px] font-semibold" style={{ fill: ink }}>
                           {wp.name}
                         </text>
                       )}
@@ -481,10 +481,10 @@ export function MapCanvas({ mode, book, journeys, showBorders, flyTo, fitPadding
           return (
             <g key={i}>
               <circle cx={x} cy={y} r={9} fill={reached ? col : paper} stroke={col} strokeWidth={2} />
-              <text x={x} y={y + 3.5} textAnchor="middle" className="pointer-events-none font-sans text-[10px] font-bold" style={{ fill: reached ? paper : col }}>
+              <text x={x} y={y + 3.5} textAnchor="middle" className="pointer-events-none font-sans text-[12px] font-bold" style={{ fill: reached ? paper : col }}>
                 {i + 1}
               </text>
-              <text x={x + 13} y={y + 4} className="map-label pointer-events-none font-sans text-[11px] font-semibold" style={{ fill: ink, opacity: reached ? 1 : 0.55 }}>
+              <text x={x + 13} y={y + 4} className="map-label pointer-events-none font-sans text-[12px] font-semibold" style={{ fill: ink, opacity: reached ? 1 : 0.55 }}>
                 {route.stops[i].name}
               </text>
             </g>
@@ -509,7 +509,7 @@ export function MapCanvas({ mode, book, journeys, showBorders, flyTo, fitPadding
         : l.kind === 'sea'
           ? 'font-serif text-[13px] italic tracking-wide'
           : modern
-            ? 'font-sans text-[11px] font-semibold uppercase tracking-[0.12em]'
+            ? 'font-sans text-[12px] font-semibold uppercase tracking-[0.12em]'
             : 'font-serif text-[12px] italic';
     const fill = modern ? cssColor('--rel-rival', 0.75) : l.kind === 'sea' ? cssColor('--river') : cssColor('--ink-soft', l.kind === 'region' ? 0.75 : 0.9);
     return (
@@ -560,7 +560,7 @@ export function MapCanvas({ mode, book, journeys, showBorders, flyTo, fitPadding
           {RIVERS.filter((r) => r.name).map((r) => {
             const [x, y] = P(r.label[0], r.label[1]);
             return (
-              <text key={r.name} transform={`translate(${x},${y}) rotate(${r.rotate})`} textAnchor="middle" className="map-label pointer-events-none font-serif text-[11px] italic" style={{ fill: cssColor('--river') }}>
+              <text key={r.name} transform={`translate(${x},${y}) rotate(${r.rotate})`} textAnchor="middle" className="map-label pointer-events-none font-serif text-[12px] italic" style={{ fill: cssColor('--river') }}>
                 {r.name}
               </text>
             );
@@ -612,7 +612,7 @@ export function MapCanvas({ mode, book, journeys, showBorders, flyTo, fitPadding
           </button>
         ))}
       </div>
-      <div className="pointer-events-none absolute bottom-3 left-3 hidden rounded bg-paper/80 px-2 py-1 font-sans text-[10px] text-ink-soft backdrop-blur sm:block">
+      <div className="pointer-events-none absolute bottom-3 left-3 hidden rounded bg-paper/80 px-2 py-1 font-sans text-[12px] text-ink-soft backdrop-blur sm:block">
         Drag to pan · scroll or pinch to zoom
       </div>
     </div>
@@ -656,13 +656,13 @@ function RoutePlayer({
     >
       <div className="flex items-center gap-1.5 py-1 pl-3 pr-1">
         {playlist && (
-          <span className="shrink-0 text-[10px] font-semibold tabular-nums text-ink-soft">
+          <span className="shrink-0 text-[12px] font-semibold tabular-nums text-ink-soft">
             {playlist.index + 1}/{playlist.total}
           </span>
         )}
         <span className="line-clamp-2 min-w-0 flex-1 text-[12px] font-semibold leading-tight">{route.title}</span>
         {route.distanceKm > 0 && (
-          <span className="shrink-0 text-[10px] tabular-nums text-ink-soft" aria-live="off">
+          <span className="shrink-0 text-[12px] tabular-nums text-ink-soft" aria-live="off">
             {kmNow.toLocaleString('en-US')} km
           </span>
         )}

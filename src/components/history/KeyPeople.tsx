@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Quote as QuoteIcon, X } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { ArrowLeft, ArrowRight, ExternalLink, Quote as QuoteIcon } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { ERAS, EVENTS, PEOPLE_SOURCES, STREAMS, WITNESSES, type ChurchEvent, type Era, type EraId, type Stream, type Witness } from '../../lib/witnesses';
 import { RefText } from '../ScriptureRef';
 import { Fold } from '../sections';
+import { DetailSheet } from '../DetailSheet';
 
 /**
  * Key people from Jesus to today: one era at a time, people as lifespan bars and councils and
@@ -80,39 +80,23 @@ function EraStrip({ era, onPick }: { era: EraId; onPick: (id: EraId) => void }) 
   );
 }
 
-function PersonCard({ w, onClose, onPrev, onNext }: { w: Witness; onClose: () => void; onPrev: (() => void) | null; onNext: (() => void) | null }) {
+function PersonCard({ w, onClose, onPrev, onNext, position }: { w: Witness; onClose: () => void; onPrev: (() => void) | null; onNext: (() => void) | null; position: string }) {
   const s = STREAMS[w.stream];
-  useEffect(() => {
-    const k = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowLeft' && onPrev) onPrev();
-      if (e.key === 'ArrowRight' && onNext) onNext();
-    };
-    window.addEventListener('keydown', k);
-    return () => window.removeEventListener('keydown', k);
-  }, [onClose, onPrev, onNext]);
   const era = ERAS.find((e) => e.id === w.era)!;
-  return createPortal(
-    <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-4" role="dialog" aria-modal="true" aria-labelledby="witness-name">
-      <button aria-label="Close" onClick={onClose} className="absolute inset-0 bg-ink/40" />
-      <div className="relative flex max-h-[88vh] w-full flex-col overflow-hidden rounded-t-xl border border-rule bg-paper shadow-xl sm:max-w-xl sm:rounded-xl">
-        <div className="flex items-center justify-between gap-2 border-b border-rule px-4 py-2">
-          <button onClick={onClose} className="focus-ring inline-flex items-center gap-1.5 rounded-full px-2 py-1 font-sans text-[13px] font-semibold hover:bg-ink/5">
-            <ArrowLeft size={15} aria-hidden /> Back to timeline
-          </button>
-          <span className="flex items-center gap-1">
-            <button onClick={onPrev ?? undefined} disabled={!onPrev} aria-label="Previous person" className="focus-ring rounded-full p-1.5 hover:bg-ink/5 disabled:opacity-30">
-              <ChevronLeft size={17} aria-hidden />
-            </button>
-            <button onClick={onNext ?? undefined} disabled={!onNext} aria-label="Next person" className="focus-ring rounded-full p-1.5 hover:bg-ink/5 disabled:opacity-30">
-              <ChevronRight size={17} aria-hidden />
-            </button>
-            <button onClick={onClose} aria-label="Close" className="focus-ring rounded-full p-1.5 hover:bg-ink/5">
-              <X size={17} aria-hidden />
-            </button>
-          </span>
-        </div>
-        <div className="overflow-y-auto overscroll-contain px-5 py-4">
+  return (
+    <DetailSheet
+      labelledBy="witness-name"
+      backLabel="Back to timeline"
+      onClose={onClose}
+      title={w.name}
+      position={position}
+      onPrev={onPrev}
+      onNext={onNext}
+      prevLabel="Previous person"
+      nextLabel="Next person"
+      width="lg"
+    >
+      <div className="px-5 py-4">
           <div className="eyebrow">{era.name}</div>
           <h3 id="witness-name" className="font-display text-2xl font-semibold leading-tight">
             {w.name}
@@ -163,10 +147,8 @@ function PersonCard({ w, onClose, onPrev, onNext }: { w: Witness; onClose: () =>
               </p>
             )}
           </div>
-        </div>
       </div>
-    </div>,
-    document.body,
+    </DetailSheet>
   );
 }
 
@@ -270,9 +252,9 @@ export function KeyPeople() {
                       <button
                         onClick={() => setOpenEvent(isOpen ? null : ev.id)}
                         aria-expanded={isOpen}
-                        className={`focus-ring grid w-full grid-cols-[8.5rem_1fr] items-center py-[3px] text-left sm:grid-cols-[13rem_1fr] ${isOpen ? 'bg-ink/[0.05]' : 'hover:bg-ink/[0.03]'}`}
+                        className={`focus-ring grid min-h-6 w-full grid-cols-[8.5rem_1fr] items-center py-[3px] text-left sm:grid-cols-[13rem_1fr] ${isOpen ? 'bg-ink/[0.05]' : 'hover:bg-ink/[0.03]'}`}
                       >
-                        <span className="truncate pr-2 font-sans text-[12px] italic" style={{ color: cssColor(look.css === '--ink-soft' ? '--ink' : look.css, look.css === '--ink-soft' ? 0.7 : 1) }}>
+                        <span className="break-words pr-2 font-sans text-[12px] italic leading-tight" style={{ color: cssColor(look.css === '--ink-soft' ? '--ink' : look.css, look.css === '--ink-soft' ? 0.7 : 1) }}>
                           {ev.name}
                         </span>
                         <span className="relative block h-4">
@@ -310,9 +292,9 @@ export function KeyPeople() {
                     <button
                       onClick={() => setOpen(w.id)}
                       aria-label={`${w.name}, ${w.life}, ${w.role}`}
-                      className="focus-ring group grid w-full grid-cols-[8.5rem_1fr] items-center py-[3px] text-left hover:bg-ink/[0.04] sm:grid-cols-[13rem_1fr]"
+                      className="focus-ring group grid min-h-6 w-full grid-cols-[8.5rem_1fr] items-center py-[3px] text-left hover:bg-ink/[0.04] sm:grid-cols-[13rem_1fr]"
                     >
-                      <span className="truncate pr-2 font-serif text-[13.5px] font-semibold group-hover:underline" style={w.stream === 'jesus' ? { color: cssColor('--lineage') } : undefined}>
+                      <span className="break-words pr-2 font-serif text-[13.5px] font-semibold leading-tight group-hover:underline" style={w.stream === 'jesus' ? { color: cssColor('--lineage') } : undefined}>
                         {w.name}
                       </span>
                       <span className="relative block h-4">
@@ -414,6 +396,7 @@ export function KeyPeople() {
           onClose={() => setOpen(null)}
           onPrev={pi > 0 ? () => setOpen(people[pi - 1].id) : null}
           onNext={pi < people.length - 1 ? () => setOpen(people[pi + 1].id) : null}
+          position={`${pi + 1} of ${people.length}`}
         />
       )}
     </div>

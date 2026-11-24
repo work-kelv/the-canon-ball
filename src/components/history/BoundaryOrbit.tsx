@@ -21,6 +21,7 @@ import {
   testText,
 } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
+import { DetailHeader, DetailSheet, useMedia } from '../DetailSheet';
 import { Segmented } from '../characters/controls';
 import { ChalcedonExplainer, CREED_CSS, CreedStatusMark, NonCreedalExplainer, STATUS_STYLE, statusLook } from './CreedCompare';
 
@@ -341,7 +342,14 @@ function GroupDetail({ g }: { g: BoundaryGroup }) {
 }
 
 export function BoundaryOrbit() {
-  const [sel, setSel] = useState<Sel>({ kind: 'family', id: 'catholic' });
+  const [sel, setSelRaw] = useState<Sel>({ kind: 'family', id: 'catholic' });
+  // Wide screens show the details beside the diagram; phones open them in a sheet.
+  const wide = useMedia('(min-width: 1024px)');
+  const [sheet, setSheet] = useState(false);
+  const setSel = (s: Sel) => {
+    setSelRaw(s);
+    if (!window.matchMedia('(min-width: 1024px)').matches) setSheet(true);
+  };
   const [lens, setLens] = useState<CreedId | null>(null);
   const [hover, setHover] = useState<string | null>(null);
   const small = useSmall();
@@ -356,6 +364,18 @@ export function BoundaryOrbit() {
   const selFamily = sel.kind === 'group' ? null : famOf(sel.kind === 'family' ? sel.id : sel.family);
   const selMember = sel.kind === 'member' ? selFamily!.members.find((m) => m.id === sel.id)! : null;
   const selGroup = sel.kind === 'group' ? boundaryGroups.find((g) => g.id === sel.id)! : null;
+  // ‹ › steps through everything in the diagram: each family and its churches, then the movements beyond.
+  const order: { sel: Sel; name: string }[] = [
+    ...churchFamilies.flatMap((f) => [
+      { sel: { kind: 'family', id: f.id } as Sel, name: f.name },
+      ...f.members.map((m) => ({ sel: { kind: 'member', family: f.id, id: m.id } as Sel, name: m.name })),
+    ]),
+    ...boundaryGroups.map((g) => ({ sel: { kind: 'group', id: g.id } as Sel, name: g.name })),
+  ];
+  const oi = order.findIndex((x) => keyOf(x.sel) === selKey);
+  const prevSel = oi > 0 ? () => setSelRaw(order[oi - 1].sel) : null;
+  const nextSel = oi >= 0 && oi < order.length - 1 ? () => setSelRaw(order[oi + 1].sel) : null;
+  const selName = order[oi]?.name ?? '';
 
   // Where the dashed link from the core points
   const target = selGroup ? groupPos[selGroup.id] : selMember ? memberPos[selMember.id] : (() => {
@@ -378,6 +398,14 @@ export function BoundaryOrbit() {
       </g>
     );
   };
+
+  const detail = selGroup ? (
+    <GroupDetail g={selGroup} />
+  ) : selMember ? (
+    <MemberDetail f={selFamily!} m={selMember} onPick={setSel} />
+  ) : (
+    <FamilyDetail f={selFamily!} onPick={setSel} />
+  );
 
   return (
     <div className="space-y-4">
@@ -636,17 +664,26 @@ export function BoundaryOrbit() {
           </div>
         </div>
 
-        <div className="lg:sticky lg:top-[calc(var(--jump-h,44px)+12px)] lg:col-start-2 lg:row-span-2 lg:row-start-1">
-          {selGroup ? (
-            <GroupDetail g={selGroup} />
-          ) : selMember ? (
-            <MemberDetail f={selFamily!} m={selMember} onPick={setSel} />
-          ) : (
-            <FamilyDetail f={selFamily!} onPick={setSel} />
-          )}
+        <div className="hidden lg:sticky lg:top-[calc(var(--jump-h,44px)+12px)] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:block">
+          <DetailHeader title={selName} position={`${oi + 1} of ${order.length}`} onPrev={prevSel} onNext={nextSel} className="mb-2" />
+          {detail}
         </div>
+        {sheet && !wide && (
+          <DetailSheet
+            label={selName}
+            backLabel="Back to the diagram"
+            onClose={() => setSheet(false)}
+            title={selName}
+            position={`${oi + 1} of ${order.length}`}
+            onPrev={prevSel}
+            onNext={nextSel}
+          >
+            <div className="p-4">{detail}</div>
+          </DetailSheet>
+        )}
 
         <div className="lg:col-start-1 lg:row-start-2">
+          <p className="mb-2 text-center font-sans text-[13px] text-ink-soft lg:hidden">Tap a family, church or movement to see its details.</p>
           <p className="text-center font-sans text-[13px]">
             <b>At the core:</b> the Trinity · Jesus is God · the cross · Scripture · grace
           </p>

@@ -3,6 +3,8 @@ import { CircleCheck, CircleDot, CircleX, ExternalLink, Info } from 'lucide-reac
 import { cssColor } from '../../lib/characters';
 import { type Status, benchmarks, comparisonMeta, groups } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
+import { DetailHeader, DetailSheet, useMedia } from '../DetailSheet';
+import { ScrollFade } from '../ScrollFade';
 
 const STATUS: Record<Status, { label: string; css: string; Icon: typeof CircleCheck }> = {
   affirms: { label: 'Affirms', css: '--rel-mentor', Icon: CircleCheck },
@@ -23,6 +25,9 @@ export function OrthodoxyMatrix() {
   const [shownGroups, setShownGroups] = useState<Set<string>>(() => new Set(groups.map((g) => g.id)));
   const [shownBench, setShownBench] = useState<Set<string>>(() => new Set(benchmarks.map((b) => b.id)));
   const [cell, setCell] = useState<{ g: string; b: string }>({ g: 'jw', b: 'trinity' });
+  // Wide screens show the comparison under the table; phones open it in a sheet.
+  const lg = useMedia('(min-width: 1024px)');
+  const [sheet, setSheet] = useState(false);
   const toggle = (set: Set<string>, id: string, fn: (s: Set<string>) => void) => {
     const n = new Set(set);
     if (n.has(id)) {
@@ -38,6 +43,58 @@ export function OrthodoxyMatrix() {
 
   const pill = (on: boolean) =>
     `focus-ring whitespace-nowrap rounded-full border px-2.5 py-1 font-sans text-[12px] ${on ? 'border-ink bg-ink text-paper' : 'border-rule hover:border-ink/60'}`;
+
+  const gi = gs.findIndex((x) => x.id === cell.g);
+  const prevG = gi > 0 ? () => setCell({ g: gs[gi - 1].id, b: cell.b }) : null;
+  const nextG = gi >= 0 && gi < gs.length - 1 ? () => setCell({ g: gs[gi + 1].id, b: cell.b }) : null;
+  const detail = (
+    <div className="grid gap-3 rounded-md border border-rule bg-paper p-4 shadow-sm md:grid-cols-2">
+      <div>
+        <div className="eyebrow">Historic creeds · {b.name}</div>
+        <p className="mt-1 font-serif text-[15px] leading-relaxed">{b.orthodoxPosition}</p>
+        <blockquote className="mt-2 border-l-2 border-ink/30 pl-3 font-serif text-[14.5px] italic text-ink-soft">{b.creedClause}</blockquote>
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {b.scripture.map((r) => (
+            <span key={r} className="rounded-full border border-rule px-2 py-0.5 font-sans text-[12px]">
+              <RefText text={r} />
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="md:border-l md:border-rule md:pl-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
+          <div className="eyebrow">{g.name}</div>
+          <Badge s={pos.status} />
+        </div>
+        <p className="mt-1 font-serif text-[15px] leading-relaxed">{pos.summary}</p>
+        {pos.differingClause && (
+          <p className="mt-2 font-sans text-[12.5px]">
+            <span className="text-ink-soft">Creedal clause in question: </span>
+            <i>{pos.differingClause}</i>
+          </p>
+        )}
+        {pos.keyTexts && (
+          <p className="mt-1.5 font-sans text-[12.5px]">
+            <span className="text-ink-soft">Passages this group emphasises: </span>
+            {pos.keyTexts.map((r, i) => (
+              <span key={r}>
+                {i > 0 && ', '}
+                <RefText text={r} />
+              </span>
+            ))}
+          </p>
+        )}
+        <p className="mt-2 font-sans text-[12px] text-ink-soft">
+          {g.origin}. {g.description}
+        </p>
+        {g.sources.map((s) => (
+          <a key={s} href={s} target="_blank" rel="noreferrer" className="mt-1 inline-flex items-center gap-1 font-sans text-[12px] underline decoration-rule underline-offset-2 hover:decoration-ink">
+            Official site: {new URL(s).hostname.replace(/^www\./, '')} <ExternalLink size={10} aria-hidden />
+          </a>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <div className="space-y-4">
@@ -88,7 +145,11 @@ export function OrthodoxyMatrix() {
             return (
               <li key={x.id}>
                 <button
-                  onClick={() => setCell({ g: x.id, b: cell.b })}
+                  onClick={() => {
+                    setCell({ g: x.id, b: cell.b });
+                    setSheet(true);
+                  }}
+                  aria-haspopup="dialog"
                   aria-pressed={active}
                   className={`focus-ring block w-full px-3 py-2.5 text-left ${active ? 'bg-ink/[0.06]' : ''} ${x.family === 'historic' ? 'bg-ink/[0.03]' : ''}`}
                 >
@@ -96,16 +157,16 @@ export function OrthodoxyMatrix() {
                     <span className="font-display text-[16px] font-semibold leading-tight">{x.name}</span>
                     <Badge s={p.status} />
                   </span>
-                  <span className="mt-0.5 line-clamp-2 block font-sans text-[12.5px] leading-snug text-ink-soft">{p.summary}</span>
+                  <span className="mt-0.5 block font-sans text-[12.5px] leading-snug text-ink-soft">{p.summary}</span>
                 </button>
               </li>
             );
           })}
         </ul>
-        <p className="font-sans text-[12px] text-ink-soft">Tap a group for the full comparison below.</p>
+        <p className="font-sans text-[12px] text-ink-soft">Tap a group for the full comparison.</p>
       </div>
 
-      <div className="panel hidden overflow-x-auto lg:block">
+      <ScrollFade label="Benchmark table" className="panel" outerClassName="hidden lg:block">
         <table className="w-full min-w-[720px] border-collapse font-sans text-[12.5px]">
           <thead>
             <tr>
@@ -146,55 +207,28 @@ export function OrthodoxyMatrix() {
             ))}
           </tbody>
         </table>
-      </div>
+      </ScrollFade>
 
-      {/* Detail */}
-      <div className="grid gap-3 rounded-md border border-rule bg-paper p-4 shadow-sm md:grid-cols-2">
-        <div>
-          <div className="eyebrow">Historic creeds · {b.name}</div>
-          <p className="mt-1 font-serif text-[15px] leading-relaxed">{b.orthodoxPosition}</p>
-          <blockquote className="mt-2 border-l-2 border-ink/30 pl-3 font-serif text-[14.5px] italic text-ink-soft">{b.creedClause}</blockquote>
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {b.scripture.map((r) => (
-              <span key={r} className="rounded-full border border-rule px-2 py-0.5 font-sans text-[12px]">
-                <RefText text={r} />
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className="md:border-l md:border-rule md:pl-4">
-          <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <div className="eyebrow">{g.name}</div>
-            <Badge s={pos.status} />
-          </div>
-          <p className="mt-1 font-serif text-[15px] leading-relaxed">{pos.summary}</p>
-          {pos.differingClause && (
-            <p className="mt-2 font-sans text-[12.5px]">
-              <span className="text-ink-soft">Creedal clause in question: </span>
-              <i>{pos.differingClause}</i>
-            </p>
-          )}
-          {pos.keyTexts && (
-            <p className="mt-1.5 font-sans text-[12.5px]">
-              <span className="text-ink-soft">Passages this group emphasises: </span>
-              {pos.keyTexts.map((r, i) => (
-                <span key={r}>
-                  {i > 0 && ', '}
-                  <RefText text={r} />
-                </span>
-              ))}
-            </p>
-          )}
-          <p className="mt-2 font-sans text-[12px] text-ink-soft">
-            {g.origin}. {g.description}
-          </p>
-          {g.sources.map((s) => (
-            <a key={s} href={s} target="_blank" rel="noreferrer" className="mt-1 inline-flex items-center gap-1 font-sans text-[12px] underline decoration-rule underline-offset-2 hover:decoration-ink">
-              Official site: {new URL(s).hostname.replace(/^www\./, '')} <ExternalLink size={10} aria-hidden />
-            </a>
-          ))}
-        </div>
+      {/* Detail: under the table on wide screens, in a sheet on phones */}
+      <div className="hidden lg:block">
+        <DetailHeader title={`${g.name} · ${b.name}`} position={`${gi + 1} of ${gs.length}`} onPrev={prevG} onNext={nextG} prevLabel="Previous group" nextLabel="Next group" className="mb-2" />
+        {detail}
       </div>
+      {sheet && !lg && (
+        <DetailSheet
+          label={`${g.name}: ${b.name}`}
+          backLabel="Back to the list"
+          onClose={() => setSheet(false)}
+          title={`${g.name} · ${b.name}`}
+          position={`${gi + 1} of ${gs.length}`}
+          onPrev={prevG}
+          onNext={nextG}
+          prevLabel="Previous group"
+          nextLabel="Next group"
+        >
+          <div className="p-4">{detail}</div>
+        </DetailSheet>
+      )}
       <div className="flex flex-wrap gap-4 font-sans text-[12px] text-ink-soft">
         {(Object.keys(STATUS) as Status[]).map((s) => (
           <span key={s} className="inline-flex items-center gap-1.5">

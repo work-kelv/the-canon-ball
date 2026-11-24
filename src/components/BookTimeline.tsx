@@ -129,9 +129,9 @@ function Panel({
                     onClick={() => onOpen(b.order)}
                     title={`${b.name}: ${c.display}`}
                     aria-label={`${b.name}, written ${c.display}`}
-                    className={`focus-ring group grid w-full grid-cols-[6.5rem_1fr] items-center py-[3px] text-left transition-opacity sm:grid-cols-[9rem_1fr] ${isMatch(b) ? '' : 'opacity-25'} ${selected === b.order ? 'bg-ink/[0.06]' : 'hover:bg-ink/[0.04]'}`}
+                    className={`focus-ring group grid min-h-6 w-full grid-cols-[6.5rem_1fr] items-center py-[3px] text-left transition-opacity sm:grid-cols-[9rem_1fr] ${isMatch(b) ? '' : 'opacity-25'} ${selected === b.order ? 'bg-ink/[0.06]' : 'hover:bg-ink/[0.04]'}`}
                   >
-                    <span className="truncate pr-2 font-serif text-[13px] group-hover:underline">{b.name}</span>
+                    <span className="break-words pr-2 font-serif text-[13px] leading-tight group-hover:underline">{b.name}</span>
                     <span className="relative block h-3.5">
                       <span className="absolute inset-y-0 rounded-full" style={{ left: `${l}%`, width: `${w}%`, ...barStyle(b) }} />
                     </span>

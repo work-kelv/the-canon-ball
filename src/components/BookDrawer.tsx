@@ -1,20 +1,10 @@
-import { useEffect, useRef, type ReactNode } from 'react';
-import {
-  ArrowLeft,
-  BookOpen,
-  CalendarRange,
-  ChevronLeft,
-  ChevronRight,
-  Hash,
-  Landmark,
-  Languages,
-  MessageSquareQuote,
-  X,
-} from 'lucide-react';
+import type { ReactNode } from 'react';
+import { BookOpen, CalendarRange, Hash, Landmark, Languages, MessageSquareQuote } from 'lucide-react';
 import type { BibleBook } from '../types';
 import { LANGUAGE_INFO, formatNum, formatPct, langColor } from '../lib/books';
 import { LanguageBar } from './LanguageBar';
 import { RefText } from './ScriptureRef';
+import { DetailSheet } from './DetailSheet';
 
 interface Props {
   book: BibleBook;
@@ -44,59 +34,22 @@ function Section({
 }
 
 export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const prevFocus = document.activeElement as HTMLElement | null;
-    closeRef.current?.focus();
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = overflow;
-      prevFocus?.focus?.();
-    };
-  }, []);
-
-  useEffect(() => {
-    panelRef.current?.scrollTo({ top: 0 });
-  }, [book.order]);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      else if (e.key === 'ArrowLeft' && onPrev) onPrev();
-      else if (e.key === 'ArrowRight' && onNext) onNext();
-      else if (e.key === 'Tab' && panelRef.current) {
-        // Simple focus trap
-        const nodes = panelRef.current.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])',
-        );
-        if (!nodes.length) return;
-        const first = nodes[0];
-        const last = nodes[nodes.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose, onPrev, onNext]);
-
   const primary = [...book.languages].sort((a, b) => b.percent - a.percent)[0].language;
 
   return (
-    <div className="fixed inset-0 z-50" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
-      <div className="animate-fade absolute inset-0 bg-ink/40 backdrop-blur-[2px]" onClick={onClose} />
-      <div
-        ref={panelRef}
-        className="animate-drawer absolute inset-y-0 right-0 flex w-full max-w-[30rem] flex-col overflow-y-auto border-l border-rule bg-paper shadow-2xl"
-      >
+    <DetailSheet
+      labelledBy="drawer-title"
+      backLabel="Back to all 66 books"
+      onClose={onClose}
+      title={book.name}
+      position={`${book.order} of 66`}
+      onPrev={onPrev}
+      onNext={onNext}
+      prevLabel="Previous book"
+      nextLabel="Next book"
+      width="lg"
+    >
+      <div>
         {/* Masthead */}
         <div
           className="relative px-6 pb-6 pt-5"
@@ -117,40 +70,9 @@ export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
                   : langColor(primary),
             }}
           />
-          <div className="flex items-center justify-between">
-            <span className="eyebrow">
-              Book {book.order} of 66 · {book.testament} Testament
-            </span>
-            <div className="flex items-center gap-1">
-              <button
-                onClick={onPrev ?? undefined}
-                disabled={!onPrev}
-                className="focus-ring rounded-full p-1.5 hover:bg-ink/10 disabled:opacity-30"
-                aria-label="Previous book"
-                title="Previous (←)"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={onNext ?? undefined}
-                disabled={!onNext}
-                className="focus-ring rounded-full p-1.5 hover:bg-ink/10 disabled:opacity-30"
-                aria-label="Next book"
-                title="Next (→)"
-              >
-                <ChevronRight size={18} />
-              </button>
-              <button
-                ref={closeRef}
-                onClick={onClose}
-                className="focus-ring ml-1 rounded-full p-1.5 hover:bg-ink/10"
-                aria-label="Close"
-                title="Close (Esc)"
-              >
-                <X size={18} />
-              </button>
-            </div>
-          </div>
+          <span className="eyebrow">
+            Book {book.order} of 66 · {book.testament} Testament
+          </span>
           <h2 id="drawer-title" className="mt-3 font-display text-4xl font-semibold tracking-tight">
             {book.name}
           </h2>
@@ -283,16 +205,8 @@ export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
             </blockquote>
           </Section>
 
-          {/* Same pattern as "Back to timeline" on the Characters page */}
-          <button
-            onClick={onClose}
-            className="focus-ring flex w-full items-center justify-center gap-2 rounded-full border border-ink py-3 font-sans text-sm font-medium hover:bg-ink/5 active:bg-ink/10"
-          >
-            <ArrowLeft size={16} aria-hidden />
-            Back to all 66 books
-          </button>
         </div>
       </div>
-    </div>
+    </DetailSheet>
   );
 }

@@ -1,4 +1,5 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { DetailSheet } from '../DetailSheet';
 import { RefText } from '../ScriptureRef';
 import { ArrowLeft, ArrowRight, BookMarked, CalendarRange, ChevronDown, ChevronUp, Gauge, GitCommitVertical, Users } from 'lucide-react';
 import type { Character, RelType } from '../../characterTypes';
@@ -22,8 +23,12 @@ interface Props {
   onClose: () => void;
   onJump: (id: string) => void;
   onBook: (book: string) => void;
-  /** e.g. "Back to timeline" — shown as a big button on phones, where the panel covers the screen. */
+  /** e.g. "Back to timeline". */
   backLabel: string;
+  /** Step through the people currently shown (in timeline order). */
+  onPrev?: (() => void) | null;
+  onNext?: (() => void) | null;
+  position?: string;
 }
 
 function Section({ icon, title, aside, children }: { icon: ReactNode; title: string; aside?: ReactNode; children: ReactNode }) {
@@ -39,52 +44,25 @@ function Section({ icon, title, aside, children }: { icon: ReactNode; title: str
   );
 }
 
-export function CharacterInspector({ character: c, activeBook, onClose, onJump, onBook, backLabel }: Props) {
-  const panelRef = useRef<HTMLElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    panelRef.current?.scrollTo({ top: 0 });
-  }, [c.id]);
-
-  useEffect(() => {
-    closeRef.current?.focus({ preventScroll: true });
-  }, []);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
-
+export function CharacterInspector({ character: c, activeBook, onClose, onJump, onBook, backLabel, onPrev, onNext, position }: Props) {
   const role = cssColor(roleCss(c.role));
   const era = ERAS.find((e) => e.id === c.era)!;
   const rels = edgesFor(c.id);
   const maxVerses = c.books[0]?.verses ?? 1;
 
   return (
-    <aside
-      ref={panelRef}
-      role="dialog"
-      aria-modal="false"
-      aria-labelledby="char-title"
-      className="animate-drawer fixed inset-y-0 right-0 z-50 flex w-full max-w-[28rem] flex-col overflow-y-auto overscroll-contain border-l border-rule bg-paper shadow-2xl"
+    <DetailSheet
+      modal={false}
+      labelledBy="char-title"
+      backLabel={backLabel}
+      onClose={onClose}
+      title={c.name}
+      position={position}
+      onPrev={onPrev}
+      onNext={onNext}
+      prevLabel="Previous person"
+      nextLabel="Next person"
     >
-      {/* An obvious way back, pinned to the top on every screen size. */}
-      <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-rule bg-paper/95 px-3 py-2 backdrop-blur">
-        <button
-          ref={closeRef}
-          onClick={onClose}
-          title="Esc"
-          className="focus-ring inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 font-sans text-sm font-medium text-paper active:opacity-80"
-        >
-          <ArrowLeft size={16} aria-hidden />
-          {backLabel}
-        </button>
-        <span className="min-w-0 truncate font-sans text-xs text-ink-soft">{c.name}</span>
-      </div>
       <div className="relative px-6 pb-5 pt-5" style={{ background: cssColor(roleCss(c.role), 0.12) }}>
         <span aria-hidden className="absolute inset-x-0 top-0 h-1" style={{ background: role }} />
         <span className="eyebrow">{c.testament === 'Both' ? 'Old & New Testament' : `${c.testament} Testament`}</span>
@@ -127,7 +105,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
             title="Twelve sons of Israel"
             aside={
               c.id !== 'jacob' ? (
-                <span className="font-sans text-[11px]" style={{ color: cssColor('--rel-family') }}>
+                <span className="font-sans text-[12px]" style={{ color: cssColor('--rel-family') }}>
                   son {twelveSons.findIndex((s) => s.id === c.id) + 1} of 12 · mother{' '}
                   {characterById[twelveSons.find((s) => s.id === c.id)!.mother].name}
                 </span>
@@ -143,16 +121,16 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
                       s.id === c.id ? 'bg-ink/[0.07] font-semibold' : ''
                     }`}
                   >
-                    <span className="text-right text-[10px] tabular-nums" style={{ color: cssColor('--rel-family') }}>
+                    <span className="text-right text-[12px] tabular-nums" style={{ color: cssColor('--rel-family') }}>
                       {i + 1}
                     </span>
                     <span className="font-display text-[15px] font-semibold">{characterById[s.id].name}</span>
-                    <span className="text-[11px] text-ink-soft">{characterById[s.mother].name}</span>
+                    <span className="text-[12px] text-ink-soft">{characterById[s.mother].name}</span>
                   </button>
                 </li>
               ))}
             </ol>
-            <p className="mt-2 font-sans text-[11px] text-ink-soft">
+            <p className="mt-2 font-sans text-[12px] text-ink-soft">
               Birth order per <RefText text="Genesis 29–30, 35" />. Levi became the priestly tribe; Joseph&rsquo;s sons Ephraim and Manasseh
               were later counted as tribes in his place.
             </p>
@@ -164,7 +142,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
             icon={<GitCommitVertical size={12} aria-hidden />}
             title="Line of Jesus"
             aside={
-              <span className="font-sans text-[11px]" style={{ color: cssColor('--lineage') }}>
+              <span className="font-sans text-[12px]" style={{ color: cssColor('--lineage') }}>
                 generation {c.lineage.generation} of {lineage.length}
               </span>
             }
@@ -178,8 +156,8 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
                       onClick={() => onJump(id)}
                       className="focus-ring flex w-full items-baseline gap-1.5 rounded-sm px-1 py-0.5 text-left hover:bg-ink/[0.05]"
                     >
-                      <span className="w-5 shrink-0 text-right text-[10px] tabular-nums text-ink-soft">{i + 1}</span>
-                      <span className={`truncate ${characterById[id].lineage?.note ? 'italic' : ''}`}>{characterById[id].name}</span>
+                      <span className="w-5 shrink-0 text-right text-[12px] tabular-nums text-ink-soft">{i + 1}</span>
+                      <span className={`break-words ${characterById[id].lineage?.note ? 'italic' : ''}`}>{characterById[id].name}</span>
                     </button>
                   </li>
                 ))}
@@ -227,7 +205,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
           ))}
         </dl>
         <div className="-mt-3" aria-hidden>
-          <div className="flex items-center gap-2 font-sans text-[11px] text-ink-soft">
+          <div className="flex items-center gap-2 font-sans text-[12px] text-ink-soft">
             <Gauge size={12} />
             <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-ink/10">
               <div className="h-full rounded-full" style={{ width: `${c.prominenceScore}%`, background: role }} />
@@ -240,7 +218,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
           icon={<BookMarked size={12} aria-hidden />}
           title="Books they appear in"
           aside={
-            <span className="font-sans text-[11px] text-ink-soft">
+            <span className="font-sans text-[12px] text-ink-soft">
               <span className="md:hidden">tap to see everyone in that book</span>
               <span className="hidden md:inline">click to show only that book</span>
             </span>
@@ -259,7 +237,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
                       activeBook === b.book ? 'bg-ink/[0.08] font-semibold' : ''
                     }`}
                   >
-                    <span className="truncate">{b.book}</span>
+                    <span className="break-words">{b.book}</span>
                     <span className="h-2 overflow-hidden rounded-full bg-ink/[0.07]">
                       <span className="block h-full rounded-full" style={{ width: `${(b.verses / maxVerses) * 100}%`, background: role }} />
                     </span>
@@ -330,18 +308,11 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
           )}
         </Section>
 
-        <p className="border-t border-rule pt-4 font-sans text-[11px] leading-relaxed text-ink-soft">
+        <p className="border-t border-rule pt-4 font-sans text-[12px] leading-relaxed text-ink-soft">
           Verse and book counts from Theographic person{' '}
           <code className="rounded bg-ink/[0.06] px-1">{c.theographicId}</code>.
         </p>
-        <button
-          onClick={onClose}
-          className="focus-ring flex w-full items-center justify-center gap-2 rounded-full border border-ink py-3 font-sans text-sm font-medium hover:bg-ink/5 active:bg-ink/10"
-        >
-          <ArrowLeft size={16} aria-hidden />
-          {backLabel}
-        </button>
       </div>
-    </aside>
+    </DetailSheet>
   );
 }

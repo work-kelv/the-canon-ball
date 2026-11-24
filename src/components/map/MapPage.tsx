@@ -1,6 +1,6 @@
 import { MapIntro } from '../PageIntros';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { ArrowRight, BookOpen, ListVideo, ChevronLeft, ChevronRight, ExternalLink, Feather, Globe2, MapPin, Maximize2, Minimize2, Play, Route, Search, Users, X } from 'lucide-react';
+import { ArrowRight, BookOpen, ListVideo, ChevronLeft, ChevronRight, ExternalLink, Feather, Globe2, MapPin, Maximize2, Minimize2, Play, Route, Search, Users } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import {
   type AnimRoute,
@@ -19,6 +19,7 @@ import { DIVISIONS } from '../../lib/books';
 import { Segmented } from '../characters/controls';
 import { RefText } from '../ScriptureRef';
 import { MapCanvas, type Selection } from './MapCanvas';
+import { DetailHeader, DetailSheet, useDetailKeys, useMedia } from '../DetailSheet';
 
 type Mode = 'books' | 'journeys';
 
@@ -120,10 +121,10 @@ function BookList({ order, onPick }: { order: number; onPick: (o: number) => voi
                     b.order === order ? 'bg-ink font-semibold text-paper' : 'hover:bg-ink/[0.05]'
                   }`}
                 >
-                  <span className={`w-5 shrink-0 text-right text-[10px] tabular-nums ${b.order === order ? 'text-paper/70' : 'text-ink-soft'}`}>{b.order}</span>
-                  <span className="min-w-0 flex-1 truncate">{b.book}</span>
+                  <span className={`w-5 shrink-0 text-right text-[12px] tabular-nums ${b.order === order ? 'text-paper/70' : 'text-ink-soft'}`}>{b.order}</span>
+                  <span className="min-w-0 flex-1 break-words leading-tight">{b.book}</span>
                   {b.journeys.length > 0 && (
-                    <span className={`shrink-0 text-[10px] tabular-nums ${b.order === order ? 'text-paper/70' : 'text-ink-soft'}`} title={`${b.journeys.length} journeys`}>
+                    <span className={`shrink-0 text-[12px] tabular-nums ${b.order === order ? 'text-paper/70' : 'text-ink-soft'}`} title={`${b.journeys.length} journeys`}>
                       {b.journeys.length}
                     </span>
                   )}
@@ -170,7 +171,7 @@ function JourneyList({
     <div className="space-y-2">
       {legs > 1 && (
         <div className="flex items-center justify-between gap-2 px-0.5">
-          <span className="font-sans text-[11px] text-ink-soft">{legs} routes ticked</span>
+          <span className="font-sans text-[12px] text-ink-soft">{legs} routes ticked</span>
         <button
           onClick={onPlayAll}
           className="focus-ring inline-flex items-center gap-1.5 rounded-full bg-ink px-3 py-1.5 font-sans text-[12px] font-semibold text-paper hover:opacity-90"
@@ -188,7 +189,7 @@ function JourneyList({
               <input type="checkbox" checked={on} onChange={() => onToggle(j.id)} className="mt-1 h-4 w-4 accent-current" />
               <span className="min-w-0">
                 <span className="block font-display text-[15px] font-semibold leading-tight">{j.name}</span>
-                <span className="mt-0.5 block font-sans text-[11px] leading-snug text-ink-soft">{j.summary}</span>
+                <span className="mt-0.5 block font-sans text-[12px] leading-snug text-ink-soft">{j.summary}</span>
               </span>
             </label>
             <ul className="mt-2 space-y-1">
@@ -198,8 +199,8 @@ function JourneyList({
                     <line x1="0" y1="3" x2="18" y2="3" stroke={cssColor(LEG_STYLE[l.id]?.css ?? '--ink')} strokeWidth="3" strokeDasharray={LEG_STYLE[l.id]?.dash ? '4 3' : undefined} />
                   </svg>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate">{j.legs.length > 1 ? l.label : `${l.waypoints.length} stops`}</span>
-                    <span className="block text-[11px] tabular-nums text-ink-soft">{fmtDistance(l.distanceKm)}</span>
+                    <span className="block break-words leading-snug">{j.legs.length > 1 ? l.label : `${l.waypoints.length} stops`}</span>
+                    <span className="block text-[12px] tabular-nums text-ink-soft">{fmtDistance(l.distanceKm)}</span>
                   </span>
                   <PlayButton active={routeKey === `major:${l.id}`} onClick={() => onPlay(j, l.id)} label={`Play ${j.name}${j.legs.length > 1 ? ` — ${l.label}` : ''}`} />
                 </li>
@@ -208,11 +209,17 @@ function JourneyList({
           </div>
         );
       })}
-      <p className="px-1 font-sans text-[11px] leading-snug text-ink-soft">
+      <p className="px-1 font-sans text-[12px] leading-snug text-ink-soft">
         Press ▶ to watch a route unfold, or click a numbered stop for its Scripture reference. Routes are traditional reconstructions; several (the Exodus, the return from exile) are uncertain. Distances are straight lines between stops.
       </p>
     </div>
   );
+}
+
+interface InspectorNav {
+  position: string;
+  prev: (() => void) | null;
+  next: (() => void) | null;
 }
 
 function Inspector({
@@ -220,12 +227,19 @@ function Inspector({
   book,
   onClose,
   onPickBook,
+  nav,
+  asSheet,
 }: {
   sel: Selection;
   book: BookGeo | null;
   onClose: () => void;
   onPickBook: (order: number) => void;
+  nav: InspectorNav | null;
+  /** Phones: a bottom sheet over the lower half, leaving the map visible above. */
+  asSheet: boolean;
 }) {
+  // Esc and ←/→ for the card (the sheet has its own).
+  useDetailKeys(asSheet ? null : onClose, asSheet ? null : nav?.prev, asSheet ? null : nav?.next);
   let heading = '';
   let kicker = '';
   let extra: ReactNode = null;
@@ -278,92 +292,120 @@ function Inspector({
   }
   const p = placeId ? places[placeId] : null;
 
+  const head = (
+    <div className="border-b border-rule px-4 py-3" style={{ background: cssColor('--greek', 0.08) }}>
+      <div className="eyebrow">{kicker}</div>
+      <h3 className="font-display text-2xl font-semibold leading-tight">{heading}</h3>
+    </div>
+  );
+  const details = (
+        <div className="space-y-3 px-4 py-3">
+          {extra}
+          {(p?.modern || country || p?.modernCountry) && (
+            <div className="flex items-start gap-2 font-sans text-sm">
+              <Globe2 size={15} className="mt-0.5 shrink-0 text-ink-soft" aria-hidden />
+              <div>
+                {p?.modern && p.modern !== p.name && (
+                  <div>
+                    Modern site: <b>{p.modern}</b>
+                  </div>
+                )}
+                <div className="text-ink-soft">{country ?? p?.modernCountry}</div>
+              </div>
+            </div>
+          )}
+          {p?.description && (
+            <p className="font-serif text-[15px] leading-relaxed">
+              “<RefText text={p.description} />”<span className="font-sans text-[12px] text-ink-soft"> — Easton&rsquo;s Bible Dictionary</span>
+            </p>
+          )}
+          {p && p.books.length > 0 && (
+            <div>
+              <div className="eyebrow mb-1.5 flex items-center gap-1.5">
+                <BookOpen size={12} aria-hidden /> Named in {p.verseCount} verses · books
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {p.books.map((b) => (
+                  <button
+                    key={b.book}
+                    onClick={() => onPickBook(b.order)}
+                    className={`focus-ring rounded-full border px-2 py-0.5 font-sans text-xs hover:border-ink/60 ${book?.order === b.order ? 'border-ink bg-ink text-paper' : 'border-rule'}`}
+                    title={`Show ${b.book} on the map`}
+                  >
+                    {b.book} <span className="opacity-60">{b.verses}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {p && p.people.length > 0 && (
+            <div>
+              <div className="eyebrow mb-1.5 flex items-center gap-1.5">
+                <Users size={12} aria-hidden /> Key people here
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {p.people.map((c) => (
+                  <a
+                    key={c.id}
+                    href={`characters.html?person=${c.id}`}
+                    className="focus-ring inline-flex items-center gap-1 rounded-full border border-rule px-2 py-0.5 font-sans text-xs hover:border-ink/60"
+                    title={`Open ${c.name} in Characters (named together in ${c.verses} verses)`}
+                  >
+                    {c.name}
+                    <ArrowRight size={10} aria-hidden className="opacity-60" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+          {p && (p.openBible || p.pleiades) && (
+            <div className="flex flex-wrap gap-3 border-t border-rule pt-2 font-sans text-[12px] text-ink-soft">
+              {p.openBible && (
+                <a href={p.openBible} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline-offset-2 hover:text-ink hover:underline">
+                  OpenBible.info <ExternalLink size={10} aria-hidden />
+                </a>
+              )}
+              {p.pleiades && (
+                <a href={p.pleiades} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline-offset-2 hover:text-ink hover:underline">
+                  Pleiades gazetteer <ExternalLink size={10} aria-hidden />
+                </a>
+              )}
+            </div>
+          )}
+          {!p && sel.kind !== 'place' && <p className="font-sans text-xs text-ink-soft">No single gazetteer entry: this pin marks a region or a probable location.</p>}
+        </div>
+  );
+
+  if (asSheet)
+    return (
+      <DetailSheet
+        modal={false}
+        phoneHeight={55}
+        label={heading}
+        backLabel="Back to the map"
+        onClose={onClose}
+        title={heading}
+        position={nav?.position}
+        onPrev={nav ? nav.prev : undefined}
+        onNext={nav ? nav.next : undefined}
+      >
+        {head}
+        {details}
+      </DetailSheet>
+    );
+
   return (
     <div className="flex flex-col overflow-hidden rounded-md border border-ink/30 bg-paper shadow-lg">
-      <div className="flex items-start justify-between gap-2 border-b border-rule px-4 py-3" style={{ background: cssColor('--greek', 0.08) }}>
-        <div className="min-w-0">
-          <div className="eyebrow truncate">{kicker}</div>
-          <h3 className="font-display text-2xl font-semibold leading-tight">{heading}</h3>
-        </div>
-        <button onClick={onClose} aria-label="Close" className="focus-ring -mr-1 rounded-full p-1.5 hover:bg-ink/10">
-          <X size={16} />
-        </button>
-      </div>
-      <div className="space-y-3 px-4 py-3">
-        {extra}
-        {(p?.modern || country || p?.modernCountry) && (
-          <div className="flex items-start gap-2 font-sans text-sm">
-            <Globe2 size={15} className="mt-0.5 shrink-0 text-ink-soft" aria-hidden />
-            <div>
-              {p?.modern && p.modern !== p.name && (
-                <div>
-                  Modern site: <b>{p.modern}</b>
-                </div>
-              )}
-              <div className="text-ink-soft">{country ?? p?.modernCountry}</div>
-            </div>
-          </div>
-        )}
-        {p?.description && (
-          <p className="font-serif text-[15px] leading-relaxed">
-            “<RefText text={p.description} />”<span className="font-sans text-[10px] text-ink-soft"> — Easton&rsquo;s Bible Dictionary</span>
-          </p>
-        )}
-        {p && p.books.length > 0 && (
-          <div>
-            <div className="eyebrow mb-1.5 flex items-center gap-1.5">
-              <BookOpen size={12} aria-hidden /> Named in {p.verseCount} verses · books
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              {p.books.map((b) => (
-                <button
-                  key={b.book}
-                  onClick={() => onPickBook(b.order)}
-                  className={`focus-ring rounded-full border px-2 py-0.5 font-sans text-xs hover:border-ink/60 ${book?.order === b.order ? 'border-ink bg-ink text-paper' : 'border-rule'}`}
-                  title={`Show ${b.book} on the map`}
-                >
-                  {b.book} <span className="opacity-60">{b.verses}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-        {p && p.people.length > 0 && (
-          <div>
-            <div className="eyebrow mb-1.5 flex items-center gap-1.5">
-              <Users size={12} aria-hidden /> Key people here
-            </div>
-            <div className="flex flex-wrap gap-1.5">
-              {p.people.map((c) => (
-                <a
-                  key={c.id}
-                  href={`characters.html?person=${c.id}`}
-                  className="focus-ring inline-flex items-center gap-1 rounded-full border border-rule px-2 py-0.5 font-sans text-xs hover:border-ink/60"
-                  title={`Open ${c.name} in Characters (named together in ${c.verses} verses)`}
-                >
-                  {c.name}
-                  <ArrowRight size={10} aria-hidden className="opacity-60" />
-                </a>
-              ))}
-            </div>
-          </div>
-        )}
-        {p && (p.openBible || p.pleiades) && (
-          <div className="flex flex-wrap gap-3 border-t border-rule pt-2 font-sans text-[11px] text-ink-soft">
-            {p.openBible && (
-              <a href={p.openBible} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline-offset-2 hover:text-ink hover:underline">
-                OpenBible.info <ExternalLink size={10} aria-hidden />
-              </a>
-            )}
-            {p.pleiades && (
-              <a href={p.pleiades} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline-offset-2 hover:text-ink hover:underline">
-                Pleiades gazetteer <ExternalLink size={10} aria-hidden />
-              </a>
-            )}
-          </div>
-        )}
-        {!p && sel.kind !== 'place' && <p className="font-sans text-xs text-ink-soft">No single gazetteer entry: this pin marks a region or a probable location.</p>}
-      </div>
+      <DetailHeader
+        backLabel="Close"
+        onBack={onClose}
+        position={nav?.position}
+        onPrev={nav ? nav.prev : undefined}
+        onNext={nav ? nav.next : undefined}
+        className="border-b border-rule px-3 py-2"
+      />
+      {head}
+      {details}
     </div>
   );
 }
@@ -406,7 +448,7 @@ function JourneysPanel({
           <article key={j.id} className="rounded-md border border-rule bg-paper/80">
             <header className="border-b border-rule px-4 py-3">
               <h3 className="font-display text-xl font-semibold leading-tight">{j.name}</h3>
-              <div className="mt-1 flex flex-wrap items-center gap-1.5 font-sans text-[11px] text-ink-soft">
+              <div className="mt-1 flex flex-wrap items-center gap-1.5 font-sans text-[12px] text-ink-soft">
                 {j.books.map((b) => (
                   <span key={b} className="rounded-full border border-rule px-1.5 py-px">
                     {b}
@@ -440,7 +482,7 @@ function JourneysPanel({
                       </svg>
                       <div className="min-w-0 flex-1">
                         <div className="font-display text-[15px] font-semibold leading-tight">{j.legs.length > 1 ? l.label : `${l.waypoints.length} stops`}</div>
-                        <div className="font-sans text-[11.5px] font-semibold tabular-nums">{fmtDistance(l.distanceKm)}</div>
+                        <div className="font-sans text-[12px] font-semibold tabular-nums">{fmtDistance(l.distanceKm)}</div>
                       </div>
                       <PlayButton active={activeL} onClick={() => onPlay(j, l.id)} label={`Play ${j.name}${j.legs.length > 1 ? ` — ${l.label}` : ''}`} />
                     </div>
@@ -450,12 +492,12 @@ function JourneysPanel({
                       </p>
                     )}
                     <details className="mt-1.5 font-sans text-[12px]">
-                      <summary className="cursor-pointer text-ink-soft hover:text-ink">{l.waypoints.length} stops</summary>
+                      <summary className="min-h-6 cursor-pointer py-0.5 text-ink-soft hover:text-ink">{l.waypoints.length} stops</summary>
                       <ol className="mt-1.5 space-y-1">
                         {l.waypoints.map((w) => (
                           <li key={w.n} className="flex gap-2">
                             <span
-                              className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[9px] font-bold text-paper"
+                              className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-paper"
                               style={{ background: cssColor(style.css) }}
                             >
                               {w.n}
@@ -463,7 +505,7 @@ function JourneysPanel({
                             <span className="min-w-0">
                               <b>{w.name}</b>
                               {w.n > 1 && (l.legKm[w.n - 2] ?? 0) > 0 && (
-                                <span className="text-[10.5px] tabular-nums text-ink-soft"> +{(l.legKm[w.n - 2] ?? 0).toLocaleString('en-US')} km</span>
+                                <span className="text-[12px] tabular-nums text-ink-soft"> +{(l.legKm[w.n - 2] ?? 0).toLocaleString('en-US')} km</span>
                               )}
                               {w.ref !== '\u2014' && (
                                 <>
@@ -473,7 +515,7 @@ function JourneysPanel({
                               )}
                               <span className="block text-ink-soft">{w.note}</span>
                               {w.placeId && places[w.placeId] && (
-                                <span className="block text-[11px] text-ink-soft/80">
+                                <span className="block text-[12px] text-ink-soft/80">
                                   {[places[w.placeId].modern !== places[w.placeId].name ? places[w.placeId].modern : null, places[w.placeId].modernCountry].filter(Boolean).join(' · ')}
                                 </span>
                               )}
@@ -489,7 +531,7 @@ function JourneysPanel({
           </article>
         );
       })}
-      <p className="px-1 font-sans text-[10.5px] leading-snug text-ink-soft">
+      <p className="px-1 font-sans text-[12px] leading-snug text-ink-soft">
         Distances are straight lines between stops; the roads and sea lanes actually travelled were longer. Routes are traditional reconstructions.
       </p>
     </div>
@@ -524,14 +566,14 @@ function BookPanel({
         </div>
         <h2 className="font-display text-3xl font-semibold leading-tight">{book.book}</h2>
         <div className="mt-2 space-y-1 font-sans text-[13px]">
-          <button onClick={() => onPin({ kind: 'pin', role: 'origin', order: book.order })} className="focus-ring flex w-full items-start gap-2 rounded-sm text-left hover:bg-ink/[0.04]">
+          <button onClick={() => onPin({ kind: 'pin', role: 'origin', order: book.order })} className="focus-ring flex min-h-6 w-full items-start gap-2 rounded-sm py-0.5 text-left hover:bg-ink/[0.04]">
             <Feather size={14} className="mt-0.5 shrink-0" aria-hidden />
             <span>
               <span className="text-ink-soft">Written: </span>
               <b>{book.origin.placeName}</b> <span className="text-ink-soft">· {book.origin.modernCountry}</span>
             </span>
           </button>
-          <button onClick={() => onPin({ kind: 'pin', role: 'setting', order: book.order })} className="focus-ring flex w-full items-start gap-2 rounded-sm text-left hover:bg-ink/[0.04]">
+          <button onClick={() => onPin({ kind: 'pin', role: 'setting', order: book.order })} className="focus-ring flex min-h-6 w-full items-start gap-2 rounded-sm py-0.5 text-left hover:bg-ink/[0.04]">
             <MapPin size={14} className="mt-0.5 shrink-0" style={{ color: cssColor('--lineage') }} aria-hidden />
             <span>
               <span className="text-ink-soft">{same ? 'Also set in: ' : 'Setting / sent to: '}</span>
@@ -539,7 +581,7 @@ function BookPanel({
             </span>
           </button>
         </div>
-        <p className="mt-2 font-sans text-[11.5px] leading-snug text-ink-soft">
+        <p className="mt-2 font-sans text-[12px] leading-snug text-ink-soft">
           <RefText text={book.origin.confidenceNote} />
         </p>
       </div>
@@ -550,7 +592,7 @@ function BookPanel({
           <h3 className="eyebrow flex items-center gap-1.5">
             <Route size={12} aria-hidden /> Journeys in {book.book} ({book.journeys.length})
           </h3>
-          {totalKm > 0 && <span className="font-sans text-[11px] tabular-nums text-ink-soft">{fmtDistance(totalKm)} in all</span>}
+          {totalKm > 0 && <span className="font-sans text-[12px] tabular-nums text-ink-soft">{fmtDistance(totalKm)} in all</span>}
         </div>
         {book.journeys.filter((j) => j.stops.length > 1).length > 1 && (
           <div className="mt-2">
@@ -578,13 +620,13 @@ function BookPanel({
                   style={activeJ ? { boxShadow: `inset 3px 0 0 ${cssColor(r.css)}` } : undefined}
                 >
                   <div className="flex items-start gap-2">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-sans text-[10px] font-bold text-paper" style={{ background: cssColor(r.css) }}>
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full font-sans text-[12px] font-bold text-paper" style={{ background: cssColor(r.css) }}>
                       {i + 1}
                     </span>
                     <div className="min-w-0 flex-1">
                       <div className="font-display text-[15px] font-semibold leading-tight">{j.title}</div>
-                      <div className="font-sans text-[11.5px] text-ink-soft">
-                        {j.kind !== 'travel' && <span className="mr-1 rounded bg-ink/[0.07] px-1 text-[10px] uppercase tracking-wide">{KIND_LABEL[j.kind]}</span>}
+                      <div className="font-sans text-[12px] text-ink-soft">
+                        {j.kind !== 'travel' && <span className="mr-1 rounded bg-ink/[0.07] px-1 text-[12px] uppercase tracking-wide">{KIND_LABEL[j.kind]}</span>}
                         {j.who} · <RefText text={j.ref} />
                       </div>
                     </div>
@@ -595,10 +637,10 @@ function BookPanel({
                       <RefText text={j.summary} />
                     </p>
                   )}
-                  {j.distanceKm > 0 && <div className="mt-1 font-sans text-[11.5px] font-semibold tabular-nums">{fmtDistance(j.distanceKm)}</div>}
+                  {j.distanceKm > 0 && <div className="mt-1 font-sans text-[12px] font-semibold tabular-nums">{fmtDistance(j.distanceKm)}</div>}
                   {/* Expandable stop-by-stop details */}
                   <details className="group mt-1 font-sans text-[12px]">
-                    <summary className="cursor-pointer list-none text-ink-soft hover:text-ink [&::-webkit-details-marker]:hidden">
+                    <summary className="min-h-6 cursor-pointer list-none py-0.5 text-ink-soft hover:text-ink [&::-webkit-details-marker]:hidden">
                       <span className="mr-1 inline-block transition-transform group-open:rotate-90">▸</span>
                       <b className="font-semibold text-ink">
                         {j.stops.length} {j.stops.length === 1 ? 'stop' : 'stops'}
@@ -611,7 +653,7 @@ function BookPanel({
                         const modern = p ? [p.modern && p.modern !== p.name ? p.modern : null, p.modernCountry].filter(Boolean).join(' · ') : '';
                         return (
                           <li key={si} className="flex gap-2">
-                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[9px] font-bold text-paper" style={{ background: cssColor(r.css) }}>
+                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[12px] font-bold text-paper" style={{ background: cssColor(r.css) }}>
                               {si + 1}
                             </span>
                             <span className="min-w-0 flex-1">
@@ -619,7 +661,7 @@ function BookPanel({
                                 {p ? (
                                   <button
                                     onClick={() => onPlace(st.placeId as string)}
-                                    className="focus-ring rounded-sm text-left font-semibold underline decoration-rule underline-offset-2 hover:decoration-ink"
+                                    className="focus-ring inline-block min-h-6 min-w-6 rounded-sm py-0.5 text-left font-semibold underline decoration-rule underline-offset-2 hover:decoration-ink"
                                     title={`About ${p.name}`}
                                   >
                                     {st.name}
@@ -628,15 +670,15 @@ function BookPanel({
                                   <b>{st.name}</b>
                                 )}
                                 {si > 0 && (j.legKm[si - 1] ?? 0) > 0 && (
-                                  <span className="text-[10.5px] tabular-nums text-ink-soft">+{(j.legKm[si - 1] ?? 0).toLocaleString('en-US')} km</span>
+                                  <span className="text-[12px] tabular-nums text-ink-soft">+{(j.legKm[si - 1] ?? 0).toLocaleString('en-US')} km</span>
                                 )}
                                 {st.ref && st.ref !== '—' && (
-                                  <span className="text-[11px]">
+                                  <span className="text-[12px]">
                                     <RefText text={st.ref} />
                                   </span>
                                 )}
                               </span>
-                              {modern && <span className="block text-[11px] text-ink-soft">{modern}</span>}
+                              {modern && <span className="block text-[12px] text-ink-soft">{modern}</span>}
                             </span>
                           </li>
                         );
@@ -649,7 +691,7 @@ function BookPanel({
           </ol>
         )}
         {book.journeys.length > 0 && (
-          <p className="mt-2 font-sans text-[10.5px] leading-snug text-ink-soft">
+          <p className="mt-2 font-sans text-[12px] leading-snug text-ink-soft">
             Distances are straight lines between the stops; the roads actually travelled were longer. Some stops are approximate.
           </p>
         )}
@@ -668,7 +710,7 @@ function BookPanel({
         ) : (
           <div className="flex flex-wrap gap-1.5">
             {book.keyLocations.map((l) => (
-              <button key={l.placeId} onClick={() => onPlace(l.placeId)} className="focus-ring rounded-full border border-rule px-2 py-0.5 font-sans text-xs hover:border-ink/60">
+              <button key={l.placeId} onClick={() => onPlace(l.placeId)} className="focus-ring inline-flex min-h-6 items-center rounded-full border border-rule px-2.5 py-0.5 font-sans text-xs hover:border-ink/60">
                 {l.name} <span className="opacity-60">{l.mentionCount}</span>
               </button>
             ))}
@@ -812,10 +854,45 @@ export function MapPage() {
       else n.add(id);
       return n;
     });
+  const phone = !useMedia('(min-width: 768px)');
   const select = (s: Selection | null) => {
     setSel(s);
-    if (s && !wide) document.getElementById('map-details')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Tablets and laptops: bring the card (under the map) into view. Phones show it in a sheet instead.
+    if (s && !wide && window.matchMedia('(min-width: 768px)').matches) document.getElementById('map-details')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Phones: the details open in a sheet over the lower half, so make sure the map is showing above it.
+    if (s && !window.matchMedia('(min-width: 768px)').matches && mapRef.current) {
+      const r = mapRef.current.getBoundingClientRect();
+      if (r.top < -8 || r.bottom > window.innerHeight * 0.45) window.scrollTo({ top: r.top + window.scrollY - 8, behavior: 'smooth' });
+    }
   };
+  // Previous / next: the other stops on the same leg, the book's key places, or its two pins.
+  const nav: InspectorNav | null = (() => {
+    if (!sel) return null;
+    if (sel.kind === 'waypoint') {
+      const leg = journeys.find((x) => x.id === sel.journeyId)?.legs.find((l) => l.id === sel.legId);
+      if (!leg) return null;
+      const i = leg.waypoints.findIndex((w) => w.n === sel.n);
+      return {
+        position: `Stop ${i + 1} of ${leg.waypoints.length}`,
+        prev: i > 0 ? () => select({ ...sel, n: leg.waypoints[i - 1].n }) : null,
+        next: i < leg.waypoints.length - 1 ? () => select({ ...sel, n: leg.waypoints[i + 1].n }) : null,
+      };
+    }
+    if (sel.kind === 'pin')
+      return {
+        position: sel.role === 'origin' ? '1 of 2' : '2 of 2',
+        prev: sel.role === 'setting' ? () => select({ ...sel, role: 'origin' }) : null,
+        next: sel.role === 'origin' ? () => select({ ...sel, role: 'setting' }) : null,
+      };
+    const list = book?.keyLocations ?? [];
+    const i = list.findIndex((l) => l.placeId === sel.placeId);
+    if (i < 0) return null;
+    return {
+      position: `Place ${i + 1} of ${list.length}`,
+      prev: i > 0 ? () => select({ kind: 'place', placeId: list[i - 1].placeId }) : null,
+      next: i < list.length - 1 ? () => select({ kind: 'place', placeId: list[i + 1].placeId }) : null,
+    };
+  })();
 
   return (
     <div className="pt-6">
@@ -949,7 +1026,7 @@ export function MapPage() {
           id="map-details"
           className="order-2 min-w-0 scroll-mt-[calc(max(30vh,210px)+2rem)] space-y-3 md:order-3 md:col-span-2 md:scroll-mt-[calc(52vh+1.5rem)] xl:sticky xl:top-2 xl:col-span-1 xl:h-[74vh] xl:self-start xl:overflow-y-auto xl:overscroll-contain xl:pr-1"
         >
-          {sel && <Inspector sel={sel} book={book} onClose={() => setSel(null)} onPickBook={pickBook} />}
+          {sel && <Inspector sel={sel} book={book} onClose={() => setSel(null)} onPickBook={pickBook} nav={nav} asSheet={phone} />}
           {mode === 'journeys' && (
             <JourneysPanel
               active={active}
@@ -994,7 +1071,7 @@ function MapLegend({ mode }: { mode: Mode }) {
     </svg>
   );
   return (
-    <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-sans text-[11px] text-ink-soft">
+    <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 font-sans text-[12px] text-ink-soft">
       {mode === 'books' ? (
         <>
           {item('w', <span className="h-3 w-3 rounded-full" style={{ background: cssColor('--ink') }} />, 'Where it was written')}

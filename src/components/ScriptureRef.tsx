@@ -123,6 +123,7 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
       <div
         ref={boxRef}
         role="dialog"
+        data-popover-open=""
         aria-label={`${data?.display ?? displayRef(found.segments)} — ${name}`}
         className={`fixed z-[71] flex flex-col overflow-hidden border border-rule bg-paper font-sans text-ink shadow-2xl ${
           phone ? 'inset-x-0 bottom-0 max-h-[75vh] rounded-t-xl' : 'max-h-[min(70vh,34rem)] w-[24rem] max-w-[calc(100vw-16px)] rounded-md'

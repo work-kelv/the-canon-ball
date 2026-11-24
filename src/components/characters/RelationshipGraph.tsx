@@ -317,7 +317,7 @@ export function RelationshipGraph({ filters, selectedId, onSelect, dark }: Props
       </div>
 
       {/* Legend */}
-      <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-3 bg-gradient-to-t from-paper via-paper/80 to-transparent px-4 pb-3 pt-8 font-sans text-[11px] text-ink-soft">
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-3 bg-gradient-to-t from-paper via-paper/80 to-transparent px-4 pb-3 pt-8 font-sans text-[12px] text-ink-soft">
         <div className="flex flex-wrap gap-x-3 gap-y-1">
           {ROLES.map((r) => (
             <span key={r.id} className="inline-flex items-center gap-1">

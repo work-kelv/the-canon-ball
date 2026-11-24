@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { ScrollFade } from '../ScrollFade';
 import type { Character, RelType } from '../../characterTypes';
 import {
   PRECISION_LABEL,
@@ -47,7 +48,7 @@ const SON_ORDER: Record<string, number> = Object.fromEntries(SON_IDS.map((id, i)
 const TWELVE_SET = new Set(['jacob', ...SON_IDS, ...twelveSons.map((s) => s.mother)]);
 
 let measureCtx: CanvasRenderingContext2D | null = null;
-function textWidth(t: string, weight = 600, size = 11): number {
+function textWidth(t: string, weight = 600, size = 12): number {
   measureCtx ??= document.createElement('canvas').getContext('2d');
   if (!measureCtx) return t.length * size * 0.6;
   measureCtx.font = `${weight} ${size}px Inter, system-ui, sans-serif`;
@@ -246,7 +247,7 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
                 <clipPath id={`era-clip-${i}`}>
                   <rect x={s.x0} y={0} width={w} height={26} />
                 </clipPath>
-                <text x={s.x0 + 8} y={17} clipPath={`url(#era-clip-${i})`} className="fill-ink font-sans text-[11px] font-semibold uppercase tracking-[0.1em]">
+                <text x={s.x0 + 8} y={17} clipPath={`url(#era-clip-${i})`} className="fill-ink font-sans text-[12px] font-semibold uppercase tracking-[0.1em]">
                   {label.toUpperCase()}
                   <title>{`${s.label} · ${s.dates}`}</title>
                 </text>
@@ -257,7 +258,7 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
           {scale.ticks.map((t) => (
             <g key={t.year} transform={`translate(${t.x},26)`}>
               <line y1={0} y2={4} stroke={cssColor('--ink-soft', 0.6)} />
-              <text y={16} textAnchor="middle" className="fill-ink-soft font-sans text-[10px] tabular-nums">
+              <text y={16} textAnchor="middle" className="fill-ink-soft font-sans text-[12px] tabular-nums">
                 {fmtYear(t.year)}
               </text>
             </g>
@@ -265,7 +266,7 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
           {cursorX != null && cursorYear != null && (
             <g transform={`translate(${Math.min(Math.max(cursorX, 62), width - 62)},0)`} pointerEvents="none">
               <rect x={-60} y={28} width={120} height={19} rx={3} fill={cssColor('--ink')} />
-              <text y={41.5} textAnchor="middle" className="fill-paper font-sans text-[10.5px] font-semibold tabular-nums">
+              <text y={41.5} textAnchor="middle" className="fill-paper font-sans text-[12px] font-semibold tabular-nums">
                 {fmtYear(cursorYear)} · {alive} alive
               </text>
             </g>
@@ -273,12 +274,13 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
         </svg>
       </div>
 
-      <div
-        ref={scroller}
-        className={zoom > 1 ? 'overflow-x-auto' : 'overflow-x-hidden'}
+      <ScrollFade
+        innerRef={scroller}
+        label="Timeline of characters (scrolls sideways when zoomed)"
+        enabled={zoom > 1}
         onScroll={(e) => setScrollLeft(e.currentTarget.scrollLeft)}
-        onMouseLeave={() => setCursorX(null)}
       >
+      <div onMouseLeave={() => setCursorX(null)}>
         <svg
           width={width}
           height={layout.height}
@@ -320,7 +322,7 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
                 <rect x={h.x0 - 4} y={h.y} width={h.x1 - h.x0 + 8} height={h.h} rx={4} fill={cssColor('--ink', 0.035)} stroke={cssColor('--ink', 0.12)} />
                 <text x={lx} y={h.y + 15} className="font-sans">
                   <tspan className="fill-ink text-[12px] font-bold">{label}</tspan>
-                  <tspan className="fill-ink-soft text-[11px]"> {h.sub} · {h.n}</tspan>
+                  <tspan className="fill-ink-soft text-[12px]"> {h.sub} · {h.n}</tspan>
                 </text>
               </g>
             );
@@ -345,7 +347,7 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
                 y={sonsThread.labelY}
                 textAnchor="end"
                 dominantBaseline="middle"
-                className="font-sans text-[11px] font-semibold"
+                className="font-sans text-[12px] font-semibold"
                 style={{ fill: cssColor('--rel-family') }}
               >
                 12 tribes
@@ -396,8 +398,8 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
                 onMouseMove={(e) => setHover({ id: c.id, cx: e.clientX, cy: e.clientY })}
                 onMouseLeave={() => setHover(null)}
               >
-                <rect x={Math.min(p.x0, p.lx) - 2} y={p.y + 1} width={Math.max(p.x1, p.lx + textWidth(c.name)) - Math.min(p.x0, p.lx) + 4} height={ROW - 2} fill="transparent" />
-                <text x={p.lx} y={p.y + 11} className={`fill-ink font-sans text-[11px] ${strong ? 'font-bold' : 'font-semibold'}`}>
+                <rect x={Math.min(p.x0, p.lx) - 2} y={p.y + 1} width={Math.max(24, Math.max(p.x1, p.lx + textWidth(c.name)) - Math.min(p.x0, p.lx) + 4)} height={ROW - 2} fill="transparent" />
+                <text x={p.lx} y={p.y + 11} className={`fill-ink font-sans text-[12px] ${strong ? 'font-bold' : 'font-semibold'}`}>
                   {twelveMode && SON_ORDER[c.id] && <tspan style={{ fill: cssColor('--rel-family') }}>{SON_ORDER[c.id]}. </tspan>}
                   {c.name}
                 </text>
@@ -442,7 +444,7 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
                     {xs.map((x, k) => (
                       <path key={k} d={`M${x},${y - 4} L${x + 4},${y} L${x},${y + 4} L${x - 4},${y} Z`} fill={role} />
                     ))}
-                    <text x={Math.min(xs[0] + 8, width - 220)} y={y - 6} className="fill-ink font-sans text-[11px] font-semibold">
+                    <text x={Math.min(xs[0] + 8, width - 220)} y={y - 6} className="fill-ink font-sans text-[12px] font-semibold">
                       {c.name}
                       <tspan className="fill-ink-soft font-normal"> · {c.title} · appearances</tspan>
                     </text>
@@ -457,6 +459,7 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
           )}
         </svg>
       </div>
+      </ScrollFade>
 
       {hovered &&
         hover &&
@@ -487,7 +490,7 @@ export function HorizontalTimeline({ model, arrangement, highlight, zoom, select
                 Son {SON_ORDER[hovered.id]} of 12 · tribe of {hovered.name}
               </div>
             )}
-            <div className="mt-1.5 flex flex-wrap gap-x-2 font-sans text-[10.5px]">
+            <div className="mt-1.5 flex flex-wrap gap-x-2 font-sans text-[12px]">
               {REL_TYPES.map((t) => {
                 const n = edgesFor(hovered.id).filter((e) => e.edge.type === t.id).length;
                 return n ? (

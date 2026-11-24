@@ -94,7 +94,7 @@ export function CharacterTimeline({ filters, selectedId, onSelect }: Props) {
               <button
                 onClick={() => setZoom((z) => Math.max(1, z / 1.5))}
                 disabled={zoom === 1}
-                className="focus-ring rounded-l-full px-2 py-1 hover:bg-ink/5 disabled:opacity-30"
+                className="focus-ring min-h-6 min-w-6 rounded-l-full px-2 py-1 hover:bg-ink/5 disabled:opacity-30"
                 aria-label="Zoom out"
               >
                 <Minus size={13} />
@@ -102,14 +102,14 @@ export function CharacterTimeline({ filters, selectedId, onSelect }: Props) {
               <button
                 onClick={() => setZoom(1)}
                 disabled={zoom === 1}
-                className="focus-ring border-x border-rule px-2 py-1 hover:bg-ink/5 disabled:opacity-30"
+                className="focus-ring min-h-6 min-w-6 border-x border-rule px-2 py-1 hover:bg-ink/5 disabled:opacity-30"
                 title="Fit the whole span to the screen"
               >
                 Fit
               </button>
               <button
                 onClick={() => setZoom((z) => Math.min(6, z * 1.5))}
-                className="focus-ring rounded-r-full px-2 py-1 hover:bg-ink/5"
+                className="focus-ring min-h-6 min-w-6 rounded-r-full px-2 py-1 hover:bg-ink/5"
                 aria-label="Zoom in"
               >
                 <Plus size={13} />
@@ -120,7 +120,7 @@ export function CharacterTimeline({ filters, selectedId, onSelect }: Props) {
       </div>
 
       {/* Legend (at the top, so the colours are explained before you scroll) */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-rule bg-ink/[0.02] px-3 py-2 font-sans text-[11px] text-ink-soft">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 border-b border-rule bg-ink/[0.02] px-3 py-2 font-sans text-[12px] text-ink-soft">
         {ROLES.map((r) => (
           <span key={r.id} className="inline-flex items-center gap-1">
             <span className="h-2 w-4 rounded-full" style={{ background: cssColor(r.css) }} />

@@ -61,6 +61,12 @@ export function CharactersPage({ dark }: { dark: boolean }) {
 
   const matchCount = useMemo(() => characters.filter((c) => matchesCharacter(c, filters)).length, [filters]);
   const selected = selectedId ? characterById[selectedId] : null;
+  // Previous / next in the inspector: the people currently shown, earliest first.
+  const ordered = useMemo(
+    () => characters.filter((c) => matchesCharacter(c, filters)).sort((a, b) => (a.dates?.start ?? 0) - (b.dates?.start ?? 0) || a.name.localeCompare(b.name)),
+    [filters],
+  );
+  const at = selected ? ordered.findIndex((c) => c.id === selected.id) : -1;
   const close = useCallback(() => setSelectedId(null), [setSelectedId]);
 
   // Publish the sticky filter bar's height so the timeline's era header can stick right below it.
@@ -160,6 +166,9 @@ export function CharactersPage({ dark }: { dark: boolean }) {
             }
           }}
           backLabel={mode === 'graph' ? 'Back to network' : mode === 'directory' ? 'Back to directory' : 'Back to timeline'}
+          position={at >= 0 ? `${at + 1} of ${ordered.length}` : undefined}
+          onPrev={at > 0 ? () => setSelectedId(ordered[at - 1].id) : null}
+          onNext={at >= 0 && at < ordered.length - 1 ? () => setSelectedId(ordered[at + 1].id) : null}
         />
       )}
     </div>

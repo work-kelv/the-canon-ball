@@ -114,8 +114,18 @@
 .animate-drawer { animation: drawer-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .animate-fade { animation: fade-in 200ms ease-out; }
 
+/* Detail sheets: up from the bottom on phones, in from the right on wider screens */
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.animate-sheet { animation: sheet-up 280ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+@media (min-width: 768px) {
+  .animate-sheet { animation: drawer-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .animate-drawer, .animate-fade { animation: none; }
+  .animate-drawer, .animate-fade, .animate-sheet { animation: none; }
 }
 
 /* Map: halo behind labels so they read over coastlines and routes */

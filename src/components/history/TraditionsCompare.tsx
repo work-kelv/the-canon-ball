@@ -1,10 +1,10 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { ArrowLeft, ChevronDown, ChevronLeft, ChevronRight, HeartHandshake, History, Info, Lightbulb, X } from 'lucide-react';
+import { Fragment, useState } from 'react';
+import { ChevronDown, ChevronRight, HeartHandshake, History, Info, Lightbulb, X } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { type Topic, commonGround, familyMembers, familyOverview, topics, traditionFamilies, traditions, traditionsMeta } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
 import { Fold } from '../sections';
+import { DetailSheet } from '../DetailSheet';
 
 // ── Units: what is compared. Either the four families (Protestant shown as the range of its
 //    branches) or all eight traditions one by one. ──
@@ -262,63 +262,23 @@ function TopicDetail({ topic, units, focus }: { topic: Topic; units: Unit[]; foc
 /** Side panel for one question, like the person panel on the Characters timeline. */
 function QuestionPanel({ index, units, focus, onStep, onClose }: { index: number; units: Unit[]; focus: string[]; onStep: (d: -1 | 1) => void; onClose: () => void }) {
   const topic = topics[index];
-  const panelRef = useRef<HTMLElement>(null);
-  const backRef = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    panelRef.current?.scrollTo({ top: 0 });
-  }, [index]);
-  useEffect(() => {
-    backRef.current?.focus({ preventScroll: true });
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      else if (e.key === 'ArrowRight') onStep(1);
-      else if (e.key === 'ArrowLeft') onStep(-1);
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose, onStep]);
-
-  const back = (
-    <>
-      <ArrowLeft size={16} aria-hidden /> Back to all questions
-    </>
-  );
-  return createPortal(
-    <div className="fixed inset-0 z-50">
-      <div className="animate-fade absolute inset-0 bg-ink/30" onClick={onClose} aria-hidden />
-      <aside
-        ref={panelRef}
-        role="dialog"
-        aria-label={topic.question}
-        className="animate-drawer absolute inset-y-0 right-0 flex w-full max-w-[40rem] flex-col overflow-y-auto overscroll-contain border-l border-rule bg-paper shadow-2xl"
-      >
-        <div className="sticky top-0 z-10 flex items-center gap-2 border-b border-rule bg-paper/95 px-3 py-2 backdrop-blur">
-          <button ref={backRef} onClick={onClose} title="Esc" className="focus-ring inline-flex items-center gap-1.5 rounded-full bg-ink px-3.5 py-2 font-sans text-sm font-medium text-paper active:opacity-80">
-            {back}
-          </button>
-          <span className="ml-auto font-sans text-xs tabular-nums text-ink-soft">
-            Question {index + 1} of {topics.length}
-          </span>
-        </div>
-        <div className="px-5 py-5">
-          <TopicDetail topic={topic} units={units} focus={focus} />
-        </div>
-        <div className="mt-auto space-y-3 border-t border-rule px-5 py-4">
-          <div className="flex items-center justify-between gap-2">
-            <button onClick={() => onStep(-1)} disabled={index === 0} className="focus-ring inline-flex items-center gap-1 rounded-full border border-rule px-3 py-1.5 font-sans text-[12.5px] font-medium hover:border-ink/50 disabled:opacity-30">
-              <ChevronLeft size={14} aria-hidden /> Previous question
-            </button>
-            <button onClick={() => onStep(1)} disabled={index === topics.length - 1} className="focus-ring inline-flex items-center gap-1 rounded-full border border-rule px-3 py-1.5 font-sans text-[12.5px] font-medium hover:border-ink/50 disabled:opacity-30">
-              Next question <ChevronRight size={14} aria-hidden />
-            </button>
-          </div>
-          <button onClick={onClose} className="focus-ring flex w-full items-center justify-center gap-2 rounded-full border border-ink py-3 font-sans text-sm font-medium hover:bg-ink/5 active:bg-ink/10">
-            {back}
-          </button>
-        </div>
-      </aside>
-    </div>,
-    document.body,
+  return (
+    <DetailSheet
+      label={topic.question}
+      backLabel="Back to all questions"
+      onClose={onClose}
+      title={topic.name}
+      position={`Question ${index + 1} of ${topics.length}`}
+      onPrev={index > 0 ? () => onStep(-1) : null}
+      onNext={index < topics.length - 1 ? () => onStep(1) : null}
+      prevLabel="Previous question"
+      nextLabel="Next question"
+      width="xl"
+    >
+      <div className="px-5 py-5">
+        <TopicDetail topic={topic} units={units} focus={focus} />
+      </div>
+    </DetailSheet>
   );
 }
 
@@ -367,10 +327,22 @@ function OverviewTable({ onTopic }: { onTopic: (topicId: string) => void }) {
                       className={`border-t border-rule align-top ${clickable ? 'cursor-pointer hover:bg-ink/[0.03]' : ''}`}
                     >
                       <th scope="row" className="px-3 py-2 text-left font-semibold">
-                        <span className="inline-flex items-center gap-1">
-                          {r.label}
-                          {clickable && <ChevronRight size={13} className="text-ink-soft" aria-hidden />}
-                        </span>
+                        {clickable ? (
+                          // The whole row opens the question for the mouse; this button makes it reachable by keyboard.
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onTopic(r.topic!);
+                            }}
+                            aria-haspopup="dialog"
+                            className="focus-ring inline-flex min-h-6 items-center gap-1 rounded-sm text-left underline decoration-rule underline-offset-2 hover:decoration-ink"
+                          >
+                            {r.label}
+                            <ChevronRight size={13} className="text-ink-soft" aria-hidden />
+                          </button>
+                        ) : (
+                          <span>{r.label}</span>
+                        )}
                       </th>
                       {traditionFamilies.map((f) => (
                         <td key={f.id} className="px-3 py-2 leading-snug text-ink/85">
