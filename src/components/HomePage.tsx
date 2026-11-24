@@ -27,7 +27,8 @@ const FEATURES: Feature[] = [
     blurb: 'How the 66 books were written in Hebrew, Aramaic and Greek, copied by hand, numbered into chapters and verses, and translated.',
     points: ['Every book by its original language', 'From ancient scrolls to chapter and verse', 'Translations from the Septuagint to today'],
     tries: [
-      { label: 'Which books contain Aramaic?', href: 'languages.html' },
+      { label: 'Which books contain Aramaic?', href: 'languages.html#languages' },
+      { label: 'Which books are in the Bible?', href: 'languages.html#canon' },
       { label: 'How the Bible was translated', href: 'languages.html#translations' },
     ],
   },
@@ -67,6 +68,7 @@ const FEATURES: Feature[] = [
     points: ['A family tree from Pentecost to today', 'Catholic, Orthodox and Protestant families compared', 'The four creeds, side by side and line by line'],
     tries: [
       { label: 'Start here: the story simply told', href: 'history.html#start' },
+      { label: 'From Jesus to today: key people', href: 'history.html#people' },
       { label: 'Compare the church families', href: 'history.html#traditions' },
       { label: 'Core beliefs compared', href: 'history.html#compare' },
     ],
@@ -76,9 +78,9 @@ const FEATURES: Feature[] = [
 const QUESTIONS: { q: string; href: string; css: string }[] = [
   { q: 'Who were the ancestors of Jesus?', href: 'characters.html?person=jesus', css: '--lineage' },
   { q: 'How far did Paul travel on his journeys?', href: 'map.html#journeys', css: '--lineage' },
-  { q: 'Why is part of Daniel in Aramaic?', href: 'languages.html', css: '--aramaic' },
+  { q: 'Why is part of Daniel in Aramaic?', href: 'languages.html#languages', css: '--aramaic' },
   { q: 'How do Catholics and Baptists differ on baptism?', href: 'history.html#traditions', css: '--role-king' },
-  { q: 'How do Jehovah’s Witnesses’ beliefs differ from the creeds?', href: 'history.html#compare', css: '--rel-rival' },
+  { q: 'How do Jehovah’s Witnesses’ beliefs differ from the creeds?', href: 'history.html#benchmarks', css: '--rel-rival' },
   { q: 'Where did chapter and verse numbers come from?', href: 'languages.html#verses', css: '--greek' },
 ];
 

@@ -9,8 +9,8 @@ export interface ViewTab<T extends string> {
 }
 
 /**
- * The one style for switching views within a page (Languages, Characters, Church History):
- * rounded tabs, the current one filled in ink.
+ * Switches between the Characters views (timeline, network, directory): rounded tabs, the current one
+ * filled in ink. (The Bible and Church History are single scrolling pages with numbered sections.)
  */
 export function ViewTabs<T extends string>({
   label,

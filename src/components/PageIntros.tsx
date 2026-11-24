@@ -118,7 +118,8 @@ export function MapIntro() {
 }
 
 export function HistoryIntro() {
-  const tab = (id: string, label: string) => (
+  /** A link to a numbered section further down this page. */
+  const jump = (id: string, label: string) => (
     <a href={`#${id}`} className="font-sans text-[13px] font-semibold underline decoration-rule underline-offset-2 hover:decoration-ink">
       {label}
     </a>
@@ -143,8 +144,8 @@ export function HistoryIntro() {
           kicker: 'Branches & traditions',
           body: (
             <>
-              {tab('tree', 'Family tree')}: the great schisms and reformations, from Pentecost to today. {tab('traditions', 'Differences')}:
-              compare the Catholic, Eastern Orthodox, Oriental Orthodox and Protestant families on ten questions. {tab('titles', 'Titles')}: who’s who, from pope to pastor.
+              {jump('people', 'Key people')}: the apostles, church fathers, reformers and missionaries, from Jesus to today. {jump('tree', 'Family tree')}: the great schisms and reformations, from Pentecost to today. {jump('traditions', 'Differences')}:
+              compare the Catholic, Eastern Orthodox, Oriental Orthodox and Protestant families on ten questions. {jump('titles', 'Titles')}: who’s who, from pope to pastor.
             </>
           ),
         },
@@ -154,7 +155,7 @@ export function HistoryIntro() {
           kicker: 'Creeds & boundaries',
           body: (
             <>
-              {tab('creeds', 'Creeds')}: four historic creeds, side by side and line by line. {tab('compare', 'Core beliefs')}: the families of
+              {jump('creeds', 'Creeds')}: four historic creeds, side by side and line by line. {jump('compare', 'Core beliefs')}: the families of
               churches that share that faith, their member churches, and how other movements differ.
             </>
           ),
@@ -167,7 +168,7 @@ export function HistoryIntro() {
             <>
               How the text was copied, divided into chapters and verses, and translated into the world’s languages:{' '}
               <a href="languages.html#verses" className="font-sans text-[13px] font-semibold underline decoration-rule underline-offset-2 hover:decoration-ink">
-                Scrolls to verses
+                Chapters & verses
               </a>{' '}
               and{' '}
               <a href="languages.html#translations" className="font-sans text-[13px] font-semibold underline decoration-rule underline-offset-2 hover:decoration-ink">

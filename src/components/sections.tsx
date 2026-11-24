@@ -21,6 +21,20 @@ export function openFold(id: string) {
   window.dispatchEvent(new CustomEvent(OPEN_FOLD, { detail: id }));
 }
 
+/** Open something (a fold, a Start here step) when a link or jump names one of these ids. */
+export function useOpenTarget(ids: string[], open: () => void) {
+  const key = ids.join(' ');
+  useEffect(() => {
+    const on = (e: Event) => {
+      if (key.split(' ').includes((e as CustomEvent<string>).detail)) open();
+    };
+    window.addEventListener(OPEN_FOLD, on);
+    return () => window.removeEventListener(OPEN_FOLD, on);
+  }, [key, open]);
+}
+
+const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /** Scroll to a section or fold by id, opening the fold (and any fold around it) first. */
 export function jumpTo(id: string, { smooth = false, replace = true } = {}) {
   window.dispatchEvent(new CustomEvent(OPEN_FOLD, { detail: id }));
@@ -29,26 +43,41 @@ export function jumpTo(id: string, { smooth = false, replace = true } = {}) {
     requestAnimationFrame(() => {
       const el = document.getElementById(id);
       if (!el) return;
-      el.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
+      el.scrollIntoView({ block: 'start', behavior: smooth && !reducedMotion() ? 'smooth' : 'auto' });
       if (replace) history.replaceState(null, '', `#${id}`);
     }),
   );
 }
 
-/** Follow the hash on load and on in-page links, so old tab URLs land on their section. */
+/**
+ * Follow the hash on load, so old tab URLs (#canon, #creeds-read …) land on their section or open
+ * their fold; and make every in-page link (href="#…") scroll smoothly to its target, opening any fold.
+ */
 export function useSectionHash() {
   useEffect(() => {
-    const go = () => {
+    const go = (smooth: boolean) => {
       const id = decodeURIComponent(window.location.hash.slice(1));
-      if (id) jumpTo(id, { replace: false });
+      if (id) jumpTo(id, { replace: false, smooth });
     };
-    go();
+    go(false);
     // Fonts and late layout can move things a little; settle once more.
-    const t = window.setTimeout(go, 350);
-    window.addEventListener('hashchange', go);
+    const t = window.setTimeout(() => go(false), 350);
+    const onHash = () => go(true);
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = (e.target as Element | null)?.closest?.('a[href^="#"]') as HTMLAnchorElement | null;
+      const id = a ? decodeURIComponent(a.getAttribute('href')!.slice(1)) : '';
+      // The skip link keeps its own behaviour (it moves keyboard focus into the page).
+      if (!id || id === 'main' || !document.getElementById(id)) return;
+      e.preventDefault();
+      jumpTo(id, { smooth: true });
+    };
+    window.addEventListener('hashchange', onHash);
+    document.addEventListener('click', onClick);
     return () => {
       window.clearTimeout(t);
-      window.removeEventListener('hashchange', go);
+      window.removeEventListener('hashchange', onHash);
+      document.removeEventListener('click', onClick);
     };
   }, []);
 }
