@@ -113,6 +113,16 @@ The Church History page works like a short course on one scrolling page: seven n
 | ![The four families of churches at a glance](docs/screenshots/history-traditions.png) | ![Inside and outside the creeds](docs/screenshots/history-orbit.png) |
 | ![Creed explorer](docs/screenshots/history-creeds.png) | ![Chapters and verses (The Bible page)](docs/screenshots/history-verses.png) |
 
+## Downloads
+
+Each page offers a **summary poster** (PNG, 2400 px wide) from the "Download the poster" link in its Introduction, and the home page has all four plus the **technical report** ([PDF](public/downloads/the-canon-ball-technical-report.pdf) · [Word](public/downloads/the-canon-ball-technical-report.docx)).
+
+| The Bible | Characters | Map | Church History |
+|---|---|---|---|
+| <img src="public/downloads/the-canon-ball-poster-bible-thumb.jpg" width="180" alt="The Bible poster"> | <img src="public/downloads/the-canon-ball-poster-characters-thumb.jpg" width="180" alt="Characters poster"> | <img src="public/downloads/the-canon-ball-poster-map-thumb.jpg" width="180" alt="Map poster"> | <img src="public/downloads/the-canon-ball-poster-church-history-thumb.jpg" width="180" alt="Church History poster"> |
+
+The posters are built from the same data files as the site, with screenshots of the live map, network and family tree: build the site, serve `dist/` at `/the-canon-ball/`, then run `npm run posters` (set `BROWSER` to a Chrome or Edge executable).
+
 ## On a phone
 
 On a phone the timeline turns vertical, and the map stays pinned to the top while you read.

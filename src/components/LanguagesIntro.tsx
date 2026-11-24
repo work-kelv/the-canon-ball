@@ -120,6 +120,7 @@ export function LanguagesIntro() {
   return (
     <PageIntro
       storageKey="languages-intro"
+      poster="bible"
       moreLabel="Why three languages? How to read the grid"
       className="mb-5"
       css="--hebrew"

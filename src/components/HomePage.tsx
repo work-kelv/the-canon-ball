@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { ArrowRight, BookOpenText, Church, Languages, Map as MapIcon, Moon, MousePointerClick, Smartphone, Users } from 'lucide-react';
+import { ArrowRight, BookOpenText, Church, Languages, Map as MapIcon, Moon, MousePointerClick, Smartphone, Users, Download, FileText } from 'lucide-react';
 import { cssColor } from '../lib/characters';
 import { CharactersArt, HistoryArt, LanguagesArt, MapArt } from './PageArt';
 import { RefText } from './ScriptureRef';
@@ -53,6 +53,14 @@ const FEATURES: Feature[] = [
     blurb: 'How the church branched, where its traditions differ, what the creeds confess, and who stands outside them.',
     points: ['A family tree from Pentecost to today', 'Catholic, Orthodox and Protestant families compared', 'The four creeds, side by side and line by line'],
   },
+];
+
+/** The downloadable summary posters (built by scripts/posters/build-posters.mjs). */
+const POSTERS = [
+  { id: 'bible', title: 'The Bible' },
+  { id: 'characters', title: 'Characters' },
+  { id: 'map', title: 'Map' },
+  { id: 'church-history', title: 'Church History' },
 ];
 
 const QUESTIONS: { q: string; href: string; css: string }[] = [
@@ -145,6 +153,70 @@ export function HomePage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      {/* Downloads */}
+      <section aria-labelledby="take">
+        <h2 id="take" className="mb-1 font-display text-3xl font-semibold">
+          Take it with you
+        </h2>
+        <p className="mb-4 max-w-3xl font-serif text-[16px] leading-relaxed text-ink-soft">
+          A summary poster for each page, for a classroom wall or a slide, and a report on what the site covers and how it was built.
+        </p>
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+          <div className="flex flex-col rounded-md border border-rule bg-paper/85 px-5 py-4">
+            <div className="eyebrow">Technical report · 7 pages</div>
+            <h3 className="mt-1 flex items-center gap-2 font-display text-2xl font-semibold">
+              <FileText size={20} aria-hidden className="text-ink-soft" />
+              The Canon Ball, explained
+            </h3>
+            <p className="mt-1 font-serif text-[15px] leading-snug">
+              The data behind each page (66 books, 266 people, 232 places, two thousand years of church history), how it is
+              organised, the design and accessibility choices, and the sources.
+            </p>
+            <div className="mt-auto flex flex-wrap gap-2 pt-4">
+              <a
+                href="downloads/the-canon-ball-technical-report.pdf"
+                download
+                className="focus-ring inline-flex min-h-9 items-center gap-1.5 rounded-full bg-ink px-4 font-sans text-[13px] font-semibold text-paper"
+              >
+                <Download size={14} aria-hidden /> PDF <span className="font-normal opacity-75">(210 KB)</span>
+              </a>
+              <a
+                href="downloads/the-canon-ball-technical-report.docx"
+                download
+                className="focus-ring inline-flex min-h-9 items-center gap-1.5 rounded-full border border-rule px-4 font-sans text-[13px] font-medium hover:border-ink/50"
+              >
+                <Download size={14} aria-hidden /> Word <span className="text-ink-soft">(30 KB)</span>
+              </a>
+            </div>
+          </div>
+          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {POSTERS.map((x) => (
+              <li key={x.id}>
+                <a
+                  href={`downloads/the-canon-ball-poster-${x.id}.png`}
+                  download
+                  className="focus-ring group block overflow-hidden rounded-md border border-rule bg-paper/85 hover:border-ink/40"
+                  aria-label={`Download the ${x.title} poster (PNG)`}
+                >
+                  <img
+                    src={`downloads/the-canon-ball-poster-${x.id}-thumb.jpg`}
+                    alt=""
+                    loading="lazy"
+                    width={480}
+                    height={600}
+                    className="aspect-[4/5] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <span className="flex items-center justify-between gap-2 border-t border-rule px-3 py-2 font-sans text-[13px] font-semibold">
+                    {x.title}
+                    <Download size={14} aria-hidden className="shrink-0 text-ink-soft" />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       {/* How it works */}

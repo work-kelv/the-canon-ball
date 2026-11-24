@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { BookOpenText, ChevronDown } from 'lucide-react';
+import { BookOpenText, ChevronDown, Download } from 'lucide-react';
 import { cssColor } from '../lib/characters';
 
 export interface IntroCard {
@@ -27,6 +27,8 @@ interface Props {
   /** Optional content after the cards. */
   afterCards?: ReactNode;
   className?: string;
+  /** The page’s summary poster, offered beside the details toggle. */
+  poster?: string;
 }
 
 /**
@@ -34,7 +36,7 @@ interface Props {
  * shown; the cards and "How to use it" open on request, so the page's content starts on the first screen.
  * The open/closed choice is remembered per page.
  */
-export function PageIntro({ storageKey, art, css, lead, cards, howTo, moreLabel = 'How this page works', extra, afterCards, className = '' }: Props) {
+export function PageIntro({ storageKey, art, css, lead, cards, howTo, moreLabel = 'How this page works', extra, afterCards, className = '', poster }: Props) {
   const key = `${storageKey}-details`;
   const [open, setOpen] = useState(() => {
     try {
@@ -64,15 +66,27 @@ export function PageIntro({ storageKey, art, css, lead, cards, howTo, moreLabel 
             Introduction
           </h2>
           <div className="max-w-3xl font-serif text-[15.5px] leading-relaxed">{lead}</div>
-          <button
-            onClick={toggle}
-            aria-expanded={open}
-            aria-controls={detailsId}
-            className="focus-ring mt-3 inline-flex items-center gap-1.5 rounded-full border border-rule px-3 py-1.5 font-sans text-[12.5px] font-medium hover:border-ink/50"
-          >
-            {open ? 'Hide details' : moreLabel}
-            <ChevronDown size={14} aria-hidden className={`transition-transform ${open ? 'rotate-180' : ''}`} />
-          </button>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <button
+              onClick={toggle}
+              aria-expanded={open}
+              aria-controls={detailsId}
+              className="focus-ring inline-flex min-h-8 items-center gap-1.5 rounded-full border border-rule px-3 py-1.5 font-sans text-[12.5px] font-medium hover:border-ink/50"
+            >
+              {open ? 'Hide details' : moreLabel}
+              <ChevronDown size={14} aria-hidden className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+            </button>
+            {poster && (
+              <a
+                href={`downloads/the-canon-ball-poster-${poster}.png`}
+                download
+                className="focus-ring inline-flex min-h-8 items-center gap-1.5 rounded-full px-2.5 py-1.5 font-sans text-[12.5px] font-medium text-ink-soft underline decoration-rule underline-offset-2 hover:text-ink hover:decoration-ink"
+              >
+                <Download size={14} aria-hidden />
+                Download the poster <span className="text-ink-soft">(PNG)</span>
+              </a>
+            )}
+          </div>
         </div>
         <div
           aria-hidden

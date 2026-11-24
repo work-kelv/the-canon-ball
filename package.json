@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "posters": "node scripts/posters/build-posters.mjs"
   },
   "dependencies": {
     "d3-geo": "^3.1.2",
@@ -33,6 +34,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
+    "puppeteer-core": "^24.43.1",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.6.3",
     "vite": "^5.4.11"

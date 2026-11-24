@@ -7,6 +7,7 @@ export function CharactersIntro() {
   return (
     <PageIntro
       storageKey="characters-intro"
+      poster="characters"
       className="mb-5 mt-6"
       css="--role-king"
       art={<CharactersArt />}
@@ -64,6 +65,7 @@ export function MapIntro() {
   return (
     <PageIntro
       storageKey="map-intro"
+      poster="map"
       className="mb-4"
       css="--lineage"
       art={<MapArt />}
@@ -127,6 +129,7 @@ export function HistoryIntro() {
   return (
     <PageIntro
       storageKey="history-intro"
+      poster="church-history"
       moreLabel="What each section shows"
       className="mb-5"
       css="--role-priest"
