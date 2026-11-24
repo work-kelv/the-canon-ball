@@ -1,12 +1,10 @@
-import { useCallback, useState } from 'react';
-import { ArrowRight, ChevronDown, Lightbulb } from 'lucide-react';
+import { ArrowRight, Lightbulb } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { RefText } from '../ScriptureRef';
-import { useOpenTarget } from '../sections';
 
 /**
- * Church history told simply, as a short path of steps. Each step shows its era, title and key idea;
- * the rest opens on request, and a button jumps to the section that goes deeper.
+ * Church history told simply, in five steps, each read in full, with a button to the section that
+ * goes deeper.
  */
 interface Step {
   era: string;
@@ -98,17 +96,6 @@ const STEPS: Step[] = [
       { tab: 'compare', label: 'See who shares the core' },
     ],
   },
-  {
-    era: 'Along the way',
-    title: 'Who’s who',
-    css: '--role-patriarch',
-    body: [
-      'Each tradition developed its own leaders and titles: popes and patriarchs, bishops and priests, pastors, elders and deacons. Many of these words come straight from the Greek of the New Testament.',
-    ],
-    idea: '“Bishop” means overseer, “elder” means elder, and “deacon” means servant.',
-    refs: ['1 Timothy 3:1–8'],
-    next: [{ tab: 'titles', label: 'Learn the titles' }],
-  },
 ];
 
 const FAMILIES = [
@@ -117,11 +104,8 @@ const FAMILIES = [
   { name: 'Orthodox', pct: 12, css: '--role-priest' },
 ];
 
-/** One step: era, title and key idea always visible; the body, words and passages on request. */
+/** One step, read in full: era, title, key idea, the story, simple definitions and passages. */
 function StepCard({ s, i, go }: { s: Step; i: number; go: (id: string) => void }) {
-  const [open, setOpen] = useState(false);
-  const bodyId = `step-${i + 1}-body`;
-  useOpenTarget([`step-${i + 1}`], useCallback(() => setOpen(true), []));
   return (
     <article className="rounded-md border border-rule bg-paper/90 px-4 py-4" style={{ boxShadow: `inset 3px 0 0 ${cssColor(s.css)}` }}>
       <div className="eyebrow">
@@ -135,7 +119,7 @@ function StepCard({ s, i, go }: { s: Step; i: number; go: (id: string) => void }
           <b>Key idea:</b> {s.idea}
         </span>
       </p>
-      <div id={bodyId} hidden={!open} className="mt-3">
+      <div className="mt-3">
         <div className="space-y-2 font-serif text-[16px] leading-relaxed">
           {s.body.map((p) => (
             <p key={p}>{p}</p>
@@ -161,15 +145,6 @@ function StepCard({ s, i, go }: { s: Step; i: number; go: (id: string) => void }
         )}
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-2">
-        <button
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-          aria-controls={bodyId}
-          className="focus-ring inline-flex min-h-8 items-center gap-1.5 rounded-full border border-rule px-3.5 font-sans text-[13px] font-medium hover:border-ink/50"
-        >
-          {open ? 'Show less' : 'Read this step'}
-          <ChevronDown size={14} aria-hidden className={`transition-transform ${open ? 'rotate-180' : ''}`} />
-        </button>
         <span className="ml-auto flex flex-wrap gap-2">
           {s.next.map((n) => (
             <button

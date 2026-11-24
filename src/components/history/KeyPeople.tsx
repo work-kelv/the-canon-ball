@@ -33,46 +33,39 @@ function Diamond({ css, size = 10 }: { css: string; size?: number }) {
   return <span aria-hidden className="inline-block shrink-0 rotate-45" style={{ width: size, height: size, background: cssColor(css) }} />;
 }
 
-/** The whole two thousand years as one strip of eras; tap an era to open it. */
+/**
+ * The eras from Jesus to today, in order, as one strip: tap an era to show it. Each era gets an equal
+ * share of the strip (the early eras are short in years but full of people), with its dates beneath.
+ */
 function EraStrip({ era, onPick }: { era: EraId; onPick: (id: EraId) => void }) {
-  const from = -10,
-    to = 2025;
-  const x = (y: number) => ((y - from) / (to - from)) * 100;
-  const bounds = [-10, 100, 300, 500, 1000, 1500, 1650, 1900, 2025];
+  const starts = ['AD 1', '100', '300', '500', '1000', '1500', '1650', '1900'];
+  const short = ['Jesus & apostles', 'Church fathers', 'Councils & creeds', 'Early Middle Ages', 'Middle Ages', 'Reformation', 'Revival & mission', 'World church'];
   return (
-    // A picture of the eras across 2,000 years; the era buttons below are the controls (a tap here still opens an era).
-    <div className="rounded-md border border-rule bg-paper/80 px-3 py-3" aria-hidden>
-      <div className="relative h-8">
+    <div role="radiogroup" aria-label="Era" className="rounded-md border border-rule bg-paper/80 p-2">
+      <div className="grid grid-cols-8 gap-1">
         {ERAS.map((e, i) => {
-          const l = x(bounds[i]),
-            w = x(bounds[i + 1]) - l;
           const on = e.id === era;
           return (
-            <span
+            <button
               key={e.id}
-              onClick={() => onPick(e.id)}
+              role="radio"
+              aria-checked={on}
+              aria-label={`${i + 1}. ${e.name}, ${e.span}`}
               title={`${e.name} (${e.span})`}
-              className="absolute inset-y-0 flex cursor-pointer items-center justify-center border-r border-paper transition-colors"
-              style={{ left: `${l}%`, width: `${w}%`, background: on ? cssColor('--ink', 0.85) : cssColor('--ink', 0.08 + (i % 2) * 0.05) }}
+              onClick={() => onPick(e.id)}
+              className={`focus-ring flex min-h-11 flex-col items-center justify-center rounded-md px-0.5 transition-colors ${on ? 'bg-ink text-paper' : 'hover:bg-ink/[0.07]'}`}
+              style={on ? undefined : { background: cssColor('--ink', 0.05 + (i % 2) * 0.04) }}
             >
-              <span className={`font-sans text-[12px] font-bold tabular-nums ${on ? 'text-paper' : 'text-ink-soft'}`}>{i + 1}</span>
-            </span>
+              <span className="font-sans text-[15px] font-bold tabular-nums">{i + 1}</span>
+              <span className={`hidden font-sans text-[12px] leading-tight md:block ${on ? 'text-paper/80' : 'text-ink-soft'}`}>{short[i]}</span>
+            </button>
           );
         })}
-        {/* each person as a tick */}
-        {WITNESSES.map((w) => (
-          <span
-            key={w.id}
-            aria-hidden
-            className="pointer-events-none absolute bottom-0 h-1.5 w-px"
-            style={{ left: `${x((w.from + w.to) / 2)}%`, background: cssColor(w.stream === 'jesus' ? '--lineage' : '--paper', w.stream === 'jesus' ? 1 : 0.8) }}
-          />
-        ))}
       </div>
-      <div className="relative mt-1 h-4 font-sans text-[12px] tabular-nums text-ink-soft">
-        {[1, 500, 1000, 1500, 2000].map((t) => (
-          <span key={t} className="absolute -translate-x-1/2" style={{ left: `${x(t)}%` }}>
-            {t === 1 ? 'AD 1' : t}
+      <div className="mt-1 grid grid-cols-8 gap-1 font-sans text-[12px] tabular-nums text-ink-soft">
+        {starts.map((y, i) => (
+          <span key={y} className={`pl-0.5 ${i % 2 ? 'hidden sm:block' : ''}`}>
+            {y}
           </span>
         ))}
       </div>
@@ -193,19 +186,6 @@ export function KeyPeople() {
 
       <EraStrip era={era} onPick={pick} />
 
-      <div className="flex flex-wrap gap-1.5">
-        {ERAS.map((x, i) => (
-          <button
-            key={x.id}
-            onClick={() => pick(x.id)}
-            aria-pressed={x.id === era}
-            className={`focus-ring rounded-full border px-3 py-1.5 font-sans text-[13px] ${x.id === era ? 'border-ink bg-ink text-paper' : 'border-rule hover:border-ink/60'}`}
-          >
-            <span className="mr-1 tabular-nums opacity-70">{i + 1}</span>
-            {x.name}
-          </button>
-        ))}
-      </div>
 
       <div id="people-chart" className="scroll-mt-32 space-y-4">
         <header className="border-b border-ink/80 pb-2">

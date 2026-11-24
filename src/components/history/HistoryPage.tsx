@@ -14,7 +14,7 @@ import { Fold, NextPage, OnThisPage, PageSection, jumpTo, useSectionHash, type S
 /**
  * Church history as one page, in learning order: the overview; the people; what the early church
  * agreed to believe; how it split; how the traditions differ today; who shares the core faith; and
- * who's who. Section ids keep the old tab links working (#creeds, #creeds-read, #compare …).
+ * who's who (titles). Section ids keep the old tab links working (#creeds, #creeds-read, #compare …).
  */
 const SECTIONS: SectionDef[] = [
   { id: 'start', label: 'Church history, simply told', short: 'Start here' },
@@ -50,7 +50,7 @@ export function HistoryPage() {
         n={1}
         first
         title="Church history, simply told"
-        lead="Two thousand years in six short steps. Each step gives its key idea; open it for more, or jump to the section that explores it in depth."
+        lead="Two thousand years in five short steps. Each ends with a link to the section that explores it in depth."
         takeaway="One church at Pentecost; splits in 431, 451 and 1054; the Reformation from 1517; and one core faith shared by the churches today."
       >
         <StartHere go={go} />

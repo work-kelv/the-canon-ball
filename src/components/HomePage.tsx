@@ -14,7 +14,6 @@ interface Feature {
   art: ReactNode;
   blurb: string;
   points: string[];
-  tries: { label: string; href: string }[];
 }
 
 const FEATURES: Feature[] = [
@@ -26,11 +25,6 @@ const FEATURES: Feature[] = [
     art: <LanguagesArt />,
     blurb: 'How the 66 books were written in Hebrew, Aramaic and Greek, copied by hand, numbered into chapters and verses, and translated.',
     points: ['Every book by its original language', 'From ancient scrolls to chapter and verse', 'Translations from the Septuagint to today'],
-    tries: [
-      { label: 'Which books contain Aramaic?', href: 'languages.html#languages' },
-      { label: 'Which books are in the Bible?', href: 'languages.html#canon' },
-      { label: 'How the Bible was translated', href: 'languages.html#translations' },
-    ],
   },
   {
     href: 'characters.html',
@@ -40,10 +34,6 @@ const FEATURES: Feature[] = [
     art: <CharactersArt />,
     blurb: '266 people of Scripture on one timeline, with their families, friendships and rivalries.',
     points: ['Timeline by lifetime or by book', 'A network of 441 relationships', 'The line of Jesus, from Adam'],
-    tries: [
-      { label: 'Meet David', href: 'characters.html?person=david' },
-      { label: 'Explore the network', href: 'characters.html#network' },
-    ],
   },
   {
     href: 'map.html',
@@ -53,10 +43,6 @@ const FEATURES: Feature[] = [
     art: <MapArt />,
     blurb: 'Where each book was written and set, and 129 journeys you can watch unfold on the map.',
     points: ['Every book’s places and journeys', 'Distances stop by stop', 'Abraham, the Exodus, Jesus and Paul'],
-    tries: [
-      { label: 'Follow Paul’s journeys', href: 'map.html#journeys' },
-      { label: 'The journeys in Acts', href: 'map.html#book=44' },
-    ],
   },
   {
     href: 'history.html',
@@ -66,12 +52,6 @@ const FEATURES: Feature[] = [
     art: <HistoryArt />,
     blurb: 'How the church branched, where its traditions differ, what the creeds confess, and who stands outside them.',
     points: ['A family tree from Pentecost to today', 'Catholic, Orthodox and Protestant families compared', 'The four creeds, side by side and line by line'],
-    tries: [
-      { label: 'Start here: the story simply told', href: 'history.html#start' },
-      { label: 'From Jesus to today: key people', href: 'history.html#people' },
-      { label: 'Compare the church families', href: 'history.html#traditions' },
-      { label: 'Core beliefs compared', href: 'history.html#compare' },
-    ],
   },
 ];
 
@@ -113,22 +93,20 @@ export function HomePage() {
         </h2>
         <div className="grid gap-5 md:grid-cols-2">
           {FEATURES.map((f) => (
-            <article
+            <a
               key={f.href}
-              className="group relative flex flex-col overflow-hidden rounded-md border border-rule bg-paper/85 shadow-sm transition-shadow hover:shadow-md"
+              href={f.href}
+              className="focus-ring group relative flex flex-col overflow-hidden rounded-md border border-rule bg-paper/85 shadow-sm transition-shadow hover:border-ink/40 hover:shadow-md"
               style={{ boxShadow: `inset 0 3px 0 ${cssColor(f.css)}` }}
             >
-              <a href={f.href} className="focus-ring block" aria-label={`Open ${f.title}`}>
-                <div className="h-32 overflow-hidden border-b border-rule px-4 pt-4 sm:h-36" style={{ background: cssColor(f.css, 0.05) }}>
-                  <div className="h-full transition-transform duration-500 group-hover:scale-[1.03]">{f.art}</div>
-                </div>
-              </a>
+              <div className="h-32 overflow-hidden border-b border-rule px-4 pt-4 sm:h-36" style={{ background: cssColor(f.css, 0.05) }}>
+                <div className="h-full transition-transform duration-500 group-hover:scale-[1.03]">{f.art}</div>
+              </div>
               <div className="flex flex-1 flex-col px-5 py-4">
                 <h3 className="flex items-center gap-2 font-display text-2xl font-semibold">
                   <f.icon size={20} style={{ color: cssColor(f.css) }} aria-hidden />
-                  <a href={f.href} className="focus-ring rounded-sm hover:underline hover:decoration-rule hover:underline-offset-4">
-                    {f.title}
-                  </a>
+                  <span className="group-hover:underline group-hover:decoration-rule group-hover:underline-offset-4">{f.title}</span>
+                  <ArrowRight size={20} aria-hidden className="ml-auto shrink-0 transition-transform group-hover:translate-x-1" style={{ color: cssColor(f.css) }} />
                 </h3>
                 <p className="mt-1 font-serif text-[15.5px] leading-snug">{f.blurb}</p>
                 <ul className="mt-2 space-y-0.5 font-sans text-[13px] text-ink-soft">
@@ -141,26 +119,8 @@ export function HomePage() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">
-                  <a
-                    href={f.href}
-                    className="focus-ring inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-sans text-[13px] font-semibold text-paper"
-                    style={{ background: cssColor(f.css) }}
-                  >
-                    Open {f.title} <ArrowRight size={14} aria-hidden />
-                  </a>
-                  {f.tries.map((t) => (
-                    <a
-                      key={t.href}
-                      href={t.href}
-                      className="focus-ring rounded-full border border-rule px-3 py-1.5 font-sans text-[12.5px] hover:border-ink/50"
-                    >
-                      {t.label}
-                    </a>
-                  ))}
-                </div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </section>

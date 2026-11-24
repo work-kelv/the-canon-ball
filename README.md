@@ -93,11 +93,11 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
 
 The Church History page works like a short course on one scrolling page: seven numbered sections in learning order, with the same "On this page" bar (‹ › to step through them). Each section has its own link (for example `history.html#creeds`, or `history.html#creeds-read` to open the creed reader). Each starts with a lead and a one-line takeaway; dense blocks (the creed reader, who confesses which creed, the benchmark table, the eight traditions, the title cards) fold away until opened. The old `#translations` and `#verses` links now open those sections on The Bible page.
 
-![Start here: church history in six simple steps](docs/screenshots/history-start.png)
+![Start here: church history in five simple steps](docs/screenshots/history-start.png)
 
 ![The family tree of the church](docs/screenshots/history-tree.png)
 
-- **Start here.** Church history simply told, in six steps (one church; agreeing on the creeds; the first splits; the Reformation; different churches, one core faith; who's who), each showing its key idea at a glance; open a step for its story, simple definitions and passages, or jump to the section that goes deeper.
+- **Start here.** Church history simply told, in five steps (one church; agreeing on the creeds; the first splits; the Reformation; different churches, one core faith), each with its key idea, the story, simple definitions and passages, and a button to the section that goes deeper.
 - **Key people.** From Jesus to today, in eight eras: Jesus and the apostles, the early church fathers, councils and creeds, the early Middle Ages, the Middle Ages, the Reformation, revival and mission, and the world church. Each era is a timeline of lifespans (71 people, with martyrs marked) and councils, persecutions and events. Teachers whose teaching the church rejected (Marcion, Arius, Pelagius, Nestorius and others) are shown dashed. Tap a person for who they were and how they pointed to Jesus, often in their own words, with each quotation linked to its primary text. The section is framed by Hebrews 12:1–2, and Start here now ends with a short "Looking to Jesus" note.
 
 ![From Jesus to today: key people by era](docs/screenshots/history-people.png)

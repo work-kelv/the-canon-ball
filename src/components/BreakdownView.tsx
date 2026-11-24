@@ -258,7 +258,7 @@ export function BreakdownView({ langBooks, visible, division, onDivision, onOpen
               <thead>
                 <tr className="border-y border-rule text-left">
                   {['#', 'Book', 'Division', 'Ch.', 'Language'].map((h) => (
-                    <th key={h} scope="col" className={`eyebrow px-3 py-2 first:pl-5 last:pr-5 ${h === 'Division' ? 'hidden sm:table-cell' : ''}`}>
+                    <th key={h} scope="col" className={`eyebrow px-3 py-2 first:pl-5 last:pr-5 ${h === 'Division' || h === '#' ? 'hidden sm:table-cell' : ''}`}>
                       {h}
                     </th>
                   ))}
@@ -271,8 +271,8 @@ export function BreakdownView({ langBooks, visible, division, onDivision, onOpen
                     onClick={() => onOpen(b.order)}
                     className="cursor-pointer hover:bg-ink/[0.04]"
                   >
-                    <td className="py-2 pl-5 pr-3 tabular-nums text-ink-soft">{b.order}</td>
-                    <td className="px-3 py-2">
+                    <td className="hidden py-2 pl-5 pr-3 tabular-nums text-ink-soft sm:table-cell">{b.order}</td>
+                    <td className="py-2 pl-4 pr-3 sm:pl-3">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
@@ -286,8 +286,8 @@ export function BreakdownView({ langBooks, visible, division, onDivision, onOpen
                     <td className="hidden px-3 py-2 text-ink-soft sm:table-cell">{b.division}</td>
                     <td className="px-3 py-2 tabular-nums">{b.chapters}</td>
                     <td className="py-2 pl-3 pr-5">
-                      <div className="flex items-center gap-2">
-                        <span className="w-28">
+                      <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2">
+                        <span className="block w-16 sm:w-28">
                           <LanguageBar
                             segments={b.languages.map((l) => ({
                               language: l.language as Language,
