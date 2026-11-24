@@ -26,7 +26,7 @@ function ClauseDetail({ creed, clause, index }: { creed: Creed; clause: CreedCla
               </span>
             ))}
           </div>
-          <p className="mt-1 font-sans text-[11px] text-ink-soft">Click a reference to read it (WEB or BSB).</p>
+          <p className="mt-1 font-sans text-[12px] text-ink-soft">Click a reference to read it (WEB or BSB).</p>
         </section>
         <section>
           <h4 className="eyebrow mb-1 flex items-center gap-1.5">
@@ -55,11 +55,8 @@ export function CreedExplorer() {
   const clause = creed.clauses[Math.min(idx, creed.clauses.length - 1)];
 
   return (
-    <section aria-labelledby="creeds-title" className="space-y-4">
+    <div className="space-y-4">
       <div>
-        <h2 id="creeds-title" className="font-display text-3xl font-semibold">
-          The creeds and their Scriptures
-        </h2>
         <p className="max-w-2xl font-serif text-[15px] text-ink-soft">
           Choose a creed, then click any line to see the Bible passages behind it, the controversy it answered, and how its text has
           come down to us.
@@ -97,7 +94,7 @@ export function CreedExplorer() {
                   }`}
                 >
                   <span
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-sans text-[11px] font-bold"
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-sans text-[12px] font-bold"
                     style={active ? { background: cssColor('--ink'), color: cssColor('--paper') } : { border: `1px solid ${cssColor('--rule')}` }}
                   >
                     {i + 1}
@@ -114,14 +111,14 @@ export function CreedExplorer() {
           })}
         </ol>
         <div className="hidden md:block">
-          <div className="sticky top-4">
+          <div className="sticky top-[calc(var(--jump-h,44px)+12px)]">
             <ClauseDetail creed={creed} clause={clause} index={Math.min(idx, creed.clauses.length - 1)} />
           </div>
         </div>
       </div>
-      <p className="font-sans text-[11px] text-ink-soft">
+      <p className="font-sans text-[12px] text-ink-soft">
         Texts: {creedMeta.translations} {creedMeta.reliabilityPrinciple}
       </p>
-    </section>
+    </div>
   );
 }

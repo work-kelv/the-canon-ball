@@ -3,6 +3,7 @@ import { BookMarked } from 'lucide-react';
 import data from '../../data/churchTitles.json';
 import { cssColor } from '../../lib/characters';
 import { RefText } from '../ScriptureRef';
+import { Fold, openFold } from '../sections';
 
 type TraditionId = keyof typeof data.meta.traditions;
 /** A family that uses the title, optionally narrowed (e.g. Protestant · Anglican). */
@@ -32,19 +33,16 @@ const TRAD = data.meta.traditions as Record<TraditionId, { label: string; css: s
 export function ChurchTitles() {
   const [flash, setFlash] = useState<string | null>(null);
   const jump = (id: string) => {
-    document.getElementById(`title-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    openFold(`title-${id}`);
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => document.getElementById(`title-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })),
+    );
     setFlash(id);
     window.setTimeout(() => setFlash((f) => (f === id ? null : f)), 1600);
   };
 
   return (
-    <section aria-labelledby="titles-title" className="space-y-6">
-      <div>
-        <h2 id="titles-title" className="font-display text-3xl font-semibold">
-          Titles in the church
-        </h2>
-        <p className="max-w-3xl font-serif text-[15px] text-ink-soft">{data.meta.intro}</p>
-      </div>
+    <div className="space-y-6">
 
       {/* Who's who */}
       <div>
@@ -79,7 +77,7 @@ export function ChurchTitles() {
                   <div className="grid gap-x-3 gap-y-3 sm:grid-cols-2">
                     {l.branches.map((br) => (
                       <div key={br.label}>
-                        <div className="mb-1 font-sans text-[11px] font-semibold uppercase tracking-wide text-ink-soft">{br.label}</div>
+                        <div className="mb-1 font-sans text-[12px] font-semibold uppercase tracking-wide text-ink-soft">{br.label}</div>
                         <Rungs tiers={br.tiers} />
                       </div>
                     ))}
@@ -87,7 +85,7 @@ export function ChurchTitles() {
                 ) : (
                   <Rungs tiers={l.tiers} />
                 )}
-                <p className="mt-2 font-sans text-[11.5px] leading-snug text-ink-soft">{l.note}</p>
+                <p className="mt-2 font-sans text-[12px] leading-snug text-ink-soft">{l.note}</p>
               </div>
             );
           })}
@@ -95,19 +93,27 @@ export function ChurchTitles() {
       </div>
 
       {/* The titles */}
+      <Fold
+        id="title-cards"
+        targetPrefix="title-"
+        title="All the titles, explained"
+        count={groups.reduce((n, g) => n + g.titles.length, 0)}
+        summary="What each title means in its original language, who uses it, and the Scripture and sources behind it."
+      >
+      <div className="space-y-6">
       {groups.map((g) => (
         <div key={g.id}>
-          <h3 className="mb-2 font-display text-xl font-semibold">{g.label}</h3>
+          <h4 className="mb-2 font-display text-xl font-semibold">{g.label}</h4>
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {g.titles.map((t) => (
               <article
                 key={t.id}
                 id={`title-${t.id}`}
-                className={`scroll-mt-40 rounded-md border bg-paper/85 px-4 py-3 transition-shadow duration-500 ${flash === t.id ? 'border-ink shadow-md' : 'border-rule'}`}
+                className={`section-anchor rounded-md border bg-paper/85 px-4 py-3 transition-shadow duration-500 ${flash === t.id ? 'border-ink shadow-md' : 'border-rule'}`}
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-x-3">
-                  <h4 className="font-display text-[21px] font-semibold leading-tight">{t.title}</h4>
-                  <span className="font-sans text-[11.5px] italic text-ink-soft">{t.word}</span>
+                  <h5 className="font-display text-[21px] font-semibold leading-tight">{t.title}</h5>
+                  <span className="font-sans text-[12px] italic text-ink-soft">{t.word}</span>
                 </div>
                 <div className="mt-1 flex flex-wrap gap-1">
                   {t.used.map((u) => {
@@ -115,7 +121,7 @@ export function ChurchTitles() {
                     const note = typeof u === 'string' ? null : u.note;
                     const tr = TRAD[id];
                     return (
-                      <span key={id} className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[10.5px] font-semibold" style={{ background: cssColor(tr.css, 0.12), color: cssColor(tr.css) }}>
+                      <span key={id} className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[12px] font-semibold" style={{ background: cssColor(tr.css, 0.12), color: cssColor(tr.css) }}>
                         <span className="h-1.5 w-1.5 rounded-full" style={{ background: cssColor(tr.css) }} />
                         {tr.label}
                         {note && <span className="font-normal opacity-80">· {note}</span>}
@@ -134,7 +140,7 @@ export function ChurchTitles() {
                     ))}
                   </p>
                 )}
-                <p className="mt-2 flex gap-1.5 font-sans text-[11px] leading-snug text-ink-soft">
+                <p className="mt-2 flex gap-1.5 font-sans text-[12px] leading-snug text-ink-soft">
                   <BookMarked size={12} className="mt-px shrink-0" aria-hidden />
                   {t.sources.join(' · ')}
                 </p>
@@ -143,10 +149,12 @@ export function ChurchTitles() {
           </div>
         </div>
       ))}
-      <p className="font-sans text-[11px] text-ink-soft">
+      </div>
+      </Fold>
+      <p className="font-sans text-[12px] text-ink-soft">
         Usage differs between churches and countries; the sources (full details in the References below) describe each title as its own
         tradition uses it.
       </p>
-    </section>
+    </div>
   );
 }

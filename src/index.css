@@ -87,7 +87,7 @@
 
 @layer components {
   .eyebrow {
-    @apply font-sans text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-ink-soft;
+    @apply font-sans text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-ink-soft;
   }
   .panel {
     @apply rounded-sm border border-rule bg-paper/70 backdrop-blur-sm;
@@ -167,3 +167,26 @@ select option {
 .overflow-x-auto::-webkit-scrollbar { height: 6px; }
 .overflow-x-auto::-webkit-scrollbar-thumb { background: rgb(var(--ink) / 0.25); border-radius: 3px; }
 .overflow-x-auto::-webkit-scrollbar-track { background: transparent; }
+
+/* Sections land just below the pinned "On this page" bar. */
+.section-anchor {
+  scroll-margin-top: calc(var(--jump-h, 44px) + 12px);
+}
+
+/* Skip link: hidden until focused with the keyboard. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 60;
+  border-radius: 9999px;
+  background: rgb(var(--ink));
+  color: rgb(var(--paper));
+  padding: 0.6rem 1rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+.skip-link:focus {
+  top: 0.75rem;
+}

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Globe2 } from 'lucide-react';
+import { Fold } from '../sections';
 import { cssColor } from '../../lib/characters';
 import { type Era, KIND_INFO, type MilestoneKind, timeline, translationMeta, translationStats } from '../../lib/history';
 
@@ -13,7 +14,7 @@ const ERAS: { id: Era | 'all'; label: string }[] = [
 export function KindBadge({ kind }: { kind: MilestoneKind }) {
   const k = KIND_INFO[kind];
   return (
-    <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[10.5px] font-semibold" style={{ background: cssColor(k.css, 0.14), color: cssColor(k.css) }}>
+    <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[12px] font-semibold" style={{ background: cssColor(k.css, 0.14), color: cssColor(k.css) }}>
       <span className="h-1.5 w-1.5 rounded-full" style={{ background: cssColor(k.css) }} />
       {k.label}
     </span>
@@ -34,16 +35,7 @@ export function TranslationTimeline() {
   const shown = timeline.filter((m) => (era === 'all' || m.era === era) && (kinds.has(m.kind) || (m.navigation && kinds.has(m.navigation))));
 
   return (
-    <section aria-labelledby="tl-title" className="space-y-4">
-      <div>
-        <h2 id="tl-title" className="font-display text-3xl font-semibold">
-          How the Bible reached the world’s languages
-        </h2>
-        <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
-          From the Septuagint to today’s translation movement — with the manuscript discoveries that confirmed the text, and the
-          inventions that gave us chapters and verses.
-        </p>
-      </div>
+    <div className="space-y-4">
 
       {/* Scripture today */}
       <div className="rounded-md border border-rule bg-paper/80 p-4">
@@ -54,14 +46,20 @@ export function TranslationTimeline() {
           {translationStats.map((s) => (
             <div key={s.label}>
               <dt className="font-display text-2xl font-semibold tabular-nums">{s.value}</dt>
-              <dd className="font-sans text-[11.5px] leading-snug text-ink-soft">{s.label}</dd>
+              <dd className="font-sans text-[12px] leading-snug text-ink-soft">{s.label}</dd>
             </div>
           ))}
         </dl>
-        <p className="mt-2 font-sans text-[10.5px] text-ink-soft">{translationMeta.statsSource}</p>
+        <p className="mt-2 font-sans text-[12px] text-ink-soft">{translationMeta.statsSource}</p>
       </div>
 
-      <div className="space-y-2">
+      <Fold
+        id="translation-milestones"
+        title="The milestones"
+        count={timeline.length}
+        summary="From the Septuagint to the Dead Sea Scrolls and today, filtered by era and kind."
+      >
+      <div className="mb-4 space-y-2">
         <div className="flex flex-wrap gap-1.5">
           {ERAS.map((e) => (
             <button
@@ -99,7 +97,7 @@ export function TranslationTimeline() {
                   <KindBadge kind={m.kind} />
                   {m.navigation && <KindBadge kind={m.navigation} />}
                 </div>
-                <h3 className="mt-1 font-display text-[19px] font-semibold leading-tight">{m.title}</h3>
+                <h4 className="mt-1 font-display text-[19px] font-semibold leading-tight">{m.title}</h4>
                 <p className="font-sans text-[12px] text-ink-soft">
                   {m.who}
                   {m.languages && m.languages !== '—' && <> · {m.languages}</>}
@@ -111,6 +109,7 @@ export function TranslationTimeline() {
         })}
       </ol>
       {shown.length === 0 && <p className="font-sans text-sm text-ink-soft">No milestones match these filters.</p>}
-    </section>
+      </Fold>
+    </div>
   );
 }

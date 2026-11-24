@@ -224,7 +224,7 @@ export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 font-sans text-[11px] text-ink-soft">
+            <p className="mt-3 font-sans text-[12px] text-ink-soft">
               Percentages by verse share (English versification).
             </p>
           </Section>

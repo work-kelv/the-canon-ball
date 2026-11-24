@@ -3,6 +3,7 @@ import { cssColor } from '../../lib/characters';
 import { KIND_INFO, type MilestoneKind, navigation } from '../../lib/history';
 import { Segmented } from '../characters/controls';
 import { KindBadge } from './TranslationTimeline';
+import { Fold } from '../sections';
 
 type View = 'ancient' | 'scribal' | 'modern';
 const { sample } = navigation;
@@ -36,17 +37,7 @@ export function TextualTransmission() {
     .replace(/[^A-Z]/g, '');
 
   return (
-    <section aria-labelledby="nav-title" className="space-y-5">
-      <div>
-        <h2 id="nav-title" className="font-display text-3xl font-semibold">
-          From ancient scrolls to chapters and verses
-        </h2>
-        <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
-          The biblical authors wrote without chapters or verse numbers. See how the same passage — {sample.reference} — looked to readers
-          in three periods, and how Scripture came to be divided.
-        </p>
-      </div>
-
+    <div className="space-y-5">
       <Segmented<View>
         label="Page layout"
         value={view}
@@ -77,7 +68,7 @@ export function TextualTransmission() {
             <div className="grid grid-cols-[2.25rem_1fr] gap-x-3">
               <div className="pt-0.5 text-center font-serif text-[13px] leading-tight" style={{ color: cssColor('--lineage') }} title="Section number with its canon-table reference beneath">
                 <div className="font-semibold">§1</div>
-                <div className="border-t border-current pt-0.5 text-[11px]">x</div>
+                <div className="border-t border-current pt-0.5 text-[12px]">x</div>
               </div>
               <div className="space-y-0.5 font-serif text-[16.5px] leading-snug">
                 {sample.senseLines.map((l, i) => (
@@ -94,7 +85,7 @@ export function TextualTransmission() {
               <p className="font-serif text-[17px] leading-relaxed">
                 {sample.verses.map((v) => (
                   <Fragment key={v.v}>
-                    <sup className="mr-0.5 font-sans text-[10px] font-semibold text-ink-soft">{v.v}</sup>
+                    <sup className="mr-0.5 font-sans text-[12px] font-semibold text-ink-soft">{v.v}</sup>
                     {v.text}{' '}
                   </Fragment>
                 ))}
@@ -148,9 +139,13 @@ export function TextualTransmission() {
       </div>
 
       {/* Milestones strip */}
-      <div>
-        <div className="mb-2 flex flex-wrap items-center gap-2">
-          <h3 className="font-display text-xl font-semibold">Milestones</h3>
+      <Fold
+        id="verse-milestones"
+        title="Milestones"
+        count={navigation.milestones.length}
+        summary="From writing without spaces to the first Bible with chapters and verses (1555)."
+      >
+        <div className="mb-3 flex flex-wrap items-center gap-2">
           {(['nav-manuscript', 'nav-chapters', 'nav-verses'] as MilestoneKind[]).map((k) => (
             <KindBadge key={k} kind={k} />
           ))}
@@ -174,8 +169,8 @@ export function TextualTransmission() {
             );
           })}
         </ol>
-        <p className="font-sans text-[11px] text-ink-soft">These milestones also appear in the Translations timeline.</p>
-      </div>
-    </section>
+        <p className="mt-2 font-sans text-[12px] text-ink-soft">These milestones also appear in the Translations timeline.</p>
+      </Fold>
+    </div>
   );
 }

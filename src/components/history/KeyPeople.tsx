@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, ExternalLink, Quote a
 import { cssColor } from '../../lib/characters';
 import { ERAS, EVENTS, PEOPLE_SOURCES, STREAMS, WITNESSES, type ChurchEvent, type Era, type EraId, type Stream, type Witness } from '../../lib/witnesses';
 import { RefText } from '../ScriptureRef';
+import { Fold } from '../sections';
 
 /**
  * Key people from Jesus to today: one era at a time, people as lifespan bars and councils and
@@ -39,24 +40,23 @@ function EraStrip({ era, onPick }: { era: EraId; onPick: (id: EraId) => void }) 
   const x = (y: number) => ((y - from) / (to - from)) * 100;
   const bounds = [-10, 100, 300, 500, 1000, 1500, 1650, 1900, 2025];
   return (
-    <div className="rounded-md border border-rule bg-paper/80 px-3 py-3">
+    // A picture of the eras across 2,000 years; the era buttons below are the controls (a tap here still opens an era).
+    <div className="rounded-md border border-rule bg-paper/80 px-3 py-3" aria-hidden>
       <div className="relative h-8">
         {ERAS.map((e, i) => {
           const l = x(bounds[i]),
             w = x(bounds[i + 1]) - l;
           const on = e.id === era;
           return (
-            <button
+            <span
               key={e.id}
               onClick={() => onPick(e.id)}
               title={`${e.name} (${e.span})`}
-              aria-label={`${i + 1}. ${e.name}, ${e.span}`}
-              aria-pressed={on}
-              className="focus-ring absolute inset-y-0 border-r border-paper transition-colors"
+              className="absolute inset-y-0 flex cursor-pointer items-center justify-center border-r border-paper transition-colors"
               style={{ left: `${l}%`, width: `${w}%`, background: on ? cssColor('--ink', 0.85) : cssColor('--ink', 0.08 + (i % 2) * 0.05) }}
             >
-              <span className={`font-sans text-[11px] font-bold tabular-nums ${on ? 'text-paper' : 'text-ink-soft'}`}>{i + 1}</span>
-            </button>
+              <span className={`font-sans text-[12px] font-bold tabular-nums ${on ? 'text-paper' : 'text-ink-soft'}`}>{i + 1}</span>
+            </span>
           );
         })}
         {/* each person as a tick */}
@@ -69,7 +69,7 @@ function EraStrip({ era, onPick }: { era: EraId; onPick: (id: EraId) => void }) 
           />
         ))}
       </div>
-      <div className="relative mt-1 h-4 font-sans text-[10.5px] tabular-nums text-ink-soft">
+      <div className="relative mt-1 h-4 font-sans text-[12px] tabular-nums text-ink-soft">
         {[1, 500, 1000, 1500, 2000].map((t) => (
           <span key={t} className="absolute -translate-x-1/2" style={{ left: `${x(t)}%` }}>
             {t === 1 ? 'AD 1' : t}
@@ -120,7 +120,7 @@ function PersonCard({ w, onClose, onPrev, onNext }: { w: Witness; onClose: () =>
           <p className="mt-0.5 font-sans text-[13px] text-ink-soft">
             {w.life} · {w.place}
           </p>
-          <div className="mt-2 flex flex-wrap gap-1.5 font-sans text-[11.5px] font-semibold">
+          <div className="mt-2 flex flex-wrap gap-1.5 font-sans text-[12px] font-semibold">
             <span className="rounded-full px-2 py-0.5" style={{ background: cssColor(s.css, 0.14), color: cssColor(s.css) }}>
               {w.stream === 'jesus' ? 'Jesus Christ' : s.label}
             </span>
@@ -146,7 +146,7 @@ function PersonCard({ w, onClose, onPrev, onNext }: { w: Witness; onClose: () =>
                   <QuoteIcon size={13} className="mt-1 shrink-0 text-ink-soft" aria-hidden />
                   <span>{w.quote.text}</span>
                 </p>
-                <footer className="mt-1 font-sans text-[11.5px] text-ink-soft">
+                <footer className="mt-1 font-sans text-[12px] text-ink-soft">
                   {w.quote.url ? (
                     <a href={w.quote.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline decoration-rule underline-offset-2 hover:decoration-ink">
                       {w.quote.cite} <ExternalLink size={10} aria-hidden />
@@ -195,18 +195,9 @@ export function KeyPeople() {
   };
 
   return (
-    <section aria-labelledby="people-title" className="space-y-6">
-      <div>
-        <h2 id="people-title" className="font-display text-3xl font-semibold">
-          From Jesus to today
-        </h2>
-        <p className="max-w-3xl font-serif text-[16px] leading-relaxed text-ink-soft">
-          The key people of the church, era by era: the apostles, the early church fathers, the councils, the Reformers and the
-          missionaries, down to our own time. Tap anyone to see who they were and how they pointed to Jesus.
-        </p>
-      </div>
+    <div className="space-y-6">
 
-      {/* The frame for the whole tab */}
+      {/* The frame for the whole section */}
       <figure className="rounded-md px-4 py-3" style={{ background: cssColor('--lineage', 0.06), boxShadow: `inset 3px 0 0 ${cssColor('--lineage')}` }}>
         <blockquote className="font-serif text-[16px] italic leading-relaxed">
           “Therefore let us also, seeing we are surrounded by so great a cloud of witnesses … run with perseverance the race that is set
@@ -255,7 +246,7 @@ export function KeyPeople() {
         {/* the chart */}
         <div className="grid grid-cols-[8.5rem_1fr] sm:grid-cols-[13rem_1fr]">
           <span />
-          <div className="relative h-5 border-b border-rule font-sans text-[10.5px] tabular-nums text-ink-soft">
+          <div className="relative h-5 border-b border-rule font-sans text-[12px] tabular-nums text-ink-soft">
             {ticks.map((t, i) => (
               <span key={t} className={`absolute -translate-x-1/2 whitespace-nowrap ${i % 2 ? 'hidden sm:block' : ''}`} style={{ left: `${x(t)}%` }}>
                 {yr(t)}
@@ -289,7 +280,7 @@ export function KeyPeople() {
                             <Diamond css={look.css} />
                           </span>
                           <span
-                            className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap font-sans text-[10.5px] tabular-nums text-ink-soft ${x(ev.year) > 75 ? '-translate-x-full pr-3' : 'pl-3'}`}
+                            className={`absolute top-1/2 -translate-y-1/2 whitespace-nowrap font-sans text-[12px] tabular-nums text-ink-soft ${x(ev.year) > 75 ? '-translate-x-full pr-3' : 'pl-3'}`}
                             style={{ left: `${x(ev.year)}%` }}
                           >
                             {ev.label}
@@ -351,7 +342,7 @@ export function KeyPeople() {
         </div>
 
         {/* key */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 font-sans text-[11.5px] text-ink-soft">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 font-sans text-[12px] text-ink-soft">
           {(Object.keys(STREAMS) as Stream[])
             .filter((k) => used.has(k))
             .map((k) => (
@@ -396,9 +387,8 @@ export function KeyPeople() {
       </div>
 
       {/* where it all comes from */}
-      <details className="rounded-md border border-rule bg-paper/80 px-4 py-3">
-        <summary className="cursor-pointer font-sans text-[13px] font-semibold">Sources for this timeline</summary>
-        <p className="mt-2 font-sans text-[12.5px] leading-relaxed text-ink-soft">
+      <Fold id="people-sources" title="Sources for this timeline" summary="The ancient historians, reference works and primary texts behind every date and quotation.">
+        <p className=" font-sans text-[12.5px] leading-relaxed text-ink-soft">
           Dates and lives follow the ancient historians and standard reference works below. Every quotation is taken from the linked
           primary text. Where no reliable quotation was found, the card describes in its own words how the person pointed to Jesus.
         </p>
@@ -406,7 +396,7 @@ export function KeyPeople() {
           {PEOPLE_SOURCES.map((s) => (
             <li key={s.title}>
               {s.url ? (
-                <a href={s.url} target="_blank" rel="noreferrer" className="font-medium underline decoration-rule underline-offset-2 hover:decoration-ink">
+                <a href={s.url} target="_blank" rel="noreferrer" className="inline-block py-1 font-medium underline decoration-rule underline-offset-2 hover:decoration-ink">
                   {s.title}
                 </a>
               ) : (
@@ -416,7 +406,7 @@ export function KeyPeople() {
             </li>
           ))}
         </ul>
-      </details>
+      </Fold>
 
       {pi >= 0 && (
         <PersonCard
@@ -426,6 +416,6 @@ export function KeyPeople() {
           onNext={pi < people.length - 1 ? () => setOpen(people[pi + 1].id) : null}
         />
       )}
-    </section>
+    </div>
   );
 }

@@ -1,10 +1,11 @@
-import { ArrowRight, Lightbulb } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, ChevronDown, Lightbulb } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { RefText } from '../ScriptureRef';
 
 /**
- * Church history told simply, as a short path of steps. Each step links to the tab that goes deeper,
- * so the detailed pages are scaffolded by this overview.
+ * Church history told simply, as a short path of steps. Each step shows its era, title and key idea;
+ * the rest opens on request, and a button jumps to the section that goes deeper.
  */
 interface Step {
   era: string;
@@ -122,18 +123,78 @@ const FAMILIES = [
   { name: 'Orthodox', pct: 12, css: '--role-priest' },
 ];
 
+/** One step: era, title and key idea always visible; the body, words and passages on request. */
+function StepCard({ s, i, go }: { s: Step; i: number; go: (id: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const bodyId = `step-${i + 1}-body`;
+  return (
+    <article className="rounded-md border border-rule bg-paper/90 px-4 py-4" style={{ boxShadow: `inset 3px 0 0 ${cssColor(s.css)}` }}>
+      <div className="eyebrow">
+        <span className="sm:hidden">Step {i + 1} · </span>
+        {s.era}
+      </div>
+      <h3 className="mt-0.5 font-display text-2xl font-semibold leading-tight">{s.title}</h3>
+      <p className="mt-2 flex gap-2 rounded-md px-3 py-2 font-sans text-[14px] leading-snug" style={{ background: cssColor(s.css, 0.08) }}>
+        <Lightbulb size={16} className="mt-0.5 shrink-0" style={{ color: cssColor(s.css) }} aria-hidden />
+        <span>
+          <b>Key idea:</b> {s.idea}
+        </span>
+      </p>
+      <div id={bodyId} hidden={!open} className="mt-3">
+        <div className="space-y-2 font-serif text-[16px] leading-relaxed">
+          {s.body.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
+        {s.words && (
+          <dl className="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-sans text-[13px]">
+            {s.words.map((x) => (
+              <div key={x.w}>
+                <dt className="inline font-semibold">{x.w}:</dt> <dd className="inline text-ink-soft">{x.d}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+        {s.refs && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {s.refs.map((r) => (
+              <span key={r} className="inline-flex min-h-7 items-center rounded-full border border-rule px-2.5 font-sans text-[13px]">
+                <RefText text={r} />
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <button
+          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open}
+          aria-controls={bodyId}
+          className="focus-ring inline-flex min-h-8 items-center gap-1.5 rounded-full border border-rule px-3.5 font-sans text-[13px] font-medium hover:border-ink/50"
+        >
+          {open ? 'Show less' : 'Read this step'}
+          <ChevronDown size={14} aria-hidden className={`transition-transform ${open ? 'rotate-180' : ''}`} />
+        </button>
+        <span className="ml-auto flex flex-wrap gap-2">
+          {s.next.map((n) => (
+            <button
+              key={n.tab}
+              onClick={() => go(n.tab)}
+              className="focus-ring inline-flex min-h-8 items-center gap-1.5 rounded-full px-3.5 py-1.5 font-sans text-[13px] font-semibold text-paper"
+              style={{ background: cssColor(s.css) }}
+            >
+              {n.label} <ArrowRight size={14} aria-hidden />
+            </button>
+          ))}
+        </span>
+      </div>
+    </article>
+  );
+}
+
 export function StartHere({ go }: { go: (tab: string) => void }) {
   return (
-    <section aria-labelledby="start-title" className="space-y-6">
-      <div>
-        <h2 id="start-title" className="font-display text-3xl font-semibold">
-          Church history, simply told
-        </h2>
-        <p className="max-w-3xl font-serif text-[16px] leading-relaxed text-ink-soft">
-          Two thousand years in six short steps. Read from top to bottom; each step ends with a link to the page that explores it in
-          more depth, and every page ends with a button to the next one.
-        </p>
-      </div>
+    <div className="space-y-6">
 
       {/* The path at a glance */}
       <div className="rounded-md border border-rule bg-paper/80 px-4 py-4">
@@ -152,8 +213,8 @@ export function StartHere({ go }: { go: (tab: string) => void }) {
               >
                 {i + 1}
               </a>
-              <span className="mt-1 font-sans text-[11px] font-semibold tabular-nums">{s.year}</span>
-              <span className="hidden font-sans text-[11px] leading-tight text-ink-soft sm:block">{s.title}</span>
+              <span className="mt-1 font-sans text-[12px] font-semibold tabular-nums">{s.year}</span>
+              <span className="hidden font-sans text-[12px] leading-tight text-ink-soft sm:block">{s.title}</span>
             </li>
           ))}
         </ol>
@@ -161,12 +222,16 @@ export function StartHere({ go }: { go: (tab: string) => void }) {
           <div className="eyebrow mb-1.5">The Christian family today (2.18 billion, 2010)</div>
           <div className="flex h-6 overflow-hidden rounded-full ring-1 ring-rule">
             {FAMILIES.map((f) => (
-              <div key={f.name} className="flex items-center justify-center font-sans text-[11px] font-semibold text-paper" style={{ width: `${f.pct}%`, background: cssColor(f.css) }}>
-                {f.name} {f.pct}%
+              <div key={f.name} className="flex items-center justify-center font-sans text-[12px] font-semibold text-paper" style={{ width: `${f.pct}%`, background: cssColor(f.css) }}>
+                <span className={f.pct >= 30 ? '' : 'hidden sm:inline'}>{f.name}&nbsp;</span>
+                {f.pct}%
               </div>
             ))}
           </div>
-          <p className="mt-1 font-sans text-[10.5px] text-ink-soft">Pew Research Center; the remaining 1% belong to other groups.</p>
+          <p className="mt-1 font-sans text-[12px] text-ink-soft">
+            <span className="sm:hidden">{FAMILIES.map((f) => `${f.name} ${f.pct}%`).join(' · ')}. </span>
+            Pew Research Center; the remaining 1% belong to other groups.
+          </p>
         </div>
       </div>
 
@@ -182,52 +247,7 @@ export function StartHere({ go }: { go: (tab: string) => void }) {
               {i + 1}
             </span>
             {i < STEPS.length - 1 && <span aria-hidden className="absolute bottom-[-1rem] left-[17px] top-11 hidden w-0.5 bg-ink/10 sm:block" />}
-            <article className="rounded-md border border-rule bg-paper/90 px-4 py-4" style={{ boxShadow: `inset 3px 0 0 ${cssColor(s.css)}` }}>
-              <div className="eyebrow">
-                <span className="sm:hidden">Step {i + 1} · </span>
-                {s.era}
-              </div>
-              <h3 className="mt-0.5 font-display text-2xl font-semibold leading-tight">{s.title}</h3>
-              <div className="mt-2 space-y-2 font-serif text-[16px] leading-relaxed">
-                {s.body.map((p) => (
-                  <p key={p}>{p}</p>
-                ))}
-              </div>
-              <p className="mt-3 flex gap-2 rounded-md px-3 py-2 font-sans text-[13.5px] leading-snug" style={{ background: cssColor(s.css, 0.08) }}>
-                <Lightbulb size={16} className="mt-0.5 shrink-0" style={{ color: cssColor(s.css) }} aria-hidden />
-                <span>
-                  <b>Key idea:</b> {s.idea}
-                </span>
-              </p>
-              {s.words && (
-                <dl className="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-sans text-[12.5px]">
-                  {s.words.map((x) => (
-                    <div key={x.w}>
-                      <dt className="inline font-semibold">{x.w}:</dt> <dd className="inline text-ink-soft">{x.d}</dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
-              <div className="mt-3 flex flex-wrap items-center gap-2">
-                {s.refs?.map((r) => (
-                  <span key={r} className="rounded-full border border-rule px-2 py-0.5 font-sans text-[12px]">
-                    <RefText text={r} />
-                  </span>
-                ))}
-                <span className="ml-auto flex flex-wrap gap-2">
-                  {s.next.map((n) => (
-                    <button
-                      key={n.tab}
-                      onClick={() => go(n.tab)}
-                      className="focus-ring inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-sans text-[13px] font-semibold text-paper"
-                      style={{ background: cssColor(s.css) }}
-                    >
-                      {n.label} <ArrowRight size={14} aria-hidden />
-                    </button>
-                  ))}
-                </span>
-              </div>
-            </article>
+            <StepCard s={s} i={i} go={go} />
           </li>
         ))}
       </ol>
@@ -251,6 +271,6 @@ export function StartHere({ go }: { go: (tab: string) => void }) {
           From Jesus to today: the key people <ArrowRight size={14} aria-hidden />
         </button>
       </aside>
-    </section>
+    </div>
   );
 }

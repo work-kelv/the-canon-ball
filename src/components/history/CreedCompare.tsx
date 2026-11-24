@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import { BookOpenCheck, ChevronDown, ExternalLink, Info } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
+import { Fold } from '../sections';
 import {
   type CreedId,
   type CreedRow,
@@ -104,7 +105,7 @@ function ExplainerBox({ data: n, label, css, defaultOpen = false }: { data: Expl
           <ol className="space-y-2.5">
             {n.reasons.map((r, i) => (
               <li key={r.title} className="grid grid-cols-[1.4rem_1fr] gap-x-2">
-                <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full font-sans text-[11px] font-bold text-paper" style={{ background: cssColor(css) }}>
+                <span className="mt-0.5 flex h-5 w-5 items-center justify-center rounded-full font-sans text-[12px] font-bold text-paper" style={{ background: cssColor(css) }}>
                   {i + 1}
                 </span>
                 <div>
@@ -113,7 +114,7 @@ function ExplainerBox({ data: n, label, css, defaultOpen = false }: { data: Expl
                   {r.quote && (
                     <blockquote className="mt-1 border-l-2 pl-3 font-serif text-[14.5px] italic leading-snug" style={{ borderColor: cssColor(css, 0.6) }}>
                       “{r.quote}”
-                      {r.cite && <span className="mt-0.5 block font-sans text-[11px] not-italic text-ink-soft">{r.cite}</span>}
+                      {r.cite && <span className="mt-0.5 block font-sans text-[12px] not-italic text-ink-soft">{r.cite}</span>}
                     </blockquote>
                   )}
                 </div>
@@ -129,14 +130,14 @@ function ExplainerBox({ data: n, label, css, defaultOpen = false }: { data: Expl
             <div className="grid gap-2 sm:grid-cols-2">
               {[n.parallel.left, n.parallel.right].map((x, i) => (
                 <div key={x.label} className="rounded-md border border-rule bg-paper px-3 py-2" style={{ boxShadow: `inset 3px 0 0 ${cssColor(i === 0 ? '--rel-family' : '--greek')}` }}>
-                  <div className="font-sans text-[11px] font-semibold uppercase tracking-wide text-ink-soft">{x.label}</div>
+                  <div className="font-sans text-[12px] font-semibold uppercase tracking-wide text-ink-soft">{x.label}</div>
                   <p className="mt-0.5 font-serif text-[14px] italic leading-snug">“{x.text}”</p>
                 </div>
               ))}
             </div>
             <p className="mt-1.5 font-sans text-[12px] text-ink-soft">{n.parallel.note}</p>
           </div>
-          <div className="flex flex-wrap gap-x-3 gap-y-1 font-sans text-[11.5px]">
+          <div className="flex flex-wrap gap-x-3 gap-y-1 font-sans text-[12px]">
             <span className="text-ink-soft">Sources:</span>
             {n.sources.map((s) => (
               <a key={s.url} href={s.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 underline decoration-rule underline-offset-2 hover:decoration-ink">
@@ -164,7 +165,7 @@ function RowDetail({ row }: { row: CreedRow }) {
           const cell = row.cells[c.id];
           return (
             <div key={c.id} className="rounded-md border border-rule bg-paper px-3 py-2" style={{ boxShadow: `inset 3px 0 0 ${cssColor(CREED_CSS[c.id])}` }}>
-              <div className="font-sans text-[11px] font-semibold uppercase tracking-wide" style={{ color: cssColor(CREED_CSS[c.id]) }}>
+              <div className="font-sans text-[12px] font-semibold uppercase tracking-wide" style={{ color: cssColor(CREED_CSS[c.id]) }}>
                 {c.short}
               </div>
               {cell.q ? (
@@ -194,16 +195,7 @@ export function CreedCompare() {
   ];
 
   return (
-    <section aria-labelledby="cc-title" className="space-y-6">
-      <div>
-        <h2 id="cc-title" className="font-display text-3xl font-semibold">
-          Four creeds compared
-        </h2>
-        <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
-          Each creed answered the questions of its time, so each adds something the earlier ones left open. Here is what they share,
-          where they differ, and which churches confess them today.
-        </p>
-      </div>
+    <div className="space-y-6">
 
       {/* How the creeds grew */}
       <ol className="relative grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -213,9 +205,9 @@ export function CreedCompare() {
               <span className="font-display text-lg font-semibold" style={{ color: cssColor(CREED_CSS[c.id]) }}>
                 {c.short}
               </span>
-              <span className="font-sans text-[11.5px] font-semibold tabular-nums text-ink-soft">{c.yearLabel}</span>
+              <span className="font-sans text-[12px] font-semibold tabular-nums text-ink-soft">{c.yearLabel}</span>
             </div>
-            <div className="font-sans text-[11.5px] font-semibold uppercase tracking-wide text-ink-soft">
+            <div className="font-sans text-[12px] font-semibold uppercase tracking-wide text-ink-soft">
               {i + 1}. {c.purpose}
             </div>
             <p className="mt-1 font-serif text-[14px] leading-snug">{c.added}</p>
@@ -227,7 +219,7 @@ export function CreedCompare() {
       <div>
         <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="font-display text-xl font-semibold">What each creed says</h3>
-          <div className="flex flex-wrap gap-3 font-sans text-[11.5px] text-ink-soft">
+          <div className="flex flex-wrap gap-3 font-sans text-[12px] text-ink-soft">
             {(['explicit', 'brief', 'absent'] as PhraseStatus[]).map((s) => (
               <span key={s} className="inline-flex items-center gap-1.5">
                 <PhraseMark s={s} css="--ink" /> {creedCompare.meta.statuses[s]}
@@ -239,7 +231,7 @@ export function CreedCompare() {
           <div className="grid grid-cols-[minmax(0,1fr)_repeat(4,2.75rem)] items-end gap-x-1 border-b border-rule bg-paper px-3 py-2 sm:grid-cols-[minmax(0,1fr)_repeat(4,6.5rem)]">
             <span className="eyebrow">Tap a row for the exact words</span>
             {creeds.map((c) => (
-              <span key={c.id} className="text-center font-sans text-[10.5px] font-semibold leading-tight sm:text-[12px]" style={{ color: cssColor(CREED_CSS[c.id]) }}>
+              <span key={c.id} className="text-center font-sans text-[12px] font-semibold leading-tight sm:text-[12px]" style={{ color: cssColor(CREED_CSS[c.id]) }}>
                 <span className="sm:hidden">{c.short.slice(0, 4)}.</span>
                 <span className="hidden sm:inline">{c.short}</span>
               </span>
@@ -274,14 +266,14 @@ export function CreedCompare() {
             </Fragment>
           ))}
         </div>
-        <p className="mt-2 font-sans text-[11px] text-ink-soft">{creedCompare.meta.note}</p>
+        <p className="mt-2 font-sans text-[12px] text-ink-soft">{creedCompare.meta.note}</p>
       </div>
 
       {/* Who confesses which */}
+      <Fold id="who-confesses" title="Who confesses which creed" summary="Every church and movement on this page, creed by creed.">
       <div>
-        <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
-          <h3 className="font-display text-xl font-semibold">Who confesses which creed</h3>
-          <div className="flex flex-wrap gap-3 font-sans text-[11.5px] text-ink-soft">
+        <div className="mb-2 flex flex-wrap items-baseline justify-end gap-2">
+          <div className="flex flex-wrap gap-3 font-sans text-[12px] text-ink-soft">
             {(Object.keys(STATUS_STYLE) as CreedStatus[]).map((s) => (
               <span key={s} className="inline-flex items-center gap-1" title={creedLens.statuses[s].note}>
                 <CreedStatusMark s={s} /> {creedLens.statuses[s].label}
@@ -293,7 +285,7 @@ export function CreedCompare() {
           <div className="grid grid-cols-[minmax(0,1fr)_repeat(4,2.75rem)] items-end gap-x-1 border-b border-rule px-3 py-2 sm:grid-cols-[minmax(0,1fr)_repeat(4,6.5rem)]">
             <span className="eyebrow">Church or movement</span>
             {creeds.map((c) => (
-              <span key={c.id} className="text-center font-sans text-[10.5px] font-semibold leading-tight sm:text-[12px]" style={{ color: cssColor(CREED_CSS[c.id]) }}>
+              <span key={c.id} className="text-center font-sans text-[12px] font-semibold leading-tight sm:text-[12px]" style={{ color: cssColor(CREED_CSS[c.id]) }}>
                 <span className="sm:hidden">{c.short.slice(0, 4)}.</span>
                 <span className="hidden sm:inline">{c.short}</span>
               </span>
@@ -318,15 +310,16 @@ export function CreedCompare() {
             </div>
           ))}
         </div>
-        <p className="mt-2 font-sans text-[11px] text-ink-soft">
+        <p className="mt-2 font-sans text-[12px] text-ink-soft">
           “Holds its teaching” marks churches that teach the same faith in their own statement of faith rather than reciting the
           historic creed. Within a family, individual churches and congregations vary.
         </p>
-        <div className="mt-3 space-y-2">
-          <NonCreedalExplainer />
-          <ChalcedonExplainer />
-        </div>
       </div>
-    </section>
+      </Fold>
+      <div className="space-y-2">
+        <NonCreedalExplainer />
+        <ChalcedonExplainer />
+      </div>
+    </div>
   );
 }

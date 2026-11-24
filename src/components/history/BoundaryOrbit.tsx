@@ -135,7 +135,7 @@ function CreedRow({ creeds, note }: { creeds: CreedSet; note?: string }) {
     <div>
       <div className="flex flex-wrap gap-1.5">
         {creedCompare.creeds.map((c) => (
-          <span key={c.id} className="inline-flex items-center gap-1 rounded-full border border-rule py-0.5 pl-0.5 pr-2 font-sans text-[11.5px]" title={creedLens.statuses[creeds[c.id]].note}>
+          <span key={c.id} className="inline-flex items-center gap-1 rounded-full border border-rule py-0.5 pl-0.5 pr-2 font-sans text-[12px]" title={creedLens.statuses[creeds[c.id]].note}>
             <CreedStatusMark s={creeds[c.id]} />
             <span style={{ color: cssColor(CREED_CSS[c.id]) }} className="font-semibold">
               {c.short}
@@ -143,7 +143,7 @@ function CreedRow({ creeds, note }: { creeds: CreedSet; note?: string }) {
           </span>
         ))}
       </div>
-      {note && <p className="mt-1 font-sans text-[11.5px] leading-snug text-ink-soft">{note}</p>}
+      {note && <p className="mt-1 font-sans text-[12px] leading-snug text-ink-soft">{note}</p>}
     </div>
   );
 }
@@ -186,7 +186,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Header({ badge, badgeCss, name, css, sub, self }: { badge: string; badgeCss: string; name: string; css: string; sub?: string; self?: string }) {
   return (
     <div className="px-4 py-3" style={{ background: `linear-gradient(120deg, ${cssColor(css, 0.16)}, transparent 70%)` }}>
-      <span className="rounded-full px-2 py-0.5 font-sans text-[10.5px] font-semibold uppercase tracking-wide" style={{ background: cssColor(badgeCss, 0.14), color: cssColor(badgeCss) }}>
+      <span className="rounded-full px-2 py-0.5 font-sans text-[12px] font-semibold uppercase tracking-wide" style={{ background: cssColor(badgeCss, 0.14), color: cssColor(badgeCss) }}>
         {badge}
       </span>
       <h3 className="mt-1 font-display text-2xl font-semibold leading-tight" style={{ color: cssColor(css) }}>
@@ -242,7 +242,7 @@ function FamilyDetail({ f, onPick }: { f: ChurchFamily; onPick: (s: Sel) => void
         <div className="flex flex-wrap gap-1.5 pt-1">
           {f.members.map((m) => (
             <button key={m.id} onClick={() => onPick({ kind: 'member', family: f.id, id: m.id })} className="focus-ring inline-flex items-center gap-1.5 rounded-full border border-rule py-0.5 pl-0.5 pr-2.5 font-sans text-[12px] hover:border-ink/50">
-              <span className="flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[9px] font-bold text-paper" style={{ background: cssColor(f.css) }}>
+              <span className="flex h-5 min-w-5 items-center justify-center rounded-full px-1 text-[12px] font-bold text-paper" style={{ background: cssColor(f.css) }}>
                 {m.abbr}
               </span>
               {m.name}
@@ -380,17 +380,7 @@ export function BoundaryOrbit() {
   };
 
   return (
-    <section aria-labelledby="orbit-title" className="space-y-4">
-      <div>
-        <h2 id="orbit-title" className="font-display text-3xl font-semibold">
-          Core beliefs: where each church stands
-        </h2>
-        <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
-          At the centre is the faith set out in the historic creeds. The four great families of churches that confess it fill the
-          circle, each with some of its member churches. Movements whose teaching differs on one or more of five core beliefs sit
-          beyond it, farther out the more they differ. Tap anything for details, or turn on a creed to see who confesses it.
-        </p>
-      </div>
+    <div className="space-y-4">
       <p className="flex gap-2 rounded-md border border-rule bg-paper/70 px-3 py-2 font-sans text-[12.5px] leading-snug text-ink-soft">
         <Info size={15} className="mt-0.5 shrink-0" aria-hidden />
         {boundaryNote}
@@ -414,7 +404,7 @@ export function BoundaryOrbit() {
           {lens && (
             <div className="mb-2 rounded-md border border-rule px-3 py-2 font-sans text-[12.5px] leading-snug" style={{ boxShadow: `inset 3px 0 0 ${cssColor(CREED_CSS[lens])}` }}>
               <p>{creedLens.notes[lens]}</p>
-              <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[11.5px] text-ink-soft">
+              <div className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[12px] text-ink-soft">
                 {(Object.keys(STATUS_STYLE) as CreedStatus[]).map((s) => (
                   <span key={s} className="inline-flex items-center gap-1" title={creedLens.statuses[s].note}>
                     <CreedStatusMark s={s} /> {creedLens.statuses[s].label}
@@ -425,7 +415,7 @@ export function BoundaryOrbit() {
             </div>
           )}
 
-          <svg viewBox={`0 0 ${S} ${S}`} className="mx-auto block w-full max-w-[600px]" role="group" aria-label="Diagram: the families of churches around the faith of the creeds, and other movements beyond it">
+          <svg viewBox={`0 0 ${S} ${S}`} className="mx-auto block w-full max-w-[720px]" role="group" aria-label="Diagram: the families of churches around the faith of the creeds, and other movements beyond it">
             <defs>
               <radialGradient id="core-glow">
                 <stop offset="0%" stopColor={cssColor('--role-king', 0.55)} />
@@ -449,7 +439,7 @@ export function BoundaryOrbit() {
             {[0, 1, 2, 3, 4, 5].map((d) => (
               <circle key={d} cx={C} cy={C} r={BOUNDARY_R + 30 + d * step} fill="none" stroke={cssColor('--ink', 0.05)} />
             ))}
-            <text className="fill-ink-soft font-sans" style={{ letterSpacing: '0.16em', opacity: 0.7, fontSize: 11 * k }}>
+            <text className="fill-ink-soft font-sans" style={{ letterSpacing: '0.14em', opacity: 0.75, fontSize: small ? 16 : 12 }}>
               <textPath href="#other-path" startOffset="50%" textAnchor="middle">
                 OTHER RELIGIONS
               </textPath>
@@ -465,7 +455,7 @@ export function BoundaryOrbit() {
                 <g key={f.id} className="cursor-pointer" onClick={() => setSel({ kind: 'family', id: f.id })}>
                   <title>{f.name}</title>
                   <path d={wedgePath(a0, a1)} fill={lens ? cssColor('--ink', fillA) : cssColor(f.css, fillA)} stroke={cssColor('--paper')} strokeWidth={3} style={{ transition: 'fill 250ms' }} />
-                  <text className={`pointer-events-none font-sans ${whole ? 'font-bold' : 'font-semibold'}`} style={{ letterSpacing: small ? '0.08em' : '0.12em', fontSize: small ? 15 : 9.5, opacity: sel.kind === 'family' && !whole && !lens ? 0.55 : 1 }} fill={cssColor(f.css)}>
+                  <text className={`pointer-events-none font-sans ${whole ? 'font-bold' : 'font-semibold'}`} style={{ letterSpacing: small ? '0.08em' : '0.1em', fontSize: small ? 17 : 12, opacity: sel.kind === 'family' && !whole && !lens ? 0.55 : 1 }} fill={cssColor(f.css)}>
                     <textPath href={`#fam-${f.id}`} startOffset="50%" textAnchor="middle">
                       {FAMILY_LABEL[f.id][small ? 1 : 0]}
                     </textPath>
@@ -486,7 +476,7 @@ export function BoundaryOrbit() {
             )}
             <circle cx={C} cy={C} r={BOUNDARY_R} fill="none" stroke={cssColor('--rel-mentor', 0.75)} strokeWidth={1.5} strokeDasharray="6 5" />
             {/* On phones the outer circles sit close in, so the dashed line is explained by the legend instead. */}
-            <text className={`fill-ink-soft font-sans ${small ? 'hidden' : ''}`} style={{ letterSpacing: '0.16em', fontSize: 11 * k }}>
+            <text className={`fill-ink-soft font-sans ${small ? 'hidden' : ''}`} style={{ letterSpacing: '0.14em', fontSize: 12 }}>
               <textPath href="#faith-path" startOffset="50%" textAnchor="middle">
                 THE SHARED FAITH OF THE HISTORIC CREEDS
               </textPath>
@@ -498,17 +488,11 @@ export function BoundaryOrbit() {
             {/* core */}
             <circle cx={C} cy={C} r={CORE_R + 26} fill="url(#core-glow)" />
             <circle cx={C} cy={C} r={CORE_R} fill={cssColor('--paper')} stroke={cssColor('--role-king')} strokeWidth={2.5} />
-            <text x={C} y={C - 18 * k} textAnchor="middle" className="fill-ink font-sans font-semibold" style={{ letterSpacing: '0.2em', fontSize: 9.5 * k }}>
+            <text x={C} y={C - 18 * k} textAnchor="middle" className="fill-ink font-sans font-semibold" style={{ letterSpacing: '0.16em', fontSize: small ? 18 : 12 }}>
               THE CORE
             </text>
-            <text x={C} y={C + 6} textAnchor="middle" className="fill-ink font-display font-semibold" style={{ fontSize: small ? 25 : 19 }}>
+            <text x={C} y={C + 6} textAnchor="middle" className="fill-ink font-display font-semibold" style={{ fontSize: small ? 28 : 19 }}>
               Nicene faith
-            </text>
-            <text x={C} y={C + 22 * k} textAnchor="middle" className="fill-ink-soft font-sans" style={{ fontSize: small ? 11.5 : 9.5 }}>
-              Trinity · Jesus is God
-            </text>
-            <text x={C} y={C + 34 * k} textAnchor="middle" className="fill-ink-soft font-sans" style={{ fontSize: small ? 11.5 : 9.5 }}>
-              Cross · Scripture · Grace
             </text>
 
             {/* member churches */}
@@ -540,6 +524,7 @@ export function BoundaryOrbit() {
                       const txt = look ? look.text : active || famOn ? cssColor('--paper') : cssColor(f.css);
                       return (
                         <>
+                          <circle cx={p.x} cy={p.y} r={small ? 26 : DOT + 3} fill="transparent" />
                           <circle cx={p.x} cy={p.y} r={DOT} fill={fill} stroke={look ? look.stroke : cssColor(f.css)} strokeWidth={look ? 2.5 : 2} strokeDasharray={look ? look.dash : m.edge ? '3 2' : undefined} />
                           <text x={p.x} y={p.y + (small ? 4.5 : 3.4)} textAnchor="middle" className="pointer-events-none font-sans font-bold" style={{ fontSize: small ? (m.abbr.length > 2 ? 11 : 13) : m.abbr.length > 2 ? 8.5 : 10 }} fill={txt}>
                             {m.abbr}
@@ -578,6 +563,7 @@ export function BoundaryOrbit() {
                   <title>{g.name}</title>
                   <g transform={`translate(${q.x},${q.y})`}>
                     {active && <circle r={NODE_R + 9} fill={cssColor(g.css, 0.18)} className="orbit-pulse" />}
+                    <circle r={small ? 26 : NODE_R + 3} fill="transparent" />
                     <circle
                       r={hot ? NODE_R + 2 : NODE_R}
                       fill={st ? statusLook(st).fill : active ? col : cssColor('--paper')}
@@ -650,7 +636,7 @@ export function BoundaryOrbit() {
           </div>
         </div>
 
-        <div className="lg:sticky lg:top-16 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+        <div className="lg:sticky lg:top-[calc(var(--jump-h,44px)+12px)] lg:col-start-2 lg:row-span-2 lg:row-start-1">
           {selGroup ? (
             <GroupDetail g={selGroup} />
           ) : selMember ? (
@@ -661,7 +647,10 @@ export function BoundaryOrbit() {
         </div>
 
         <div className="lg:col-start-1 lg:row-start-2">
-          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 font-sans text-[11.5px] text-ink-soft">
+          <p className="text-center font-sans text-[13px]">
+            <b>At the core:</b> the Trinity · Jesus is God · the cross · Scripture · grace
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-1.5 font-sans text-[12px] text-ink-soft">
             <span className="inline-flex items-center gap-1.5">
               <span className="flex gap-0.5">
                 {(['affirms', 'partial', 'differs'] as Status[]).map((s) => (
@@ -690,6 +679,6 @@ export function BoundaryOrbit() {
           </ol>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

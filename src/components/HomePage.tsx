@@ -93,13 +93,13 @@ const STATS: [string, string][] = [
 
 export function HomePage() {
   return (
-    <main className="space-y-12 pt-8">
+    <div className="space-y-12 pt-8">
       {/* At a glance */}
       <dl className="grid grid-cols-3 gap-y-4 border-y border-rule py-4 sm:grid-cols-6">
         {STATS.map(([n, l]) => (
           <div key={l} className="text-center">
             <dt className="font-display text-3xl font-semibold tabular-nums sm:text-4xl">{n}</dt>
-            <dd className="font-sans text-[11.5px] uppercase tracking-[0.12em] text-ink-soft">{l}</dd>
+            <dd className="font-sans text-[12px] uppercase tracking-[0.12em] text-ink-soft">{l}</dd>
           </div>
         ))}
       </dl>
@@ -218,6 +218,6 @@ export function HomePage() {
           </li>
         </ul>
       </section>
-    </main>
+    </div>
   );
 }

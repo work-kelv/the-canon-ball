@@ -21,8 +21,22 @@ interface Props {
 export function FilterPills({ filter, onFilter, division, onClearDivision, matchCount }: Props) {
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="eyebrow mr-1">Language</span>
-      <div role="radiogroup" aria-label="Filter by language" className="flex flex-wrap gap-1.5">
+      <label className="flex items-center gap-2 sm:hidden">
+        <span className="eyebrow">Language</span>
+        <select
+          value={filter}
+          onChange={(e) => onFilter(e.target.value as LanguageFilter)}
+          className="focus-ring min-h-9 rounded-full border border-rule bg-paper px-3 font-sans text-[13px] font-medium"
+        >
+          {FILTERS.map((f) => (
+            <option key={f.id} value={f.id}>
+              {f.label} ({books.filter((b) => matchesFilter(b, f.id)).length})
+            </option>
+          ))}
+        </select>
+      </label>
+      <span className="eyebrow mr-1 hidden sm:inline">Language</span>
+      <div role="radiogroup" aria-label="Filter by language" className="hidden flex-wrap gap-1.5 sm:flex">
         {FILTERS.map((f) => {
           const active = f.id === filter;
           const count = books.filter((b) => matchesFilter(b, f.id)).length;
@@ -33,7 +47,7 @@ export function FilterPills({ filter, onFilter, division, onClearDivision, match
               aria-checked={active}
               title={f.hint}
               onClick={() => onFilter(f.id)}
-              className={`focus-ring inline-flex items-center gap-2 rounded-full border px-3 py-1 font-sans text-xs font-medium transition-colors ${
+              className={`focus-ring inline-flex min-h-8 items-center gap-2 rounded-full border px-3 py-1 font-sans text-xs font-medium transition-colors ${
                 active
                   ? 'border-ink bg-ink text-paper'
                   : 'border-rule bg-paper/60 text-ink hover:border-ink/60'
@@ -59,7 +73,7 @@ export function FilterPills({ filter, onFilter, division, onClearDivision, match
       {division && (
         <button
           onClick={onClearDivision}
-          className="focus-ring inline-flex items-center gap-1.5 rounded-full border border-dashed border-ink/50 px-3 py-1 font-sans text-xs font-medium hover:bg-ink/5"
+          className="focus-ring inline-flex min-h-8 items-center gap-1.5 rounded-full border border-dashed border-ink/50 px-3 py-1 font-sans text-xs font-medium hover:bg-ink/5"
           title="Clear division filter"
         >
           {division}

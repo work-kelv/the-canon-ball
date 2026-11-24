@@ -96,7 +96,7 @@ export function PageIntro({ storageKey, art, css, lead, cards, howTo, moreLabel 
                   </span>
                   {c.aside}
                 </div>
-                {c.kicker && <div className="font-sans text-[11.5px] font-semibold uppercase tracking-wide text-ink-soft">{c.kicker}</div>}
+                {c.kicker && <div className="font-sans text-[12px] font-semibold uppercase tracking-wide text-ink-soft">{c.kicker}</div>}
                 <div className="mt-1 font-serif text-[14.5px] leading-snug">{c.body}</div>
               </div>
             ))}

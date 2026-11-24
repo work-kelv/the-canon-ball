@@ -38,7 +38,7 @@ function tileBackground(book: BibleBook): string {
 function LangBadge({ book }: { book: BibleBook }) {
   if (book.languageClass === 'mixed') {
     return (
-      <span className="inline-flex overflow-hidden rounded-[2px] font-sans text-[9px] font-semibold leading-none ring-1 ring-paper/70">
+      <span className="inline-flex overflow-hidden rounded-[2px] font-sans text-[12px] font-semibold leading-none ring-1 ring-paper/70">
         <span className="px-1 py-0.5 text-paper" style={{ background: langColor('Hebrew') }}>
           HE
         </span>
@@ -86,11 +86,11 @@ function BookTile({
       }`}
     >
       <div className="flex items-start justify-between gap-1">
-        <span className="font-sans text-[10px] tabular-nums opacity-70">{book.order}</span>
+        <span className="font-sans text-[12px] tabular-nums opacity-70">{book.order}</span>
         {!tiny && <LangBadge book={book} />}
         {!tiny && aramaicCount > 0 && (
           <span
-            className="rounded-full px-1 font-sans text-[9px] font-semibold leading-[14px] text-paper"
+            className="rounded-full px-1 font-sans text-[12px] font-semibold leading-[14px] text-paper"
             style={{ background: langColor('Aramaic') }}
             title={`${aramaicCount} transliterated Aramaic word(s)`}
           >
@@ -101,7 +101,7 @@ function BookTile({
       <div className="font-display text-[15px] font-semibold leading-none tracking-tight">
         {book.abbrev}
       </div>
-      <div className="flex items-end justify-between font-sans text-[10px] tabular-nums">
+      <div className="flex items-end justify-between font-sans text-[12px] tabular-nums">
         <span>
           <span className="font-semibold">{book.chapters}</span>
           {!tiny && <span className="opacity-70"> ch</span>}
@@ -138,7 +138,7 @@ function Legend() {
       </span>
       <span className="inline-flex items-center gap-1.5">
         <span
-          className="rounded-full px-1 text-[9px] font-semibold leading-[14px] text-paper"
+          className="rounded-full px-1 text-[12px] font-semibold leading-[14px] text-paper"
           style={{ background: langColor('Aramaic') }}
         >
           ✦
@@ -203,7 +203,7 @@ export function GridView({ isMatch, division, onDivision, selected, onOpen }: Pr
         return (
           <div key={t.id}>
             <header className="mb-4 flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-ink/80 pb-2">
-              <h2 className="font-display text-2xl font-semibold tracking-tight">{t.title}</h2>
+              <h3 className="font-display text-2xl font-semibold tracking-tight">{t.title}</h3>
               <span className="font-serif italic text-ink-soft">{t.sub}</span>
               <span className="ml-auto font-sans text-xs tabular-nums text-ink-soft">
                 {tBooks.length} books · {chapters} chapters
@@ -218,7 +218,7 @@ export function GridView({ isMatch, division, onDivision, selected, onOpen }: Pr
                   <div key={d.name} className="min-w-0 max-w-full">
                     <button
                       onClick={() => onDivision(active ? null : d.name)}
-                      className={`focus-ring mb-2 flex items-baseline gap-2 rounded-sm text-left ${
+                      className={`focus-ring mb-2 flex min-h-6 items-baseline gap-2 rounded-sm text-left ${
                         active ? 'text-ink' : 'text-ink-soft hover:text-ink'
                       }`}
                       title={active ? 'Clear division filter' : `Filter to ${d.name}`}
@@ -226,7 +226,7 @@ export function GridView({ isMatch, division, onDivision, selected, onOpen }: Pr
                       <span className={`eyebrow ${active ? '!text-ink underline underline-offset-4' : ''}`}>
                         {d.name}
                       </span>
-                      <span className="font-sans text-[11px] tabular-nums">
+                      <span className="font-sans text-[12px] tabular-nums">
                         {dBooks.length} · {dCh} ch
                       </span>
                     </button>

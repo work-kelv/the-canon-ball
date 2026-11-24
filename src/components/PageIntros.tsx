@@ -126,14 +126,14 @@ export function HistoryIntro() {
   return (
     <PageIntro
       storageKey="history-intro"
-      moreLabel="What each tab shows"
+      moreLabel="What each section shows"
       className="mb-5"
       css="--role-priest"
       art={<HistoryArt />}
       lead={
         <p>
-          Two thousand years of the church, as a short course. New to it? Begin with the first tab, Start here, which tells the
-          whole story simply; each page then goes deeper, and the button at the bottom of every page takes you to the next.
+          Two thousand years of the church, as a short course on one page. New to it? Begin with section 1, Start here, which tells the
+          whole story simply; each section then goes deeper, and the bar at the top takes you to any section.
         </p>
       }
       cards={[
@@ -180,7 +180,7 @@ export function HistoryIntro() {
       ]}
       howTo={[
         <>
-          <b>Switch views</b> with the tabs below; each tab has its own link you can share.
+          <b>Jump to a section</b> with the bar at the top; each section has its own link you can share.
         </>,
         <>
           <b>Tap any underlined reference</b> to read the passage (WEB or BSB).

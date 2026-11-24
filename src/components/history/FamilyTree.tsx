@@ -44,7 +44,7 @@ function BranchCard({ b, onPick }: { b: Branch; onPick: (id: string) => void }) 
         <div className="eyebrow">{b.year < 100 ? `c. AD ${b.year}` : `AD ${b.year}`}{parent ? ` · branched from ${parent.name}` : ''}</div>
         <h3 className="font-display text-2xl font-semibold leading-tight">{b.name}</h3>
         <p className="mt-1 font-serif text-[15px] leading-snug">{b.keyEvent}</p>
-        <div className="mt-2 flex flex-wrap gap-1.5 font-sans text-[11px]">
+        <div className="mt-2 flex flex-wrap gap-1.5 font-sans text-[12px]">
           {b.keyFigures.map((f) => (
             <span key={f} className="rounded-full border border-rule px-2 py-0.5">
               {f}
@@ -119,23 +119,14 @@ export function FamilyTree() {
   const selected = branches.find((b) => b.id === sel)!;
 
   return (
-    <section aria-labelledby="tree-title" className="space-y-4">
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
-          <h2 id="tree-title" className="font-display text-3xl font-semibold">
-            The family tree of the church
-          </h2>
-          <p className="max-w-2xl font-serif text-[15px] text-ink-soft">
-            Major schisms and reformations from Pentecost to today. Click a branch to see what it shares with all Christians and what is
-            distinctive to it.
-          </p>
-        </div>
+    <div className="space-y-4">
+      <div className="flex flex-wrap items-end justify-end gap-3">
         <div className="hidden items-center gap-1.5 font-sans text-xs md:flex">
           <span className="text-ink-soft">Zoom</span>
-          <button onClick={() => setZoom((z) => Math.max(1, z - 0.5))} disabled={zoom === 1} aria-label="Zoom out" className="focus-ring rounded-full border border-rule p-1 disabled:opacity-30">
+          <button onClick={() => setZoom((z) => Math.max(1, z - 0.5))} disabled={zoom === 1} aria-label="Zoom out" className="focus-ring rounded-full border border-rule p-1.5 disabled:opacity-30">
             <Minus size={13} />
           </button>
-          <button onClick={() => setZoom((z) => Math.min(2.5, z + 0.5))} disabled={zoom >= 2.5} aria-label="Zoom in" className="focus-ring rounded-full border border-rule p-1 disabled:opacity-30">
+          <button onClick={() => setZoom((z) => Math.min(2.5, z + 0.5))} disabled={zoom >= 2.5} aria-label="Zoom in" className="focus-ring rounded-full border border-rule p-1.5 disabled:opacity-30">
             <Plus size={13} />
           </button>
         </div>
@@ -148,7 +139,7 @@ export function FamilyTree() {
           {TICKS.map((t) => (
             <g key={t}>
               <line x1={X(t)} x2={X(t)} y1={34} y2={height} stroke={cssColor('--rule', 0.5)} strokeDasharray="2 4" />
-              <text x={X(t)} y={24} textAnchor="middle" className="fill-ink-soft font-sans text-[11px] tabular-nums">
+              <text x={X(t)} y={24} textAnchor="middle" className="fill-ink-soft font-sans text-[12px] tabular-nums">
                 {t === 30 ? 'AD 30' : t}
               </text>
             </g>
@@ -197,7 +188,7 @@ export function FamilyTree() {
               </g>
             );
           })}
-          <text x={X(1054) - 4} y={rowY.early + 34} textAnchor="end" className="fill-ink-soft font-sans text-[10px] italic">
+          <text x={X(1054) - 4} y={rowY.early + 34} textAnchor="end" className="fill-ink-soft font-sans text-[12px] italic">
             East–West Schism, 1054
           </text>
         </svg>
@@ -227,7 +218,7 @@ export function FamilyTree() {
       <div className="hidden md:block">
         <BranchCard b={selected} onPick={setSel} />
       </div>
-      <p className="font-sans text-[11px] text-ink-soft">{branchMeta.note}</p>
-    </section>
+      <p className="font-sans text-[12px] text-ink-soft">{branchMeta.note}</p>
+    </div>
   );
 }

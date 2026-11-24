@@ -13,7 +13,7 @@ const STATUS: Record<Status, { label: string; css: string; Icon: typeof CircleCh
 function Badge({ s }: { s: Status }) {
   const { label, css, Icon } = STATUS[s];
   return (
-    <span className="inline-flex items-center gap-1 font-sans text-[11px] font-semibold" style={{ color: cssColor(css) }}>
+    <span className="inline-flex items-center gap-1 font-sans text-[12px] font-semibold" style={{ color: cssColor(css) }}>
       <Icon size={14} aria-hidden /> {label}
     </span>
   );
@@ -40,11 +40,8 @@ export function OrthodoxyMatrix() {
     `focus-ring whitespace-nowrap rounded-full border px-2.5 py-1 font-sans text-[12px] ${on ? 'border-ink bg-ink text-paper' : 'border-rule hover:border-ink/60'}`;
 
   return (
-    <section aria-labelledby="matrix-title" className="space-y-4">
+    <div className="space-y-4">
       <div>
-        <h2 id="matrix-title" className="font-display text-3xl font-semibold">
-          In detail: six benchmarks, side by side
-        </h2>
         <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
           Six benchmarks from the historic creeds, compared across movements. Click any cell to see the creedal clause, the Bible passages
           involved, and how the group itself describes its teaching.
@@ -105,7 +102,7 @@ export function OrthodoxyMatrix() {
             );
           })}
         </ul>
-        <p className="font-sans text-[11px] text-ink-soft">Tap a group for the full comparison below.</p>
+        <p className="font-sans text-[12px] text-ink-soft">Tap a group for the full comparison below.</p>
       </div>
 
       <div className="panel hidden overflow-x-auto lg:block">
@@ -118,7 +115,7 @@ export function OrthodoxyMatrix() {
               {gs.map((x) => (
                 <th key={x.id} scope="col" className={`px-3 py-2 text-left align-bottom ${x.family === 'historic' ? 'bg-ink/[0.05]' : ''}`}>
                   <div className="font-display text-[15px] font-semibold leading-tight">{x.name}</div>
-                  <div className="text-[10.5px] font-normal text-ink-soft">{x.origin.split(';')[0]}</div>
+                  <div className="text-[12px] font-normal text-ink-soft">{x.origin.split(';')[0]}</div>
                 </th>
               ))}
             </tr>
@@ -140,7 +137,7 @@ export function OrthodoxyMatrix() {
                         className={`focus-ring block h-full w-full rounded-md border px-2 py-1.5 text-left ${active ? 'border-ink bg-paper shadow-sm' : 'border-transparent hover:border-rule'}`}
                       >
                         <Badge s={p.status} />
-                        <span className="mt-0.5 line-clamp-3 text-[11.5px] leading-snug text-ink-soft">{p.summary}</span>
+                        <span className="mt-0.5 line-clamp-3 text-[12px] leading-snug text-ink-soft">{p.summary}</span>
                       </button>
                     </td>
                   );
@@ -188,23 +185,23 @@ export function OrthodoxyMatrix() {
               ))}
             </p>
           )}
-          <p className="mt-2 font-sans text-[11.5px] text-ink-soft">
+          <p className="mt-2 font-sans text-[12px] text-ink-soft">
             {g.origin}. {g.description}
           </p>
           {g.sources.map((s) => (
-            <a key={s} href={s} target="_blank" rel="noreferrer" className="mt-1 inline-flex items-center gap-1 font-sans text-[11.5px] underline decoration-rule underline-offset-2 hover:decoration-ink">
+            <a key={s} href={s} target="_blank" rel="noreferrer" className="mt-1 inline-flex items-center gap-1 font-sans text-[12px] underline decoration-rule underline-offset-2 hover:decoration-ink">
               Official site: {new URL(s).hostname.replace(/^www\./, '')} <ExternalLink size={10} aria-hidden />
             </a>
           ))}
         </div>
       </div>
-      <div className="flex flex-wrap gap-4 font-sans text-[11px] text-ink-soft">
+      <div className="flex flex-wrap gap-4 font-sans text-[12px] text-ink-soft">
         {(Object.keys(STATUS) as Status[]).map((s) => (
           <span key={s} className="inline-flex items-center gap-1.5">
             <Badge s={s} /> {comparisonMeta.statusLegend[s]}
           </span>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

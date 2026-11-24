@@ -57,7 +57,7 @@ export function MapArt() {
       {stops.map(([x, y], i) => (
         <g key={i}>
           <circle cx={x} cy={y} r={8} fill={cssColor('--lineage')} stroke={cssColor('--paper')} strokeWidth={2} />
-          <text x={x} y={y + 3.5} textAnchor="middle" className="font-sans text-[9px] font-bold" fill={cssColor('--paper')}>
+          <text x={x} y={y + 3.5} textAnchor="middle" className="font-sans text-[12px] font-bold" fill={cssColor('--paper')}>
             {i + 1}
           </text>
         </g>

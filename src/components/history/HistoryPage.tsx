@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import { BookOpen, Users, BookText, Columns4, Compass, GitBranch, GitCompareArrows, Orbit, UsersRound } from 'lucide-react';
+import titles from '../../data/churchTitles.json';
 import { ChurchTitles } from './ChurchTitles';
 import { CreedCompare } from './CreedCompare';
-import { ViewTabs } from '../ViewTabs';
 import { FamilyTree } from './FamilyTree';
 import { CreedExplorer } from './CreedExplorer';
 import { OrthodoxyMatrix } from './OrthodoxyMatrix';
@@ -11,54 +9,23 @@ import { BoundaryOrbit } from './BoundaryOrbit';
 import { StartHere } from './StartHere';
 import { KeyPeople } from './KeyPeople';
 import { HistoryIntro } from '../PageIntros';
-import { PageTabs, useHashTab } from '../PageTabs';
-import { PageNav } from '../PageNav';
-
-/** Creeds tab: compare all four side by side (default), or read one creed line by line. */
-function CreedsTab() {
-  // Compare first (the big picture), then read any one creed line by line.
-  const [mode, setMode] = useState<'read' | 'compare'>(() => (window.location.hash === '#creeds-read' ? 'read' : 'compare'));
-  return (
-    <div className="space-y-5">
-      <ViewTabs<'read' | 'compare'>
-        label="Creed views"
-        value={mode}
-        onChange={setMode}
-        tabs={[
-          { id: 'compare', label: 'Compare all four', short: 'Compare', icon: Columns4 },
-          { id: 'read', label: 'Read a creed', short: 'Read one', icon: BookOpen },
-        ]}
-      />
-      {mode === 'read' ? <CreedExplorer /> : <CreedCompare />}
-    </div>
-  );
-}
-
-function CoreBeliefsTab() {
-  return (
-    <div className="space-y-12">
-      <BoundaryOrbit />
-      <div className="border-t border-rule pt-8">
-        <OrthodoxyMatrix />
-      </div>
-    </div>
-  );
-}
+import { Fold, NextPage, OnThisPage, PageSection, jumpTo, useSectionHash, type SectionDef } from '../sections';
 
 /**
- * The tabs in learning order: the overview first; then what the early church agreed to believe;
- * how it split; how the traditions differ today; who shares the core faith; and who's who.
+ * Church history as one page, in learning order: the overview; the people; what the early church
+ * agreed to believe; how it split; how the traditions differ today; who shares the core faith; and
+ * who's who. Section ids keep the old tab links working (#creeds, #creeds-read, #compare …).
  */
-const TABS = [
-  { id: 'start', label: 'Start here', short: 'Start', icon: Compass, blurb: 'Church history, simply told' },
-  { id: 'people', label: 'Key people', short: 'People', icon: Users, blurb: 'From Jesus and the apostles to today' },
-  { id: 'creeds', label: 'Creeds', icon: BookText, blurb: 'What the early church agreed to believe' },
-  { id: 'tree', label: 'Family tree', icon: GitBranch, blurb: 'How one church became many' },
-  { id: 'traditions', label: 'Differences', icon: GitCompareArrows, blurb: 'How the four families of churches differ today' },
-  { id: 'compare', label: 'Core beliefs', short: 'Beliefs', icon: Orbit, blurb: 'Who shares the core faith' },
-  { id: 'titles', label: 'Titles', icon: UsersRound, blurb: 'Who’s who, from pope to pastor' },
-] as const;
-type TabId = (typeof TABS)[number]['id'];
+const SECTIONS: SectionDef[] = [
+  { id: 'start', label: 'Church history, simply told', short: 'Start here' },
+  { id: 'people', label: 'From Jesus to today', short: 'Key people' },
+  { id: 'creeds', label: 'The four creeds', short: 'Creeds' },
+  { id: 'tree', label: 'The family tree', short: 'Family tree' },
+  { id: 'traditions', label: 'How the four families differ', short: 'Differences' },
+  { id: 'compare', label: 'Core beliefs', short: 'Core beliefs' },
+  { id: 'titles', label: 'Titles in the church', short: 'Titles' },
+  { id: 'references', label: 'References', short: 'References' },
+];
 
 // The text's own history (translations, chapters & verses) moved to The Bible page; keep old links working.
 const MOVED: Record<string, string> = { translations: 'languages.html#translations', verses: 'languages.html#verses' };
@@ -70,43 +37,100 @@ redirectMoved();
 window.addEventListener('hashchange', redirectMoved);
 
 export function HistoryPage() {
-  const [tab, setTab] = useHashTab<TabId>(
-    TABS.map((t) => t.id),
-    'start',
-  );
-  // Change tab and bring the reader back to the top of the new page.
-  const go = (id: string) => {
-    setTab(id as TabId);
-    requestAnimationFrame(() => document.getElementById('history-top')?.scrollIntoView({ block: 'start' }));
-  };
-
-  const view =
-    tab === 'start' ? (
-      <StartHere go={go} />
-    ) : tab === 'people' ? (
-      <KeyPeople />
-    ) : tab === 'creeds' ? (
-      <CreedsTab />
-    ) : tab === 'tree' ? (
-      <FamilyTree />
-    ) : tab === 'traditions' ? (
-      <TraditionsCompare />
-    ) : tab === 'compare' ? (
-      <CoreBeliefsTab />
-    ) : (
-      <ChurchTitles />
-    );
+  useSectionHash();
+  const go = (id: string) => jumpTo(id, { smooth: true });
 
   return (
-    <main className="pt-6">
+    <div className="pt-6">
       <HistoryIntro />
-      <div id="history-top" className="scroll-mt-0" />
-      <PageTabs label="Church history sections" tabs={TABS} value={tab} onChange={setTab}>
-        {view}
+      <OnThisPage sections={SECTIONS} label="On this page" />
 
-        {/* Step through the pages like a course */}
-        <PageNav tabs={TABS} value={tab} go={go} end={{ eyebrow: 'You’ve reached the end', label: 'Back to Start here', onClick: () => go('start') }} />
-      </PageTabs>
-    </main>
+      <PageSection
+        id="start"
+        n={1}
+        first
+        title="Church history, simply told"
+        lead="Two thousand years in six short steps. Each step gives its key idea; open it for more, or jump to the section that explores it in depth."
+        takeaway="One church at Pentecost; splits in 431, 451 and 1054; the Reformation from 1517; and one core faith shared by the churches today."
+      >
+        <StartHere go={go} />
+      </PageSection>
+
+      <PageSection
+        id="people"
+        n={2}
+        title="From Jesus to today"
+        lead="The key people of the church, era by era: the apostles, the early church fathers, the councils, the Reformers and the missionaries, down to our own time. Tap anyone to see who they were and how they pointed to Jesus."
+        takeaway="A cloud of witnesses, each at their best pointing beyond themselves to Jesus."
+      >
+        <KeyPeople />
+      </PageSection>
+
+      <PageSection
+        id="creeds"
+        n={3}
+        title="The four creeds, compared"
+        lead="Each creed answered the questions of its time, so each adds something the earlier ones left open. Here is what they share, where they differ, and which churches confess them today."
+        takeaway="The Apostles’ Creed gives the basic faith; Nicaea confesses that the Son is truly God; Chalcedon that Christ is truly God and truly man."
+      >
+        <div className="space-y-6">
+          <CreedCompare />
+          <Fold id="creeds-read" title="Read a creed, line by line" summary="Choose a creed and tap any line for the Bible passages behind it and the controversy it answered.">
+            <CreedExplorer />
+          </Fold>
+        </div>
+      </PageSection>
+
+      <PageSection
+        id="tree"
+        n={4}
+        title="The family tree of the church"
+        lead="Major schisms and reformations from Pentecost to today. Click a branch to see what it shares with all Christians and what is distinctive to it."
+        takeaway="From one church at Pentecost to thirteen traditions, through the splits of 431, 451 and 1054 and the Reformation."
+      >
+        <FamilyTree />
+      </PageSection>
+
+      <PageSection
+        id="traditions"
+        n={5}
+        title="How the four families of churches differ"
+        lead="Catholic, Eastern Orthodox, Oriental Orthodox and Protestant churches share the same core faith. Here is how they differ, first at a glance, then tradition by tradition."
+        takeaway="They agree on the core faith; they differ on authority, salvation, the sacraments, Mary and the saints, and how the church is led."
+      >
+        <TraditionsCompare />
+      </PageSection>
+
+      <PageSection
+        id="compare"
+        n={6}
+        title="Core beliefs: where each church stands"
+        lead="At the centre is the faith set out in the historic creeds. The four great families of churches that confess it fill the circle, each with some of its member churches. Movements whose teaching differs on one or more of five core beliefs sit beyond it, farther out the more they differ. Tap anything for details, or turn on a creed to see who confesses it."
+        takeaway="The four families share the creeds’ core faith; the movements outside the circle set aside one or more of five core beliefs."
+      >
+        <div className="space-y-6">
+          <BoundaryOrbit />
+          <Fold
+            id="benchmarks"
+            title="In detail: six benchmarks, side by side"
+            summary="Historic orthodoxy compared with Arianism, Jehovah’s Witnesses, Latter-day Saints, Oneness Pentecostalism and Christian Science."
+          >
+            <OrthodoxyMatrix />
+          </Fold>
+        </div>
+      </PageSection>
+
+      <PageSection
+        id="titles"
+        n={7}
+        title="Titles in the church"
+        lead={titles.meta.intro}
+        takeaway="From pope and patriarch to pastor: each family has its own ladder of offices. Tap a title to read what it means."
+      >
+        <ChurchTitles />
+      </PageSection>
+
+      <NextPage href="languages.html" label="The Bible" blurb="Back to the text itself: its languages, canon and translations" />
+    </div>
   );
 }

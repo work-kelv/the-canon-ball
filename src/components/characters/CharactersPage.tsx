@@ -108,7 +108,7 @@ export function CharactersPage({ dark }: { dark: boolean }) {
         <CharacterFilterBar filters={filters} onChange={setFilters} matchCount={matchCount} />
       </div>
 
-      <main className="pt-4 md:pt-6">
+      <div className="pt-4 md:pt-6">
         {mode === 'timeline' && (
           <>
             <CharacterTimeline filters={filters} selectedId={selectedId} onSelect={setSelectedId} />
@@ -124,7 +124,7 @@ export function CharactersPage({ dark }: { dark: boolean }) {
           </>
         )}
         {mode === 'directory' && <EraTimeline filters={filters} selectedId={selectedId} onSelect={setSelectedId} />}
-      </main>
+      </div>
 
       <footer className="mt-16 border-t border-rule pt-6 font-sans text-xs leading-relaxed text-ink-soft">
         <p>

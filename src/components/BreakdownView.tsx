@@ -168,7 +168,7 @@ export function BreakdownView({ langBooks, visible, division, onDivision, onOpen
                 >
                   <span className="flex items-baseline gap-2">
                     <span className="font-display font-semibold">{d.name}</span>
-                    <span className="font-sans text-[10px] uppercase tracking-wider text-ink-soft">
+                    <span className="font-sans text-[12px] uppercase tracking-wider text-ink-soft">
                       {d.testament === 'Old' ? 'OT' : 'NT'}
                     </span>
                   </span>
@@ -235,7 +235,7 @@ export function BreakdownView({ langBooks, visible, division, onDivision, onOpen
                       <span className="italic" style={{ color: langColor('Aramaic') }}>
                         {p.phrase}
                       </span>
-                      <span className="ml-2 font-sans text-[11px] text-ink-soft">{p.reference}</span>
+                      <span className="ml-2 font-sans text-[12px] text-ink-soft">{p.reference}</span>
                     </button>
                   </li>
                 ))}

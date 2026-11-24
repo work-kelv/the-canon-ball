@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronDown, ChevronLeft, ChevronRight, HeartHandshake, Hist
 import { cssColor } from '../../lib/characters';
 import { type Topic, commonGround, familyMembers, familyOverview, topics, traditionFamilies, traditions, traditionsMeta } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
+import { Fold } from '../sections';
 
 // ── Units: what is compared. Either the four families (Protestant shown as the range of its
 //    branches) or all eight traditions one by one. ──
@@ -47,7 +48,7 @@ const verdictOf = (t: Topic, a: Unit, b: Unit): Verdict => {
 function VerdictBadge({ v }: { v: Verdict }) {
   const { label, css } = VERDICT[v];
   return (
-    <span className="inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[11px] font-semibold" style={{ background: cssColor(css, 0.14), color: cssColor(css) }}>
+    <span className="inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[12px] font-semibold" style={{ background: cssColor(css, 0.14), color: cssColor(css) }}>
       <span className="h-1.5 w-1.5 rounded-full" style={{ background: cssColor(css) }} />
       {label}
     </span>
@@ -125,7 +126,7 @@ function Glance({ units, onTopic, focus }: { units: Unit[]; onTopic: (id: string
                   );
                 })}
               </span>
-              <span className="mt-1 flex justify-between gap-4 font-sans text-[11px] leading-tight text-ink-soft">
+              <span className="mt-1 flex justify-between gap-4 font-sans text-[12px] leading-tight text-ink-soft">
                 <span>← {tp.leftShort}</span>
                 <span className="text-right">{tp.rightShort} →</span>
               </span>
@@ -169,7 +170,7 @@ function TopicDetail({ topic, units, focus }: { topic: Topic; units: Unit[]; foc
 
       <section>
         <h4 className="eyebrow mb-1.5">Where they stand</h4>
-        <div className="mb-1 flex justify-between gap-6 font-sans text-[11.5px] font-semibold leading-tight text-ink-soft">
+        <div className="mb-1 flex justify-between gap-6 font-sans text-[12px] font-semibold leading-tight text-ink-soft">
           <span className="max-w-[45%]">← {topic.left}</span>
           <span className="max-w-[45%] text-right">{topic.right} →</span>
         </div>
@@ -239,7 +240,7 @@ function TopicDetail({ topic, units, focus }: { topic: Topic; units: Unit[]; foc
             ] as const
           ).map(([pole, refs, arrow]) => (
             <div key={pole}>
-              <div className="font-sans text-[11.5px] leading-snug text-ink-soft">
+              <div className="font-sans text-[12px] leading-snug text-ink-soft">
                 {arrow}
                 {pole}
               </div>
@@ -405,7 +406,7 @@ function OverviewTable({ onTopic }: { onTopic: (topicId: string) => void }) {
                   <span className="mt-1.5 grid grid-cols-2 gap-x-3 gap-y-2">
                     {traditionFamilies.map((f) => (
                       <span key={f.id} className="block border-l-2 pl-2" style={{ borderColor: cssColor(f.css) }}>
-                        <span className="block font-sans text-[10.5px] font-semibold uppercase tracking-wide" style={{ color: cssColor(f.css) }}>
+                        <span className="block font-sans text-[12px] font-semibold uppercase tracking-wide" style={{ color: cssColor(f.css) }}>
                           {f.short}
                         </span>
                         <span className="block font-sans text-[12.5px] leading-snug text-ink/85">{r.cells[f.id]}</span>
@@ -470,17 +471,8 @@ export function TraditionsCompare() {
   const counts = pair ? (['same', 'close', 'different'] as Verdict[]).map((v) => topics.filter((t) => verdictOf(t, pair[0], pair[1]) === v).length) : null;
 
   return (
-    <section aria-labelledby="trad-title" className="space-y-8">
+    <div className="space-y-8">
       <div className="space-y-4">
-        <div>
-          <h2 id="trad-title" className="font-display text-3xl font-semibold">
-            The four families of churches
-          </h2>
-          <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
-            Catholic, Eastern Orthodox, Oriental Orthodox and Protestant churches share the same core faith. Here is how they differ,
-            first at a glance, then tradition by tradition.
-          </p>
-        </div>
 
         {/* Shared by all: one quiet line, with the details on request */}
         <div className="rounded-md border border-rule px-3 py-2" style={{ background: cssColor('--rel-mentor', 0.06) }}>
@@ -503,7 +495,7 @@ export function TraditionsCompare() {
                     </span>
                     <span>
                       {c.text}{' '}
-                      <span className="whitespace-nowrap font-sans text-[11.5px] text-ink-soft">
+                      <span className="whitespace-nowrap font-sans text-[12px] text-ink-soft">
                         (<RefText text={c.ref} />)
                       </span>
                     </span>
@@ -514,12 +506,12 @@ export function TraditionsCompare() {
                 <h3 className="eyebrow mb-2">The world’s Christians · {traditionsMeta.shares.total}</h3>
                 <div className="flex h-6 overflow-hidden rounded-full ring-1 ring-rule">
                   {traditionsMeta.shares.parts.map((p) => (
-                    <div key={p.id} title={`${p.label}: ${p.pct}%`} className="flex items-center justify-center font-sans text-[11px] font-semibold text-paper" style={{ width: `${p.pct}%`, background: cssColor(p.css) }}>
+                    <div key={p.id} title={`${p.label}: ${p.pct}%`} className="flex items-center justify-center font-sans text-[12px] font-semibold text-paper" style={{ width: `${p.pct}%`, background: cssColor(p.css) }}>
                       {p.pct >= 10 ? `${p.pct}%` : ''}
                     </div>
                   ))}
                 </div>
-                <p className="mt-1.5 font-sans text-[10.5px] text-ink-soft">{traditionsMeta.shares.source}</p>
+                <p className="mt-1.5 font-sans text-[12px] text-ink-soft">{traditionsMeta.shares.source}</p>
               </div>
             </div>
           )}
@@ -535,16 +527,17 @@ export function TraditionsCompare() {
       </div>
 
       {/* 2. The traditions within the families */}
-      <div className="space-y-2">
-        <h3 className="font-display text-2xl font-semibold">
-          <span className="mr-2 text-ink-soft">2</span>Eight traditions in four families
-        </h3>
-        <p className="max-w-3xl font-sans text-[13px] text-ink-soft">
-          The Protestant family is made up of several traditions that differ among themselves, so the questions below look at each of
-          them separately.
-        </p>
+      <Fold
+        id="eight-traditions"
+        title={
+          <>
+            <span className="mr-2 text-ink-soft">2</span>Eight traditions in four families
+          </>
+        }
+        summary={`The Protestant family is made up of several traditions that differ among themselves, so the questions below look at each of them separately.`}
+      >
         <FamilyGroups />
-      </div>
+      </Fold>
 
       {/* 3. The ten questions, tradition by tradition */}
       <div className="space-y-3">
@@ -577,7 +570,7 @@ export function TraditionsCompare() {
               );
             })}
             {focus.length > 0 && (
-              <button onClick={() => setFocus([])} className="focus-ring ml-auto inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[11.5px] text-ink-soft hover:text-ink">
+              <button onClick={() => setFocus([])} className="focus-ring ml-auto inline-flex items-center gap-1 rounded-full px-2 py-0.5 font-sans text-[12px] text-ink-soft hover:text-ink">
                 <X size={12} aria-hidden /> Clear
               </button>
             )}
@@ -593,7 +586,7 @@ export function TraditionsCompare() {
                       onClick={() => setOpen(i)}
                       title={`${i + 1}. ${t.name}: ${VERDICT[v].label}`}
                       aria-label={`${t.name}: ${VERDICT[v].label}`}
-                      className="focus-ring flex h-7 w-7 items-center justify-center rounded-[5px] font-sans text-[11px] font-bold text-paper hover:scale-110 sm:h-8 sm:w-8"
+                      className="focus-ring flex h-7 w-7 items-center justify-center rounded-[5px] font-sans text-[12px] font-bold text-paper hover:scale-110 sm:h-8 sm:w-8"
                       style={{ background: cssColor(VERDICT[v].css, 0.9), transition: 'transform 150ms' }}
                     >
                       {i + 1}
@@ -604,7 +597,7 @@ export function TraditionsCompare() {
               <p className="font-sans text-[13px]">
                 <b style={{ color: cssColor(pair[0].css) }}>{pair[0].short}</b> and <b style={{ color: cssColor(pair[1].css) }}>{pair[1].short}</b> agree on{' '}
                 <b>{counts[0]}</b>, are close on <b>{counts[1]}</b> and differ on <b>{counts[2]}</b> of {topics.length} questions.
-                <span className="block text-[11.5px] text-ink-soft">Tap a square to read that question.</span>
+                <span className="block text-[12px] text-ink-soft">Tap a square to read that question.</span>
               </p>
             </div>
           )}
@@ -613,7 +606,7 @@ export function TraditionsCompare() {
         <Glance units={units} onTopic={openTopic} focus={focus} />
       </div>
 
-      <p className="font-sans text-[11px] text-ink-soft">
+      <p className="font-sans text-[12px] text-ink-soft">
         {traditionsMeta.purpose} {traditionsMeta.spectrumNote} Main sources:{' '}
         {traditions.map((t, i) => (
           <span key={t.id}>
@@ -625,6 +618,6 @@ export function TraditionsCompare() {
       </p>
 
       {open !== null && <QuestionPanel index={open} units={units} focus={focus} onStep={step} onClose={() => setOpen(null)} />}
-    </section>
+    </div>
   );
 }

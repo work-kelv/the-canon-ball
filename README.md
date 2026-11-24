@@ -23,7 +23,7 @@ Any Bible reference on the site (shown with a dotted underline) can be clicked t
 
 ## 1. The Bible
 
-The Bible page follows the text in the order things happened, in three tabs (each with its own link, such as `languages.html#verses`). Its introduction explains why the Bible is in three languages, with a short timeline.
+The Bible page follows the text in the order things happened, on one scrolling page of five numbered sections: languages, when the books were written, which books, chapters and verses, and translations. A slim "On this page" bar stays at the top (‹ previous, the current section with a list of all of them, next ›), and each section has its own link (for example `languages.html#verses`). Every section opens with its heading, a short lead and a one-line takeaway; dense parts fold away until you open them. The introduction explains why the Bible is in three languages, with a short timeline.
 
 ![The Bible page: all 66 books, coloured by the language they were written in](docs/screenshots/languages-grid.png)
 
@@ -31,9 +31,10 @@ The Bible page follows the text in the order things happened, in three tabs (eac
 
 - **Hebrew and Aramaic books.** Ezra and Daniel are split diagonally to show how much of each is in Aramaic. Genesis and Jeremiah, which have only a few Aramaic words, are marked with a small corner.
 - **Book details.** Click any book to see its exact Aramaic passages (for example Daniel 2:4b–7:28), its chapter and verse counts, when it was likely written, and why it used that language.
-- **When written.** A timeline view draws one bar per book, from the earliest to the latest date commonly given, sorted by date or in Bible order. The Old and New Testaments each have their own scale, with Jesus between them and key events (King David, the fall of Jerusalem, the Temple’s destruction) marked.
-- **Breakdown.** A second view filters the books by language and shows how the chapters divide between languages and between parts of the Bible.
-- **Previous / Next.** Buttons at the bottom of every tab step through The Bible page in order, then on to Characters.
+- **Filters.** On a phone, a single "Language" menu; on wider screens, a row of pills. They stay pinned only while you are in section 1, and apply to the timeline too.
+- **When written.** Section 2 draws one bar per book, from the earliest to the latest date commonly given, sorted by date or in Bible order. The Old and New Testaments each have their own scale, with Jesus between them and key events (King David, the fall of Jerusalem, the Temple’s destruction) marked.
+- **Breakdown.** Folded under the grid, it filters the books by language and shows how the chapters divide between languages and between parts of the Bible.
+- **Previous / Next.** The ‹ › arrows in the bar step through the sections; the page ends with a link on to Characters.
 
 | Book detail (Daniel) | Breakdown in dark mode |
 |---|---|
@@ -41,7 +42,7 @@ The Bible page follows the text in the order things happened, in three tabs (eac
 
 ![When the books were written](docs/screenshots/languages-timeline.png)
 
-**Which books?** The site uses the 66 books that every church accepts. This tab sets out how many books each tradition has (Protestant 66, Catholic 73, Eastern Orthodox 76–79, Ethiopian 81). Tap any of the further books, from Tobit to 1 Enoch, to see what it is and which churches include it. Six short points explain why Protestant churches keep 66, citing Athanasius, Jerome, Trent, the Thirty-Nine Articles and the Westminster Confession.
+**Which books?** The site uses the 66 books that every church accepts. This section sets out how many books each tradition has (Protestant 66, Catholic 73, Eastern Orthodox 76–79, Ethiopian 81). Tap any of the further books, from Tobit to 1 Enoch, to see what it is and which churches include it. Six short points explain why Protestant churches keep 66, citing Athanasius, Jerome, Trent, the Thirty-Nine Articles and the Westminster Confession.
 
 ![Which books?](docs/screenshots/languages-canon.png)
 
@@ -90,20 +91,20 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
 
 ## 4. Church History
 
-The Church History page works like a short course: seven tabs in learning order, with Previous / Next buttons at the bottom of each. Each tab has its own link (for example `history.html#creeds`). The old `#translations` and `#verses` links now open those tabs on The Bible page.
+The Church History page works like a short course on one scrolling page: seven numbered sections in learning order, with the same "On this page" bar (‹ › to step through them). Each section has its own link (for example `history.html#creeds`, or `history.html#creeds-read` to open the creed reader). Each starts with a lead and a one-line takeaway; dense blocks (the creed reader, who confesses which creed, the benchmark table, the eight traditions, the title cards) fold away until opened. The old `#translations` and `#verses` links now open those sections on The Bible page.
 
 ![Start here: church history in six simple steps](docs/screenshots/history-start.png)
 
 ![The family tree of the church](docs/screenshots/history-tree.png)
 
-- **Start here.** Church history simply told, in six steps (one church; agreeing on the creeds; the first splits; the Reformation; different churches, one core faith; who's who), each with a key idea, simple definitions, and a button to the tab that goes deeper.
-- **Key people.** From Jesus to today, in eight eras: Jesus and the apostles, the early church fathers, councils and creeds, the early Middle Ages, the Middle Ages, the Reformation, revival and mission, and the world church. Each era is a timeline of lifespans (66 people, with martyrs marked) and councils, persecutions and events. Teachers whose teaching the church rejected (Marcion, Arius, Pelagius, Nestorius and others) are shown dashed. Tap a person for who they were and how they pointed to Jesus, often in their own words, with each quotation linked to its primary text. The tab is framed by Hebrews 12:1–2, and Start here now ends with a short "Looking to Jesus" note.
+- **Start here.** Church history simply told, in six steps (one church; agreeing on the creeds; the first splits; the Reformation; different churches, one core faith; who's who), each showing its key idea at a glance; open a step for its story, simple definitions and passages, or jump to the section that goes deeper.
+- **Key people.** From Jesus to today, in eight eras: Jesus and the apostles, the early church fathers, councils and creeds, the early Middle Ages, the Middle Ages, the Reformation, revival and mission, and the world church. Each era is a timeline of lifespans (66 people, with martyrs marked) and councils, persecutions and events. Teachers whose teaching the church rejected (Marcion, Arius, Pelagius, Nestorius and others) are shown dashed. Tap a person for who they were and how they pointed to Jesus, often in their own words, with each quotation linked to its primary text. The section is framed by Hebrews 12:1–2, and Start here now ends with a short "Looking to Jesus" note.
 
 ![From Jesus to today: key people by era](docs/screenshots/history-people.png)
 
 - **Family tree.** Thirteen traditions on one timeline, from Pentecost to the non-denominational churches. Click a branch to see what it shares with all Christians, what is distinctive to it, and which traditions grew from it.
 - **Differences.** In three steps. (1) At a glance: a table of the four families (Catholic, Eastern Orthodox, Oriental Orthodox and Protestant): who they are (origins, leadership, where they are today, worship, size) and what they teach on ten questions; tap a teaching row for the full story. (2) Eight traditions in four families: the Protestant family split into Lutheran, Anglican, Reformed, Baptist and Pentecostal. (3) Ten questions, tradition by tradition: each question is a line between two answers with all eight traditions on it; tap one for why it matters, how the disagreement arose, where each stands, key terms and passages, or pick two traditions to compare them across all ten.
-- **Creeds.** The Apostles', Nicene, Chalcedonian and Athanasian creeds, compared side by side (the default view) or read one at a time, line by line. The comparison shows what each added, a clause-by-clause table with each creed's own words, and which churches confess which creed. Each line comes with the Bible passages behind it, the controversy it answered, and a note on how reliable its text is.
+- **Creeds.** The Apostles', Nicene, Chalcedonian and Athanasian creeds, compared side by side, with a fold to read any one line by line. The comparison shows what each added, a clause-by-clause table with each creed's own words, and which churches confess which creed. Each line comes with the Bible passages behind it, the controversy it answered, and a note on how reliable its text is.
 - **Core beliefs.** A diagram with the faith of the creeds at its centre. Inside the circle are the four families of churches (Catholic, Eastern Orthodox, Oriental Orthodox, Protestant), each with member churches: the Latin, Maronite, Ukrainian Greek and Syro-Malabar Catholic churches; the Russian, Greek, Serbian and Romanian Orthodox; the Coptic, Ethiopian and Armenian churches; and the Lutheran, Reformed, Anglican, Methodist, Baptist, Pentecostal, Anabaptist and Adventist families (with Grace Communion). Movements whose teaching differs sit beyond the circle, farther out the more of five core beliefs they set aside. A creed lens shows who confesses the Apostles', Nicene, Chalcedonian or Athanasian Creed. Below it, a detailed table compares six benchmarks across historic orthodoxy, 4th-century Arianism, Jehovah's Witnesses, Latter-day Saints, Oneness Pentecostalism and Christian Science. Explainers, in the churches' own words, cover why the Oriental Orthodox did not accept Chalcedon and why Pentecostal, Baptist and other free churches hold the creeds' faith without reciting the creeds. Judaism and Islam sit on the outer ring as other religions.
 - **Titles.** Who's who from pope to pastor: a ladder of titles for each of the four families used on Core beliefs (Catholic, Eastern Orthodox, Oriental Orthodox, and Protestant with its Anglican, Lutheran, Presbyterian, Methodist and Baptist/Pentecostal branches), and a card for each title (its original-language meaning, where it is used, Scripture, and sources such as the Code of Canon Law, the Catechism, the Rule of St Benedict and Crockford's Clerical Directory).
 

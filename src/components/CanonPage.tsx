@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ChevronDown, Info } from 'lucide-react';
 import { cssColor } from '../lib/characters';
 import { RefText } from './ScriptureRef';
+import { Fold } from './sections';
 
 /**
  * Which books are in the Bible? The 66 books every church shares (and the default on this site),
@@ -140,7 +141,7 @@ function BookRow({ b }: { b: Book }) {
         <ChevronDown size={14} aria-hidden className={`shrink-0 text-ink-soft transition-transform ${open ? '' : '-rotate-90'}`} />
         <span className="min-w-0 flex-1">
           <span className="font-serif text-[15px] font-semibold">{b.name}</span>
-          <span className="ml-2 font-sans text-[11.5px] text-ink-soft">{b.date}</span>
+          <span className="ml-2 font-sans text-[12px] text-ink-soft">{b.date}</span>
         </span>
         <span className="flex shrink-0 gap-1.5 sm:gap-4">
           {CHURCHES.map((c) => (
@@ -162,16 +163,7 @@ function BookRow({ b }: { b: Book }) {
 export function CanonPage() {
   const [showAll, setShowAll] = useState(false);
   return (
-    <section aria-labelledby="canon-title" className="space-y-8">
-      <div>
-        <h2 id="canon-title" className="font-display text-3xl font-semibold">
-          Which books are in the Bible?
-        </h2>
-        <p className="max-w-3xl font-serif text-[15px] text-ink-soft">
-          All Christians share the same 66 books. Catholic, Orthodox and Ethiopian Bibles add further books, nearly all in the Old
-          Testament. Here are the extra books and why Protestant churches keep to 66.
-        </p>
-      </div>
+    <div className="space-y-8">
 
       <p className="flex max-w-3xl items-start gap-2 rounded-md border border-rule bg-paper/80 px-3.5 py-2.5 font-sans text-[13px] leading-relaxed">
         <Info size={15} aria-hidden className="mt-0.5 shrink-0 text-ink-soft" />
@@ -199,7 +191,7 @@ export function CanonPage() {
                   <span style={{ width: `${(66 / max) * 100}%`, background: cssColor('--ink', 0.55) }} />
                   <span style={{ width: `${((c.ot + c.nt - 66) / max) * 100}%`, background: cssColor(c.css) }} />
                 </div>
-                <p className="mt-1 font-sans text-[11px] text-ink-soft">
+                <p className="mt-1 font-sans text-[12px] text-ink-soft">
                   {'otText' in c ? c.otText : c.ot} Old Testament · {c.nt} New Testament
                 </p>
                 <p className="mt-2 font-serif text-[13.5px] leading-snug text-ink-soft">{c.note}</p>
@@ -207,7 +199,7 @@ export function CanonPage() {
             );
           })}
         </ul>
-        <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[11px] text-ink-soft">
+        <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[12px] text-ink-soft">
           <span className="inline-flex items-center gap-1.5">
             <span className="h-2 w-4 rounded-full" style={{ background: cssColor('--ink', 0.55) }} /> The shared 66
           </span>
@@ -217,9 +209,12 @@ export function CanonPage() {
       </div>
 
       {/* The further books */}
-      <div>
-        <h3 className="eyebrow mb-1">The further books</h3>
-        <p className="mb-3 max-w-3xl font-sans text-[12.5px] text-ink-soft">Tap a book to read what it is.</p>
+      <Fold
+        id="further-books"
+        title="The further books"
+        count={GROUPS.reduce((n, g) => n + g.books.length, 0)}
+        summary="From Tobit to 1 Enoch: what each book is, and which churches include it. Tap a book to read about it."
+      >
         <div className="space-y-5">
           {GROUPS.map((g, gi) => {
             if (gi > 0 && !showAll) return null;
@@ -229,10 +224,10 @@ export function CanonPage() {
                 <p className="mb-2 max-w-3xl font-serif text-[14px] leading-relaxed text-ink-soft">{g.blurb}</p>
                 <div className="overflow-hidden rounded-md border border-rule bg-paper/80">
                   <div className="flex items-center gap-2 border-b border-rule bg-ink/[0.03] px-3 py-1.5">
-                    <span className="flex-1 font-sans text-[10.5px] font-semibold uppercase tracking-wide text-ink-soft">Book</span>
+                    <span className="flex-1 font-sans text-[12px] font-semibold uppercase tracking-wide text-ink-soft">Book</span>
                     <span className="flex shrink-0 gap-1.5 sm:gap-4">
                       {CHURCHES.map((c) => (
-                        <span key={c.id} className="flex w-7 justify-center font-sans text-[10.5px] font-semibold sm:w-16" style={{ color: cssColor(c.css) }}>
+                        <span key={c.id} className="flex w-7 justify-center font-sans text-[12px] font-semibold sm:w-16" style={{ color: cssColor(c.css) }}>
                           <span className="sm:hidden">{c.short[0]}</span>
                           <span className="hidden sm:inline">{c.short}</span>
                         </span>
@@ -258,7 +253,7 @@ export function CanonPage() {
             <ChevronDown size={14} aria-hidden className={`transition-transform ${showAll ? 'rotate-180' : ''}`} />
             {showAll ? 'Show fewer' : 'Show the Orthodox and Ethiopian books'}
           </button>
-          <span className="flex flex-wrap gap-x-3 gap-y-1 font-sans text-[11px] text-ink-soft">
+          <span className="flex flex-wrap gap-x-3 gap-y-1 font-sans text-[12px] text-ink-soft">
             {(['yes', 'appendix', 'no'] as Mark[]).map((k) => (
               <span key={k} className="inline-flex items-center gap-1">
                 <MarkCell mark={k} css="--ink" church="Key" /> {MARK[k].label}
@@ -267,7 +262,7 @@ export function CanonPage() {
             <span className="sm:hidden">C Catholic · O Orthodox · E Ethiopian</span>
           </span>
         </div>
-      </div>
+      </Fold>
 
       {/* Why 66 */}
       <div>
@@ -289,7 +284,7 @@ export function CanonPage() {
               {w.quote && (
                 <blockquote className="mt-2 border-l-2 border-rule pl-3 font-serif text-[14px] italic leading-relaxed text-ink-soft">
                   “{w.quote}”
-                  <footer className="mt-1 font-sans text-[11px] not-italic">{w.cite}</footer>
+                  <footer className="mt-1 font-sans text-[12px] not-italic">{w.cite}</footer>
                 </blockquote>
               )}
             </li>
@@ -305,6 +300,6 @@ export function CanonPage() {
           .
         </p>
       </div>
-    </section>
+    </div>
   );
 }

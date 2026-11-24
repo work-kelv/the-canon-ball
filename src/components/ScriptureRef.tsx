@@ -131,7 +131,7 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
       >
         <div className="flex items-center gap-2 border-b border-rule px-3.5 py-2.5">
           <div className="min-w-0 flex-1 font-display text-[17px] font-semibold leading-tight">{data?.display ?? displayRef(found.segments)}</div>
-          <div role="radiogroup" aria-label="Translation" className="inline-flex shrink-0 rounded-full border border-rule p-0.5 text-[11px]">
+          <div role="radiogroup" aria-label="Translation" className="inline-flex shrink-0 rounded-full border border-rule p-0.5 text-[12px]">
             {TRANSLATIONS.map((x) => (
               <button
                 key={x.id}
@@ -157,9 +157,9 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
               {verses.map(([c, v, t], i) => (
                 <Fragment key={`${c}:${v}`}>
                   {(i === 0 || verses[i - 1][0] !== c) && verses.some((x) => x[0] !== verses[0][0]) && (
-                    <span className="mr-1 font-sans text-[11px] font-bold text-ink-soft">{c}</span>
+                    <span className="mr-1 font-sans text-[12px] font-bold text-ink-soft">{c}</span>
                   )}
-                  <sup className="mr-0.5 font-sans text-[10px] font-semibold text-ink-soft">{v}</sup>
+                  <sup className="mr-0.5 font-sans text-[12px] font-semibold text-ink-soft">{v}</sup>
                   {t}{' '}
                 </Fragment>
               ))}
@@ -167,7 +167,7 @@ function Popover({ found, anchor, onClose }: { found: FoundRef; anchor: HTMLElem
             </p>
           )}
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-rule px-3.5 py-2 text-[11px] text-ink-soft">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-rule px-3.5 py-2 text-[12px] text-ink-soft">
           <span>{name} · public domain</span>
           {data && (
             <a href={data.links[tr]} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-medium text-ink underline decoration-rule underline-offset-2 hover:decoration-ink">
@@ -199,7 +199,7 @@ export function ScriptureRef({ found, children }: { found: FoundRef; children?: 
         aria-expanded={open}
         aria-haspopup="dialog"
         title={`Read ${displayRef(found.segments)}`}
-        className="focus-ring inline cursor-pointer rounded-sm text-inherit underline decoration-current/40 decoration-dotted underline-offset-[3px] hover:decoration-solid"
+        className="focus-ring inline cursor-pointer rounded-sm py-[3px] text-inherit underline decoration-current/40 decoration-dotted underline-offset-[3px] hover:decoration-solid"
       >
         {children ?? found.text}
       </button>

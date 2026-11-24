@@ -69,7 +69,7 @@ function References({ section }: { section: Section }) {
   const [open, setOpen] = useState(all.length <= REFS_PREVIEW + 1);
   const shown = open ? all : all.slice(0, REFS_PREVIEW);
   return (
-    <section aria-labelledby="refs" className="mt-12 border-t border-rule pt-6">
+    <section id="references" aria-labelledby="refs" className="section-anchor mt-12 border-t border-rule pt-6">
       <h2 id="refs" className="font-display text-xl font-semibold">
         References <span className="font-sans text-sm font-normal text-ink-soft">({all.length})</span>
       </h2>
@@ -80,7 +80,7 @@ function References({ section }: { section: Section }) {
             <div className="min-w-0">
               <div className="font-semibold">
                 {r.url ? (
-                  <a href={r.url} target="_blank" rel="noreferrer" className="underline decoration-rule underline-offset-2 hover:decoration-ink">
+                  <a href={r.url} target="_blank" rel="noreferrer" className="inline-block py-1 underline decoration-rule underline-offset-2 hover:decoration-ink">
                     {r.title}
                   </a>
                 ) : (
@@ -94,7 +94,7 @@ function References({ section }: { section: Section }) {
               {r.links && (
                 <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
                   {r.links.map((l) => (
-                    <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-0.5 text-[12px] underline decoration-rule underline-offset-2 hover:decoration-ink">
+                    <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className="inline-flex min-h-6 items-center gap-0.5 text-[12px] underline decoration-rule underline-offset-2 hover:decoration-ink">
                       {l.label}
                       <ExternalLink size={10} aria-hidden />
                     </a>
@@ -162,6 +162,9 @@ export function Shell({ section, children }: { section: Section; children: (dark
   );
   return (
     <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-8">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       {section === 'home' ? (
         <header className="border-b-[3px] border-double border-ink pb-4 pt-8 sm:pt-10">
           <div className="flex items-start justify-between gap-4">
@@ -180,16 +183,13 @@ export function Shell({ section, children }: { section: Section; children: (dark
       ) : (
         <header>
           {/* Slim site bar: name (home), sections, theme */}
-          <div className="flex items-center justify-between gap-3 border-b border-rule pb-3 pt-4">
+          <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-3 border-b border-rule pb-3 pt-4">
             <a href="./" className="focus-ring rounded-sm font-display text-xl font-bold tracking-tight sm:text-2xl">
               The Canon Ball
             </a>
-            <div className="flex items-center gap-2">
-              <div className="hidden lg:block">{nav}</div>
-              {themeButton}
-            </div>
+            <div className="order-last w-full lg:order-none lg:ml-auto lg:w-auto">{nav}</div>
+            {themeButton}
           </div>
-          <div className="mt-3 lg:hidden">{nav}</div>
           {/* The page's own title */}
           <div className="border-b-[3px] border-double border-ink pb-4 pt-5 sm:pt-7">
             <p className="eyebrow flex items-center gap-1.5">
@@ -202,9 +202,11 @@ export function Shell({ section, children }: { section: Section; children: (dark
         </header>
       )}
 
-      {children(dark)}
+      <main id="main" tabIndex={-1} className="outline-none">
+        {children(dark)}
 
-      <References section={section} />
+        <References section={section} />
+      </main>
     </div>
   );
 }

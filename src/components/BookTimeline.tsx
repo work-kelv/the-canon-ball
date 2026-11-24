@@ -56,7 +56,7 @@ function barStyle(b: BibleBook) {
 
 function Axis({ s, top }: { s: Scale; top?: boolean }) {
   return (
-    <div className={`relative h-5 font-sans text-[10.5px] tabular-nums text-ink-soft ${top ? 'border-b' : 'border-t'} border-rule`}>
+    <div className={`relative h-5 font-sans text-[12px] tabular-nums text-ink-soft ${top ? 'border-b' : 'border-t'} border-rule`}>
       {s.ticks.map((t, i) => (
         <span key={t} className={`absolute -translate-x-1/2 whitespace-nowrap ${i % 2 ? 'hidden sm:block' : ''}`} style={{ left: `${pct(s, t)}%`, top: top ? 0 : 3 }}>
           {formatYear(t)}
@@ -86,14 +86,14 @@ function Panel({
   return (
     <div>
       <header className="mb-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 border-b border-ink/80 pb-2">
-        <h2 className="font-display text-2xl font-semibold tracking-tight">{title}</h2>
+        <h3 className="font-display text-2xl font-semibold tracking-tight">{title}</h3>
         <span className="font-serif italic text-ink-soft">{sub}</span>
       </header>
 
       <div className="grid grid-cols-[6.5rem_1fr] sm:grid-cols-[9rem_1fr]">
         {/* events above the bars */}
         <span />
-        <div className="relative mb-1 h-[2.6rem] font-sans md:h-[3.6rem] text-[10.5px] leading-tight text-ink-soft">
+        <div className="relative mb-1 h-[2.6rem] font-sans md:h-[3.6rem] text-[12px] leading-tight text-ink-soft">
           {s.marks.map((m) => (
             <span
               key={m.label}
@@ -165,12 +165,8 @@ export function BookTimeline({
   };
 
   return (
-    <section aria-label="When the books were written" className="space-y-8">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="max-w-2xl font-serif text-[15px] leading-relaxed text-ink-soft">
-          Each bar runs from the earliest to the latest date commonly given for a book. Long bars mean the date is uncertain,
-          or that the book grew over time. Tap a book for details.
-        </p>
+    <div aria-label="When the books were written" className="space-y-8">
+      <div className="flex flex-wrap items-center justify-end gap-3">
         <div role="radiogroup" aria-label="Order" className="inline-flex rounded-full border border-rule p-0.5 font-sans text-xs">
           {(
             [
@@ -217,6 +213,6 @@ export function BookTimeline({
         </span>
         <span>Where traditional and critical dates differ (for example Daniel, 2 Peter), the bar spans both.</span>
       </div>
-    </section>
+    </div>
   );
 }

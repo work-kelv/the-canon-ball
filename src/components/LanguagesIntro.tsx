@@ -58,7 +58,7 @@ function LanguageTimeline() {
           {SPANS.map((s) => (
             <div key={s.lang} className="relative h-6">
               <div
-                className="absolute inset-y-0 flex items-center overflow-hidden rounded-full px-2 font-sans text-[11px] font-semibold text-paper"
+                className="absolute inset-y-0 flex items-center overflow-hidden rounded-full px-2 font-sans text-[12px] font-semibold text-paper"
                 style={{
                   left: pct(s.from),
                   width: `calc(${pct(s.to)} - ${pct(s.from)})`,
@@ -80,7 +80,7 @@ function LanguageTimeline() {
         ['hidden sm:block h-8', (m: (typeof MARKS)[number]) => (m.row ? 15 : 0)],
         ['sm:hidden h-[3.6rem]', (_m: (typeof MARKS)[number], i: number) => i * 14],
       ] as const).map(([cls, topOf]) => (
-        <div key={cls} className={`relative mt-1 font-sans text-[10.5px] leading-tight text-ink-soft ${cls}`}>
+        <div key={cls} className={`relative mt-1 font-sans text-[12px] leading-tight text-ink-soft ${cls}`}>
           {MARKS.map((m, i) => {
             const right = (m.y - LO) / (HI - LO) > 0.5;
             return (
@@ -95,7 +95,7 @@ function LanguageTimeline() {
           })}
         </div>
       ))}
-      <div className="relative h-4 border-t border-rule font-sans text-[10px] tabular-nums text-ink-soft">
+      <div className="relative h-4 border-t border-rule font-sans text-[12px] tabular-nums text-ink-soft">
         {[-1400, -1000, -500, 1].map((y, i, a) => (
           <span
             key={y}
@@ -185,7 +185,7 @@ export function LanguagesIntro() {
           language” <Ref r="Acts 2:8" pre="(" post=")" />; and Revelation pictures worshippers “from every nation, tribe, people and language”
           {' '}<Ref r="Revelation 7:9" pre="(" post=")" />. Translation has continued ever since; see{' '}
           <a href="#translations" className="underline decoration-rule underline-offset-2 hover:decoration-ink">
-            the Translations tab
+            the Translations section
           </a>
           .
         </p>
@@ -208,7 +208,7 @@ export function LanguagesIntro() {
           <b>Filters</b> above pick out a language; tap a section name to focus on it.
         </>,
         <>
-          <b>Breakdown</b> (top) totals each language by section, measured in chapters.
+          <b>Breakdown</b> (below the grid) totals each language by part of the Bible, measured in chapters.
         </>,
       ]}
     />
