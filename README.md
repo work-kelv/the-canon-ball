@@ -90,13 +90,17 @@ The map covers the Mediterranean and the Ancient Near East, drawn in a parchment
 
 ## 4. Church History
 
-The Church History page works like a short course: six tabs in learning order, with Previous / Next buttons at the bottom of each. Each tab has its own link (for example `history.html#creeds`). The old `#translations` and `#verses` links now open those tabs on The Bible page.
+The Church History page works like a short course: seven tabs in learning order, with Previous / Next buttons at the bottom of each. Each tab has its own link (for example `history.html#creeds`). The old `#translations` and `#verses` links now open those tabs on The Bible page.
 
 ![Start here: church history in six simple steps](docs/screenshots/history-start.png)
 
 ![The family tree of the church](docs/screenshots/history-tree.png)
 
 - **Start here.** Church history simply told, in six steps (one church; agreeing on the creeds; the first splits; the Reformation; different churches, one core faith; who's who), each with a key idea, simple definitions, and a button to the tab that goes deeper.
+- **Key people.** From Jesus to today, in eight eras: Jesus and the apostles, the early church fathers, councils and creeds, the early Middle Ages, the Middle Ages, the Reformation, revival and mission, and the world church. Each era is a timeline of lifespans (66 people, with martyrs marked) and councils, persecutions and events. Teachers whose teaching the church rejected (Marcion, Arius, Pelagius, Nestorius and others) are shown dashed. Tap a person for who they were and how they pointed to Jesus, often in their own words, with each quotation linked to its primary text. The tab is framed by Hebrews 12:1–2, and Start here now ends with a short "Looking to Jesus" note.
+
+![From Jesus to today: key people by era](docs/screenshots/history-people.png)
+
 - **Family tree.** Thirteen traditions on one timeline, from Pentecost to the non-denominational churches. Click a branch to see what it shares with all Christians, what is distinctive to it, and which traditions grew from it.
 - **Differences.** In three steps. (1) At a glance: a table of the four families (Catholic, Eastern Orthodox, Oriental Orthodox and Protestant): who they are (origins, leadership, where they are today, worship, size) and what they teach on ten questions; tap a teaching row for the full story. (2) Eight traditions in four families: the Protestant family split into Lutheran, Anglican, Reformed, Baptist and Pentecostal. (3) Ten questions, tradition by tradition: each question is a line between two answers with all eight traditions on it; tap one for why it matters, how the disagreement arose, where each stands, key terms and passages, or pick two traditions to compare them across all ten.
 - **Creeds.** The Apostles', Nicene, Chalcedonian and Athanasian creeds, compared side by side (the default view) or read one at a time, line by line. The comparison shows what each added, a clause-by-clause table with each creed's own words, and which churches confess which creed. Each line comes with the Bible passages behind it, the controversy it answered, and a note on how reliable its text is.

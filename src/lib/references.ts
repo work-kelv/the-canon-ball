@@ -250,6 +250,42 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
   ],
   history: [
     {
+      title: 'Ecclesiastical History',
+      detail: 'Eusebius of Caesarea (Nicene and Post-Nicene Fathers, series 2, vol. 1, New Advent)',
+      url: 'https://www.newadvent.org/fathers/2501.htm',
+      use: 'Key people tab: the apostles, the early fathers, the persecutions and the canon, up to 324.',
+    },
+    {
+      title: 'The Fathers of the Church',
+      detail: 'Ante-Nicene and Nicene and Post-Nicene Fathers (New Advent)',
+      url: 'https://www.newadvent.org/fathers/',
+      links: [
+        { label: '1 Clement', url: 'https://www.newadvent.org/fathers/1010.htm' },
+        { label: 'Ignatius, Ephesians', url: 'https://www.newadvent.org/fathers/0104.htm' },
+        { label: 'Martyrdom of Polycarp', url: 'https://www.newadvent.org/fathers/0102.htm' },
+        { label: 'Justin, First Apology', url: 'https://www.newadvent.org/fathers/0126.htm' },
+        { label: 'Irenaeus, Against Heresies 5', url: 'https://www.newadvent.org/fathers/0103500.htm' },
+        { label: 'Athanasius, On the Incarnation', url: 'https://www.newadvent.org/fathers/2802.htm' },
+        { label: 'Gregory of Nazianzus, Letter 101', url: 'https://www.newadvent.org/fathers/3103a.htm' },
+        { label: 'Augustine, Confessions', url: 'https://www.newadvent.org/fathers/110101.htm' },
+      ],
+      use: 'Key people tab: each quotation from the early church, checked against these texts.',
+    },
+    {
+      title: 'Later quotations on the Key people tab',
+      detail: 'Aquinas, Luther, Calvin, the Heidelberg Catechism, Wesley, John Paul II, the Billy Graham Evangelistic Association',
+      links: [
+        { label: 'Summa Theologiae III', url: 'https://www.newadvent.org/summa/4.htm' },
+        { label: 'Small Catechism', url: 'https://bookofconcord.org/small-catechism/the-creed/' },
+        { label: 'Institutes 2.16', url: 'https://www.ccel.org/ccel/calvin/institutes.iv.xvii.html' },
+        { label: 'Heidelberg Catechism', url: 'https://www.crcna.org/welcome/beliefs/confessions/heidelberg-catechism' },
+        { label: 'Wesley’s Journal', url: 'https://www.ccel.org/ccel/wesley/journal.vi.ii.xvi.html' },
+        { label: 'Homily, 22 October 1978', url: 'https://www.vatican.va/content/john-paul-ii/en/homilies/1978/documents/hf_jp-ii_hom_19781022_inizio-pontificato.html' },
+        { label: 'BGEA biography', url: 'https://billygraham.org/about/biographies/billy-graham/' },
+      ],
+      use: 'Key people tab: quotations and figures from the Middle Ages to today, each from its own text.',
+    },
+    {
       title: 'World English Bible (WEB) and Berean Standard Bible (BSB)',
       detail: 'Both public domain; USFX texts from the open-bibles collection (seven1m/open-bibles)',
       url: 'https://github.com/seven1m/open-bibles',

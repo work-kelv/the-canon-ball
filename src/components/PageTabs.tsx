@@ -67,7 +67,7 @@ export function PageTabs<T extends string>({
       <nav
         ref={navRef}
         aria-label={label}
-        className={`sticky top-0 z-20 -mx-4 mb-6 grid ${cols} gap-1 border-b border-rule bg-paper/95 px-4 py-2 backdrop-blur sm:-mx-8 sm:px-8 md:flex`}
+        className={`sticky top-0 z-20 -mx-4 mb-6 grid ${cols} gap-1 border-b border-rule bg-paper/95 px-4 py-2 backdrop-blur sm:-mx-8 sm:px-8 md:flex md:flex-wrap`}
       >
         {tabs.map(({ id, label: l, short, icon: Icon }) => (
           <button
@@ -79,8 +79,8 @@ export function PageTabs<T extends string>({
             }`}
           >
             <Icon size={14} aria-hidden className="shrink-0" />
-            <span className="md:hidden">{short ?? l}</span>
-            <span className="hidden md:inline">{l}</span>
+            <span className="lg:hidden">{short ?? l}</span>
+            <span className="hidden lg:inline">{l}</span>
           </button>
         ))}
       </nav>

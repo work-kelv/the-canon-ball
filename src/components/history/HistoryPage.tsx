@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, BookText, Columns4, Compass, GitBranch, GitCompareArrows, Orbit, UsersRound } from 'lucide-react';
+import { BookOpen, Users, BookText, Columns4, Compass, GitBranch, GitCompareArrows, Orbit, UsersRound } from 'lucide-react';
 import { ChurchTitles } from './ChurchTitles';
 import { CreedCompare } from './CreedCompare';
 import { ViewTabs } from '../ViewTabs';
@@ -9,6 +9,7 @@ import { OrthodoxyMatrix } from './OrthodoxyMatrix';
 import { TraditionsCompare } from './TraditionsCompare';
 import { BoundaryOrbit } from './BoundaryOrbit';
 import { StartHere } from './StartHere';
+import { KeyPeople } from './KeyPeople';
 import { HistoryIntro } from '../PageIntros';
 import { PageTabs, useHashTab } from '../PageTabs';
 import { PageNav } from '../PageNav';
@@ -50,6 +51,7 @@ function CoreBeliefsTab() {
  */
 const TABS = [
   { id: 'start', label: 'Start here', short: 'Start', icon: Compass, blurb: 'Church history, simply told' },
+  { id: 'people', label: 'Key people', short: 'People', icon: Users, blurb: 'From Jesus and the apostles to today' },
   { id: 'creeds', label: 'Creeds', icon: BookText, blurb: 'What the early church agreed to believe' },
   { id: 'tree', label: 'Family tree', icon: GitBranch, blurb: 'How one church became many' },
   { id: 'traditions', label: 'Differences', icon: GitCompareArrows, blurb: 'How the four families of churches differ today' },
@@ -81,6 +83,8 @@ export function HistoryPage() {
   const view =
     tab === 'start' ? (
       <StartHere go={go} />
+    ) : tab === 'people' ? (
+      <KeyPeople />
     ) : tab === 'creeds' ? (
       <CreedsTab />
     ) : tab === 'tree' ? (

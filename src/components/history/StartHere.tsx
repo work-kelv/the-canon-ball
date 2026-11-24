@@ -30,7 +30,10 @@ const STEPS: Step[] = [
     ],
     idea: 'At the start there were no denominations: just one church spread over many cities.',
     refs: ['Acts 2:41–42', 'Acts 11:26'],
-    next: [{ tab: 'tree', label: 'See where the family tree begins' }],
+    next: [
+      { tab: 'people', label: 'Meet the people, from Jesus onwards' },
+      { tab: 'tree', label: 'See where the family tree begins' },
+    ],
   },
   {
     era: '313 – 451',
@@ -228,6 +231,26 @@ export function StartHere({ go }: { go: (tab: string) => void }) {
           </li>
         ))}
       </ol>
+
+      {/* The thread through it all */}
+      <aside className="rounded-md px-4 py-4" style={{ background: cssColor('--lineage', 0.06), boxShadow: `inset 3px 0 0 ${cssColor('--lineage')}` }}>
+        <h3 className="font-display text-xl font-semibold">Looking to Jesus</h3>
+        <p className="mt-1 max-w-3xl font-serif text-[16px] leading-relaxed">
+          These are weighty matters, and Christians have disagreed about them for centuries. Through all of it, the churches confess the
+          same Lord: Jesus Christ, crucified and risen. As you explore the traditions, keep him at the centre. The creeds, the councils
+          and the great teachers matter because they point to him.
+        </p>
+        <p className="mt-2 font-sans text-[13px] text-ink-soft">
+          <RefText text="Hebrews 12:2; Colossians 1:18" />
+        </p>
+        <button
+          onClick={() => go('people')}
+          className="focus-ring mt-3 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-sans text-[13px] font-semibold text-paper"
+          style={{ background: cssColor('--lineage') }}
+        >
+          From Jesus to today: the key people <ArrowRight size={14} aria-hidden />
+        </button>
+      </aside>
     </section>
   );
 }
