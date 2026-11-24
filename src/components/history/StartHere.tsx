@@ -213,13 +213,6 @@ export function StartHere({ go }: { go: (tab: string) => void }) {
         <p className="mt-2 font-sans text-[13px] text-ink-soft">
           <RefText text="Hebrews 12:2; Colossians 1:18" />
         </p>
-        <button
-          onClick={() => go('people')}
-          className="focus-ring mt-3 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 font-sans text-[13px] font-semibold text-paper"
-          style={{ background: cssColor('--lineage') }}
-        >
-          From Jesus to today: the key people <ArrowRight size={14} aria-hidden />
-        </button>
       </aside>
     </div>
   );
