@@ -34,38 +34,62 @@ function Diamond({ css, size = 10 }: { css: string; size?: number }) {
 }
 
 /**
- * The eras from Jesus to today, in order, as one strip: tap an era to show it. Each era gets an equal
- * share of the strip (the early eras are short in years but full of people), with its dates beneath.
+ * The whole two thousand years as one strip, drawn to scale: each era is a segment you can tap, with a
+ * tick for every person. It is the way to switch eras (with "Next era" under the chart); the arrow keys
+ * move along it too.
  */
 function EraStrip({ era, onPick }: { era: EraId; onPick: (id: EraId) => void }) {
-  const starts = ['AD 1', '100', '300', '500', '1000', '1500', '1650', '1900'];
-  const short = ['Jesus & apostles', 'Church fathers', 'Councils & creeds', 'Early Middle Ages', 'Middle Ages', 'Reformation', 'Revival & mission', 'World church'];
+  const from = -10,
+    to = 2025;
+  const x = (y: number) => ((y - from) / (to - from)) * 100;
+  const bounds = [-10, 100, 300, 500, 1000, 1500, 1650, 1900, 2025];
+  const at = ERAS.findIndex((e) => e.id === era);
+  const onKey = (e: import("react").KeyboardEvent) => {
+    const d = e.key === 'ArrowRight' || e.key === 'ArrowDown' ? 1 : e.key === 'ArrowLeft' || e.key === 'ArrowUp' ? -1 : 0;
+    if (!d) return;
+    e.preventDefault();
+    const n = Math.min(ERAS.length - 1, Math.max(0, at + d));
+    onPick(ERAS[n].id);
+    requestAnimationFrame(() => (document.querySelector(`[data-era="${ERAS[n].id}"]`) as HTMLElement | null)?.focus());
+  };
   return (
-    <div role="radiogroup" aria-label="Era" className="rounded-md border border-rule bg-paper/80 p-2">
-      <div className="grid grid-cols-8 gap-1">
+    <div className="rounded-md border border-rule bg-paper/80 px-3 py-3">
+      <div role="radiogroup" aria-label="Era" onKeyDown={onKey} className="relative h-8">
         {ERAS.map((e, i) => {
+          const l = x(bounds[i]),
+            w = x(bounds[i + 1]) - l;
           const on = e.id === era;
           return (
             <button
               key={e.id}
+              data-era={e.id}
               role="radio"
               aria-checked={on}
-              aria-label={`${i + 1}. ${e.name}, ${e.span}`}
-              title={`${e.name} (${e.span})`}
+              tabIndex={on ? 0 : -1}
               onClick={() => onPick(e.id)}
-              className={`focus-ring flex min-h-11 flex-col items-center justify-center rounded-md px-0.5 transition-colors ${on ? 'bg-ink text-paper' : 'hover:bg-ink/[0.07]'}`}
-              style={on ? undefined : { background: cssColor('--ink', 0.05 + (i % 2) * 0.04) }}
+              title={`${e.name} (${e.span})`}
+              aria-label={`${i + 1}. ${e.name}, ${e.span}`}
+              className="focus-ring absolute inset-y-0 flex items-center justify-center border-r border-paper transition-colors"
+              style={{ left: `${l}%`, width: `${w}%`, background: on ? cssColor('--ink', 0.85) : cssColor('--ink', 0.08 + (i % 2) * 0.05) }}
             >
-              <span className="font-sans text-[15px] font-bold tabular-nums">{i + 1}</span>
-              <span className={`hidden font-sans text-[12px] leading-tight md:block ${on ? 'text-paper/80' : 'text-ink-soft'}`}>{short[i]}</span>
+              <span className={`font-sans text-[12px] font-bold tabular-nums ${on ? 'text-paper' : 'text-ink-soft'}`}>{i + 1}</span>
             </button>
           );
         })}
+        {/* each person as a tick */}
+        {WITNESSES.map((w) => (
+          <span
+            key={w.id}
+            aria-hidden
+            className="pointer-events-none absolute bottom-0 h-1.5 w-px"
+            style={{ left: `${x((w.from + w.to) / 2)}%`, background: cssColor(w.stream === 'jesus' ? '--lineage' : '--paper', w.stream === 'jesus' ? 1 : 0.8) }}
+          />
+        ))}
       </div>
-      <div className="mt-1 grid grid-cols-8 gap-1 font-sans text-[12px] tabular-nums text-ink-soft">
-        {starts.map((y, i) => (
-          <span key={y} className={`pl-0.5 ${i % 2 ? 'hidden sm:block' : ''}`}>
-            {y}
+      <div className="relative mt-1 h-4 font-sans text-[12px] tabular-nums text-ink-soft">
+        {[1, 500, 1000, 1500, 2000].map((t) => (
+          <span key={t} className="absolute -translate-x-1/2 first:translate-x-0" style={{ left: `${x(t)}%` }}>
+            {t === 1 ? 'AD 1' : t}
           </span>
         ))}
       </div>
