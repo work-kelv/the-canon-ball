@@ -10,8 +10,6 @@ import { useOpenTarget } from '../sections';
  */
 interface Step {
   era: string;
-  /** When it happened, for the chart at the top: [from, to] (AD). */
-  span: [number, number];
   title: string;
   css: string;
   body: string[];
@@ -24,7 +22,6 @@ interface Step {
 const STEPS: Step[] = [
   {
     era: 'AD 30 – 300',
-    span: [30, 313],
     title: 'One church, many cities',
     css: '--ink',
     body: [
@@ -40,7 +37,6 @@ const STEPS: Step[] = [
   },
   {
     era: '313 – 451',
-    span: [313, 451],
     title: 'Agreeing on what we believe',
     css: '--role-king',
     body: [
@@ -58,7 +54,6 @@ const STEPS: Step[] = [
   },
   {
     era: '431 – 1054',
-    span: [431, 1054],
     title: 'The first splits',
     css: '--role-priest',
     body: [
@@ -75,7 +70,6 @@ const STEPS: Step[] = [
   },
   {
     era: '1517 onwards',
-    span: [1517, 2025],
     title: 'The Reformation',
     css: '--greek',
     body: [
@@ -92,7 +86,6 @@ const STEPS: Step[] = [
   },
   {
     era: 'Today',
-    span: [1950, 2025],
     title: 'Different churches, one core faith',
     css: '--rel-mentor',
     body: [
@@ -107,7 +100,6 @@ const STEPS: Step[] = [
   },
   {
     era: 'Along the way',
-    span: [30, 2025],
     title: 'Who’s who',
     css: '--role-patriarch',
     body: [
@@ -195,115 +187,13 @@ function StepCard({ s, i, go }: { s: Step; i: number; go: (id: string) => void }
   );
 }
 
-/** The milestones marked across the chart. */
-const MARKS = [
-  { y: 325, label: 'Nicaea', row: 0 },
-  { y: 451, label: 'Chalcedon', row: 1 },
-  { y: 1054, label: 'East–West split', row: 0 },
-  { y: 1517, label: 'Luther', row: 1 },
-];
-const AXIS_FROM = 0,
-  AXIS_TO = 2025;
-const ax = (y: number) => ((y - AXIS_FROM) / (AXIS_TO - AXIS_FROM)) * 100;
-
-/**
- * Two thousand years at a glance: each step as a bar on one real time scale, so the reader sees
- * how long each period lasted, where they overlap, and the gap of the Middle Ages. Tap a step to
- * jump to it and open it.
- */
-function CourseTimeline({ go }: { go: (id: string) => void }) {
-  // Phones: each title above a full-width bar; wider screens: titles in a column beside the bars.
-  const grid = 'grid grid-cols-1 gap-x-3 sm:grid-cols-[14rem_1fr]';
-  return (
-    <div>
-      <h3 className="eyebrow mb-2">Two thousand years at a glance · tap a step</h3>
-      {/* milestones above the bars */}
-      <div className={`${grid} hidden sm:grid`}>
-        <span />
-        <div className="relative h-10 font-sans text-[12px] leading-none text-ink-soft">
-          {MARKS.map((m) => (
-            <span
-              key={m.y}
-              className={`absolute whitespace-nowrap ${ax(m.y) > 70 ? '-translate-x-full pr-1 text-right' : 'pl-1'}`}
-              style={{ left: `${ax(m.y)}%`, top: m.row * 18 }}
-            >
-              {m.label} <span className="tabular-nums opacity-75">{m.y}</span>
-            </span>
-          ))}
-        </div>
-      </div>
-      <ol className="relative">
-        {STEPS.map((s, i) => {
-          const [y0, y1] = s.span;
-          const l = ax(y0),
-            w = Math.max(ax(y1) - l, 1.5);
-          const along = s.era === 'Along the way';
-          return (
-            <li key={s.title}>
-              <button
-                onClick={() => go(`step-${i + 1}`)}
-                aria-label={`Step ${i + 1}: ${s.title}, ${s.era}`}
-                className={`focus-ring group ${grid} min-h-10 w-full items-center gap-y-1 rounded-md py-1 text-left hover:bg-ink/[0.04]`}
-              >
-                <span className="flex items-center gap-2">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-sans text-[12px] font-bold text-paper" style={{ background: cssColor(s.css) }}>
-                    {i + 1}
-                  </span>
-                  <span className="min-w-0 font-sans text-[13px] font-semibold leading-tight group-hover:underline">{s.title}</span>
-                </span>
-                <span className="relative block h-6">
-                  {/* the milestones, continued down through the bars */}
-                  {MARKS.map((m) => (
-                    <span key={m.y} aria-hidden className="absolute inset-y-[-4px] border-l border-dashed border-ink/20" style={{ left: `${ax(m.y)}%` }} />
-                  ))}
-                  {along ? (
-                    <span className="absolute top-1/2 h-0 -translate-y-1/2 border-t-2 border-dashed" style={{ left: `${l}%`, width: `${w}%`, borderColor: cssColor(s.css, 0.7) }} />
-                  ) : (
-                    <span
-                      className="absolute top-1/2 h-3.5 -translate-y-1/2 rounded-full"
-                      style={{
-                        left: `${l}%`,
-                        width: `${w}%`,
-                        background: y1 >= 2025 && y0 < 1900 ? `linear-gradient(90deg, ${cssColor(s.css)} 30%, ${cssColor(s.css, 0.25)})` : cssColor(s.css),
-                      }}
-                    />
-                  )}
-                </span>
-              </button>
-            </li>
-          );
-        })}
-      </ol>
-      {/* the scale */}
-      <div className={grid}>
-        <span className="hidden sm:block" />
-        <div className="relative h-5 border-t border-rule font-sans text-[12px] tabular-nums text-ink-soft">
-          {[30, 500, 1000, 1500, 2000].map((t, i) => (
-            <span key={t} className={`absolute top-1 -translate-x-1/2 whitespace-nowrap ${i % 2 && t !== 1000 ? 'hidden sm:block' : ''}`} style={{ left: `${ax(t)}%` }}>
-              {t === 30 ? 'AD 30' : t}
-            </span>
-          ))}
-        </div>
-      </div>
-      <p className="mt-2 font-sans text-[12.5px] leading-snug text-ink-soft sm:hidden">
-        Dashed lines: {MARKS.map((m) => `${m.label} ${m.y}`).join(' · ')}.
-      </p>
-      <p className="mt-2 font-sans text-[12.5px] leading-snug text-ink-soft">
-        The empty stretch between 1054 and 1517 is the Middle Ages, when the Catholic West and the Orthodox East went their
-        separate ways. The dashed line is step 6: titles and offices that grew up all along the way.
-      </p>
-    </div>
-  );
-}
-
 export function StartHere({ go }: { go: (tab: string) => void }) {
   return (
     <div className="space-y-6">
 
       {/* The path at a glance */}
       <div className="rounded-md border border-rule bg-paper/80 px-4 py-4">
-        <CourseTimeline go={go} />
-        <div className="mt-4 border-t border-rule pt-3">
+        <div>
           <div className="eyebrow mb-1.5">The Christian family today (2.18 billion, 2010)</div>
           <div className="flex h-6 overflow-hidden rounded-full ring-1 ring-rule">
             {FAMILIES.map((f) => (
