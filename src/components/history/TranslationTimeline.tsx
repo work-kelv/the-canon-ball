@@ -55,6 +55,7 @@ export function TranslationTimeline() {
 
       <Fold
         id="translation-milestones"
+        min="explorer"
         title="The milestones"
         count={timeline.length}
         summary="From the Septuagint to the Dead Sea Scrolls and today, filtered by era and kind."

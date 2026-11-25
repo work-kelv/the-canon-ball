@@ -95,6 +95,7 @@ export function ChurchTitles() {
       {/* The titles */}
       <Fold
         id="title-cards"
+        min="explorer"
         targetPrefix="title-"
         title="All the titles, explained"
         count={groups.reduce((n, g) => n + g.titles.length, 0)}

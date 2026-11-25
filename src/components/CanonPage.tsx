@@ -3,6 +3,7 @@ import { ChevronDown, Info } from 'lucide-react';
 import { cssColor } from '../lib/characters';
 import { RefText } from './ScriptureRef';
 import { Fold } from './sections';
+import { AtLevel } from './LevelSwitch';
 
 /**
  * Which books are in the Bible? The 66 books every church shares (and the default on this site),
@@ -211,6 +212,7 @@ export function CanonPage() {
       {/* The further books */}
       <Fold
         id="further-books"
+        min="explorer"
         title="The further books"
         count={GROUPS.reduce((n, g) => n + g.books.length, 0)}
         summary="From Tobit to 1 Enoch: what each book is, and which churches include it. Tap a book to read about it."
@@ -265,6 +267,7 @@ export function CanonPage() {
       </Fold>
 
       {/* Why 66 */}
+      <AtLevel min="scholar">
       <div>
         <h3 className="eyebrow mb-1">Why Protestant churches keep 66</h3>
         <p className="mb-3 max-w-3xl font-serif text-[15px] leading-relaxed text-ink-soft">
@@ -300,6 +303,7 @@ export function CanonPage() {
           .
         </p>
       </div>
+      </AtLevel>
     </div>
   );
 }

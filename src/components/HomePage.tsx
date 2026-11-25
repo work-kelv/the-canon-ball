@@ -3,6 +3,7 @@ import { ArrowRight, BookOpenText, Church, Languages, Map as MapIcon, Moon, Mous
 import { cssColor } from '../lib/characters';
 import { CharactersArt, HistoryArt, LanguagesArt, MapArt } from './PageArt';
 import { RefText } from './ScriptureRef';
+import { LevelWelcome } from './LevelSwitch';
 
 // ── Content ──
 
@@ -84,6 +85,7 @@ const STATS: [string, string][] = [
 export function HomePage() {
   return (
     <div className="space-y-12 pt-8">
+      <LevelWelcome />
       {/* At a glance */}
       <dl className="grid grid-cols-3 gap-y-4 border-y border-rule py-4 sm:grid-cols-6">
         {STATS.map(([n, l]) => (

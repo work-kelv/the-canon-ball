@@ -141,6 +141,7 @@ export function TextualTransmission() {
       {/* Milestones strip */}
       <Fold
         id="verse-milestones"
+        min="explorer"
         title="Milestones"
         count={navigation.milestones.length}
         summary="From writing without spaces to the first Bible with chapters and verses (1555)."

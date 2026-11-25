@@ -21,11 +21,26 @@ Any Bible reference on the site (shown with a dotted underline) can be clicked t
 
 ---
 
+## Beginner · Explorer · Scholar
+
+A switch at the top of every page sets how much the site shows, and is remembered (a link can set it too, e.g. `?level=beginner`). On a first visit the home page asks once whether to start as a Beginner.
+
+| | Beginner (easy) | Explorer (medium) | Scholar (hard) |
+|---|---|---|---|
+| **The Bible** | The 66 books as a list with a one-line description each and "kind of book" filters; a simple two-part timeline; the four canon counts | The language grid, the dated timeline, the further books and the milestones | Everything, including the language breakdown and why Protestants keep 66 |
+| **Characters** | Prominent figures only, the timeline, simple filters; person sheets with the biography, dates and family | All filters, the timeline and the network | Everything, including the era directory and date-certainty notes |
+| **Map** | Starts with the five great journeys; book panels with where each book was written and set; place sheets with the modern site and a note | Each book's journeys and key places; the books and people linked to a place | Everything, including dating notes and gazetteer links |
+| **Church History** | Start here (shorter), Key people (the best-known figures), the family tree as a list, a short Differences table, the Titles ladders | All seven sections | Everything, including the creed lens and the six-benchmark table |
+
+In Beginner mode new words (canon, creed, schism…) are underlined and explained on tap. A link to a section above the reader's level still opens it, with a note and a button to switch.
+
 ## 1. The Bible
 
 The Bible page follows the text in the order things happened, on one scrolling page of five numbered sections: languages, when the books were written, which books, chapters and verses, and translations. A slim "On this page" bar stays at the top (‹ previous, the current section with a list of all of them, next ›), and each section has its own link (for example `languages.html#verses`). Every section opens with its heading, a short lead and a one-line takeaway; dense parts fold away until you open them. The introduction explains why the Bible is in three languages, with a short timeline.
 
 ![The Bible page: all 66 books, coloured by the language they were written in](docs/screenshots/languages-grid.png)
+
+**About each book.** Every book has a short introduction written for newcomers: a one-line description, a summary, the kind of book, its main themes, a passage to start with and who wrote it (with scholars' views where they differ). It opens each book's sheet, appears on the grid tiles and on the Map's book panels, and makes up the Beginner list.
 
 **Original languages.** All 66 books are shown in canonical order: the Old Testament (39 books, written before Jesus) and the New Testament (27 books, written by his followers after his death and resurrection). Each one is coloured by its original language, and stronger colour means more chapters.
 

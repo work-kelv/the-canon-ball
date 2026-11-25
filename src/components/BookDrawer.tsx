@@ -5,6 +5,8 @@ import { LANGUAGE_INFO, formatNum, formatPct, langColor } from '../lib/books';
 import { LanguageBar } from './LanguageBar';
 import { RefText } from './ScriptureRef';
 import { DetailSheet } from './DetailSheet';
+import { BOOK_INTROS, KIND_HELP } from '../lib/bookIntros';
+import { useLevel } from '../lib/level';
 
 interface Props {
   book: BibleBook;
@@ -35,6 +37,8 @@ function Section({
 
 export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
   const primary = [...book.languages].sort((a, b) => b.percent - a.percent)[0].language;
+  const intro = BOOK_INTROS[book.order];
+  const level = useLevel();
 
   return (
     <DetailSheet
@@ -91,6 +95,35 @@ export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
         </div>
 
         <div className="space-y-6 px-6 pb-10 pt-5">
+          {/* About this book: for anyone new to it */}
+          <section aria-labelledby="about-book" className="space-y-2">
+            <h3 id="about-book" className="eyebrow flex flex-wrap items-center gap-2">
+              About this book
+              <span className="rounded-full border border-rule px-2 py-0.5 normal-case tracking-normal text-ink" title={KIND_HELP[intro.kind]}>
+                {intro.kind}
+              </span>
+            </h3>
+            <p className="font-display text-[19px] font-semibold leading-snug">{intro.oneLine}</p>
+            <p className="font-serif text-[16px] leading-relaxed">{intro.summary}</p>
+            <p className="flex flex-wrap gap-1.5 font-sans text-[12.5px]">
+              {intro.themes.map((th) => (
+                <span key={th} className="rounded-full px-2.5 py-0.5" style={{ background: langColor(primary, 0.1) }}>
+                  {th}
+                </span>
+              ))}
+            </p>
+            <p className="font-sans text-[13.5px]">
+              <span className="text-ink-soft">Start with: </span>
+              <RefText text={intro.start} />
+              {level !== 'beginner' && (
+                <>
+                  <span className="text-ink-soft"> · Written by: </span>
+                  {intro.author}
+                </>
+              )}
+            </p>
+          </section>
+
           {/* Key figures */}
           <dl className="grid grid-cols-3 gap-3">
             {[

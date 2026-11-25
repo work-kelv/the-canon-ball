@@ -5,11 +5,16 @@ import { ERAS, EVENTS, PEOPLE_SOURCES, STREAMS, WITNESSES, type ChurchEvent, typ
 import { RefText } from '../ScriptureRef';
 import { Fold } from '../sections';
 import { DetailSheet } from '../DetailSheet';
+import { useLevel } from '../../lib/level';
 
 /**
  * Key people from Jesus to today: one era at a time, people as lifespan bars and councils and
  * events as markers, in date order. Each person opens a card that says how they pointed to Jesus.
  */
+
+/** The figures and events a Beginner sees first. */
+const MAJOR_PEOPLE = new Set(['jesus', 'peter', 'paul', 'john', 'stephen', 'ignatius', 'polycarp', 'justin', 'irenaeus', 'athanasius', 'augustine', 'jerome', 'patrick', 'benedict', 'gregory-great', 'cyril-methodius', 'francis', 'aquinas', 'wycliffe', 'luther', 'calvin', 'tyndale', 'loyola', 'wesley', 'carey', 'taylor', 'spurgeon', 'seymour', 'sung', 'bonhoeffer', 'lewis', 'graham']);
+const MAJOR_EVENTS = new Set(['pentecost', 'temple', 'milan', 'nicaea', 'chalcedon', 'schism', 'theses', 'azusa']);
 
 const yr = (y: number) => (y < 0 ? `${-y} BC` : y < 1000 ? `AD ${y}` : `${y}`);
 
@@ -170,6 +175,7 @@ function PersonCard({ w, onClose, onPrev, onNext, position }: { w: Witness; onCl
 }
 
 export function KeyPeople() {
+  const simple = useLevel() === 'beginner';
   const [era, setEra] = useState<EraId>('apostles');
   const [open, setOpen] = useState<string | null>(null);
   const [openEvent, setOpenEvent] = useState<string | null>(null);
@@ -177,10 +183,10 @@ export function KeyPeople() {
   const ei = ERAS.findIndex((x) => x.id === era);
 
   const rows = useMemo<Row[]>(() => {
-    const people: Row[] = WITNESSES.filter((w) => w.era === era).map((w) => ({ kind: 'person', w, start: w.from }));
-    const events: Row[] = EVENTS.filter((x) => x.era === era).map((x) => ({ kind: 'event', e: x, start: x.year }));
+    const people: Row[] = WITNESSES.filter((w) => w.era === era && (!simple || MAJOR_PEOPLE.has(w.id))).map((w) => ({ kind: 'person', w, start: w.from }));
+    const events: Row[] = EVENTS.filter((x) => x.era === era && (!simple || MAJOR_EVENTS.has(x.id))).map((x) => ({ kind: 'event', e: x, start: x.year }));
     return [...people, ...events].sort((a, b) => a.start - b.start || (a.kind === 'event' ? 1 : -1));
-  }, [era]);
+  }, [era, simple]);
   const people = rows.filter((r): r is Extract<Row, { kind: 'person' }> => r.kind === 'person').map((r) => r.w);
   const pi = people.findIndex((w) => w.id === open);
   const ticks = ticksFor(e);

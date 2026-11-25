@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BOOK_INTROS } from '../lib/bookIntros';
 import { Columns3, Rows3 } from 'lucide-react';
 import type { BibleBook, Division, Testament } from '../types';
 import {
@@ -75,9 +76,9 @@ function BookTile({
       aria-label={`${book.name}, ${book.chapters} chapters, ${book.languages
         .map((l) => l.language)
         .join(' and ')}`}
-      title={`${book.order}. ${book.name} — ${book.chapters} ch · ${book.languages
+      title={`${book.order}. ${book.name}: ${BOOK_INTROS[book.order].oneLine} (${book.chapters} ch · ${book.languages
         .map((l) => l.language)
-        .join(' + ')}`}
+        .join(' + ')})`}
       style={{ width, background: tileBackground(book) }}
       className={`focus-ring group relative flex h-[86px] max-w-full shrink-0 flex-col justify-between overflow-hidden rounded-[3px] border p-1.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
         strong ? 'text-paper' : 'text-ink'
