@@ -17,7 +17,6 @@ import { RelationshipGraph } from './RelationshipGraph';
 import { EraTimeline } from './EraTimeline';
 import { CharacterTimeline } from './CharacterTimeline';
 import { CharacterInspector } from './CharacterInspector';
-import { atLeast, getLevel, useLevel } from '../../lib/level';
 
 type Mode = 'timeline' | 'graph' | 'directory';
 const HASH_OF: Record<Mode, string> = { timeline: '', graph: 'network', directory: 'directory' };
@@ -35,20 +34,7 @@ export function CharactersPage({ dark }: { dark: boolean }) {
     setModeState(m);
     history.replaceState(history.state, '', m === 'timeline' ? location.pathname + location.search : `#${HASH_OF[m]}`);
   };
-  // Beginners start with the prominent figures only.
-  const [filters, setFilters] = useState<CharacterFilters>(() => ({ ...EMPTY_FILTERS, keyOnly: getLevel() === 'beginner' }));
-  const level = useLevel();
-  const [openedOn] = useState(modeFromHash);
-  useEffect(() => {
-    if (level === 'beginner') setFilters((f) => ({ ...f, keyOnly: true, era: null, book: null, role: null }));
-  }, [level]);
-  // The views available at this level (a link to another view still opens it).
-  const views = (['timeline', 'graph', 'directory'] as Mode[]).filter(
-    (m) => m === 'timeline' || m === openedOn || (m === 'graph' ? atLeast(level, 'explorer') : atLeast(level, 'scholar')),
-  );
-  useEffect(() => {
-    if (!views.includes(mode)) setModeState('timeline');
-  }, [level]); // eslint-disable-line react-hooks/exhaustive-deps
+  const [filters, setFilters] = useState<CharacterFilters>(EMPTY_FILTERS);
   const [selectedId, setSelectedIdState] = useState<string | null>(() => {
     const id = personFromUrl();
     return id && characterById[id] ? id : null;
@@ -113,13 +99,11 @@ export function CharactersPage({ dark }: { dark: boolean }) {
           value={mode}
           onChange={setMode}
           className="mb-2"
-          tabs={(
-            [
-              { id: 'timeline', label: 'Timeline', icon: GanttChart },
-              { id: 'graph', label: 'Relationship network', short: 'Network', icon: Share2 },
-              { id: 'directory', label: 'Era directory', short: 'Directory', icon: LayoutList },
-            ] as const
-          ).filter((t) => views.includes(t.id))}
+          tabs={[
+            { id: 'timeline', label: 'Timeline', icon: GanttChart },
+            { id: 'graph', label: 'Relationship network', short: 'Network', icon: Share2 },
+            { id: 'directory', label: 'Era directory', short: 'Directory', icon: LayoutList },
+          ]}
         />
         <SearchBox
           value={filters.query}

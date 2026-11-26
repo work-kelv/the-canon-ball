@@ -6,7 +6,6 @@ import { LanguageBar } from './LanguageBar';
 import { RefText } from './ScriptureRef';
 import { DetailSheet } from './DetailSheet';
 import { BOOK_INTROS, KIND_HELP } from '../lib/bookIntros';
-import { useLevel } from '../lib/level';
 
 interface Props {
   book: BibleBook;
@@ -38,7 +37,6 @@ function Section({
 export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
   const primary = [...book.languages].sort((a, b) => b.percent - a.percent)[0].language;
   const intro = BOOK_INTROS[book.order];
-  const level = useLevel();
 
   return (
     <DetailSheet
@@ -115,12 +113,8 @@ export function BookDrawer({ book, onClose, onPrev, onNext }: Props) {
             <p className="font-sans text-[13.5px]">
               <span className="text-ink-soft">Start with: </span>
               <RefText text={intro.start} />
-              {level !== 'beginner' && (
-                <>
-                  <span className="text-ink-soft"> · Written by: </span>
-                  {intro.author}
-                </>
-              )}
+              <span className="text-ink-soft"> · Written by: </span>
+              {intro.author}
             </p>
           </section>
 

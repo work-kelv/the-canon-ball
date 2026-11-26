@@ -1,7 +1,6 @@
 import { ArrowRight, Lightbulb } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { RefText } from '../ScriptureRef';
-import { useLevel } from '../../lib/level';
 
 /**
  * Church history told simply, in five steps, each read in full, with a button to the section that
@@ -107,7 +106,6 @@ const FAMILIES = [
 
 /** One step, read in full: era, title, key idea, the story, simple definitions and passages. */
 function StepCard({ s, i, go }: { s: Step; i: number; go: (id: string) => void }) {
-  const level = useLevel();
   return (
     <article className="rounded-md border border-rule bg-paper/90 px-4 py-4" style={{ boxShadow: `inset 3px 0 0 ${cssColor(s.css)}` }}>
       <div className="eyebrow">
@@ -123,7 +121,7 @@ function StepCard({ s, i, go }: { s: Step; i: number; go: (id: string) => void }
       </p>
       <div className="mt-3">
         <div className="space-y-2 font-serif text-[16px] leading-relaxed">
-          {(level === 'beginner' ? s.body.slice(0, 1) : s.body).map((p) => (
+          {s.body.map((p) => (
             <p key={p}>{p}</p>
           ))}
         </div>
@@ -148,7 +146,7 @@ function StepCard({ s, i, go }: { s: Step; i: number; go: (id: string) => void }
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-2">
         <span className="ml-auto flex flex-wrap gap-2">
-          {s.next.filter((n) => level !== 'beginner' || !['creeds', 'compare'].includes(n.tab)).map((n) => (
+          {s.next.map((n) => (
             <button
               key={n.tab}
               onClick={() => go(n.tab)}

@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { DetailSheet } from '../DetailSheet';
-import { useLevel } from '../../lib/level';
 import { RefText } from '../ScriptureRef';
 import { ArrowLeft, ArrowRight, BookMarked, CalendarRange, ChevronDown, ChevronUp, Gauge, GitCommitVertical, Users } from 'lucide-react';
 import type { Character, RelType } from '../../characterTypes';
@@ -46,7 +45,6 @@ function Section({ icon, title, aside, children }: { icon: ReactNode; title: str
 }
 
 export function CharacterInspector({ character: c, activeBook, onClose, onJump, onBook, backLabel, onPrev, onNext, position }: Props) {
-  const level = useLevel();
   const role = cssColor(roleCss(c.role));
   const era = ERAS.find((e) => e.id === c.era)!;
   const rels = edgesFor(c.id);
@@ -94,7 +92,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
                 : `c. ${formatYearRange(c.dates.start, c.dates.end)}`}
             </div>
             <div className="text-xs text-ink-soft">
-              {level === 'scholar' && PRECISION_LABEL[c.dates.precision]}
+              {PRECISION_LABEL[c.dates.precision]}
               {c.kind === 'spiritual' && c.appearances ? ` · ${c.appearances.length} narrative years` : ''}
             </div>
             {c.dates.note && <div className="mt-1 text-xs italic text-ink-soft"><RefText text={c.dates.note} /></div>}
@@ -194,8 +192,6 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
           </Section>
         )}
 
-        {level !== 'beginner' && (
-          <>
         <dl className="grid grid-cols-3 gap-3">
           {[
             { k: 'Prominence', v: c.prominenceScore },
@@ -255,9 +251,6 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
           )}
         </Section>
 
-          </>
-        )}
-
         <Section icon={<Users size={12} aria-hidden />} title={`Key relationships (${rels.length})`}>
           {rels.length === 0 ? (
             <p className="font-sans text-sm text-ink-soft">
@@ -267,8 +260,7 @@ export function CharacterInspector({ character: c, activeBook, onClose, onJump, 
             <div className="space-y-4">
               {REL_TYPES.map((t) => {
                 const group = rels.filter((r) => r.edge.type === (t.id as RelType));
-                // Beginners see the family first and foremost
-                if (!group.length || (level === 'beginner' && t.id !== 'Family')) return null;
+                if (!group.length) return null;
                 return (
                   <div key={t.id}>
                     <div className="mb-1.5 flex items-center gap-1.5 font-sans text-xs font-semibold" style={{ color: cssColor(relCss(t.id)) }}>

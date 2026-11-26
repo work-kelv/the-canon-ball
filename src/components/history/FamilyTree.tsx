@@ -3,7 +3,6 @@ import { Check, Minus, Plus, Sparkles } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { BRANCH_CSS, type Branch, branchMeta, branches, branchesInTreeOrder } from '../../lib/history';
 import { DetailHeader, DetailSheet, useMedia } from '../DetailSheet';
-import { useLevel } from '../../lib/level';
 import { ScrollFade } from '../ScrollFade';
 
 // Piecewise time scale: the early centuries are compressed so the many modern branches have room.
@@ -104,8 +103,7 @@ function BranchCard({ b, onPick }: { b: Branch; onPick: (id: string) => void }) 
 export function FamilyTree() {
   const [sel, setSel] = useState('early');
   // Phones open a branch in a sheet; wider screens show it under the tree.
-  const simple = useLevel() === 'beginner';
-  const md = useMedia('(min-width: 768px)') && !simple;
+  const md = useMedia('(min-width: 768px)');
   const [sheet, setSheet] = useState(false);
   const [zoom, setZoom] = useState(1);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -131,7 +129,7 @@ export function FamilyTree() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-end justify-end gap-3">
-        <div className={`hidden items-center gap-1.5 font-sans text-xs ${simple ? '' : 'md:flex'}`}>
+        <div className="hidden items-center gap-1.5 font-sans text-xs md:flex">
           <span className="text-ink-soft">Zoom</span>
           <button onClick={() => setZoom((z) => Math.max(1, z - 0.5))} disabled={zoom === 1} aria-label="Zoom out" className="focus-ring rounded-full border border-rule p-1.5 disabled:opacity-30">
             <Minus size={13} />
@@ -143,7 +141,7 @@ export function FamilyTree() {
       </div>
 
       {/* Desktop: branching timeline */}
-      <ScrollFade innerRef={boxRef} label="Family tree timeline (scrolls sideways when zoomed)" className="panel" outerClassName={simple ? 'hidden' : 'hidden md:block'}>
+      <ScrollFade innerRef={boxRef} label="Family tree timeline (scrolls sideways when zoomed)" className="panel" outerClassName="hidden md:block">
         <svg width={width} height={height} className="block" role="img" aria-label="Branching timeline of Christian traditions">
           {/* time axis */}
           {TICKS.map((t) => (
@@ -205,7 +203,7 @@ export function FamilyTree() {
       </ScrollFade>
 
       {/* Phones: indented list */}
-      <ol className={`space-y-1 ${simple ? '' : 'md:hidden'}`}>
+      <ol className="space-y-1 md:hidden">
         {rows.map((b) => (
           <li key={b.id} style={{ paddingLeft: b.depth * 14 }}>
             <button
@@ -224,7 +222,7 @@ export function FamilyTree() {
         ))}
       </ol>
 
-      <div className={simple ? 'hidden' : 'hidden md:block'}>
+      <div className="hidden md:block">
         <DetailHeader title={selected.name} position={`${si + 1} of ${rows.length}`} onPrev={prevB} onNext={nextB} className="mb-2" />
         <BranchCard b={selected} onPick={setSel} />
       </div>

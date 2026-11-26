@@ -1,4 +1,3 @@
-import type React from 'react';
 import { useCallback, useMemo, useState } from 'react';
 import { BookTimeline } from './BookTimeline';
 import type { BibleBook, Division, LanguageFilter } from '../types';
@@ -8,9 +7,6 @@ import { GridView } from './GridView';
 import { BreakdownView } from './BreakdownView';
 import { BookDrawer } from './BookDrawer';
 import { Fold, PageSection } from './sections';
-import { BookList, SimpleTimeline } from './BookList';
-import { AtLevel, Term } from './LevelSwitch';
-import { pick, useLevel } from '../lib/level';
 
 /**
  * The first two sections of The Bible page, which share one set of filters and one book drawer:
@@ -34,7 +30,6 @@ export function LanguagesSections() {
   const prev = useCallback(() => setSelected((s) => (s && s > 1 ? s - 1 : s)), []);
   const next = useCallback(() => setSelected((s) => (s && s < 66 ? s + 1 : s)), []);
   const filtered = filter !== 'all' || division;
-  const level = useLevel();
 
   return (
     <>
@@ -42,24 +37,10 @@ export function LanguagesSections() {
         id="languages"
         n={1}
         first
-        title={pick(level, { beginner: 'The 66 books of the Bible', scholar: 'The 66 books and their languages' })}
-        lead={pick<React.ReactNode>(level, {
-          beginner: (
-            <>
-              The Bible is a library of 66 books in two parts, or <Term t="testament">testaments</Term>. Each has a one-line description
-              below; tap a book to read more about it.
-            </>
-          ),
-          scholar: 'All 66 books in Bible order, each coloured by the language it was first written in. Tap a book for what it is about, its exact Aramaic passages, its date and why it used that language.',
-        })}
-        takeaway={pick(level, {
-          beginner: 'The Old Testament has 39 books and the New Testament 27: history, law, poetry, prophecy, Gospels and letters.',
-          scholar: 'Hebrew for Israel’s Scriptures, a little Aramaic from the exile, and Greek for the New Testament: each the language its first readers understood.',
-        })}
+        title="The 66 books and their languages"
+        lead="All 66 books in Bible order, each coloured by the language it was first written in. Tap a book for its exact Aramaic passages, its date and why it used that language."
+        takeaway="Hebrew for Israel’s Scriptures, a little Aramaic from the exile, and Greek for the New Testament: each the language its first readers understood."
       >
-        {level === 'beginner' ? (
-          <BookList onOpen={setSelected} />
-        ) : (
         <div className="space-y-8">
           <div
             style={{ top: 'calc(var(--jump-h, 44px) - 1px)' }}
@@ -78,38 +59,27 @@ export function LanguagesSections() {
 
           <Fold
             id="breakdown"
-            min="scholar"
             title="Language & division breakdown"
             summary="How the chapters divide between the three languages and the parts of the Bible, with the same filters."
           >
             <BreakdownView langBooks={langBooks} visible={visible} division={division} onDivision={setDivision} onOpen={setSelected} />
           </Fold>
 
-          <AtLevel min="scholar">
-            <footer className="border-t border-rule pt-4 font-sans text-[12px] leading-relaxed text-ink-soft">
-              <p>{meta.chapterAndVerseCounts}</p>
-              <p className="mt-1">{meta.languagePercentNote}</p>
-              <p className="mt-1">{meta.datingNote}</p>
-            </footer>
-          </AtLevel>
+          <footer className="border-t border-rule pt-4 font-sans text-[12px] leading-relaxed text-ink-soft">
+            <p>{meta.chapterAndVerseCounts}</p>
+            <p className="mt-1">{meta.languagePercentNote}</p>
+            <p className="mt-1">{meta.datingNote}</p>
+          </footer>
         </div>
-        )}
       </PageSection>
 
       <PageSection
         id="timeline"
         n={2}
         title="When the books were written"
-        lead={pick(level, {
-          beginner: 'The Bible was written over more than a thousand years, in two great periods with Jesus between them.',
-          scholar: 'Each bar runs from the earliest to the latest date commonly given for a book. Long bars mean the date is uncertain, or that the book grew over time. Tap a book for details.',
-        })}
+        lead="Each bar runs from the earliest to the latest date commonly given for a book. Long bars mean the date is uncertain, or that the book grew over time. Tap a book for details."
         takeaway="The Old Testament grew over about a thousand years; the New Testament was written within a single lifetime."
       >
-        {level === 'beginner' ? (
-          <SimpleTimeline />
-        ) : (
-        <>
         {filtered && (
           <p className="mb-4 flex flex-wrap items-center gap-2 rounded-md border border-rule bg-paper/80 px-3 py-2 font-sans text-[13px]">
             <span>
@@ -129,8 +99,6 @@ export function LanguagesSections() {
           </p>
         )}
         <BookTimeline isMatch={isMatch} selected={selected} onOpen={setSelected} />
-        </>
-        )}
       </PageSection>
 
       {book && <BookDrawer book={book} onClose={close} onPrev={book.order > 1 ? prev : null} onNext={book.order < 66 ? next : null} />}

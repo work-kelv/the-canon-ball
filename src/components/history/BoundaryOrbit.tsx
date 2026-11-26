@@ -22,7 +22,6 @@ import {
 } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
 import { DetailHeader, DetailSheet, useMedia } from '../DetailSheet';
-import { AtLevel } from '../LevelSwitch';
 import { Segmented } from '../characters/controls';
 import { ChalcedonExplainer, CREED_CSS, CreedStatusMark, NonCreedalExplainer, STATUS_STYLE, statusLook } from './CreedCompare';
 
@@ -418,7 +417,6 @@ export function BoundaryOrbit() {
       <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:grid-rows-[auto_1fr]">
         <div className="lg:col-start-1 lg:row-start-1">
           {/* Creed lens */}
-          <AtLevel min="scholar">
           <div className="mb-2 flex flex-wrap items-center gap-2">
             <span className="eyebrow">Show who confesses</span>
             <Segmented<CreedId | null>
@@ -431,7 +429,6 @@ export function BoundaryOrbit() {
               ]}
             />
           </div>
-          </AtLevel>
           {lens && (
             <div className="mb-2 rounded-md border border-rule px-3 py-2 font-sans text-[12.5px] leading-snug" style={{ boxShadow: `inset 3px 0 0 ${cssColor(CREED_CSS[lens])}` }}>
               <p>{creedLens.notes[lens]}</p>

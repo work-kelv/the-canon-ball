@@ -2,7 +2,6 @@ import { useState, type ReactNode } from 'react';
 import { BookOpenText, ChevronDown, Church, ExternalLink, House, Languages, Map as MapIcon, Moon, ScrollText, Sun, Users } from 'lucide-react';
 import { langColor } from './lib/books';
 import { REFERENCES } from './lib/references';
-import { LevelSwitch } from './components/LevelSwitch';
 
 export type Section = 'home' | 'languages' | 'characters' | 'map' | 'history';
 
@@ -179,10 +178,7 @@ export function Shell({ section, children }: { section: Section; children: (dark
             </div>
             {themeButton}
           </div>
-          <div className="mt-5 flex flex-wrap items-center gap-3">
-            {nav}
-            <LevelSwitch />
-          </div>
+          <div className="mt-5">{nav}</div>
         </header>
       ) : (
         <header>
@@ -202,7 +198,6 @@ export function Shell({ section, children }: { section: Section; children: (dark
             </p>
             <h1 className="mt-1.5 font-display text-4xl font-bold leading-none tracking-tight sm:text-5xl">{intro.title}</h1>
             <p className="mt-2 max-w-2xl text-[17px] leading-snug text-ink-soft">{intro.text}</p>
-            <LevelSwitch className="mt-4" />
           </div>
         </header>
       )}

@@ -21,8 +21,6 @@ import { RefText } from '../ScriptureRef';
 import { MapCanvas, type Selection } from './MapCanvas';
 import { DetailHeader, DetailSheet, useDetailKeys, useMedia } from '../DetailSheet';
 import { BOOK_INTROS } from '../../lib/bookIntros';
-import { getLevel, useLevel } from '../../lib/level';
-import { AtLevel } from '../LevelSwitch';
 
 type Mode = 'books' | 'journeys';
 
@@ -32,7 +30,7 @@ const ALL_JOURNEYS = journeys.map((j) => j.id);
 function initialState(): { mode: Mode; order: number } {
   const h = location.hash;
   const m = h.match(/book=(\d+)/);
-  if (h.includes('journeys') || (!m && getLevel() === 'beginner')) return { mode: 'journeys', order: 1 };
+  if (h.includes('journeys')) return { mode: 'journeys', order: 1 };
   return { mode: 'books', order: m ? Math.min(66, Math.max(1, Number(m[1]))) : 1 };
 }
 
@@ -243,7 +241,6 @@ function Inspector({
 }) {
   // Esc and ←/→ for the card (the sheet has its own).
   useDetailKeys(asSheet ? null : onClose, asSheet ? null : nav?.prev, asSheet ? null : nav?.next);
-  const level = useLevel();
   let heading = '';
   let kicker = '';
   let extra: ReactNode = null;
@@ -323,7 +320,7 @@ function Inspector({
               “<RefText text={p.description} />”<span className="font-sans text-[12px] text-ink-soft"> — Easton&rsquo;s Bible Dictionary</span>
             </p>
           )}
-          {level !== 'beginner' && p && p.books.length > 0 && (
+          {p && p.books.length > 0 && (
             <div>
               <div className="eyebrow mb-1.5 flex items-center gap-1.5">
                 <BookOpen size={12} aria-hidden /> Named in {p.verseCount} verses · books
@@ -342,7 +339,7 @@ function Inspector({
               </div>
             </div>
           )}
-          {level !== 'beginner' && p && p.people.length > 0 && (
+          {p && p.people.length > 0 && (
             <div>
               <div className="eyebrow mb-1.5 flex items-center gap-1.5">
                 <Users size={12} aria-hidden /> Key people here
@@ -362,7 +359,7 @@ function Inspector({
               </div>
             </div>
           )}
-          {level === 'scholar' && p && (p.openBible || p.pleiades) && (
+          {p && (p.openBible || p.pleiades) && (
             <div className="flex flex-wrap gap-3 border-t border-rule pt-2 font-sans text-[12px] text-ink-soft">
               {p.openBible && (
                 <a href={p.openBible} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 underline-offset-2 hover:text-ink hover:underline">
@@ -586,15 +583,12 @@ function BookPanel({
             </span>
           </button>
         </div>
-        <AtLevel min="scholar">
-          <p className="mt-2 font-sans text-[12px] leading-snug text-ink-soft">
-            <RefText text={book.origin.confidenceNote} />
-          </p>
-        </AtLevel>
+        <p className="mt-2 font-sans text-[12px] leading-snug text-ink-soft">
+          <RefText text={book.origin.confidenceNote} />
+        </p>
       </div>
 
       {/* Journeys */}
-      <AtLevel min="explorer">
       <section className="border-b border-rule px-4 py-3">
         <div className="flex items-baseline justify-between gap-2">
           <h3 className="eyebrow flex items-center gap-1.5">
@@ -710,10 +704,7 @@ function BookPanel({
         )}
       </section>
 
-      </AtLevel>
-
       {/* Key places */}
-      <AtLevel min="explorer">
       <section className="px-4 py-3">
         <h3 className="eyebrow mb-1.5">Key places (verses naming them)</h3>
         {book.keyLocations.length === 0 ? (
@@ -728,7 +719,6 @@ function BookPanel({
           </div>
         )}
       </section>
-      </AtLevel>
     </div>
   );
 }

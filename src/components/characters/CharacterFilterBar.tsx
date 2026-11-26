@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { BookMarked, CalendarRange, RotateCcw, SlidersHorizontal, Star, UserRound } from 'lucide-react';
 import { DetailSheet, useMedia } from '../DetailSheet';
-import { useLevel } from '../../lib/level';
 import type { Era, Role } from '../../characterTypes';
 import { books } from '../../lib/books';
 import {
@@ -117,7 +116,6 @@ function FilterControls({ filters, onChange, stacked = false }: { filters: Chara
           { id: 'New', label: 'New Testament', title: 'People of the Gospels and the early church' },
         ]}
       />
-      {useLevel() !== 'beginner' && (
       <div className={stacked ? 'grid gap-2' : 'flex w-auto gap-2'}>
         <FilterSelect
           label="Era"
@@ -160,7 +158,6 @@ function FilterControls({ filters, onChange, stacked = false }: { filters: Chara
           className="sm:max-w-[14rem]"
         />
       </div>
-      )}
       <button
         onClick={() => set({ keyOnly: !filters.keyOnly })}
         aria-pressed={filters.keyOnly}

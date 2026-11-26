@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
-import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, GraduationCap, List } from 'lucide-react';
-import { LEVELS, atLeast, setLevel, useLevel, type Level } from '../lib/level';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, List } from 'lucide-react';
 
 /**
  * One continuous page instead of tabs: numbered sections, a single compact "On this page" bar pinned
@@ -13,48 +12,6 @@ export interface SectionDef {
   label: string;
   /** Shorter label for the bar on narrower screens. */
   short?: string;
-  /** The lowest level this section appears at (default: every level). */
-  min?: Level;
-  /** Other ids inside this section (folds) that a link may point to. */
-  anchors?: string[];
-}
-
-/** The hash the page was opened with (a link to a hidden section still shows it). */
-const openedWith = () => decodeURIComponent(window.location.hash.slice(1));
-
-/**
- * The sections shown at the current level, numbered in order. A section above the reader's level
- * still appears when a link points at it (or at a fold inside it), with a note.
- */
-export function useSections(defs: SectionDef[]) {
-  const level = useLevel();
-  const [target] = useState(openedWith);
-  const linked = (d: SectionDef) => !!target && (d.id === target || (d.anchors ?? []).includes(target));
-  const list = defs.filter((d) => !d.min || atLeast(level, d.min) || linked(d));
-  return {
-    list,
-    shows: (id: string) => list.some((d) => d.id === id),
-    n: (id: string) => list.findIndex((d) => d.id === id) + 1,
-    /** The level a section needs, when it is shown only because a link pointed at it. */
-    need: (id: string) => {
-      const d = defs.find((x) => x.id === id);
-      return d?.min && !atLeast(level, d.min) ? d.min : undefined;
-    },
-  };
-}
-
-/** Shown on a section or fold that is above the reader's level but was opened by a link. */
-export function LevelNote({ need }: { need: Level }) {
-  const label = LEVELS.find((l) => l.id === need)!.label;
-  return (
-    <p className="mb-4 flex flex-wrap items-center gap-2 rounded-md border border-dashed border-ink/40 px-3 py-2 font-sans text-[13px]">
-      <GraduationCap size={15} aria-hidden className="text-ink-soft" />
-      <span>This is part of {label} mode, shown because a link pointed here.</span>
-      <button onClick={() => setLevel(need)} className="focus-ring ml-auto min-h-8 rounded-full border border-rule px-3 font-medium hover:border-ink/50">
-        Switch to {label}
-      </button>
-    </p>
-  );
 }
 
 const OPEN_FOLD = 'canon:open-fold';
@@ -274,13 +231,10 @@ export function PageSection({
   takeaway,
   aside,
   first = false,
-  need,
   children,
 }: {
   id: string;
   n: number;
-  /** Set when the section is above the reader’s level but a link opened it. */
-  need?: Level;
   /** The first section sits right under the bar, without a rule above it. */
   first?: boolean;
   title: ReactNode;
@@ -310,10 +264,7 @@ export function PageSection({
           </span>
         </p>
       )}
-      <div className="mt-6">
-        {need && <LevelNote need={need} />}
-        {children}
-      </div>
+      <div className="mt-6">{children}</div>
     </section>
   );
 }
@@ -330,7 +281,6 @@ export function Fold({
   defaultOpen = false,
   targetPrefix,
   level = 3,
-  min,
   children,
 }: {
   id?: string;
@@ -341,12 +291,8 @@ export function Fold({
   /** Also open for any target id with this prefix (its content is not mounted while closed). */
   targetPrefix?: string;
   level?: 3 | 4;
-  /** The lowest reader level this fold appears at. */
-  min?: Level;
   children: ReactNode;
 }) {
-  const reader = useLevel();
-  const [linked] = useState(() => !!id && openedWith() === id);
   const [open, setOpen] = useState(defaultOpen);
   const boxRef = useRef<HTMLDivElement>(null);
   const onOpen = useCallback(
@@ -363,7 +309,6 @@ export function Fold({
   }, [onOpen]);
   const H = level === 3 ? 'h3' : 'h4';
   const bodyId = useId();
-  if (min && !atLeast(reader, min) && !linked) return null;
   return (
     <div ref={boxRef} id={id} className="section-anchor rounded-md border border-rule bg-paper/70">
       <H className="m-0">

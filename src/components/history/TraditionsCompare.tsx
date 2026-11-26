@@ -5,8 +5,6 @@ import { type Topic, commonGround, familyMembers, familyOverview, topics, tradit
 import { RefText } from '../ScriptureRef';
 import { Fold } from '../sections';
 import { DetailSheet } from '../DetailSheet';
-import { AtLevel } from '../LevelSwitch';
-import { useLevel } from '../../lib/level';
 
 // ── Units: what is compared. Either the four families (Protestant shown as the range of its
 //    branches) or all eight traditions one by one. ──
@@ -285,12 +283,7 @@ function QuestionPanel({ index, units, focus, onStep, onClose }: { index: number
 }
 
 /** The four families side by side: who they are, then what they teach (tap a teaching row for the full question). */
-/** The rows Beginners see: who each family is, and five teachings. */
-const BEGINNER_ROWS = new Set(['origins', 'leaders', 'where', 'authority', 'salvation', 'eucharist', 'baptism', 'mary']);
-
 function OverviewTable({ onTopic }: { onTopic: (topicId: string) => void }) {
-  const simple = useLevel() === 'beginner';
-  const rowsOf = (rows: (typeof familyOverview.groups)[number]['rows']) => (simple ? rows.filter((r) => BEGINNER_ROWS.has(r.id)) : rows);
   return (
     <>
       {/* Wide screens: a table with the families as columns */}
@@ -325,7 +318,7 @@ function OverviewTable({ onTopic }: { onTopic: (topicId: string) => void }) {
                     {g.rows.some((r) => r.topic) && <span className="ml-2 normal-case tracking-normal text-ink-soft">· tap a row for the full story</span>}
                   </td>
                 </tr>
-                {rowsOf(g.rows).map((r) => {
+                {g.rows.map((r) => {
                   const clickable = !!r.topic;
                   return (
                     <tr
@@ -370,7 +363,7 @@ function OverviewTable({ onTopic }: { onTopic: (topicId: string) => void }) {
         {familyOverview.groups.map((g) => (
           <div key={g.label} className="space-y-2">
             <div className="eyebrow">{g.label}</div>
-            {rowsOf(g.rows).map((r) => {
+            {g.rows.map((r) => {
               const Wrap = r.topic ? 'button' : 'div';
               return (
                 <Wrap
@@ -508,7 +501,6 @@ export function TraditionsCompare() {
       {/* 2. The traditions within the families */}
       <Fold
         id="eight-traditions"
-        min="explorer"
         title={
           <>
             <span className="mr-2 text-ink-soft">2</span>Eight traditions in four families
@@ -520,7 +512,6 @@ export function TraditionsCompare() {
       </Fold>
 
       {/* 3. The ten questions, tradition by tradition */}
-      <AtLevel min="explorer">
       <div className="space-y-3">
         <div>
           <h3 className="font-display text-2xl font-semibold">
@@ -586,7 +577,6 @@ export function TraditionsCompare() {
 
         <Glance units={units} onTopic={openTopic} focus={focus} />
       </div>
-      </AtLevel>
 
       <p className="font-sans text-[12px] text-ink-soft">
         {traditionsMeta.purpose} {traditionsMeta.spectrumNote} Main sources:{' '}
