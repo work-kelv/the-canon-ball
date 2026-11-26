@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
+import { Term } from './Term';
 import { BookTimeline } from './BookTimeline';
 import type { BibleBook, Division, LanguageFilter } from '../types';
 import { FILTERS, books, matchesFilter, meta } from '../lib/books';
@@ -38,7 +39,12 @@ export function LanguagesSections() {
         n={1}
         first
         title="The 66 books and their languages"
-        lead="All 66 books in Bible order, each coloured by the language it was first written in. Tap a book for its exact Aramaic passages, its date and why it used that language."
+        lead={
+          <>
+            All 66 books in Bible order, each coloured by the language it was first written in. Tap a book for its exact{' '}
+            <Term t="Aramaic">Aramaic</Term> passages, its date and why it used that language.
+          </>
+        }
         takeaway="Hebrew for Israel’s Scriptures, a little Aramaic from the exile, and Greek for the New Testament: each the language its first readers understood."
       >
         <div className="space-y-8">

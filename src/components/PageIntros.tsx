@@ -1,4 +1,5 @@
 import { CharactersArt, HistoryArt, MapArt } from './PageArt';
+import { Term } from './Term';
 import { PageIntro } from './PageIntro';
 
 /** Introductions for the Characters, Map and Church History pages (Languages has its own in LanguagesIntro). */
@@ -137,7 +138,8 @@ export function HistoryIntro() {
       lead={
         <p>
           Two thousand years of the church, as a short course on one page. New to it? Begin with section 1, Start here, which tells the
-          whole story simply; each section then goes deeper, and the bar at the top takes you to any section.
+          whole story simply; each section then goes deeper, and the bar at the top takes you to any section. Words with a dotted underline,
+          such as <Term t="creed">creed</Term> or <Term t="schism">schism</Term>, explain themselves when you tap them.
         </p>
       }
       cards={[

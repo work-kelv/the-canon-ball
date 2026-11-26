@@ -19,6 +19,8 @@ The site opens on an [introduction page](https://work-kelv.github.io/the-canon-b
 
 Any Bible reference on the site (shown with a dotted underline) can be clicked to read the verses. You can switch between two translations, the **World English Bible** and the **Berean Standard Bible**.
 
+Words a newcomer may not know, such as canon, Septuagint, creed and schism, also have a dotted underline: tap one for a one-sentence explanation.
+
 ---
 
 ## 1. The Bible

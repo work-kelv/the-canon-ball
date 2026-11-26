@@ -9,6 +9,7 @@ import { BoundaryOrbit } from './BoundaryOrbit';
 import { StartHere } from './StartHere';
 import { KeyPeople } from './KeyPeople';
 import { HistoryIntro } from '../PageIntros';
+import { Term } from '../Term';
 import { Fold, NextPage, OnThisPage, PageSection, jumpTo, useSectionHash, type SectionDef } from '../sections';
 
 /**
@@ -60,7 +61,13 @@ export function HistoryPage() {
         id="people"
         n={2}
         title="From Jesus to today"
-        lead="The key people of the church, era by era: the apostles, the early church fathers, the councils, the Reformers and the missionaries, down to our own time. Tap anyone to see who they were and how they pointed to Jesus."
+        lead={
+          <>
+            The key people of the church, era by era: the <Term t="apostle">apostles</Term>, the early church fathers, the{' '}
+            <Term t="council">councils</Term>, the Reformers and the missionaries, down to our own time. Tap anyone to see who they were
+            and how they pointed to Jesus.
+          </>
+        }
         takeaway="A cloud of witnesses, each at their best pointing beyond themselves to Jesus."
       >
         <KeyPeople />
@@ -70,7 +77,12 @@ export function HistoryPage() {
         id="creeds"
         n={3}
         title="The four creeds, compared"
-        lead="Each creed answered the questions of its time, so each adds something the earlier ones left open. Here is what they share, where they differ, and which churches confess them today."
+        lead={
+          <>
+            Each <Term t="creed">creed</Term> answered the questions of its time, so each adds something the earlier ones left open. Here
+            is what they share, where they differ, and which churches confess them today.
+          </>
+        }
         takeaway="The Apostles’ Creed gives the basic faith; Nicaea confesses that the Son is truly God; Chalcedon that Christ is truly God and truly man."
       >
         <div className="space-y-6">
@@ -85,7 +97,13 @@ export function HistoryPage() {
         id="tree"
         n={4}
         title="The family tree of the church"
-        lead="Major schisms and reformations from Pentecost to today. Click a branch to see what it shares with all Christians and what is distinctive to it."
+        lead={
+          <>
+            Major <Term t="schism">schisms</Term> and reformations from Pentecost to today, through the{' '}
+            <Term t="Reformation">Reformation</Term> to the many <Term t="denomination">denominations</Term> of our time. Click a branch to
+            see what it shares with all Christians and what is distinctive to it.
+          </>
+        }
         takeaway="From one church at Pentecost to thirteen traditions, through the splits of 431, 451 and 1054 and the Reformation."
       >
         <FamilyTree />

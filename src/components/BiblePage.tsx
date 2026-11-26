@@ -3,6 +3,7 @@ import { LanguagesSections } from './LanguagesPage';
 import { CanonPage } from './CanonPage';
 import { TextualTransmission } from './history/TextualTransmission';
 import { TranslationTimeline } from './history/TranslationTimeline';
+import { Term } from './Term';
 import { NextPage, OnThisPage, PageSection, useSectionHash, type SectionDef } from './sections';
 
 /**
@@ -34,7 +35,12 @@ export function BiblePage() {
         id="canon"
         n={3}
         title="Which books are in the Bible?"
-        lead="All Christians share the same 66 books. Catholic, Orthodox and Ethiopian Bibles add further books, nearly all in the Old Testament. Here are the extra books and why Protestant churches keep to 66."
+        lead={
+          <>
+            All Christians share the same 66 books. Catholic, Orthodox and Ethiopian Bibles add further books, nearly all in the Old{' '}
+            <Term t="testament">Testament</Term>. Here are the extra books and why the Protestant <Term t="canon">canon</Term> keeps to 66.
+          </>
+        }
         takeaway="All churches share the same 66 books; Catholic, Orthodox and Ethiopian Bibles add more, and this site follows the shared 66."
       >
         <CanonPage />
@@ -54,7 +60,12 @@ export function BiblePage() {
         id="translations"
         n={5}
         title="How the Bible reached the world’s languages"
-        lead="From the Septuagint to today’s translation movement, with the manuscript discoveries that confirmed the text and the inventions that gave us chapters and verses."
+        lead={
+          <>
+            From the <Term t="Septuagint">Septuagint</Term> to today’s translation movement, with the <Term t="manuscript">manuscript</Term>{' '}
+            discoveries that confirmed the text and the inventions that gave us chapters and verses.
+          </>
+        }
         takeaway="Translation has been part of the church’s life from the start; today almost everyone has some Scripture in a language they understand."
       >
         <TranslationTimeline />
