@@ -1,5 +1,6 @@
 {
   "meta": {
+    "spellingNote": "The Prayer Book texts keep their original 1662 spelling, such as “Catholick” and “Apostolick”. Here “catholic” means universal: the whole church in every place and time, not only the Roman Catholic Church.",
     "translations": "Apostles’, Nicene and Athanasian Creeds: Book of Common Prayer (1662). Chalcedonian Definition: Philip Schaff, The Creeds of Christendom, vol. II (1877). All public domain.",
     "reliabilityPrinciple": "The councils did not have the apostles’ original manuscripts; they argued from copies of the Scriptures and the faith handed down in the churches. What can be verified is (1) that bishops from many regions met and debated openly, (2) that the creed texts are preserved in the councils’ own records and early writers, and (3) that the New Testament passages the creeds summarise are already present in manuscripts older than the councils (e.g. P46, P66, P75 c. AD 175–225; Codex Sinaiticus and Vaticanus c. 325–360)."
   },
@@ -7,6 +8,7 @@
     {
       "id": "apostles",
       "name": "Apostles’ Creed",
+      "source": {"short":"Book of Common Prayer (1662)","label":"Book of Common Prayer (1662), Morning Prayer","url":"https://www.eskimo.com/~lhowell/bcp1662/daily/morning.html"},
       "date": "c. 2nd–8th century",
       "origin": "Baptismal confession of the church at Rome (the 'Old Roman Symbol'); received text first found complete in Pirminius (early 8th c.).",
       "summary": "The baptismal faith of the Western church: what new believers confessed when they were baptised.",
@@ -81,6 +83,7 @@
     {
       "id": "nicene",
       "name": "Nicene Creed",
+      "source": {"short":"Book of Common Prayer (1662)","label":"Book of Common Prayer (1662), the Order for Holy Communion","url":"https://www.eskimo.com/~lhowell/bcp1662/communion/index.html"},
       "date": "AD 325, expanded 381",
       "origin": "Council of Nicaea (325), revised at the First Council of Constantinople (381); text preserved in the Acts of the Council of Chalcedon (451).",
       "summary": "The most widely shared Christian confession — used by Catholic, Orthodox and most Protestant churches — defining the full deity of the Son and the Holy Spirit.",
@@ -168,6 +171,7 @@
     {
       "id": "chalcedon",
       "name": "Chalcedonian Definition",
+      "source": {"short":"Schaff (1877)","label":"Philip Schaff, The Creeds of Christendom, vol. II (1877), the Symbol of Chalcedon","url":"https://www.ccel.org/ccel/schaff/creeds2.iv.i.iii.html"},
       "date": "AD 451",
       "origin": "Council of Chalcedon (451), building on Pope Leo I’s Tome and Cyril of Alexandria’s letters.",
       "summary": "Defines how Jesus is both God and man: one person in two natures, against both dividing him (Nestorius) and blending him (Eutyches).",
@@ -213,6 +217,7 @@
     {
       "id": "athanasian",
       "name": "Athanasian Creed",
+      "source": {"short":"Book of Common Prayer (1662)","label":"Book of Common Prayer (1662), “At Morning Prayer” (the Creed of Saint Athanasius)","url":"https://www.eskimo.com/~lhowell/bcp1662/daily/athanasian.html"},
       "date": "c. AD 440–540",
       "origin": "Latin, probably southern Gaul; named 'Quicunque vult' from its first words. Attributed to Athanasius only from the 7th century.",
       "summary": "A detailed teaching creed on the Trinity and the Incarnation, written to be learned and recited.",

@@ -27,6 +27,8 @@ export interface CreedClause {
 export interface Creed {
   id: string;
   name: string;
+  /** Where the English text shown on the site comes from. */
+  source: { short: string; label: string; url: string };
   date: string;
   origin: string;
   summary: string;

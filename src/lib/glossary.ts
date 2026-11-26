@@ -2,6 +2,7 @@
 export const GLOSSARY = {
   testament: 'One of the Bible’s two parts. The Old Testament was written before Jesus; the New Testament by his first followers after him.',
   canon: 'The agreed list of books that make up the Bible.',
+  catholic: 'Universal: the whole church in every place and time. In the creeds it does not mean only the Roman Catholic Church. The 1662 Prayer Book spells it “Catholick”.',
   Aramaic: 'A language related to Hebrew, spoken across the Babylonian and Persian empires; a few parts of the Old Testament are in it.',
   Septuagint: 'The Greek translation of the Old Testament made before Jesus, used by the early church.',
   manuscript: 'A copy written by hand, before printing.',

@@ -2,6 +2,8 @@ import { Fragment, useState } from 'react';
 import { BookOpenCheck, ChevronDown, ExternalLink, Info } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { Fold } from '../sections';
+import { CreedText } from './CreedText';
+import { creedMeta, creeds as creedTexts } from '../../lib/history';
 import {
   type CreedId,
   type CreedRow,
@@ -169,7 +171,12 @@ function RowDetail({ row }: { row: CreedRow }) {
                 {c.short}
               </div>
               {cell.q ? (
-                <p className="mt-0.5 font-serif text-[14px] italic leading-snug">“{cell.q}”</p>
+                <>
+                  <p className="mt-0.5 font-serif text-[14px] italic leading-snug">
+                    “<CreedText text={cell.q} />”
+                  </p>
+                  <p className="mt-0.5 font-sans text-[12px] text-ink-soft">{creedTexts.find((t) => t.id === c.id)?.source.short}</p>
+                </>
               ) : (
                 <p className="mt-0.5 font-sans text-[12px] text-ink-soft">Not addressed.</p>
               )}
@@ -266,7 +273,9 @@ export function CreedCompare() {
             </Fragment>
           ))}
         </div>
-        <p className="mt-2 font-sans text-[12px] text-ink-soft">{creedCompare.meta.note}</p>
+        <p className="mt-2 font-sans text-[12px] text-ink-soft">
+          {creedCompare.meta.note} {creedMeta.spellingNote}
+        </p>
       </div>
 
       {/* Who confesses which */}

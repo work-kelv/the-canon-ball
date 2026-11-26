@@ -300,12 +300,18 @@ export const REFERENCES: Record<'home' | 'languages' | 'characters' | 'map' | 'h
       detail: 'Philip Schaff, 1877 (6th ed. 1931), Christian Classics Ethereal Library',
       url: 'https://www.ccel.org/ccel/schaff/creeds1',
       links: [{ label: 'Vol. 2: Greek and Latin creeds', url: 'https://www.ccel.org/ccel/schaff/creeds2' }],
-      use: "Texts and histories of the Apostles', Nicene, Chalcedonian and Athanasian creeds (Chalcedon in Schaff's translation).",
+      use: "Texts and histories of the Apostles', Nicene, Chalcedonian and Athanasian creeds; the English text of the Chalcedonian Definition is Schaff's translation (vol. 2, the Symbol of Chalcedon).",
     },
     {
       title: 'The Book of Common Prayer (1662)',
-      detail: 'Church of England',
-      use: 'English text of the Athanasian Creed ("Quicunque vult").',
+      detail: 'Church of England; transcription by Lynda M. Howell',
+      url: 'https://www.eskimo.com/~lhowell/bcp1662/',
+      links: [
+        { label: 'Morning Prayer (Apostles’ Creed)', url: 'https://www.eskimo.com/~lhowell/bcp1662/daily/morning.html' },
+        { label: 'Holy Communion (Nicene Creed)', url: 'https://www.eskimo.com/~lhowell/bcp1662/communion/index.html' },
+        { label: 'At Morning Prayer (Athanasian Creed)', url: 'https://www.eskimo.com/~lhowell/bcp1662/daily/athanasian.html' },
+      ],
+      use: 'English text of the Apostles’, Nicene and Athanasian Creeds, in the original 1662 spelling (“Catholick”, “Apostolick”).',
     },
     {
       title: 'Early Christian Creeds',

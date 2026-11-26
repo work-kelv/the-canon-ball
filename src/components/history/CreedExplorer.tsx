@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { BookOpen, Landmark, ShieldCheck } from 'lucide-react';
+import { BookOpen, ExternalLink, Landmark, ShieldCheck } from 'lucide-react';
 import { cssColor } from '../../lib/characters';
 import { type Creed, type CreedClause, creedMeta, creeds } from '../../lib/history';
 import { RefText } from '../ScriptureRef';
 import { Segmented } from '../characters/controls';
+import { CreedText } from './CreedText';
+
+const isPrayerBook = (c: Creed) => c.source.url.includes('bcp1662');
 
 function ClauseDetail({ creed, clause, index }: { creed: Creed; clause: CreedClause; index: number }) {
   return (
@@ -12,7 +15,10 @@ function ClauseDetail({ creed, clause, index }: { creed: Creed; clause: CreedCla
         <div className="eyebrow">
           {creed.name} · line {index + 1} of {creed.clauses.length}
         </div>
-        <blockquote className="mt-1 font-serif text-[17px] italic leading-snug">“{clause.clauseText}”</blockquote>
+        <blockquote className="mt-1 font-serif text-[17px] italic leading-snug">
+          “<CreedText text={clause.clauseText} />”
+        </blockquote>
+        <p className="mt-1 font-sans text-[12px] text-ink-soft">Text: {creed.source.short}</p>
       </div>
       <div className="space-y-4 px-4 py-3">
         <section>
@@ -78,6 +84,20 @@ export function CreedExplorer() {
         </div>
         <p className="font-serif text-[15px]">{creed.summary}</p>
         <p className="mt-1 font-sans text-[12px] text-ink-soft">{creed.origin}</p>
+        <p className="mt-2 border-t border-rule pt-2 font-sans text-[12.5px] leading-snug">
+          <span className="text-ink-soft">Text: </span>
+          <a
+            href={creed.source.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-baseline gap-1 underline decoration-rule underline-offset-2 hover:decoration-ink"
+          >
+            {creed.source.label}
+            <ExternalLink size={11} className="shrink-0 self-center" aria-hidden />
+          </a>
+          . Public domain.
+        </p>
+        {isPrayerBook(creed) && <p className="mt-1 font-sans text-[12px] leading-snug text-ink-soft">{creedMeta.spellingNote}</p>}
       </div>
 
       <div className="grid gap-4 md:grid-cols-[1fr_minmax(0,26rem)]">
